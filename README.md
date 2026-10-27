@@ -6,7 +6,7 @@
 
 从技术事实出发，选择结构模板，生成原生 draw.io，由实际绘图引擎导出，再用 Inkscape 精修。复杂公式或 LaTeX 集成按需使用 TikZ。
 
-当前整理版：**v0.10.0**（统一语义路由）。
+当前整理版：**v0.10.1**（一个入口、两个独立来源的 Skill）。
 
 [Skill 完整性核对清单](docs/skill-inventory.md) · [外部 Skill 收藏](docs/external-skills.md) · [PPT 主流程设计存档](docs/ppt-workflow-design.md)。此仓库包含绘图 Skill 的完整代码；PPT 主流程设计、外部 draw.io/PlantUML 收藏以及其他工程 Skill 的恢复状态分别登记，不将它们冒充已实现模块。
 
@@ -29,7 +29,7 @@
 
 ## 安装给 Agent
 
-把 `skills/technical-architecture-diagrams/` 整个目录放入所用 Agent 的 skills 目录。以 Codex 为例，可复制到 `~/.codex/skills/technical-architecture-diagrams/`；若已有同名 Skill，先比较并保留本地修改。
+把 `skills/` 下 **两个目录** `technical-architecture-diagrams/` 与 `technical-diagram-options/` 一起放入 Agent 的 skills 目录，保持同级。统一入口位于前者；也可直接调用后者。若已有同名 Skill，先比较并备份本地修改。
 
 然后使用：
 
@@ -53,7 +53,25 @@ python -m unittest discover -s tests -p test_routing.py -v
 
 这是 Agent 的语义工作流加保守路由辅助，不是自然语言到任意图的全自动编译器。`--intent auto` 仅产生关键词建议；“画 Attention”、否定或引用等歧义应语义复核后显式给 intent。PPT/论文不决定图类型。原 `resolve_palette.py` 的 auto 保持模型分支兼容行为；报告须采用路由输出的显式 palette，或直接使用输出 tokens。
 
-[分支与来源](skills/technical-architecture-diagrams/references/integration-provenance.md) · [技术报告规范](skills/technical-architecture-diagrams/references/technical-report.md)。安装时仍复制完整目录；仓库更新不等于已覆盖你个人安装的 Skill。
+[分支与来源](skills/technical-architecture-diagrams/references/integration-provenance.md) · [技术报告规范](skills/technical-architecture-diagrams/references/technical-report.md)。安装时复制两个完整同级目录；仓库更新不等于已覆盖你个人安装的 Skill。
+
+## 两个独立实现与报告执行
+
+模型架构使用 `technical-architecture-diagrams` 的 draw.io/Inkscape/TikZ 路线；技术报告使用独立 `technical-diagram-options` 的结构选择、规则卡、公开来源索引、语义/几何 IR 与 SVG/draw.io 导出器。两者共享入口与可调配色，但不共享一个固定图模板。
+
+[报告包文件清单](reports/report-skill-files.json)。来源索引仅包含公开引用与必要规则关联，不包含 source artwork 或私人评论。
+
+```sh
+# 原报告 Skill 的真实接口；task/diagram 为结构化 JSON，不是自然语言自动编译
+mkdir -p build/report
+python skills/technical-diagram-options/scripts/select_options.py skills/technical-diagram-options/examples/toy-mapping.task.json --out build/report/options.json
+python skills/technical-diagram-options/scripts/diagram_tool.py check skills/technical-diagram-options/examples/toy-mapping.diagram.json
+python skills/technical-diagram-options/scripts/diagram_tool.py render skills/technical-diagram-options/examples/toy-mapping.diagram.json --out-dir build/report/figures
+python skills/technical-diagram-options/scripts/check_package.py
+python -m unittest discover -s skills/technical-diagram-options/tests -v
+```
+
+例子是虚构 toy mapping，只验证执行契约；不是新的论文成图或模型能力评测。报告 palette tokens 是外部 overlay，Agent 按角色写入 diagram IR 的 styles 后生成；导出器不自动理解自然语言或替换配色。原始图库/collector manifests 不随代码发布；公开版只校验引用关系，`--corpus-root`/`--gallery-root` 明确拒绝执行，不能据此假称资产完整性通过。
 
 ## 本地准备
 

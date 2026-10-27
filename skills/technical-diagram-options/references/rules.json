@@ -1,0 +1,1344 @@
+{
+  "schema_version": "1.0",
+  "status": "source_grounded_candidate_effect_not_validated",
+  "rules": [
+    {
+      "id": "S01",
+      "name": "系统层级与边界",
+      "kind": "structure",
+      "structure_modes": [
+        "S01"
+      ],
+      "trigger_features": [
+        "boundaries",
+        "ownership"
+      ],
+      "required_facts": [
+        "entities",
+        "containment"
+      ],
+      "trigger": "读者需要知道组成、层级或责任归属，而非每一步何时发生。",
+      "action": "用嵌套边界标出模型/执行/硬件或像素/潜变量/条件域；跨边界连接写明传什么。重复实例可用堆叠或计数，不把堆叠误当顺序。",
+      "alternatives": [
+        "S02 算子流用于依赖关系",
+        "S06 拓扑用于跨设备传输",
+        "C02 总览加局部聚焦"
+      ],
+      "boundary": "架构总览不证明时序、性能或所有实例完全相同。",
+      "counterexample": "LDM 三组件博客省去训练 Encoder 与 CFG；不能当完整训练图。DistServe 堆叠只在多实例概览合适。",
+      "checks": [
+        "每个边界的语义明确",
+        "容器关系与数据依赖不混用",
+        "跨域对象有身份/单位",
+        "Expanded detail inputs/outputs correspond to the exact overview submodule, and the final artifact boundary remains visible."
+      ],
+      "evidence": [
+        {
+          "source_id": "A/ldm:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/ldm:blog-c7dcf10f1d",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/gshard:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/tvm:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "S02",
+      "name": "计算数据流与并行汇合",
+      "kind": "structure",
+      "structure_modes": [
+        "S02"
+      ],
+      "trigger_features": [
+        "branch_merge",
+        "dependencies"
+      ],
+      "required_facts": [
+        "entities",
+        "operations",
+        "dependencies"
+      ],
+      "trigger": "任务重点是输入经过哪些变换、分支如何合并。",
+      "action": "以操作和对象为图元；明确 add/concat/multiply/select 的差别。并行分支来自同一输入时对齐，合流处写操作而非无名圆点。",
+      "alternatives": [
+        "S03 张量图关注形状",
+        "S05 时间图关注等待",
+        "S10 公式与实例关注算子含义"
+      ],
+      "boundary": "空间并排只表达结构并行，不自动承诺运行时并发。",
+      "counterexample": "DenseNet 的 plus-like concat 草图容易被读成残差加法；不能复制外形后只靠小字纠正。",
+      "checks": [
+        "每条分支的来源可追踪",
+        "合并运算明确",
+        "没有把数据边和调度边混成一类",
+        "Trace typed inputs: concat is not add; weighted aggregation needs a visible weight edge; residual bypass begins at the correct pre-sublayer state.",
+        "Learned/quantization parameters have real sources and dependencies; labels cannot substitute missing input edges.",
+        "An add node has the actual required operands; feature, score/weight and control edges are distinguishable.",
+        "Enumerate operands of each displayed operation and match them to actual input ports; formulas and nearby labels do not count as edges."
+      ],
+      "evidence": [
+        {
+          "source_id": "A/transformer:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/transformer:blog-4ecc1474ce",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/densenet:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/llm_int8:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/mamba:blog-f712f645e4",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/densenet:negative-1",
+          "role": "counterexample"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "S03",
+      "name": "矩阵张量与分块",
+      "kind": "structure",
+      "structure_modes": [
+        "S03"
+      ],
+      "trigger_features": [
+        "tensor_shapes",
+        "partitioning"
+      ],
+      "required_facts": [
+        "tensors",
+        "axes",
+        "transforms"
+      ],
+      "trigger": "读者需要对应维度、分块、转置、拼接或位置。",
+      "action": "显式命名轴、形状和索引；同一块跨视图保留身份，必要的密集数字不删。用省略号减少重复但注明范围和例外。",
+      "alternatives": [
+        "S02 算子图更适合只问流程",
+        "S04 映射表强调位置与身份",
+        "C01 结合硬件存储层级"
+      ],
+      "boundary": "示例维度不是通用常量；颜色不同时承担维度、设备和状态三种含义。",
+      "counterexample": "ViT 768=3×16×16 不保证投影无损；Swin region-ID 差值不是最终 attention bias。",
+      "checks": [
+        "算子输入输出形状相容",
+        "轴/单位/例外可读",
+        "同一索引在多面板不漂移",
+        "Tiling mechanisms show tile boundaries and state the split axis or schematic limitation, not just a labelled card.",
+        "Preserve axes, index identities, factor shapes and allowed/masked regions; matrix or factor labels alone do not explain the spatial relation."
+      ],
+      "evidence": [
+        {
+          "source_id": "A/vit:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/vit:blog-d8ead0f40c",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/swin:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/lora:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/megatron-lm:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "S04",
+      "name": "逻辑物理映射与存储布局",
+      "kind": "structure",
+      "structure_modes": [
+        "S04"
+      ],
+      "trigger_features": [
+        "mapping",
+        "ownership"
+      ],
+      "required_facts": [
+        "logical_objects",
+        "physical_locations",
+        "mapping"
+      ],
+      "trigger": "必须解释同一对象在逻辑、物理或缓存表示之间的位置对应。",
+      "action": "把逻辑序列、映射表、物理位置作为不同视图；重复对象 ID，而非仅靠颜色连线。保留非连续布局的事实。",
+      "alternatives": [
+        "S03 布局表适合只有形状",
+        "C05 映射加连续状态用于分配变化",
+        "S06 拓扑用于跨设备搬运"
+      ],
+      "boundary": "非连续映射不等于排序变化；分片、压缩、搬运、驱逐是不同操作。",
+      "counterexample": "把 PagedAttention 画成直接压缩 token 的漏斗会改变机制；把 MLA latent 和 full KV 当同一个数组会隐藏表示变化。",
+      "checks": [
+        "逻辑顺序不被物理地址误导",
+        "映射基数明确",
+        "共享/复制/失效状态有说明",
+        "Mapping arrows do not cross physical/logical index text; address identity stays visible."
+      ],
+      "evidence": [
+        {
+          "source_id": "C/pagedattention:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/pagedattention:blog-fb804ac849",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/zero:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/deepseek_v2:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "S05",
+      "name": "时序流水线与重叠",
+      "kind": "structure",
+      "structure_modes": [
+        "S05"
+      ],
+      "trigger_features": [
+        "timing",
+        "overlap"
+      ],
+      "required_facts": [
+        "actors",
+        "events",
+        "dependencies",
+        "time_basis"
+      ],
+      "trigger": "问题涉及等待、阶段调度、bubble、同步或可重叠操作。",
+      "action": "使用共享时间轴与资源/阶段泳道，标明依赖与空闲。真实时长才按比例；只有顺序时标注 not to scale。",
+      "alternatives": [
+        "S02 依赖图不要求时长",
+        "C03 对照时间线用于方案差异",
+        "S06 拓扑补充通信对象"
+      ],
+      "boundary": "横向相交不证明真实重叠或测得加速；块宽必须有时间依据。",
+      "counterexample": "FlashAttention-3 ping-pong 图是调度机制；博客示意时长不能当基准。PipeDream 的版本管理不能从 GPipe 时间图猜出。",
+      "checks": [
+        "泳道资源一致",
+        "阻塞/同步条件显式",
+        "时长与顺序假设分离",
+        "forward/backward 权重版本不遗漏",
+        "Show relevant admission/completion and startup/steady/drain boundaries; different event types have distinguishable edges."
+      ],
+      "evidence": [
+        {
+          "source_id": "B/gpipe:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/pipedream:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/flashattention3:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/sarathi_serve:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "S06",
+      "name": "分片分布与通信拓扑",
+      "kind": "structure",
+      "structure_modes": [
+        "S06"
+      ],
+      "trigger_features": [
+        "topology",
+        "communication"
+      ],
+      "required_facts": [
+        "devices",
+        "ownership",
+        "transfers"
+      ],
+      "trigger": "问题是数据放在哪里、谁向谁传什么，或某种互连组织。",
+      "action": "先画所有权和通信图，可用环、网格或分组，不强制正交线。节点内只保留解释传输所需的局部机制。",
+      "alternatives": [
+        "S05 时间线解释何时传",
+        "C02 拓扑加聚焦",
+        "S03 分片矩阵解释切哪一轴"
+      ],
+      "boundary": "拓扑不是时序；环形也不意味着所有东西沿环移动。",
+      "counterexample": "Ring Attention 的 Q 保持本地、KV 转动；不画成 QKV 都转，也不声称通信总可完全隐藏。",
+      "checks": [
+        "每条传输写对象/方向",
+        "复制与切分不同编码",
+        "计算/通信重叠注明条件",
+        "Device ownership, replicated versus sharded identity and both collective directions are explicit; endpoints reach actual local operands."
+      ],
+      "evidence": [
+        {
+          "source_id": "E/ring_attention:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/ring_attention:blog-b088b05f63",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/megatron-lm:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/alpa:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/distserve:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "S07",
+      "name": "递归状态与迭代过程",
+      "kind": "structure",
+      "structure_modes": [
+        "S07"
+      ],
+      "trigger_features": [
+        "state_updates",
+        "iteration"
+      ],
+      "required_facts": [
+        "state",
+        "update_rule",
+        "initial_state"
+      ],
+      "trigger": "机制核心是状态随步数更新、保留或失效。",
+      "action": "给每个状态标时间索引；用相邻快照或反馈环区分输入、持久状态和输出。正反方向分别命名。",
+      "alternatives": [
+        "S05 时间线关注耗时",
+        "C06 矩阵与递归对齐",
+        "C05 映射与状态快照"
+      ],
+      "boundary": "一个动画静帧只表达该时刻；不可从连续箭头推断可交换更新顺序。",
+      "counterexample": "DDPM q 加噪与 pθ 逆采样方向不同；StreamingLLM 稳定生成不等于记住已经驱逐的所有内容。",
+      "checks": [
+        "t 与 t+1 无歧义",
+        "保留/新增/删除对象可追踪",
+        "初态和终止条件明确",
+        "Before/after state identity is reconstructible; token/step shifts name their origin index; adjacent transitions do not collapse into a broadcast bus.",
+        "Separate model prediction from state update: e.g. predicted noise is not the next latent; show the consuming update when the task requires it."
+      ],
+      "evidence": [
+        {
+          "source_id": "A/ddpm:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/mamba:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/retnet:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/streamingllm:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/h2o:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/galore:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/orca:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "S08",
+      "name": "树路由与筛选",
+      "kind": "structure",
+      "structure_modes": [
+        "S08"
+      ],
+      "trigger_features": [
+        "branching_candidates",
+        "selection"
+      ],
+      "required_facts": [
+        "candidates",
+        "selection_rule",
+        "outcomes"
+      ],
+      "trigger": "需要解释分支、祖先关系、路由容量、接受/拒绝或跳过。",
+      "action": "树用于真正的父子候选；一般路由用二部图或槽位。把接受、拒绝、溢出、旁路明确区分；token 身份跨状态保持。",
+      "alternatives": [
+        "S02 流程图用于无祖先的选择",
+        "C04 树加掩码",
+        "S10 数值例子解释打分"
+      ],
+      "boundary": "不要为了像树而把共享节点复制成独立事实；路由溢出不一定删除 token。",
+      "counterexample": "Switch/MoD 的未计算路径不是整个 token 被移出序列；SpecInfer 树结构可保留而重做排版。",
+      "checks": [
+        "树边只表达祖先",
+        "选择/接受规则有来源",
+        "旁路和删除不同",
+        "失败/溢出路径未藏起",
+        "Whole-tree verification and feedback attach to the whole set boundary, not an arbitrary branch.",
+        "Where verification is the task, show candidate-to-accepted/rejected or output-subtree correspondence, including self/prefix mask scope when relevant.",
+        "A set-consumer connects to an actual set output port; exclude the consumer from the set boundary and do not start from an arbitrary leaf or whitespace."
+      ],
+      "evidence": [
+        {
+          "source_id": "E/speculative_decoding:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/specinfer:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/medusa:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/switch_transformer:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/mixture_of_depths:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/eagle:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "S09",
+      "name": "同构前后与取舍对照",
+      "kind": "structure",
+      "structure_modes": [
+        "S09"
+      ],
+      "trigger_features": [
+        "comparison",
+        "controlled_change"
+      ],
+      "required_facts": [
+        "variants",
+        "invariants",
+        "changed_variables"
+      ],
+      "trigger": "用户问某个改变如何影响机制，或要比较可替换方案。",
+      "action": "对齐相同角色、尺度和输入；只突出真正改变部分。明确改善/代价的证据范围，不从更短箭头推断更快。",
+      "alternatives": [
+        "S10 公式对照解释等价变换",
+        "C03 对照时间线",
+        "S02 单方案机制"
+      ],
+      "boundary": "只有可比条件才用同构布局；演化顺序不能伪装为受控消融。",
+      "counterexample": "ConvNeXt 博客早期图有输出通道标签错误；不同 ResNet 变体不能都标原论文。MPK 功能等价不代表性能等价。",
+      "checks": [
+        "固定条件列出",
+        "版本一致",
+        "图形面积/长度没有隐含未经支持的数值"
+      ],
+      "evidence": [
+        {
+          "source_id": "A/resnet:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/resnet:blog-64da98b672",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/convnext:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/deepseekmoe:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/flashattention2:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/mpk:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/gpt3:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/convnext:negative-2",
+          "role": "counterexample"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "S10",
+      "name": "公式机制与对象实例对齐",
+      "kind": "structure",
+      "structure_modes": [
+        "S10"
+      ],
+      "trigger_features": [
+        "equations",
+        "worked_example"
+      ],
+      "required_facts": [
+        "symbols",
+        "equations",
+        "example_mapping"
+      ],
+      "trigger": "抽象公式、几何或数值例子能回答对象为何如此变化。",
+      "action": "同一符号在公式、矩阵与例子中同名；逐步展示一次合法变换并注明近似、精度和适用条件。",
+      "alternatives": [
+        "S03 张量图关注形状",
+        "S02 依赖流关注步骤",
+        "C07 公式加分支实例"
+      ],
+      "boundary": "教学例子的数值不能当实测；代数等价不保证有限精度逐位一致。",
+      "counterexample": "LLM.int8 博客显示的舍入后恢复值不等于无损；SmoothQuant 不应被画成只降低 activation 而无 weight 代价。",
+      "checks": [
+        "符号和单位一致",
+        "例子满足算法条件",
+        "等价/近似声明可追溯",
+        "Numerical labels and geometric magnitudes are computed from the same example and formula; synthetic values obey stated identities."
+      ],
+      "evidence": [
+        {
+          "source_id": "B/dora:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/lora:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/galore:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/smoothquant:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/quest:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/rwkv:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/bert:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "C01",
+      "name": "矩阵分块 + 存储层级",
+      "kind": "composition",
+      "structure_modes": [
+        "S03",
+        "S01"
+      ],
+      "trigger_features": [
+        "tensor_shapes",
+        "boundaries",
+        "memory_hierarchy"
+      ],
+      "required_facts": [
+        "tensors",
+        "axes",
+        "transforms",
+        "entities",
+        "containment",
+        "transfers"
+      ],
+      "trigger": "同时要解释算什么，以及在哪一层存储/计算以减少搬运。",
+      "action": "联排层级与分块视图；块身份跨两图共享，以少量显式 transfer 对齐，保留二者而不是只画漂亮金字塔。",
+      "alternatives": [
+        "S03 单纯分块",
+        "S01 存储总览",
+        "S05 搬运/计算时间线"
+      ],
+      "boundary": "层级容量/带宽须有来源；金字塔面积未按比例时必须说明。",
+      "counterexample": "FlashAttention 左侧金字塔解释 IO 约束，右侧机制解释 tiling；二选一可能丢失任务要点。",
+      "checks": [
+        "每个跨图连接有同一对象",
+        "存储与计算角色分离",
+        "未把架构隐喻当比例图"
+      ],
+      "evidence": [
+        {
+          "source_id": "C/flashattention:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/zero-infinity:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/flexgen:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "C02",
+      "name": "分布拓扑/层级 + 局部聚焦",
+      "kind": "composition",
+      "structure_modes": [
+        "S06",
+        "S01",
+        "S02"
+      ],
+      "trigger_features": [
+        "topology",
+        "boundaries",
+        "focus"
+      ],
+      "required_facts": [
+        "devices",
+        "ownership",
+        "transfers",
+        "entities",
+        "containment",
+        "focus_entity"
+      ],
+      "trigger": "读者需要整体部署，同时看清一个关键局部或跨边界传输。",
+      "action": "总览保持位置与身份；局部放大标回源对象，用弱化上下文而非删除上下文。多实例堆叠是可选表达。",
+      "alternatives": [
+        "S06 全拓扑",
+        "S01 只讲边界",
+        "S02 只讲局部算子"
+      ],
+      "boundary": "聚焦图必须注明省略内容，不能把局部放大读成额外副本。",
+      "counterexample": "GShard 架构到专家设备的三级放大不同于把每一层重画；DistServe 的简单堆叠不够解释完整放置优化。",
+      "checks": [
+        "聚焦对象 ID 一致",
+        "放大框有回指",
+        "对象副本与视图副本分开"
+      ],
+      "evidence": [
+        {
+          "source_id": "D/gshard:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/deepseek_v2:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/distserve:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/alpa:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "C03",
+      "name": "受控比较 + 时间线",
+      "kind": "composition",
+      "structure_modes": [
+        "S09",
+        "S05"
+      ],
+      "trigger_features": [
+        "comparison",
+        "timing",
+        "overlap"
+      ],
+      "required_facts": [
+        "variants",
+        "invariants",
+        "changed_variables",
+        "actors",
+        "events",
+        "dependencies",
+        "time_basis"
+      ],
+      "trigger": "需要比较两种调度或解释等待如何发生变化。",
+      "action": "每个方案用同一请求/阶段/资源和时间基准；对齐空闲、同步与关键路径。若只有定性数据，块宽不表示收益。",
+      "alternatives": [
+        "S09 结构对照",
+        "S05 一个调度",
+        "S02 对照依赖图"
+      ],
+      "boundary": "不同硬件、batch 或模型的图不能伪装成同条件时间对照。",
+      "counterexample": "Sarathi 同请求对齐暴露 stall；把两图都压满只是视觉修改，不是 stall-free 证据。",
+      "checks": [
+        "比较条件一致",
+        "时长/示意区分",
+        "没有删除必要等待以美化"
+      ],
+      "evidence": [
+        {
+          "source_id": "B/gpipe:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/pipedream:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/sarathi_serve:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/flashattention3:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/flexgen:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "C04",
+      "name": "候选树 + 实现掩码",
+      "kind": "composition",
+      "structure_modes": [
+        "S08",
+        "S03"
+      ],
+      "trigger_features": [
+        "branching_candidates",
+        "tensor_shapes",
+        "mapping"
+      ],
+      "required_facts": [
+        "candidates",
+        "selection_rule",
+        "outcomes",
+        "tensors",
+        "axes",
+        "transforms",
+        "mapping"
+      ],
+      "trigger": "任务需要从候选祖先关系解释 attention mask 或批量验证。",
+      "action": "给树节点和矩阵行列共享索引；允许格代表祖先可见性，图例区分 root/prefix/self。并排而非用箭头逐格铺满。",
+      "alternatives": [
+        "S08 树+接受路径",
+        "S03 掩码矩阵",
+        "S10 一个祖先集合例子"
+      ],
+      "boundary": "先定义是否包含自身和共享前缀；不同验证算法的采样规则不可从树形猜出。",
+      "counterexample": "Medusa 的树和掩码是一组关系视图，不是两张独立原创证据；SpecInfer 图版审美不是拒绝树结构。",
+      "checks": [
+        "每行索引对应一个候选",
+        "允许关系与祖先一致",
+        "输出路径与拒绝状态一致"
+      ],
+      "evidence": [
+        {
+          "source_id": "E/medusa:blog-53f8622c40",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/specinfer:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/eagle:blog-d57241b029",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "C05",
+      "name": "映射/布局 + 连续状态",
+      "kind": "composition",
+      "structure_modes": [
+        "S04",
+        "S07"
+      ],
+      "trigger_features": [
+        "mapping",
+        "state_updates"
+      ],
+      "required_facts": [
+        "logical_objects",
+        "physical_locations",
+        "mapping",
+        "state",
+        "update_rule",
+        "initial_state"
+      ],
+      "trigger": "需要解释分配、共享、回收、驱逐或滚动窗口如何改变布局。",
+      "action": "展示最少能解释变化的相邻状态，固定不变的位置；新/保留/失效用独立状态编码。映射表更新和对象内容变化分别标。",
+      "alternatives": [
+        "S04 单个完整静态映射",
+        "S07 状态机",
+        "S05 操作时间线"
+      ],
+      "boundary": "先问读者要看全览还是过程；静态全览本身可以很清楚。",
+      "counterexample": "静态全览适合比较完整状态，不应为所有状态任务强行动画。H2O 驱逐、Quest 稀疏读取不能合为一种删除。",
+      "checks": [
+        "对象 ID 跨状态不变",
+        "更改类型有图例",
+        "没有误画内容丢失"
+      ],
+      "evidence": [
+        {
+          "source_id": "C/pagedattention:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/streamingllm:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/h2o:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/quest:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "C06",
+      "name": "矩阵分解 + 递归状态",
+      "kind": "composition",
+      "structure_modes": [
+        "S03",
+        "S07",
+        "S10"
+      ],
+      "trigger_features": [
+        "tensor_shapes",
+        "state_updates",
+        "equivalence"
+      ],
+      "required_facts": [
+        "tensors",
+        "axes",
+        "transforms",
+        "state",
+        "update_rule",
+        "initial_state",
+        "equations",
+        "equivalence_conditions"
+      ],
+      "trigger": "要解释并行矩阵计算与递归/chunk 形式之间的对应。",
+      "action": "按数学角色给矩阵子块与状态路径相同编码；显式四类作用或实际所需分解，标出等价条件。",
+      "alternatives": [
+        "S03 单纯矩阵推导",
+        "S07 单步递归",
+        "S10 方程对照"
+      ],
+      "boundary": "特定结构的等价不推广到任意 softmax attention 或任意 SSM。",
+      "counterexample": "Mamba-2 图的四颜色有数学含义；不能作为所有技术图的四色预设。RetNet 单头式也不代表完整模型所有细节。",
+      "checks": [
+        "每块有对应项",
+        "边界/初态贡献未丢",
+        "矩阵维度相容",
+        "等价条件逐项保留"
+      ],
+      "evidence": [
+        {
+          "source_id": "D/mamba2:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/mamba2:blog-0801d48ec5",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "D/retnet:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "C07",
+      "name": "数值实例 + 分支机制",
+      "kind": "composition",
+      "structure_modes": [
+        "S10",
+        "S02",
+        "S03"
+      ],
+      "trigger_features": [
+        "worked_example",
+        "branch_merge",
+        "tensor_shapes"
+      ],
+      "required_facts": [
+        "symbols",
+        "equations",
+        "example_mapping",
+        "entities",
+        "operations",
+        "dependencies",
+        "tensors",
+        "axes",
+        "transforms",
+        "numeric_example"
+      ],
+      "trigger": "同时要解释数值规则和不同精度/秩/通道的处理路径。",
+      "action": "以一个小但合法的输入贯穿分解、变换、重组；精度、缩放与舍入分别标注，保持输入输出身份。",
+      "alternatives": [
+        "S10 单个数值例子",
+        "S02 精度分支图",
+        "S03 存储块布局"
+      ],
+      "boundary": "例子未覆盖的特殊格式、优化器与误差不能用默认值补全。 符号到对象的对应不等于数值实例；具体输入值及所用数值约定缺失时不得编造。",
+      "counterexample": "QLoRA 的基本块量化图没有包含 double quantization 或 paged optimizer；不能把前置 LoRA 动画称为完整 QLoRA。",
+      "checks": [
+        "矩阵及精度贯通",
+        "误差不被显示精度藏起",
+        "训练参数与存储格式分别编码"
+      ],
+      "evidence": [
+        {
+          "source_id": "B/qlora:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/qlora:blog-1121c92474",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/llm_int8:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/llm_int8:blog-aec9a806dc",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/dora:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate",
+      "required_features": [
+        "worked_example"
+      ]
+    },
+    {
+      "id": "C08",
+      "name": "模型堆叠 + 因果位置展开",
+      "kind": "composition",
+      "structure_modes": [
+        "S01",
+        "S02",
+        "S07"
+      ],
+      "trigger_features": [
+        "boundaries",
+        "position_alignment",
+        "dependencies"
+      ],
+      "required_facts": [
+        "entities",
+        "containment",
+        "positions",
+        "dependencies",
+        "shared_parameters"
+      ],
+      "trigger": "模型概览必须与 token/feature 的偏移、共享模块或预测深度联系。",
+      "action": "保持概览紧凑，在局部按位置索引展开因果链；共享权重用显式同名标识，不把同形状自动视为共享。",
+      "alternatives": [
+        "S02 因果数据流",
+        "S01 仅模型概览",
+        "S10 一个偏移对齐例子"
+      ],
+      "boundary": "重复层/深度数要有来源；图示多深度不代表报告配置真的使用全部。",
+      "counterexample": "DeepSeek-V3 MTP 是顺序深度不是独立并行未来头；EAGLE-family 运行时图不等于原始 EAGLE 预测器。",
+      "checks": [
+        "每条边保持因果",
+        "位置偏移显式",
+        "共享与复制分开",
+        "示意重复次数注明"
+      ],
+      "evidence": [
+        {
+          "source_id": "D/deepseek_v3:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/eagle:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/gpt3:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/bert:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "V01",
+      "name": "密度按任务决定",
+      "kind": "presentation",
+      "structure_modes": [],
+      "trigger_features": [
+        "density"
+      ],
+      "required_facts": [],
+      "trigger": "需要在全览与渐进展开之间选择。",
+      "action": "比较信息需求与最终尺寸：专家查阅可保留密集关系/数值；首次讲解可用编号、局部聚焦或小倍图。先减少冗余，不删除关键事实。",
+      "alternatives": [
+        "紧凑静态全览",
+        "分步展开",
+        "总览+局部"
+      ],
+      "boundary": "没有通用节点数或密度阈值；缩到不可读不是紧凑。",
+      "counterexample": "复杂静态映射可以需要交叉线和高信息密度；全局稀疏化可能删去必要关系，应按任务和最终显示尺寸判断。",
+      "checks": [
+        "在最终尺寸读得清",
+        "删减项显式",
+        "关键关系完整",
+        "Check essential mechanism labels at final display scale; remove excess headline/blank-card area before shrinking indices or schedule text."
+      ],
+      "evidence": [
+        {
+          "source_id": "A/densenet:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/swin:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/pagedattention:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/flashattention:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "V02",
+      "name": "图标/箭头的语义与局部审美分离",
+      "kind": "presentation",
+      "structure_modes": [],
+      "trigger_features": [
+        "icons",
+        "edge_readability"
+      ],
+      "required_facts": [],
+      "trigger": "图标帮助识别资源或需要调整某段连线视觉。",
+      "action": "保留有角色意义的图标并配标签；按关系语义选择直线、曲线、折线或无箭头关联。只改有问题的路径/线宽/箭头端，不把所有图标或箭头一刀切。",
+      "alternatives": [
+        "文字+语义图标",
+        "仅文字",
+        "对齐/共享索引替代部分关联线"
+      ],
+      "boundary": "用户的某张图箭头评价不能升级为普遍禁令；箭头类型要有一致图例。",
+      "counterexample": "标题栏、芯片图标和循环箭头可以编码真实角色或数据复用；应局部修复难读的箭头，不全局禁止图标或箭头。",
+      "checks": [
+        "图标没有替代必要标签",
+        "线端指向正确对象",
+        "不同关系编码不混",
+        "局部修改保留其它人工设置",
+        "Visible endpoints, routing lanes and paint order are checked on the rendered pixels, not merely present XML objects.",
+        "Trace each entire route, not only endpoints: no unintended intervening box/text, false cycle, or reversed final-output arrowhead.",
+        "Every edge uses the legend encoding for its own relation type; e.g. completion and launch do not silently share a style."
+      ],
+      "evidence": [
+        {
+          "source_id": "C/distserve:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/flashattention:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/mpk:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/tvm:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "V03",
+      "name": "结构保留，表现可替换",
+      "kind": "presentation",
+      "structure_modes": [],
+      "trigger_features": [
+        "restyle",
+        "formatting"
+      ],
+      "required_facts": [],
+      "trigger": "用户认可关系结构但不喜欢当前格式、配色或字体。",
+      "action": "锁定语义节点、边和索引，另做表现候选；比较结构选择与外观选择，不用换机制来解决排版。",
+      "alternatives": [
+        "同结构新排版",
+        "同事实换结构",
+        "保留原图只做局部调整"
+      ],
+      "boundary": "保持结构不意味着保持每个坐标；尊重用户锁定对象，改动冲突先说明。",
+      "counterexample": "树结构是否解释机制与暖色、大字等格式是否合适是两件事；可以重做视觉处理而保留正确结构。",
+      "checks": [
+        "换风格前后事实 diff 为零",
+        "稳定 ID 保留",
+        "未覆盖人工标注"
+      ],
+      "evidence": [
+        {
+          "source_id": "E/specinfer:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/transformer:blog-4ecc1474ce",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "G01",
+      "name": "同源复用不冒充独立重绘",
+      "kind": "integrity",
+      "structure_modes": [],
+      "trigger_features": [
+        "provenance"
+      ],
+      "required_facts": [],
+      "trigger": "需要以多来源支撑一个图形规则或选素材。",
+      "action": "区分独立文章与独立图家族：原图、转载、重绘、相关机制、纯文字分别记录。图注/博客作者不自动就是图作者。",
+      "alternatives": [
+        "原论文校核事实+博客解释",
+        "不同原创家族对照",
+        "明确单一家族支持"
+      ],
+      "boundary": "文章合格不表示每张图都针对该论文；许可未知则不在可分发 Skill 里打包原图。",
+      "counterexample": "DDPM 两篇博客同一论文图家族；Medusa 项目与 AWS 图也是共享家族；QLoRA 的 LoRA 图仅前置背景。",
+      "checks": [
+        "相同 SHA/家族去重",
+        "版本定位完整",
+        "图种与文章种类分开",
+        "版权权限不臆测"
+      ],
+      "evidence": [
+        {
+          "source_id": "A/ddpm:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/ddpm:blog-2c863d90fb",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/ddpm:blog-73d8b76ac0",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/medusa:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/qlora:paper",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "G02",
+      "name": "版本与遗漏是机制的一部分",
+      "kind": "integrity",
+      "structure_modes": [],
+      "trigger_features": [
+        "versions",
+        "scope"
+      ],
+      "required_facts": [],
+      "trigger": "来源给出相似但不完全相同的架构/公式/版本。",
+      "action": "来源冲突回到指定论文版本和任务要求；把有意省略、示例常数和适用范围写入图注或交付备注。无法核实的事实留未知。",
+      "alternatives": [
+        "严格指定版本",
+        "并列版本差异",
+        "教学简化且明确标注"
+      ],
+      "boundary": "博客简化不能凭外观相似升级成权威事实；不得无声混合版本。",
+      "counterexample": "不同版本的算子顺序、归一化位置与图号可能不同；必须对照任务指定的公开版本，不应无声混用。",
+      "checks": [
+        "事实来源包含版本",
+        "缺项不被补猜",
+        "用户标注绑定确切图片",
+        "Freeze the representative task before generation; report reference-only and distinct mechanism gaps rather than narrow the scope after failure.",
+        "Recheck the visible task inventory after each repair; preserve original request/token counts, branches and transitions, with explicit amendments only."
+      ],
+      "evidence": [
+        {
+          "source_id": "A/transformer:blog-eb40d33895",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/convnext:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/mpk:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/convnext:negative-2",
+          "role": "counterexample"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    },
+    {
+      "id": "S11",
+      "name": "数据分布与定量指标对照",
+      "kind": "structure",
+      "structure_modes": [
+        "S11"
+      ],
+      "trigger_features": [
+        "quantitative_comparison",
+        "distributions",
+        "measurement"
+      ],
+      "required_facts": [
+        "metrics",
+        "axes",
+        "units",
+        "comparison_conditions",
+        "data_provenance"
+      ],
+      "trigger": "任务需要比较实测/理论指标或分布，而不是仅画机制关系。",
+      "action": "明确横纵轴、单位、尺度、基线和测量条件；分布保留 token/channel/magnitude 等真实轴语义。与机制图组合时区分测量结果和机制假说。",
+      "alternatives": [
+        "S09 受控机制对照不声称数值",
+        "S10 数值例子必须标为示例",
+        "机制图与定量证据分区联排"
+      ],
+      "boundary": "数值图支持特定条件下的观察，不单独证明算法因果；不能把几何参数平面或分块矩阵自动视为统计图。",
+      "counterexample": "RetNet 的内存/吞吐曲线不是 retention 算子图；StreamingLLM 博客的选定曲线展示滑窗基线故障，不是最终 sink 方案的结果。",
+      "checks": [
+        "指标定义和单位完整",
+        "基线与条件可比",
+        "轴尺度不误导",
+        "误差/统计缺失明确",
+        "没有把示意数值称为实测"
+      ],
+      "evidence": [
+        {
+          "source_id": "D/retnet:blog-f0639fc144",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "C/smoothquant:paper",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "E/streamingllm:blog-621241424f",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "A/bert:blog-4bffc67d3f",
+          "role": "method_reference"
+        },
+        {
+          "source_id": "B/galore:blog-4b662226ac",
+          "role": "method_reference"
+        }
+      ],
+      "user_annotation_ids": [],
+      "status": "candidate"
+    }
+  ]
+}

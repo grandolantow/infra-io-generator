@@ -60,6 +60,6 @@
     "embedded_native_model": true
   },
   "javascript_errors": [],
-  "png": "/workspace/scratch/212a015bd2a3/independent-reproduction-output/evidence/first-generation/moe.png",
-  "svg": "/workspace/scratch/212a015bd2a3/independent-reproduction-output/evidence/first-generation/moe.svg"
+  "png": "examples/independent-minimax/evidence/first-generation/moe.png",
+  "svg": "examples/independent-minimax/evidence/first-generation/moe.svg"
 }

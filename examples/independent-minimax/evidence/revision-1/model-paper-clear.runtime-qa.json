@@ -271,6 +271,6 @@
     "embedded_native_model": true
   },
   "javascript_errors": [],
-  "png": "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/model-paper-clear.png",
-  "svg": "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/model-paper-clear.svg"
+  "png": "examples/independent-minimax/graph/model-paper-clear.png",
+  "svg": "examples/independent-minimax/graph/model-paper-clear.svg"
 }

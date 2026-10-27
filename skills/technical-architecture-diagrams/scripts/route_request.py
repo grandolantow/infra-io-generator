@@ -59,7 +59,14 @@ def route(request, intent='auto', target='paper', palette='auto', custom=None):
             continue
         base = DEFAULTS[branch][target] if palette in ('auto', 'custom') else palette
         parts.append({'intent': branch,
-                      'guide': f'references/{"model-architecture" if branch == "model" else "technical-report"}.md',
+                      'guide': ('references/model-architecture.md' if branch == 'model' else '../technical-diagram-options/SKILL.md'),
+                      'package': ('technical-architecture-diagrams' if branch == 'model' else 'technical-diagram-options'),
+                      'overlay': None if branch == 'model' else 'references/technical-report.md',
+                      'runtime': (None if branch == 'model' else {
+                          'selector': '../technical-diagram-options/scripts/select_options.py',
+                          'generator': '../technical-diagram-options/scripts/diagram_tool.py',
+                          'task_schema': '../technical-diagram-options/schemas/task.schema.json',
+                          'diagram_schema': '../technical-diagram-options/schemas/diagram.schema.json'}),
                       'palette': resolve(target, base, custom)})
     return {'schema_version': 1, 'intent': selected,
             'status': ('needs_semantic_review' if needs_review else

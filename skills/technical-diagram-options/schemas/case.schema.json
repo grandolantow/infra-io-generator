@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Public citation case",
+  "type": "object",
+  "required": [
+    "case_id",
+    "title",
+    "source_ids",
+    "paper_version"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "pattern": "^[A-E]/[a-z0-9_-]+$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "paper_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "structure_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Structure tags used for rule selection, not evidence of current image inspection."
+    },
+    "presentation_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

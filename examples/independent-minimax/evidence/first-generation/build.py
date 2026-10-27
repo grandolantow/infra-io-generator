@@ -9,7 +9,7 @@ import json, hashlib, shutil, xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
 INPUT=ROOT.parent/'independent-reproduction-input'
-SKILL=Path('/root/.codex/skills/remote-skills/skill-6adf2f382d988191b2dc39ad8791ccd6')
+SKILL=Path(__file__).resolve().parents[4] / 'skills' / 'technical-architecture-diagrams'
 
 def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def writej(path,obj): Path(path).write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')

@@ -1,0 +1,84 @@
+{
+  "task_id": "toy_mapping",
+  "goal": "Explain how two logical pages keep their identity despite noncontiguous physical slots.",
+  "audience": "Engineers new to this invented mapping",
+  "use_case": "mechanism explanation",
+  "features": [
+    "mapping",
+    "ownership",
+    "tensor_shapes"
+  ],
+  "known_facts": {
+    "logical_objects": {
+      "value": [
+        "L0",
+        "L1"
+      ],
+      "provenance": "Invented toy supplied for interface demonstration; not a real allocator or benchmark."
+    },
+    "physical_locations": {
+      "value": [
+        "slot2",
+        "slot7"
+      ],
+      "provenance": "Invented toy supplied for interface demonstration; not a real allocator or benchmark."
+    },
+    "mapping": {
+      "value": {
+        "L0": "slot7",
+        "L1": "slot2"
+      },
+      "provenance": "Invented toy supplied for interface demonstration; not a real allocator or benchmark."
+    },
+    "ownership": {
+      "value": "one logical page maps to one occupied physical slot; physical ordering differs",
+      "provenance": "Invented toy supplied for interface demonstration; not a real allocator or benchmark."
+    },
+    "tensors": {
+      "value": [
+        "two-entry logical index",
+        "two-slot physical pool"
+      ],
+      "provenance": "Invented toy supplied for interface demonstration; not a real allocator or benchmark."
+    },
+    "axes": {
+      "value": [
+        "logical page ID",
+        "physical slot ID"
+      ],
+      "provenance": "Invented toy supplied for interface demonstration; not a real allocator or benchmark."
+    },
+    "transforms": {
+      "value": "lookup only; no content reordering or compression",
+      "provenance": "Invented toy supplied for interface demonstration; not a real allocator or benchmark."
+    }
+  },
+  "unknown_facts": [
+    "allocation timing",
+    "capacity and performance"
+  ],
+  "constraints": {
+    "must_keep": [
+      "logical order L0,L1",
+      "distinct physical addresses"
+    ],
+    "must_avoid": [
+      "claiming compression",
+      "invented benchmark"
+    ],
+    "locked_ids": []
+  },
+  "presentation": {
+    "scope": "static full mapping",
+    "identity": "text IDs plus redundant color",
+    "style": "no mandatory palette"
+  },
+  "output": {
+    "formats": [
+      "svg",
+      "drawio"
+    ],
+    "final_size": "900×420 source units",
+    "native_editability": true
+  }
+}

@@ -28,11 +28,14 @@ def main():
         checks.append({'name': name, 'passed': p.returncode == 0, 'output': (p.stdout + p.stderr).strip()})
     run('palette-tests', [sys.executable, SKILL / 'scripts/test_palettes.py'])
     run('repository-tests', [sys.executable, '-m', 'unittest', 'discover', '-s', ROOT / 'tests', '-v'])
+    report_skill = ROOT / 'skills/technical-diagram-options'
+    run('report-package-integrity', [sys.executable, report_skill / 'scripts/check_package.py'])
+    run('report-contract-tests', [sys.executable, '-m', 'unittest', 'discover', '-s', report_skill / 'tests', '-v'])
     run('legacy-fact-contract', [sys.executable, SKILL / 'scripts/validate_spec.py', SKILL / 'references/example-attention.json'])
     with tempfile.TemporaryDirectory() as d:
         run('golden-build', [sys.executable, SKILL / 'assets/golden-refined/build.py', '--out', d])
         run('golden-verify', [sys.executable, SKILL / 'assets/golden-refined/verify.py', d])
-    result = {'version': '0.10.0', 'scope': 'repository checks; not scientific or aesthetic certification',
+    result = {'version': '0.10.1', 'scope': 'repository checks; not scientific or aesthetic certification',
               'runtime_tests_enabled': a.runtime, 'passed': all(c['passed'] for c in checks), 'checks': checks}
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')

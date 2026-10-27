@@ -1,0 +1,331 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Semantic and visual diagram interchange",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "diagram_id",
+    "semantic",
+    "views"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "diagram_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+    },
+    "semantic": {
+      "type": "object",
+      "required": [
+        "facts",
+        "nodes",
+        "edges"
+      ],
+      "properties": {
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "statement",
+              "provenance"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+              },
+              "statement": {
+                "type": "string"
+              },
+              "provenance": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "minItems": 1
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "label",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+              },
+              "label": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "fact_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "minItems": 1
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "source",
+              "target",
+              "relation",
+              "fact_ids"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+              },
+              "source": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+              },
+              "target": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+              },
+              "relation": {
+                "type": "string"
+              },
+              "fact_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "canvas",
+          "scope",
+          "glyphs",
+          "paths"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "rule_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "canvas": {
+            "type": "object",
+            "required": [
+              "width",
+              "height"
+            ],
+            "properties": {
+              "width": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "height": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "background": {
+                "type": "string"
+              }
+            }
+          },
+          "glyphs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "shape",
+                "x",
+                "y",
+                "w",
+                "h"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+                },
+                "semantic_ref": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+                },
+                "shape": {
+                  "enum": [
+                    "rect",
+                    "rounded_rect",
+                    "ellipse",
+                    "diamond",
+                    "text"
+                  ]
+                },
+                "role": {
+                  "enum": [
+                    "object",
+                    "container",
+                    "label"
+                  ]
+                },
+                "x": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
+                },
+                "w": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "h": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "label": {
+                  "type": "string"
+                },
+                "label_lines": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "style": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "paths": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "semantic_ref",
+                "source_instance",
+                "target_instance",
+                "points"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+                },
+                "semantic_ref": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+                },
+                "source_instance": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+                },
+                "target_instance": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+                },
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "prefixItems": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ],
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "minItems": 2
+                },
+                "arrow": {
+                  "enum": [
+                    "end",
+                    "both",
+                    "none"
+                  ]
+                },
+                "label": {
+                  "type": "string"
+                },
+                "label_position": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "style": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "edit_policy": {
+      "type": "object",
+      "properties": {
+        "locked_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "user_owned_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

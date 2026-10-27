@@ -107,3 +107,54 @@ class RoutingTests(unittest.TestCase):
             for part in r['parts']:
                 self.assertTrue((SCRIPTS.parent / part['guide']).exists())
             self.assertEqual(r['status'], 'suggested')
+
+class ReportPackageIntegrationTests(unittest.TestCase):
+    def test_route_points_to_independent_report_package(self):
+        r = route('memory mapping', intent='report')
+        part = r['parts'][0]
+        self.assertEqual(part['package'], 'technical-diagram-options')
+        for relative in [part['guide'], part['overlay'], *part['runtime'].values()]:
+            self.assertTrue((SCRIPTS.parent / relative).is_file(), relative)
+
+    def test_report_selector_and_generator_are_invocable(self):
+        part = route('memory mapping', intent='report')['parts'][0]
+        report = ROOT / 'skills/technical-diagram-options'
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            subprocess.run([sys.executable, str(SCRIPTS.parent / part['runtime']['selector']),
+                            str(report / 'examples/toy-mapping.task.json'), '--out', str(d / 'options.json')], check=True, capture_output=True)
+            options = json.loads((d / 'options.json').read_text())
+            self.assertGreaterEqual(len(options['options']), 2)
+            generator = str(SCRIPTS.parent / part['runtime']['generator'])
+            diagram = str(report / 'examples/toy-mapping.diagram.json')
+            subprocess.run([sys.executable, generator, 'check', diagram], check=True, capture_output=True)
+            subprocess.run([sys.executable, generator, 'render', diagram, '--out-dir', str(d / 'rendered')], check=True, capture_output=True)
+            self.assertTrue(list((d / 'rendered').glob('*.svg')))
+            self.assertTrue(list((d / 'rendered').glob('*.drawio')))
+
+    def test_original_package_coverage_and_sanitization_manifest(self):
+        import hashlib
+        report = ROOT / 'skills/technical-diagram-options'
+        m = json.loads((ROOT / 'reports/report-skill-files.json').read_text())
+        self.assertEqual(len(m['files']), 24)
+        for path in m['files']:
+            self.assertTrue((report / path).is_file())
+        for f in report.rglob('*'):
+            if f.is_file() and f.suffix in ('.json', '.md', '.py'):
+                text = f.read_text()
+                self.assertNotIn('https://chatgpt.com/space/', text)
+                self.assertNotIn('exact_table', text)
+
+    def test_public_case_schema_and_archive_limit(self):
+        report = ROOT / 'skills/technical-diagram-options'
+        schema = json.loads((report / 'schemas/case.schema.json').read_text())
+        cases = json.loads((report / 'references/cases.json').read_text())['cases']
+        for case in cases:
+            self.assertTrue(set(schema['required']).issubset(case))
+            self.assertNotIn('visual_observations', case)
+        sources = json.loads((report / 'references/sources.json').read_text())['sources']
+        allowed = {'source_id','case_id','source_kind','title','url','qualified','paper_version','figure','page'}
+        self.assertTrue(all(set(s).issubset(allowed) for s in sources))
+        p = subprocess.run([sys.executable, str(report / 'scripts/check_package.py'), '--corpus-root', '.'], capture_output=True, text=True)
+        self.assertNotEqual(p.returncode, 0)
+        self.assertIn('unavailable', p.stdout)

@@ -64,6 +64,6 @@
     "embedded_native_model": true
   },
   "javascript_errors": [],
-  "png": "/workspace/scratch/212a015bd2a3/independent-reproduction-output/evidence/first-generation/msa.png",
-  "svg": "/workspace/scratch/212a015bd2a3/independent-reproduction-output/evidence/first-generation/msa.svg"
+  "png": "examples/independent-minimax/evidence/first-generation/msa.png",
+  "svg": "examples/independent-minimax/evidence/first-generation/msa.svg"
 }

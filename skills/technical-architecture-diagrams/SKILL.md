@@ -5,7 +5,7 @@ description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报
 
 # 技术图示：统一入口
 
-执行版本：v0.10.0（双分支语义路由）。这是同一 Skill 谱系的整合，不是将旧 v0.9.1 覆盖到 v0.9.7，也不是新一轮训练。旧模型后端、素材、事实契约和失败记录保留。
+执行版本：v0.10.1。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
 
 ## 先决定要解释什么
 
@@ -14,7 +14,7 @@ description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报
 | 语义目标 | 分支与必读规范 |
 |---|---|
 | 模型全貌、层级主干、Attention/MoE 等模块组成及其连接 | `references/model-architecture.md` |
-| 机制如何工作：并行通信、调度时序、内存/KV 映射、算法步骤、量化推导、性能与取舍 | `references/technical-report.md` |
+| 机制如何工作：并行通信、调度时序、内存/KV 映射、算法步骤、量化推导、性能与取舍 | 先读 `../technical-diagram-options/SKILL.md`，再读 `references/technical-report.md` overlay |
 | 同时解释模型位置和内部机制/实验 | 拆成两类子图，各读相应规范；共用事实、术语、来源版本和对象 ID 映射 |
 | 只有“画 Attention”“做张 PPT”或模型名字 | 信息不足，不凭名字猜结构。先给架构/机制两种简短选择；如上下文已有明确目标则沿用，无须重复询问 |
 
@@ -22,10 +22,14 @@ description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报
 
 先记录 `intent`、`target`、`palette`、必要事实及依据。可运行 `scripts/route_request.py` 得到保守的关键词建议与配色结果；它不理解完整自然语言，否定、引用、上下文含糊时要求语义复核，不能替代 Agent 判断。用 `--intent model|report|mixed` 记录复核结果。未知意图返回 `needs_clarification`，不默默生成模型框图。
 
+## 原报告能力的实际入口
+
+report 子任务使用 `../technical-diagram-options/scripts/select_options.py` 从 task JSON 选择结构；按其 schemas 和 generation contract 制作 diagram IR，再由 `../technical-diagram-options/scripts/diagram_tool.py` check/render 导出。用户问题不是 diagram IR，不能把路由建议当作已经完成生成。运行接口示例见仓库 README；安装必须保留两个同级 Skill 目录。model 仍使用现有专业后端，不以报告示例生成器覆盖。
+
 ## 配色独立配置
 
 - **model**：保留 v0.9.7 行为，PPT/论文均默认 `paper-clear`。
-- **report**：恢复 v0.9.1 的用途默认，PPT → `huawei-plain`；paper/未指定 → `paper-vivid`。
+- **report**：采用用途默认，PPT → `huawei-plain`；paper/未指定 → `paper-vivid`。
 - **mixed**：默认分别解析子图；若需要统一风格，显式选择同一 palette，不隐式把模型改成报告配色。
 - **显式颜色覆盖 > 显式 palette > 分支与用途默认**。换色不改变事实、布局、节点 ID 或语言。
 
@@ -43,4 +47,4 @@ description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报
 
 先核验技术/可见事实，再检查端点、遮挡、字体、留白和实际导出折点，再做审美对照。原生对象可编辑、SVG 文字可编辑、GUI 拖动分别记录；没做标未测。只有用户反馈可标用户认可，测试通过不是美观或泛化通过。
 
-整合来源、备份和边界见 `references/integration-provenance.md`。不因本次路由测试通过声称跑过历史 50 篇或新的留出集，不自动恢复训练/扩题。
+接口与适用边界见 `references/integration-provenance.md`。路由测试不等于图像质量或泛化评测。

@@ -1,0 +1,30 @@
+{
+  "package": "technical-diagram-options",
+  "files": [
+    "SKILL.md",
+    "examples/toy-mapping.diagram.json",
+    "examples/toy-mapping.task.json",
+    "references/cases.json",
+    "references/corpus_snapshot.json",
+    "references/full-corpus-calibration.md",
+    "references/generation.md",
+    "references/provenance.md",
+    "references/rules.json",
+    "references/selection.md",
+    "references/sources.json",
+    "references/taxonomy.json",
+    "references/user_annotations.json",
+    "references/validation.json",
+    "references/validation.md",
+    "references/visual-calibration.md",
+    "schemas/case.schema.json",
+    "schemas/diagram.schema.json",
+    "schemas/rule.schema.json",
+    "schemas/task.schema.json",
+    "scripts/check_package.py",
+    "scripts/diagram_tool.py",
+    "scripts/select_options.py",
+    "tests/test_contracts.py"
+  ],
+  "scope": "Public package file inventory, not provenance or archive metadata"
+}

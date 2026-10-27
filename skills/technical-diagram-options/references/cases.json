@@ -1,0 +1,1219 @@
+{
+  "schema_version": "1.0",
+  "cases": [
+    {
+      "case_id": "A/transformer",
+      "title": "Attention Is All You Need",
+      "source_ids": [
+        "A/transformer:paper",
+        "A/transformer:blog-4ecc1474ce",
+        "A/transformer:blog-eb40d33895"
+      ],
+      "paper_version": "arXiv:1706.03762v7",
+      "structure_codes": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "架构概览",
+        "实现与调试"
+      ]
+    },
+    {
+      "case_id": "A/bert",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_ids": [
+        "A/bert:paper",
+        "A/bert:blog-c150ce467d",
+        "A/bert:blog-4bffc67d3f"
+      ],
+      "paper_version": "arXiv:1810.04805v2",
+      "structure_codes": [
+        "S02",
+        "S03",
+        "S09",
+        "S10"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "架构概览",
+        "实现与调试"
+      ]
+    },
+    {
+      "case_id": "A/gpt3",
+      "title": "Language Models are Few-Shot Learners",
+      "source_ids": [
+        "A/gpt3:paper",
+        "A/gpt3:blog-ef1e9d098c",
+        "A/gpt3:blog-d807b662ae"
+      ],
+      "paper_version": "arXiv:2005.14165v4",
+      "structure_codes": [
+        "S01",
+        "S02",
+        "S09",
+        "S10"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P05"
+      ],
+      "use_cases": [
+        "技术精读",
+        "架构概览",
+        "实现与调试"
+      ]
+    },
+    {
+      "case_id": "A/vit",
+      "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+      "source_ids": [
+        "A/vit:paper",
+        "A/vit:blog-d8ead0f40c",
+        "A/vit:blog-9151c44e4b"
+      ],
+      "paper_version": "arXiv:2010.11929v2",
+      "structure_codes": [
+        "S02",
+        "S03"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02",
+        "P05"
+      ],
+      "use_cases": [
+        "技术精读",
+        "架构概览",
+        "实现与调试"
+      ]
+    },
+    {
+      "case_id": "A/swin",
+      "title": "Swin Transformer: Hierarchical Vision Transformer using Shifted Windows",
+      "source_ids": [
+        "A/swin:paper",
+        "A/swin:blog-d1fd9b5221",
+        "A/swin:blog-00981732e1"
+      ],
+      "paper_version": "arXiv:2103.14030v2",
+      "structure_codes": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "架构概览",
+        "实现与调试"
+      ]
+    },
+    {
+      "case_id": "A/resnet",
+      "title": "Deep Residual Learning for Image Recognition",
+      "source_ids": [
+        "A/resnet:paper",
+        "A/resnet:blog-64da98b672",
+        "A/resnet:blog-c5a6b8b792"
+      ],
+      "paper_version": "arXiv:1512.03385v1",
+      "structure_codes": [
+        "S02",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "架构概览",
+        "实现与调试"
+      ]
+    },
+    {
+      "case_id": "A/densenet",
+      "title": "Densely Connected Convolutional Networks",
+      "source_ids": [
+        "A/densenet:paper",
+        "A/densenet:blog-dd266e3a11",
+        "A/densenet:blog-790ef61765"
+      ],
+      "paper_version": "arXiv:1608.06993v5",
+      "structure_codes": [
+        "S02",
+        "S03",
+        "S10"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02",
+        "P04"
+      ],
+      "use_cases": [
+        "技术精读",
+        "架构概览",
+        "实现与调试"
+      ]
+    },
+    {
+      "case_id": "A/convnext",
+      "title": "A ConvNet for the 2020s",
+      "source_ids": [
+        "A/convnext:paper",
+        "A/convnext:blog-e041221d10",
+        "A/convnext:blog-37de7c7913"
+      ],
+      "paper_version": "arXiv:2201.03545v2",
+      "structure_codes": [
+        "S02",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "架构概览",
+        "实现与调试"
+      ]
+    },
+    {
+      "case_id": "A/ddpm",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "source_ids": [
+        "A/ddpm:paper",
+        "A/ddpm:blog-2c863d90fb",
+        "A/ddpm:blog-73d8b76ac0"
+      ],
+      "paper_version": "arXiv:2006.11239v2",
+      "structure_codes": [
+        "S07",
+        "S10"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "架构概览",
+        "实现与调试"
+      ]
+    },
+    {
+      "case_id": "A/ldm",
+      "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+      "source_ids": [
+        "A/ldm:paper",
+        "A/ldm:blog-c7dcf10f1d",
+        "A/ldm:blog-6a526a7ddd"
+      ],
+      "paper_version": "arXiv:2112.10752v2",
+      "structure_codes": [
+        "S01",
+        "S02",
+        "S03",
+        "S07"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "架构概览",
+        "实现与调试"
+      ]
+    },
+    {
+      "case_id": "B/lora",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "source_ids": [
+        "B/lora:paper",
+        "B/lora:blog-7741955ade",
+        "B/lora:blog-71bf2d02fc"
+      ],
+      "paper_version": "arXiv:2106.09685v2; 2021-10-16; ICLR 2022",
+      "structure_codes": [
+        "S02",
+        "S03",
+        "S09",
+        "S10"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "初学者解释",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "B/qlora",
+      "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
+      "source_ids": [
+        "B/qlora:paper",
+        "B/qlora:blog-8a07450ee9",
+        "B/qlora:blog-1121c92474"
+      ],
+      "paper_version": "arXiv:2305.14314v1; 2023-05-23; NeurIPS 2023",
+      "structure_codes": [
+        "S02",
+        "S03",
+        "S04",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02",
+        "P05"
+      ],
+      "use_cases": [
+        "初学者解释",
+        "实现与调试",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "B/dora",
+      "title": "DoRA: Weight-Decomposed Low-Rank Adaptation",
+      "source_ids": [
+        "B/dora:paper",
+        "B/dora:blog-38df05e603",
+        "B/dora:blog-7741955ade"
+      ],
+      "paper_version": "arXiv:2402.09353v6; 2024-07-09; ICML 2024",
+      "structure_codes": [
+        "S02",
+        "S03",
+        "S09",
+        "S10"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02",
+        "P03"
+      ],
+      "use_cases": [
+        "技术精读",
+        "实现与调试",
+        "面向工程师机制汇报"
+      ]
+    },
+    {
+      "case_id": "B/galore",
+      "title": "GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection",
+      "source_ids": [
+        "B/galore:paper",
+        "B/galore:blog-ba2db521f1",
+        "B/galore:blog-a9ee2405ca",
+        "B/galore:blog-4b662226ac"
+      ],
+      "paper_version": "arXiv:2403.03507v2; 2024-06-02; ICML 2024",
+      "structure_codes": [
+        "S07",
+        "S09",
+        "S10"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "初学者解释",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "B/zero",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "source_ids": [
+        "B/zero:paper",
+        "B/zero:blog-8fb39a3820",
+        "B/zero:blog-b7e611386d"
+      ],
+      "paper_version": "arXiv:1910.02054v3; 2020-05-13; SC 2020",
+      "structure_codes": [
+        "S03",
+        "S04",
+        "S06",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "跨团队方案比较",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "B/zero-infinity",
+      "title": "ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale Deep Learning",
+      "source_ids": [
+        "B/zero-infinity:paper",
+        "B/zero-infinity:blog-e405b47f1d",
+        "B/zero-infinity:blog-ff32683978"
+      ],
+      "paper_version": "arXiv:2104.07857v1; 2021-04-16; SC 2021",
+      "structure_codes": [
+        "S01",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02",
+        "P05"
+      ],
+      "use_cases": [
+        "架构概览",
+        "实现与调试",
+        "面向工程师机制汇报"
+      ]
+    },
+    {
+      "case_id": "B/gpipe",
+      "title": "GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism",
+      "source_ids": [
+        "B/gpipe:paper",
+        "B/gpipe:blog-66fb9b56e9",
+        "B/gpipe:blog-30b6e94347",
+        "B/gpipe:blog-51fe97cb38"
+      ],
+      "paper_version": "NeurIPS 2019 proceedings PDF; earlier arXiv:1811.06965v5 has title GPipe: Easy Scaling with Micro-Batch Pipeline Parallelism",
+      "structure_codes": [
+        "S02",
+        "S05",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "初学者解释",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "B/pipedream",
+      "title": "PipeDream: Generalized Pipeline Parallelism for DNN Training",
+      "source_ids": [
+        "B/pipedream:paper",
+        "B/pipedream:blog-af70dac6fb",
+        "B/pipedream:blog-30b6e94347"
+      ],
+      "paper_version": "SOSP 2019 proceedings/camera-ready PDF; predecessor arXiv:1806.03377 is titled PipeDream: Fast and Efficient Pipeline Parallel DNN Training",
+      "structure_codes": [
+        "S05",
+        "S06",
+        "S07",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "实现与调试",
+        "跨团队方案比较"
+      ]
+    },
+    {
+      "case_id": "B/megatron-lm",
+      "title": "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism",
+      "source_ids": [
+        "B/megatron-lm:paper",
+        "B/megatron-lm:blog-4736538d5b",
+        "B/megatron-lm:blog-30b6e94347"
+      ],
+      "paper_version": "arXiv:1909.08053v4; 2020-03-13 revision of original 2019 paper",
+      "structure_codes": [
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "实现与调试",
+        "面向工程师机制汇报"
+      ]
+    },
+    {
+      "case_id": "B/alpa",
+      "title": "Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning",
+      "source_ids": [
+        "B/alpa:paper",
+        "B/alpa:blog-a2b46acc9f",
+        "B/alpa:blog-c14d539d41"
+      ],
+      "paper_version": "arXiv:2201.12023v3; 2022-06-28; OSDI 2022",
+      "structure_codes": [
+        "S01",
+        "S02",
+        "S03",
+        "S06",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02",
+        "P03"
+      ],
+      "use_cases": [
+        "架构概览",
+        "跨团队方案比较",
+        "面向工程师机制汇报"
+      ]
+    },
+    {
+      "case_id": "C/flashattention",
+      "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+      "source_ids": [
+        "C/flashattention:paper",
+        "C/flashattention:blog-a17df1ba99",
+        "C/flashattention:blog-92f55aeb82"
+      ],
+      "paper_version": "NeurIPS 2022 proceedings",
+      "structure_codes": [
+        "S01",
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P03"
+      ],
+      "use_cases": [
+        "技术精读",
+        "面向工程师机制汇报",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "C/flashattention2",
+      "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
+      "source_ids": [
+        "C/flashattention2:paper",
+        "C/flashattention2:blog-9aaa4d4546",
+        "C/flashattention2:blog-4734c9528f"
+      ],
+      "paper_version": "arXiv v1, submitted 2023-07-17; venue ICLR 2024",
+      "structure_codes": [
+        "S03",
+        "S06",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "面向工程师机制汇报",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "C/flashattention3",
+      "title": "FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision",
+      "source_ids": [
+        "C/flashattention3:paper",
+        "C/flashattention3:blog-359ae9a2af",
+        "C/flashattention3:blog-2ee76433ae"
+      ],
+      "paper_version": "NeurIPS 2024 proceedings; not July blog/preprint benchmark version",
+      "structure_codes": [
+        "S05",
+        "S06",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P03"
+      ],
+      "use_cases": [
+        "技术精读",
+        "面向工程师机制汇报",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "C/pagedattention",
+      "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+      "source_ids": [
+        "C/pagedattention:paper",
+        "C/pagedattention:blog-fb804ac849",
+        "C/pagedattention:blog-9168cced0c"
+      ],
+      "paper_version": "arXiv v1, 2023-09-12; SOSP 2023",
+      "structure_codes": [
+        "S04",
+        "S03",
+        "S10"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "面向工程师机制汇报",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "C/distserve",
+      "title": "DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving",
+      "source_ids": [
+        "C/distserve:paper",
+        "C/distserve:blog-cdb90cd9a7",
+        "C/distserve:blog-f1da4b9a7c"
+      ],
+      "paper_version": "OSDI 2024 proceedings PDF (cover included)",
+      "structure_codes": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P03"
+      ],
+      "use_cases": [
+        "技术精读",
+        "面向工程师机制汇报",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "C/orca",
+      "title": "Orca: A Distributed Serving System for Transformer-Based Generative Models",
+      "source_ids": [
+        "C/orca:paper",
+        "C/orca:blog-31b059281e",
+        "C/orca:blog-0a74e77971"
+      ],
+      "paper_version": "OSDI 2022 proceedings PDF (cover included)",
+      "structure_codes": [
+        "S01",
+        "S02",
+        "S07"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "面向工程师机制汇报",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "C/sarathi_serve",
+      "title": "Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve",
+      "source_ids": [
+        "C/sarathi_serve:paper",
+        "C/sarathi_serve:blog-3594c16326",
+        "C/sarathi_serve:blog-f085fd8620"
+      ],
+      "paper_version": "OSDI 2024 proceedings PDF (cover included); distinct from SARATHI 2023",
+      "structure_codes": [
+        "S05",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "面向工程师机制汇报",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "C/flexgen",
+      "title": "FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU",
+      "source_ids": [
+        "C/flexgen:paper",
+        "C/flexgen:blog-1d0bf80cb0",
+        "C/flexgen:blog-e4bb4188f6"
+      ],
+      "paper_version": "ICML 2023 proceedings",
+      "structure_codes": [
+        "S03",
+        "S05",
+        "S09"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "面向工程师机制汇报",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "C/llm_int8",
+      "title": "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale",
+      "source_ids": [
+        "C/llm_int8:paper",
+        "C/llm_int8:blog-ce91b626cc",
+        "C/llm_int8:blog-aec9a806dc"
+      ],
+      "paper_version": "arXiv v2 2022-11-10; NeurIPS 2022",
+      "structure_codes": [
+        "S02",
+        "S03",
+        "S10"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "面向工程师机制汇报",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "C/smoothquant",
+      "title": "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models",
+      "source_ids": [
+        "C/smoothquant:paper",
+        "C/smoothquant:blog-3eb6cc90db",
+        "C/smoothquant:blog-c85764b55c"
+      ],
+      "paper_version": "ICML 2023 proceedings; first arXiv 2022",
+      "structure_codes": [
+        "S09",
+        "S10"
+      ],
+      "presentation_codes": [
+        "P01",
+        "P02"
+      ],
+      "use_cases": [
+        "技术精读",
+        "面向工程师机制汇报",
+        "优化前后分析"
+      ]
+    },
+    {
+      "case_id": "D/mamba",
+      "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+      "source_ids": [
+        "D/mamba:paper",
+        "D/mamba:blog-efb28b04e2",
+        "D/mamba:blog-f712f645e4",
+        "D/mamba:blog-12f3200072"
+      ],
+      "paper_version": "arXiv v2 (2024-05-31)",
+      "structure_codes": [
+        "input-dependent parameterization",
+        "recurrent state",
+        "tensor flow"
+      ],
+      "presentation_codes": [
+        "mathematical pipeline",
+        "colored modules",
+        "zoomed parameter map"
+      ],
+      "use_cases": [
+        "explain selectivity",
+        "contrast LTI and selective SSM",
+        "show algorithm/hardware boundary"
+      ]
+    },
+    {
+      "case_id": "D/mamba2",
+      "title": "Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality",
+      "source_ids": [
+        "D/mamba2:paper",
+        "D/mamba2:blog-00def97132",
+        "D/mamba2:blog-0801d48ec5",
+        "D/mamba2:blog-f712f645e4"
+      ],
+      "paper_version": "arXiv v1 (2024-05-31)",
+      "structure_codes": [
+        "matrix-to-recurrence equivalence",
+        "block decomposition",
+        "chunked state flow"
+      ],
+      "presentation_codes": [
+        "annotated matrix",
+        "linked multiview",
+        "color-consistent algorithm"
+      ],
+      "use_cases": [
+        "explain dual formulations",
+        "teach chunked SSD algorithm",
+        "connect equations to execution"
+      ]
+    },
+    {
+      "case_id": "D/retnet",
+      "title": "Retentive Network: A Successor to Transformer for Large Language Models",
+      "source_ids": [
+        "D/retnet:paper",
+        "D/retnet:blog-f0639fc144",
+        "D/retnet:blog-c6dfe60f6a"
+      ],
+      "paper_version": "arXiv v4 (2023-08-09)",
+      "structure_codes": [
+        "parallel-recurrent equivalence",
+        "state recurrence",
+        "normalization"
+      ],
+      "presentation_codes": [
+        "side-by-side representations",
+        "equation plus flowchart"
+      ],
+      "use_cases": [
+        "explain training-inference duality",
+        "compare retained state and KV cache"
+      ]
+    },
+    {
+      "case_id": "D/rwkv",
+      "title": "RWKV: Reinventing RNNs for the Transformer Era",
+      "source_ids": [
+        "D/rwkv:paper",
+        "D/rwkv:blog-378b004b50",
+        "D/rwkv:blog-e70a4a0b0c"
+      ],
+      "paper_version": "arXiv v2 (2023-12-11)",
+      "structure_codes": [
+        "layer stack",
+        "gated recurrence",
+        "time and channel mixing"
+      ],
+      "presentation_codes": [
+        "compact architecture schematic",
+        "equation comparison"
+      ],
+      "use_cases": [
+        "explain constant-state generation",
+        "separate time mixing from channel mixing"
+      ]
+    },
+    {
+      "case_id": "D/switch_transformer",
+      "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+      "source_ids": [
+        "D/switch_transformer:paper",
+        "D/switch_transformer:blog-e7e55102d9",
+        "D/switch_transformer:blog-8f5ebeda8e"
+      ],
+      "paper_version": "arXiv v3 (2022-06-16)",
+      "structure_codes": [
+        "token-expert assignment",
+        "overflow and capacity",
+        "device placement"
+      ],
+      "presentation_codes": [
+        "two-case comparison",
+        "colored token routes",
+        "capacity slots"
+      ],
+      "use_cases": [
+        "explain capacity factor",
+        "show routing overflow",
+        "separate parameter count from activated compute"
+      ]
+    },
+    {
+      "case_id": "D/gshard",
+      "title": "GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding",
+      "source_ids": [
+        "D/gshard:paper",
+        "D/gshard:blog-8f5ebeda8e",
+        "D/gshard:blog-26555d5d0f"
+      ],
+      "paper_version": "arXiv v1 (2020-06-30)",
+      "structure_codes": [
+        "architecture-to-device mapping",
+        "routing capacity",
+        "hierarchical zoom"
+      ],
+      "presentation_codes": [
+        "three-stage zoom",
+        "device boundary containers",
+        "algorithm pseudocode"
+      ],
+      "use_cases": [
+        "explain conditional computation",
+        "connect model topology to placement",
+        "contrast top-1 and top-2"
+      ]
+    },
+    {
+      "case_id": "D/deepseekmoe",
+      "title": "DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models",
+      "source_ids": [
+        "D/deepseekmoe:paper",
+        "D/deepseekmoe:blog-f491b5b90a",
+        "D/deepseekmoe:blog-26555d5d0f"
+      ],
+      "paper_version": "arXiv v1 (2024-01-11)",
+      "structure_codes": [
+        "controlled three-way comparison",
+        "expert segmentation",
+        "shared versus routed paths"
+      ],
+      "presentation_codes": [
+        "small multiples",
+        "color-coded activation",
+        "symbolic routing"
+      ],
+      "use_cases": [
+        "explain expert specialization design",
+        "show constant-compute segmentation",
+        "distinguish shared and routed experts"
+      ]
+    },
+    {
+      "case_id": "D/deepseek_v2",
+      "title": "DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model",
+      "source_ids": [
+        "D/deepseek_v2:paper",
+        "D/deepseek_v2:blog-f491b5b90a",
+        "D/deepseek_v2:blog-26555d5d0f"
+      ],
+      "paper_version": "arXiv v5 (2024-06-19)",
+      "structure_codes": [
+        "hierarchical architecture zoom",
+        "cached versus computed state",
+        "shared versus routed experts"
+      ],
+      "presentation_codes": [
+        "detailed tensor schematic",
+        "hatching and color",
+        "nested containers"
+      ],
+      "use_cases": [
+        "explain MLA caching",
+        "connect MoE and attention sublayers",
+        "separate RoPE path from compressed content"
+      ]
+    },
+    {
+      "case_id": "D/deepseek_v3",
+      "title": "DeepSeek-V3 Technical Report",
+      "source_ids": [
+        "D/deepseek_v3:paper",
+        "D/deepseek_v3:blog-3ef027ce0a",
+        "D/deepseek_v3:blog-26555d5d0f"
+      ],
+      "paper_version": "arXiv v2 (2025-02-18)",
+      "structure_codes": [
+        "causal prediction chain",
+        "weight sharing",
+        "training objective branching"
+      ],
+      "presentation_codes": [
+        "stage-aligned sequence schematic",
+        "color-coded depth",
+        "repeated modules"
+      ],
+      "use_cases": [
+        "explain sequential MTP",
+        "distinguish training heads from deployed base model",
+        "track token offsets"
+      ]
+    },
+    {
+      "case_id": "D/mixture_of_depths",
+      "title": "Mixture-of-Depths: Dynamically allocating compute in transformer-based language models",
+      "source_ids": [
+        "D/mixture_of_depths:paper",
+        "D/mixture_of_depths:blog-4c1584c031",
+        "D/mixture_of_depths:blog-77e2ba7730"
+      ],
+      "paper_version": "arXiv v1 (2024-04-02)",
+      "structure_codes": [
+        "compute-versus-bypass paths",
+        "layer-token decisions",
+        "comparison with early exit"
+      ],
+      "presentation_codes": [
+        "mechanism plus heatmap",
+        "grayed inactive path",
+        "small-multiple comparison"
+      ],
+      "use_cases": [
+        "explain fixed budget dynamic allocation",
+        "distinguish depth routing from early exit",
+        "show token-level sparsity"
+      ]
+    },
+    {
+      "case_id": "E/speculative_decoding",
+      "title": "Fast Inference from Transformers via Speculative Decoding",
+      "source_ids": [
+        "E/speculative_decoding:paper",
+        "E/speculative_decoding:blog-73ffba1ed5",
+        "E/speculative_decoding:blog-8aac93920b"
+      ],
+      "paper_version": "ICML 2023 / PMLR 202 proceedings PDF, 19274–19286 (downloaded artifact, not asserted byte-identical to arXiv v2)",
+      "structure_codes": [
+        "iteration trace",
+        "accept reject correction"
+      ],
+      "presentation_codes": [
+        "color semantic coding",
+        "worked sentence example"
+      ],
+      "use_cases": [
+        "explain exact acceleration",
+        "separate draft and verifier"
+      ]
+    },
+    {
+      "case_id": "E/specinfer",
+      "title": "SpecInfer: Accelerating Large Language Model Serving with Tree-based Speculative Inference and Verification",
+      "source_ids": [
+        "E/specinfer:paper",
+        "E/specinfer:blog-74f04b2f26",
+        "E/specinfer:blog-9a66e2e01c"
+      ],
+      "paper_version": "arXiv:2305.09781v4 (2024-04-01); PDF title omits Generative, unlike arXiv abstract metadata",
+      "structure_codes": [
+        "candidate tree",
+        "tree mask",
+        "multi-stage pipeline"
+      ],
+      "presentation_codes": [
+        "dense overview",
+        "colored stages",
+        "explicit feedback"
+      ],
+      "use_cases": [
+        "explain tree construction",
+        "show ancestry-only attention"
+      ]
+    },
+    {
+      "case_id": "E/medusa",
+      "title": "Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads",
+      "source_ids": [
+        "E/medusa:paper",
+        "E/medusa:blog-53f8622c40",
+        "E/medusa:blog-ad88c94244"
+      ],
+      "paper_version": "arXiv:2401.10774v3",
+      "structure_codes": [
+        "model branching",
+        "tree to mask mapping"
+      ],
+      "presentation_codes": [
+        "trainable frozen icons",
+        "candidate text",
+        "color grouped components"
+      ],
+      "use_cases": [
+        "show frozen versus trainable",
+        "connect head outputs to candidates"
+      ]
+    },
+    {
+      "case_id": "E/eagle",
+      "title": "EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty",
+      "source_ids": [
+        "E/eagle:paper",
+        "E/eagle:blog-d1d2fb2e82",
+        "E/eagle:blog-d57241b029"
+      ],
+      "paper_version": "arXiv:2401.15077v3",
+      "structure_codes": [
+        "shifted token feature alignment",
+        "draft verify pipeline",
+        "candidate tree"
+      ],
+      "presentation_codes": [
+        "contrasting feature token colors",
+        "runtime topology"
+      ],
+      "use_cases": [
+        "explain one-step-ahead token input",
+        "distinguish original EAGLE from later versions"
+      ]
+    },
+    {
+      "case_id": "E/quest",
+      "title": "Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference",
+      "source_ids": [
+        "E/quest:paper",
+        "E/quest:blog-c6828883d5",
+        "E/quest:blog-746ad00d94",
+        "E/quest:blog-8173e9c270"
+      ],
+      "paper_version": "arXiv:2406.10774v2",
+      "structure_codes": [
+        "two-stage selection compute",
+        "numeric worked example"
+      ],
+      "presentation_codes": [
+        "Min Max table",
+        "top-k highlighting",
+        "labeled reduction arrows"
+      ],
+      "use_cases": [
+        "distinguish sparse reads from eviction",
+        "explain cheap page upper bounds"
+      ]
+    },
+    {
+      "case_id": "E/streamingllm",
+      "title": "Efficient Streaming Language Models with Attention Sinks",
+      "source_ids": [
+        "E/streamingllm:paper",
+        "E/streamingllm:blog-6a95252557",
+        "E/streamingllm:blog-621241424f"
+      ],
+      "paper_version": "arXiv:2309.17453v4",
+      "structure_codes": [
+        "temporal token window",
+        "fixed plus rolling partition"
+      ],
+      "presentation_codes": [
+        "minimal token timeline",
+        "paired diagnostic charts"
+      ],
+      "use_cases": [
+        "explain bounded working memory",
+        "separate fluency from long-term recall"
+      ]
+    },
+    {
+      "case_id": "E/h2o",
+      "title": "H2O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models",
+      "source_ids": [
+        "E/h2o:paper",
+        "E/h2o:blog-095bffc959",
+        "E/h2o:blog-7af1f55dd1"
+      ],
+      "paper_version": "arXiv:2306.14048v3",
+      "structure_codes": [
+        "consecutive state transitions",
+        "score accumulation",
+        "eviction contrast"
+      ],
+      "presentation_codes": [
+        "numeric matrix",
+        "highlighted deleted token",
+        "feasible infeasible comparison"
+      ],
+      "use_cases": [
+        "explain online eviction",
+        "distinguish score policy from memory allocator"
+      ]
+    },
+    {
+      "case_id": "E/ring_attention",
+      "title": "Ring Attention with Blockwise Transformers for Near-Infinite Context",
+      "source_ids": [
+        "E/ring_attention:paper",
+        "E/ring_attention:blog-b088b05f63",
+        "E/ring_attention:blog-486845314f"
+      ],
+      "paper_version": "arXiv:2310.01889v4 (2023-11-27)",
+      "structure_codes": [
+        "ring topology",
+        "nested compute communication loop"
+      ],
+      "presentation_codes": [
+        "device ownership colors",
+        "fixed Q moving KV"
+      ],
+      "use_cases": [
+        "explain exact distributed attention",
+        "show conditional communication hiding"
+      ]
+    },
+    {
+      "case_id": "E/mpk",
+      "title": "Mirage Persistent Kernel: A Compiler and Runtime for Mega-Kernelizing Tensor Programs",
+      "source_ids": [
+        "E/mpk:paper",
+        "E/mpk:blog-e63d3814d7",
+        "E/mpk:blog-6a2039f1f4"
+      ],
+      "paper_version": "arXiv:2512.22219v1 (2025-12-22), not retitled v2",
+      "structure_codes": [
+        "graph transformation",
+        "equivalent graph comparison",
+        "task event legend"
+      ],
+      "presentation_codes": [
+        "dense dependency graph",
+        "semantic arrow styles"
+      ],
+      "use_cases": [
+        "show compiler lowering",
+        "contrast equivalent but slow schedule"
+      ]
+    },
+    {
+      "case_id": "E/tvm",
+      "title": "TVM: An Automated End-to-End Optimizing Compiler for Deep Learning",
+      "source_ids": [
+        "E/tvm:paper",
+        "E/tvm:blog-24d22f3b5e",
+        "E/tvm:blog-d5284bd295"
+      ],
+      "paper_version": "arXiv:1802.04799v3 / OSDI 2018",
+      "structure_codes": [
+        "compiler stack",
+        "closed-loop tuner",
+        "model-to-hardware lowering"
+      ],
+      "presentation_codes": [
+        "framework hardware icons",
+        "nested levels",
+        "annotated optimization loop"
+      ],
+      "use_cases": [
+        "show compiler abstraction layers",
+        "explain learned cost model loop"
+      ]
+    }
+  ]
+}

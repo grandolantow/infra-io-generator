@@ -2,9 +2,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/model-paper-clear.svg",
+      "examples/independent-minimax/graph/model-paper-clear.svg",
       "--export-plain-svg",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/model-paper-clear.svg"
+      "--export-filename=examples/independent-minimax/figures/model-paper-clear.svg"
     ],
     "returncode": 0,
     "stdout": "",
@@ -13,9 +13,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/model-paper-clear.svg",
+      "examples/independent-minimax/figures/model-paper-clear.svg",
       "--export-type=png",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/model-paper-clear.png",
+      "--export-filename=examples/independent-minimax/figures/model-paper-clear.png",
       "--export-dpi=96"
     ],
     "returncode": 0,
@@ -25,7 +25,7 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/model-paper-clear.svg",
+      "examples/independent-minimax/figures/model-paper-clear.svg",
       "--query-all"
     ],
     "returncode": 0,
@@ -35,9 +35,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/model-blue-neutral.svg",
+      "examples/independent-minimax/graph/model-blue-neutral.svg",
       "--export-plain-svg",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/model-blue-neutral.svg"
+      "--export-filename=examples/independent-minimax/figures/model-blue-neutral.svg"
     ],
     "returncode": 0,
     "stdout": "",
@@ -46,9 +46,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/model-blue-neutral.svg",
+      "examples/independent-minimax/figures/model-blue-neutral.svg",
       "--export-type=png",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/model-blue-neutral.png",
+      "--export-filename=examples/independent-minimax/figures/model-blue-neutral.png",
       "--export-dpi=96"
     ],
     "returncode": 0,
@@ -58,7 +58,7 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/model-blue-neutral.svg",
+      "examples/independent-minimax/figures/model-blue-neutral.svg",
       "--query-all"
     ],
     "returncode": 0,
@@ -68,9 +68,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/msa-paper-clear.svg",
+      "examples/independent-minimax/graph/msa-paper-clear.svg",
       "--export-plain-svg",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/msa-paper-clear.svg"
+      "--export-filename=examples/independent-minimax/figures/msa-paper-clear.svg"
     ],
     "returncode": 0,
     "stdout": "",
@@ -79,9 +79,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/msa-paper-clear.svg",
+      "examples/independent-minimax/figures/msa-paper-clear.svg",
       "--export-type=png",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/msa-paper-clear.png",
+      "--export-filename=examples/independent-minimax/figures/msa-paper-clear.png",
       "--export-dpi=96"
     ],
     "returncode": 0,
@@ -91,7 +91,7 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/msa-paper-clear.svg",
+      "examples/independent-minimax/figures/msa-paper-clear.svg",
       "--query-all"
     ],
     "returncode": 0,
@@ -101,9 +101,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/msa-blue-neutral.svg",
+      "examples/independent-minimax/graph/msa-blue-neutral.svg",
       "--export-plain-svg",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/msa-blue-neutral.svg"
+      "--export-filename=examples/independent-minimax/figures/msa-blue-neutral.svg"
     ],
     "returncode": 0,
     "stdout": "",
@@ -112,9 +112,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/msa-blue-neutral.svg",
+      "examples/independent-minimax/figures/msa-blue-neutral.svg",
       "--export-type=png",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/msa-blue-neutral.png",
+      "--export-filename=examples/independent-minimax/figures/msa-blue-neutral.png",
       "--export-dpi=96"
     ],
     "returncode": 0,
@@ -124,7 +124,7 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/msa-blue-neutral.svg",
+      "examples/independent-minimax/figures/msa-blue-neutral.svg",
       "--query-all"
     ],
     "returncode": 0,
@@ -134,9 +134,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/moe-paper-clear.svg",
+      "examples/independent-minimax/graph/moe-paper-clear.svg",
       "--export-plain-svg",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/moe-paper-clear.svg"
+      "--export-filename=examples/independent-minimax/figures/moe-paper-clear.svg"
     ],
     "returncode": 0,
     "stdout": "",
@@ -145,9 +145,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/moe-paper-clear.svg",
+      "examples/independent-minimax/figures/moe-paper-clear.svg",
       "--export-type=png",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/moe-paper-clear.png",
+      "--export-filename=examples/independent-minimax/figures/moe-paper-clear.png",
       "--export-dpi=96"
     ],
     "returncode": 0,
@@ -157,7 +157,7 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/moe-paper-clear.svg",
+      "examples/independent-minimax/figures/moe-paper-clear.svg",
       "--query-all"
     ],
     "returncode": 0,
@@ -167,9 +167,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/moe-blue-neutral.svg",
+      "examples/independent-minimax/graph/moe-blue-neutral.svg",
       "--export-plain-svg",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/moe-blue-neutral.svg"
+      "--export-filename=examples/independent-minimax/figures/moe-blue-neutral.svg"
     ],
     "returncode": 0,
     "stdout": "",
@@ -178,9 +178,9 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/moe-blue-neutral.svg",
+      "examples/independent-minimax/figures/moe-blue-neutral.svg",
       "--export-type=png",
-      "--export-filename=/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/moe-blue-neutral.png",
+      "--export-filename=examples/independent-minimax/figures/moe-blue-neutral.png",
       "--export-dpi=96"
     ],
     "returncode": 0,
@@ -190,7 +190,7 @@
   {
     "command": [
       "inkscape",
-      "/workspace/scratch/212a015bd2a3/independent-reproduction-output/figures/moe-blue-neutral.svg",
+      "examples/independent-minimax/figures/moe-blue-neutral.svg",
       "--query-all"
     ],
     "returncode": 0,

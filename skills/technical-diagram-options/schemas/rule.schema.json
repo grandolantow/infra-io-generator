@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Conditional diagram rule card",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "kind",
+    "structure_modes",
+    "trigger_features",
+    "required_facts",
+    "trigger",
+    "action",
+    "alternatives",
+    "boundary",
+    "counterexample",
+    "checks",
+    "evidence",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "structure",
+        "composition",
+        "presentation",
+        "integrity"
+      ]
+    },
+    "structure_modes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trigger_features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_facts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trigger": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "boundary": {
+      "type": "string"
+    },
+    "counterexample": {
+      "type": "string"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "role"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "observed_example",
+              "counterexample",
+              "method_reference"
+            ]
+          }
+        }
+      }
+    },
+    "user_annotation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string"
+    },
+    "required_features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Trigger features that must be explicitly present; distinct from required facts."
+    }
+  }
+}

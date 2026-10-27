@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Diagram task contract",
+  "type": "object",
+  "required": [
+    "task_id",
+    "goal",
+    "audience",
+    "use_case",
+    "features",
+    "known_facts",
+    "constraints",
+    "output"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "goal": {
+      "type": "string"
+    },
+    "audience": {
+      "type": "string"
+    },
+    "use_case": {
+      "type": "string"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "known_facts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "value",
+          "provenance"
+        ],
+        "properties": {
+          "value": {},
+          "provenance": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "known",
+              "assumed",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "unknown_facts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "allowed_structures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden_structures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "must_keep": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "must_avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "locked_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "presentation": {
+      "type": "object"
+    },
+    "output": {
+      "type": "object",
+      "required": [
+        "formats"
+      ],
+      "properties": {
+        "formats": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "svg",
+              "drawio",
+              "pptx"
+            ]
+          }
+        },
+        "final_size": {
+          "type": "string"
+        },
+        "native_editability": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

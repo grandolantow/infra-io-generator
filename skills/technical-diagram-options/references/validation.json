@@ -1,0 +1,12 @@
+{
+  "scope": "Executable package contracts and public citation consistency only",
+  "commands": [
+    "python scripts/check_package.py",
+    "python -m unittest discover -s tests -v"
+  ],
+  "limits": [
+    "No source-image inspection or archive integrity checks",
+    "No aesthetic or effectiveness certification",
+    "No draw.io GUI or native PPT verification implied"
+  ]
+}

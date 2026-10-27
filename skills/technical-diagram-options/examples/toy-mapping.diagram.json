@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.0",
+  "diagram_id": "toy_mapping",
+  "semantic": {
+    "facts": [
+      {
+        "id": "f_map0",
+        "statement": "L0 maps to physical slot7.",
+        "provenance": "Invented toy demonstration."
+      },
+      {
+        "id": "f_map1",
+        "statement": "L1 maps to physical slot2.",
+        "provenance": "Invented toy demonstration."
+      }
+    ],
+    "nodes": [
+      {
+        "id": "L0",
+        "label": "L0",
+        "type": "logical_page",
+        "fact_ids": [
+          "f_map0"
+        ]
+      },
+      {
+        "id": "L1",
+        "label": "L1",
+        "type": "logical_page",
+        "fact_ids": [
+          "f_map1"
+        ]
+      },
+      {
+        "id": "P2",
+        "label": "slot2",
+        "type": "physical_slot",
+        "fact_ids": [
+          "f_map1"
+        ]
+      },
+      {
+        "id": "P7",
+        "label": "slot7",
+        "type": "physical_slot",
+        "fact_ids": [
+          "f_map0"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "map0",
+        "source": "L0",
+        "target": "P7",
+        "relation": "maps_to",
+        "fact_ids": [
+          "f_map0"
+        ]
+      },
+      {
+        "id": "map1",
+        "source": "L1",
+        "target": "P2",
+        "relation": "maps_to",
+        "fact_ids": [
+          "f_map1"
+        ]
+      }
+    ]
+  },
+  "views": [
+    {
+      "id": "mapping",
+      "title": "Static logical-to-physical mapping",
+      "canvas": {
+        "width": 900,
+        "height": 420,
+        "background": "#FFFFFF"
+      },
+      "scope": "Both maps shown. Crossing is intentional because physical order differs; no timing or allocation process asserted.",
+      "rule_ids": [
+        "S04"
+      ],
+      "glyphs": [
+        {
+          "id": "title",
+          "shape": "text",
+          "x": 50,
+          "y": 22,
+          "w": 800,
+          "h": 50,
+          "label_lines": [
+            "Same logical pages, different physical order"
+          ],
+          "style": {
+            "font_size": 26,
+            "fill": "none",
+            "stroke": "none",
+            "text_color": "#111827"
+          }
+        },
+        {
+          "id": "left_heading",
+          "shape": "text",
+          "x": 80,
+          "y": 90,
+          "w": 220,
+          "h": 35,
+          "label_lines": [
+            "Logical order"
+          ],
+          "style": {
+            "font_size": 18,
+            "fill": "none",
+            "stroke": "none",
+            "text_color": "#1F2937"
+          }
+        },
+        {
+          "id": "right_heading",
+          "shape": "text",
+          "x": 570,
+          "y": 90,
+          "w": 220,
+          "h": 35,
+          "label_lines": [
+            "Physical address order"
+          ],
+          "style": {
+            "font_size": 18,
+            "fill": "none",
+            "stroke": "none",
+            "text_color": "#1F2937"
+          }
+        },
+        {
+          "id": "v_L0",
+          "shape": "rect",
+          "x": 80,
+          "y": 145,
+          "w": 220,
+          "h": 65,
+          "label_lines": [
+            "L0"
+          ],
+          "style": {
+            "font_size": 22,
+            "fill": "#D6E9FF",
+            "stroke": "#334155",
+            "stroke_width": 1.5,
+            "text_color": "#111827"
+          },
+          "semantic_ref": "L0"
+        },
+        {
+          "id": "v_L1",
+          "shape": "rect",
+          "x": 80,
+          "y": 255,
+          "w": 220,
+          "h": 65,
+          "label_lines": [
+            "L1"
+          ],
+          "style": {
+            "font_size": 22,
+            "fill": "#FCE3C4",
+            "stroke": "#334155",
+            "stroke_width": 1.5,
+            "text_color": "#111827"
+          },
+          "semantic_ref": "L1"
+        },
+        {
+          "id": "v_P2",
+          "shape": "rect",
+          "x": 570,
+          "y": 145,
+          "w": 220,
+          "h": 65,
+          "label_lines": [
+            "slot2"
+          ],
+          "style": {
+            "font_size": 22,
+            "fill": "#FCE3C4",
+            "stroke": "#334155",
+            "stroke_width": 1.5,
+            "text_color": "#111827"
+          },
+          "semantic_ref": "P2"
+        },
+        {
+          "id": "v_P7",
+          "shape": "rect",
+          "x": 570,
+          "y": 255,
+          "w": 220,
+          "h": 65,
+          "label_lines": [
+            "slot7"
+          ],
+          "style": {
+            "font_size": 22,
+            "fill": "#D6E9FF",
+            "stroke": "#334155",
+            "stroke_width": 1.5,
+            "text_color": "#111827"
+          },
+          "semantic_ref": "P7"
+        },
+        {
+          "id": "note",
+          "shape": "text",
+          "x": 60,
+          "y": 350,
+          "w": 780,
+          "h": 45,
+          "label_lines": [
+            "Toy example • mapping only; no movement, timing or speed claim"
+          ],
+          "style": {
+            "font_size": 16,
+            "fill": "none",
+            "stroke": "none",
+            "text_color": "#475569"
+          }
+        }
+      ],
+      "paths": [
+        {
+          "id": "v_map0",
+          "semantic_ref": "map0",
+          "source_instance": "v_L0",
+          "target_instance": "v_P7",
+          "points": [
+            [
+              300,
+              177.5
+            ],
+            [
+              570,
+              287.5
+            ]
+          ],
+          "arrow": "end",
+          "style": {
+            "stroke": "#2563A0",
+            "stroke_width": 2.5
+          }
+        },
+        {
+          "id": "v_map1",
+          "semantic_ref": "map1",
+          "source_instance": "v_L1",
+          "target_instance": "v_P2",
+          "points": [
+            [
+              300,
+              287.5
+            ],
+            [
+              570,
+              177.5
+            ]
+          ],
+          "arrow": "end",
+          "style": {
+            "stroke": "#AE6517",
+            "stroke_width": 2.5,
+            "dashed": true
+          }
+        }
+      ]
+    }
+  ],
+  "edit_policy": {
+    "locked_ids": [],
+    "user_owned_fields": []
+  }
+}

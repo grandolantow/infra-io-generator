@@ -15,7 +15,7 @@
     "stderr": ""
   },
   "runtime_sha256": "f8a3fcdcf4fcc49bdcb78ce06c20ad17006a72a4f8f0c1514a834e7f70bdf03c",
-  "chromium_binary_used": "/workspace/scratch/212a015bd2a3/diagram-lab/browser-runtime/cft/chrome-headless-shell-linux64/chrome-headless-shell",
-  "playwright_module_used": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs",
-  "parameter_boundary": "These are observed execution paths. Portable source accepts runtime paths as parameters/environment values."
+  "chromium_binary_used": "<chromium-binary>",
+  "playwright_module_used": "<playwright-module>",
+  "parameter_boundary": "Execution paths are replaced by portable placeholders; source accepts runtime paths as parameters/environment values. Reported tool versions and execution outcomes are unchanged."
 }

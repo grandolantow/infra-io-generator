@@ -1,0 +1,39 @@
+# Full-corpus calibration contract
+
+Read this for source-grounded mechanism reconstruction or golden-guided iteration. Use these constraints to check a diagram; they do not establish robustness or replace source verification.
+
+## Freeze the explanation before drawing
+Record the factual task and required visible relations before generation. Give each reference image a role: directly covered, reference-only, or a distinct unmet task. One representative diagram per paper is not reconstruction of every reference. Do not narrow the factual brief after a failed render. If source verification requires correcting a fact, record the amendment and preserve the previous contract.
+
+## 1. Typed dependencies, not proximity
+Before geometry, list the output of each operation and the inputs that actually produce it. Distinguish concat, elementwise add, weighted sum, multiply, transfer, notification and selection. For a residual, trace the bypass to the state before the correct sublayer; for an aggregation, show the router weight input if weighted. A learned token has its own parameter source, not a patch-projection edge. Quantized values and their scales/codebooks must both connect to dequantization. Optimizer input gradients and output parameter updates are different relations. Label feature, score/weight and control edges distinctly; a residual add needs two actual incoming operands. A model prediction and the state update that consumes it are separate operations: predicted noise is not itself the updated latent. Preserve intermediate projections: a latent input is not automatically the Q operand of a later attention module.
+
+## 2. Make temporal state changes reconstructible
+If the task explains a scheduler, cache lifecycle, recurrence, speculative verification or pipeline, show the relevant before/after states and identity continuity. Name admission, selected work, completion, release/update and retained/removed state when applicable. A single static topology cannot replace a task whose point is evolution. For speculative trees, preserve candidates through acceptance/rejection or resulting subtree; do not replace all outcomes with “verify” prose. Name the reference token index for shifted predictions. Distinguish task-completion notification from task launch; avoid one unlabeled bus for unrelated collective directions or adjacent Markov transitions.
+
+## 3. Preserve the explanatory geometry
+If the mechanism depends on matrix/tensor partitioning, channel outliers, low-rank factors, feature reuse, ancestry or spatial attention, make those objects and correspondences visible. A rectangle labelled “matrix”, “tree”, or “concat previous features” is not a visual reconstruction of the relation. Use axes, block indices, token identity and factor shapes as needed; ensure masked/allowed regions are distinguishable. Dense but necessary edges may remain. Use an overview/detail composition if needed instead of deleting the core mechanism to obtain sparse cards. Compare structure and information hierarchy with the golden, not just its colors.
+
+## 4. Verify actual strokes, ports and paint order
+Every semantic edge must visibly terminate at the intended object/port, set boundary or named external interface. Check fan-out, return paths, residual inputs and final output artifacts. Draw background containers before foreground content, and inspect the final pixels: XML containing an edge does not help if a later rectangle covers it. Reserve separate label/index lanes. Missing dependencies must be repaired graphically, not excused in a footnote. Retain first-render failures during evaluation.
+
+## 5. One source for numbers and geometry
+For quantitative or numerical teaching examples, compute labels, heights, selected entries and transformed values from the same data/formulas. A synthetic example still must satisfy the identity it illustrates. For reciprocal rescaling, use matched per-channel factors for both operands. Mark schematic quantities versus measured data; unlabeled axes do not license inconsistent magnitude encoding. Verify simple shape/count/algebra invariants before rendering. Do not fabricate missing experimental values merely to resemble a plot.
+
+## 6. Density and final-size legibility
+Budget the mechanism's regions before the headline and decorations. Use consistent reading direction or explicit stage markers, reserve routes and indices, and inspect at the intended display size. Prefer a detail panel over shrinking essential labels. Light rounded corners, pale fills, thin borders and no shadow are one optional treatment for flowchart-like nodes; matrices, masks, timelines and topology diagrams retain their own geometry. Do not force all content into UI cards.
+
+## Operational gate after an edit
+
+Do this after layout changes, not just when first choosing a structure:
+
+1. **Required ports:** enumerate the operands each displayed operation claims, then match every operand to a visible input edge or an explicitly scoped group port. A formula mentioning x is not an x input edge. Follow metadata such as scales to every consumer that needs it, not just one convenient downstream box. Keep feature carry and sampled-token/embedding carry as separately traceable ports between steps. When the whole set/tree is consumed, give that set its own boundary and output port, excluding the downstream verifier from the set; do not connect an arbitrary leaf or whitespace.
+2. **Entire routes:** inspect each path end to end. A correct endpoint does not rescue a path crossing an unrelated operation box or its text, because that geometry implies an unintended intermediate operation. Transfers processed by a device must terminate at a real device port before a new outgoing edge. Reserve exterior route rails or move/split the layout rather than thread through labels.
+3. **Arrowheads and false cycles:** read backwards from every final output through its operands, checking short arrows and return paths at native size. Verify the final sink receives the edge rather than becoming an input. Check every edge’s visual encoding against its semantic type and legend; defining a dashed completion style is insufficient if some completion edges still use the launch style. A visual cycle that is not in the mechanism is a technical error even if labels state the right equation.
+4. **Task inventory:** compare visible request/token counts, branches, dimensions and transitions to the original frozen brief. Adding a repaired return edge must not remove unequal request sequences or another original detail. Record a justified factual amendment separately; do not silently simplify the task.
+
+
+## Evaluation discipline
+Keep technical correctness as a hard gate separate from aesthetics, logical clarity, layout comfort and golden structural fidelity. A pretty wrong operator fails. Reviewer judgments are ordinal opinions, not measured comprehension. Freeze one canonical Skill manifest for all cases in a round; record generator, fact-brief hash, output hash and actual viewed references. Attribute changes separately to instruction revisions, human/agent-authored geometry redesign and generator-code fixes. A round-to-round improvement of the combined workflow does not establish a causal Skill-only gain. Follow the user's round limit and report failures rather than secretly rerun until all pass. Keep held-out output immutable before feedback; once used for tuning, it is development data.
+
+For later regression rounds, classify each output as unchanged geometry regenerated, targeted geometry patch, structural redesign, or generator-code repair (multiple categories allowed with explanation). All cases still receive final rendering and review. An unchanged rerender is not an independent generation; supervised repairs cannot be attributed solely to Skill learning.
