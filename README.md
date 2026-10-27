@@ -10,6 +10,26 @@
 
 [Skill 完整性核对清单](docs/skill-inventory.md) · [外部 Skill 收藏](docs/external-skills.md) · [PPT 主流程设计存档](docs/ppt-workflow-design.md)。此仓库包含绘图 Skill 的完整代码；PPT 主流程设计、外部 draw.io/PlantUML 收藏以及其他工程 Skill 的恢复状态分别登记，不将它们冒充已实现模块。
 
+## 两类图示预览
+
+### 模型架构图：MiniMax M3.1-Flash
+
+竖向主干、嵌套功能区与 MoE 局部展开，展示模型分支的结构组织。以下为仓库已有样例，按其固定事实版本阅读；不代表本次新生成或所有模型的通用模板。
+
+<img src="examples/minimax-m31/paper-clear/portrait.png" alt="MiniMax 竖向模型主干与嵌套 MoE 展开" width="440" />
+
+[可编辑 draw.io](examples/minimax-m31/paper-clear/portrait.drawio) · [SVG](examples/minimax-m31/paper-clear/portrait.svg) · [事实与来源](examples/minimax-m31/facts.json)
+
+### 技术报告图：逻辑页与物理槽映射
+
+独立 `technical-diagram-options` 的小型机制/编辑能力示例：逻辑顺序不等于物理存放顺序，颜色与实/虚线共同表达映射；不表达时序。它是明确虚构的 toy case，**不是优质成图或用户验收的代表声明**。
+
+![逻辑页与物理槽的交叉映射简例](examples/technical-report-gallery/mapping.svg)
+
+[可编辑 draw.io](examples/technical-report-gallery/mapping.drawio) · [可编辑 SVG](examples/technical-report-gallery/mapping.svg) · [原始 diagram IR](skills/technical-diagram-options/examples/toy-mapping.language.diagram.json)
+
+该技术图由公开 IR 经 `diagram_tool.py render` 导出；预览已实际查看。两类图采用不同设计/生成路径，不应把机制图统一压成模型框图。
+
 ## 高层绘图委托与低层渲染
 
 PPT/报告调用方提交内容 brief（事实、受众、用途、主题及展示约束），由独立绘图 agent 消费本仓 Skill 完成参考读取、语义与组件设计、实际渲染、参考对照和修订。不得先在主 Skill 设计完整源图，再把 renderer 调用称为完整绘图能力。
