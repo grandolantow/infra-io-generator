@@ -1,0 +1,33 @@
+{
+  "version": "0.10.0",
+  "scope": "repository checks; not scientific or aesthetic certification",
+  "runtime_tests_enabled": false,
+  "passed": true,
+  "checks": [
+    {
+      "name": "palette-tests",
+      "passed": true,
+      "output": "test_bad_config (__main__.Palettes.test_bad_config) ... ok\ntest_custom (__main__.Palettes.test_custom) ... ok\ntest_defaults (__main__.Palettes.test_defaults) ... ok\ntest_drawio_only_color_patch (__main__.Palettes.test_drawio_only_color_patch) ... ok\ntest_drawio_quoted_delimiter_preserves_label (__main__.Palettes.test_drawio_quoted_delimiter_preserves_label) ... ok\ntest_formats (__main__.Palettes.test_formats) ... ok\ntest_invalid (__main__.Palettes.test_invalid) ... ok\ntest_override (__main__.Palettes.test_override) ... ok\ntest_primary_contrast (__main__.Palettes.test_primary_contrast) ... ok\ntest_reject_compressed (__main__.Palettes.test_reject_compressed) ... ok\ntest_svg_only_color_patch (__main__.Palettes.test_svg_only_color_patch) ... ok\ntest_svg_quoted_delimiter_preserves_metadata (__main__.Palettes.test_svg_quoted_delimiter_preserves_metadata) ... ok\ntest_target_defaults_requires_object (__main__.Palettes.test_target_defaults_requires_object) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.010s\n\nOK"
+    },
+    {
+      "name": "repository-tests",
+      "passed": true,
+      "output": "test_landscape_golden_page (test_canvas_runtime.CanvasRuntimeTests.test_landscape_golden_page) ... skipped 'Run tools/check.py --runtime with Chromium'\ntest_portrait_selected_from_second_page (test_canvas_runtime.CanvasRuntimeTests.test_portrait_selected_from_second_page) ... skipped 'Run tools/check.py --runtime with Chromium'\ntest_wide_detail_page (test_canvas_runtime.CanvasRuntimeTests.test_wide_detail_page) ... skipped 'Run tools/check.py --runtime with Chromium'\ntest_minimax_palette_keeps_native_structure (test_repository.RepositoryTests.test_minimax_palette_keeps_native_structure) ... ok\ntest_native_edges_have_existing_endpoints (test_repository.RepositoryTests.test_native_edges_have_existing_endpoints) ... ok\ntest_no_machine_paths_in_maintained_sources (test_repository.RepositoryTests.test_no_machine_paths_in_maintained_sources) ... ok\ntest_runtime_license_and_hash_match (test_repository.RepositoryTests.test_runtime_license_and_hash_match) ... ok\ntest_skill_references_exist (test_repository.RepositoryTests.test_skill_references_exist) ... ok\ntest_visible_fact_ids_bind_to_shipped_figures (test_repository.RepositoryTests.test_visible_fact_ids_bind_to_shipped_figures) ... ok\ntest_attention_math_report (test_routing.RoutingTests.test_attention_math_report) ... ok\ntest_attention_structure (test_routing.RoutingTests.test_attention_structure) ... ok\ntest_bare_attention_ambiguous (test_routing.RoutingTests.test_bare_attention_ambiguous) ... ok\ntest_cli_and_guides (test_routing.RoutingTests.test_cli_and_guides) ... ok\ntest_custom_base_is_report_default (test_routing.RoutingTests.test_custom_base_is_report_default) ... ok\ntest_custom_contrast_uses_selected_branch (test_routing.RoutingTests.test_custom_contrast_uses_selected_branch) ... ok\ntest_custom_wins (test_routing.RoutingTests.test_custom_wins) ... ok\ntest_explicit_palette_wins (test_routing.RoutingTests.test_explicit_palette_wins) ... ok\ntest_explicit_semantic_review_result (test_routing.RoutingTests.test_explicit_semantic_review_result) ... ok\ntest_invalid_inputs (test_routing.RoutingTests.test_invalid_inputs) ... ok\ntest_legacy_resolver_unchanged (test_routing.RoutingTests.test_legacy_resolver_unchanged) ... ok\ntest_mixed (test_routing.RoutingTests.test_mixed) ... ok\ntest_mixed_explicit_palette (test_routing.RoutingTests.test_mixed_explicit_palette) ... ok\ntest_model_ppt_does_not_switch_palette (test_routing.RoutingTests.test_model_ppt_does_not_switch_palette) ... ok\ntest_model_word_not_intent (test_routing.RoutingTests.test_model_word_not_intent) ... ok\ntest_moe_block (test_routing.RoutingTests.test_moe_block) ... ok\ntest_moe_dispatch (test_routing.RoutingTests.test_moe_dispatch) ... ok\ntest_negation_needs_review (test_routing.RoutingTests.test_negation_needs_review) ... ok\ntest_paper_report (test_routing.RoutingTests.test_paper_report) ... ok\ntest_ppt_alone_not_intent (test_routing.RoutingTests.test_ppt_alone_not_intent) ... ok\ntest_report_word_not_intent (test_routing.RoutingTests.test_report_word_not_intent) ... ok\n\n----------------------------------------------------------------------\nRan 30 tests in 0.067s\n\nOK (skipped=3)"
+    },
+    {
+      "name": "legacy-fact-contract",
+      "passed": true,
+      "output": "{\"status\": \"structural_contract_only\", \"errors\": [], \"warnings\": [], \"scientific_accuracy\": \"requires_source_review\"}"
+    },
+    {
+      "name": "golden-build",
+      "passed": true,
+      "output": "Built three native sources; 12 semantic checks; zero diagonal data segments"
+    },
+    {
+      "name": "golden-verify",
+      "passed": true,
+      "output": "{\"candidate_and_raw_sum_checks\": 12, \"passed\": true, \"source_nonorthogonal_data_edges\": [], \"native_endpoints_match_scene\": true, \"rendered_geometry\": null, \"scope\": \"This checks geometry and source contracts, not user aesthetic acceptance.\"}"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 interface:
-  display_name: 技术架构图
-  short_description: 用语义与架构模板制作原生draw.io论文图，实际渲染并验证数据流和编辑
-  default_prompt: 使用 $technical-architecture-diagrams 为这份材料制作原生draw.io技术架构图，默认清彩论文配色，可选素雅灰蓝，先核对事实、选择架构图元与模板，再实际渲染和检查局部编辑。
+  display_name: 技术图示 · 架构与报告
+  short_description: 按语义路由模型架构或技术报告图，保留可编辑源与分支配色
+  default_prompt: 使用 $technical-architecture-diagrams，根据要解释的关系选择模型架构或技术报告分支；混合任务拆分并共享事实。保留分支默认配色与显式覆盖，生成可编辑源并实际渲染检查。
   icon_small: assets/icon.svg
   icon_large: assets/icon.svg
 policy:

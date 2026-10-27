@@ -1,5 +1,7 @@
 # 用途与可调配色
 
+本文件的 legacy auto 行为适用于 **model 分支**。v0.10.0 新 report 分支先经 `scripts/route_request.py` 选出显式 palette：PPT → huawei-plain，paper/未指定 → paper-vivid；模型默认不变。完整优先级为颜色覆盖 > 显式 palette > 分支/用途默认。下面 resolver 的 auto 命令不自动识别 report。
+
 ## 默认与覆盖
 
 - 默认 `palette=auto` → `paper-clear`（清彩论文）：沿用用户认可的 M3.1-Flash 浅底彩色方案，论文与 PPT 均保持此默认。

@@ -32,7 +32,7 @@ def main():
     with tempfile.TemporaryDirectory() as d:
         run('golden-build', [sys.executable, SKILL / 'assets/golden-refined/build.py', '--out', d])
         run('golden-verify', [sys.executable, SKILL / 'assets/golden-refined/verify.py', d])
-    result = {'version': '0.9.7', 'scope': 'repository checks; not scientific or aesthetic certification',
+    result = {'version': '0.10.0', 'scope': 'repository checks; not scientific or aesthetic certification',
               'runtime_tests_enabled': a.runtime, 'passed': all(c['passed'] for c in checks), 'checks': checks}
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')

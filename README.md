@@ -6,7 +6,7 @@
 
 从技术事实出发，选择结构模板，生成原生 draw.io，由实际绘图引擎导出，再用 Inkscape 精修。复杂公式或 LaTeX 集成按需使用 TikZ。
 
-当前整理版：**v0.9.7**。
+当前整理版：**v0.10.0**（统一语义路由）。
 
 [Skill 完整性核对清单](docs/skill-inventory.md) · [外部 Skill 收藏](docs/external-skills.md) · [PPT 主流程设计存档](docs/ppt-workflow-design.md)。此仓库包含绘图 Skill 的完整代码；PPT 主流程设计、外部 draw.io/PlantUML 收藏以及其他工程 Skill 的恢复状态分别登记，不将它们冒充已实现模块。
 
@@ -23,7 +23,8 @@
 - **事实优先**：来源、版本、运算、数据流和残差端点可追溯。
 - **图形比例由内容决定**：模型可采用竖向主干，右侧展开可选；机制对照按真实关系安排，不强制三栏或 16:9。
 - **draw.io 管结构，Inkscape 管精修**：交付可编辑对象和文字；TikZ 按需启用。三者不自动双向同步。
-- **配色是独立选项**：默认 `paper-clear`（清彩论文），支持 `blue-neutral`（素雅灰蓝）和显式模板覆盖；换色不改事实与布局。
+- **按语义目标路由**：模型主干/模块结构走 model；通信、内存、调度、量化、性能等机制解释走 report；混合任务拆分并共享事实。
+- **分支默认配色**：model 一律默认 `paper-clear`；report 的 PPT 默认 `huawei-plain`，论文/未指定默认 `paper-vivid`。显式 palette 和颜色覆盖优先；换色不改事实与布局。
 - **Agent 负责理解与设计**：样例构建器是特定场景模板，不是自动理解任意论文的通用编译器。
 
 ## 安装给 Agent
@@ -35,6 +36,24 @@
 > 使用 $technical-architecture-diagrams，依据给定论文与版本绘制模型架构图。先核对事实，再选择图形结构；默认清彩论文配色，保留 draw.io 与 SVG，并实际渲染检查。
 
 也可以显式要求「素雅灰蓝」「只画竖向主干」或「增加可选局部展开」。
+
+## 统一入口用法
+
+> 使用 $technical-architecture-diagrams，在 PPT 里讲清 PCP 的通信与 KV cache 映射。走技术报告分支，默认朴素主配色，保留可编辑源。
+
+> 使用 $technical-architecture-diagrams，画模型完整主干和 MoE block 结构，放入 PPT。模型分支仍用清彩论文配色。
+
+> 画模型整体架构，再单独解释通信时序。两张图共用事实与术语；统一使用 blue-neutral。
+
+```sh
+python skills/technical-architecture-diagrams/scripts/route_request.py --request 'PCP communication timeline' --target ppt
+python skills/technical-architecture-diagrams/scripts/route_request.py --request '模型整体架构与通信时序' --intent mixed --palette blue-neutral
+python -m unittest discover -s tests -p test_routing.py -v
+```
+
+这是 Agent 的语义工作流加保守路由辅助，不是自然语言到任意图的全自动编译器。`--intent auto` 仅产生关键词建议；“画 Attention”、否定或引用等歧义应语义复核后显式给 intent。PPT/论文不决定图类型。原 `resolve_palette.py` 的 auto 保持模型分支兼容行为；报告须采用路由输出的显式 palette，或直接使用输出 tokens。
+
+[分支与来源](skills/technical-architecture-diagrams/references/integration-provenance.md) · [技术报告规范](skills/technical-architecture-diagrams/references/technical-report.md)。安装时仍复制完整目录；仓库更新不等于已覆盖你个人安装的 Skill。
 
 ## 本地准备
 
