@@ -6,9 +6,22 @@
 
 从技术事实出发，选择结构模板，生成原生 draw.io，由实际绘图引擎导出，再用 Inkscape 精修。复杂公式或 LaTeX 集成按需使用 TikZ。
 
-当前整理版：**v0.10.4**（一个入口、两个独立来源的 Skill）。
+当前整理版：**v0.10.5**（一个入口、两个独立来源的 Skill）。
 
 [Skill 完整性核对清单](docs/skill-inventory.md) · [外部 Skill 收藏](docs/external-skills.md) · [PPT 主流程设计存档](docs/ppt-workflow-design.md)。此仓库包含绘图 Skill 的完整代码；PPT 主流程设计、外部 draw.io/PlantUML 收藏以及其他工程 Skill 的恢复状态分别登记，不将它们冒充已实现模块。
+
+## 高层绘图委托与低层渲染
+
+PPT/报告调用方提交内容 brief（事实、受众、用途、主题及展示约束），由独立绘图 agent 消费本仓 Skill 完成参考读取、语义与组件设计、实际渲染、参考对照和修订。不得先在主 Skill 设计完整源图，再把 renderer 调用称为完整绘图能力。
+
+```bash
+python tools/prepare_diagram_brief.py --input brief.json --out-dir handoff
+# Host 实际派发 handoff/agent-task.md 给独立绘图 agent；脚本不执行 LLM 设计。
+python tools/check_diagram_delivery.py --brief handoff/brief.json \
+  --delivery delivery/diagram-delivery.json --root delivery --output contract-qa.json
+```
+
+输入/交付 schema 位于 `contracts/`，完整工作流见 [independent-workflow.md](skills/technical-architecture-diagrams/references/independent-workflow.md)。交付保留参考文件、selector 候选及实际应用、设计决定、真实渲染与视觉复核证据。散列及契约通过只证明记录和文件一致，不证明阅读发生、技术正确或美观；缺独立委托能力时明确 blocked。默认 3–4 个实质不同编号方案（`variant_count` 默认 3），每版保留可编辑源与 QA，全部归档一份编号 PDF；调用方显式选一版嵌 HTML，并决定配套解释。PDF 页数和可提取编号使用 Poppler 核验，不代表视觉质量通过。空间与主题允许绘图侧合理调整，不能先固定几何。低级 renderer API 保留用于绘图 agent 的生成/修订环节。
 
 ## 成图示例
 

@@ -36,3 +36,5 @@ node skills/technical-architecture-diagrams/scripts/drawio_runtime/export.mjs \
 ## TikZ 模型静态后端
 
 已审阅的自包含 TeX 可通过 `python tools/render_model_tikz.py --input authored-model.tex --out-dir build/model --engine xelatex --trusted-source` 编译和导出。需要完整可用的 TeX formats/classes/TikZ 与 Poppler，不仅是编译器二进制；缺依赖明确失败。详细安全与语义边界见 [TikZ runtime](../skills/technical-architecture-diagrams/references/tikz-runtime.md)。不涉及浏览器，不自动安装依赖，也不把 TeX→图形检查说成科学或语言验证。
+
+高层独立绘图交付校验需要 `requirements.txt` 中的 jsonschema，以及 Poppler 的 `pdfinfo`/`pdftotext`，用于实际打开编号方案归档 PDF 并检查页数/编号映射。工具缺失时报阻塞，不以文件扩展名代替 PDF 解析；编号可提取不等于页面视觉质量通过。

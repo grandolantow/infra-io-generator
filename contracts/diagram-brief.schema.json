@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "diagram-brief.schema.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "model",
+        "report",
+        "mixed"
+      ]
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 1
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "verified",
+              "inference",
+              "unknown"
+            ]
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "id",
+          "statement",
+          "status",
+          "sources"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "target": {
+      "type": "string",
+      "enum": [
+        "ppt",
+        "paper",
+        "standalone"
+      ]
+    },
+    "theme": {
+      "type": "object"
+    },
+    "display_constraints": {
+      "type": "object"
+    },
+    "required_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "drawio",
+          "svg",
+          "png",
+          "pdf",
+          "html",
+          "tex"
+        ]
+      },
+      "minItems": 1
+    },
+    "language_profile": {
+      "const": "diagram-en-prose-zh"
+    },
+    "preserve": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "variant_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8,
+      "default": 3,
+      "description": "Default 3; normally choose 3\u20134 materially distinct designs. Explicit count may override."
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "intent",
+    "question",
+    "audience",
+    "facts",
+    "target",
+    "theme",
+    "display_constraints",
+    "required_outputs",
+    "language_profile",
+    "preserve"
+  ],
+  "additionalProperties": false
+}

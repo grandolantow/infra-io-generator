@@ -35,7 +35,7 @@ def main():
     with tempfile.TemporaryDirectory() as d:
         run('golden-build', [sys.executable, SKILL / 'assets/golden-refined/build.py', '--out', d])
         run('golden-verify', [sys.executable, SKILL / 'assets/golden-refined/verify.py', d])
-    result = {'version': '0.10.4', 'scope': 'repository checks; not scientific or aesthetic certification',
+    result = {'version': '0.10.5', 'scope': 'repository checks; not scientific or aesthetic certification',
               'runtime_tests_enabled': a.runtime, 'runtime_flag_scope': 'draw.io Graph only; TikZ smoke is dependency-detected', 'passed': all(c['passed'] for c in checks), 'checks': checks}
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')

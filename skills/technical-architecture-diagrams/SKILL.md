@@ -5,7 +5,11 @@ description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报
 
 # 技术图示：统一入口
 
-执行版本：v0.10.4。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
+执行版本：v0.10.5。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
+
+## 独立绘图工作流（高层调用）
+
+接收内容、事实、用途、主题与展示约束后，由独立绘图 agent 完整执行 `references/independent-workflow.md`：参考/经验读取 → 语义 → 组件与布局设计 → 实际渲染 → 原图对照与修订 → 可编辑交付及 QA。主 PPT 不先绘制源图再把 renderer 调用称为完整生成；脚本仅准备委托和校验证据，不替代设计 agent。报告 selector 的候选和采用理由必须进入实际设计对象与交付记录。默认提供 3–4 个实质不同的编号方案，全部归档一份带编号 PDF，主调用方选一版嵌 HTML、留待用户选择；空间与主题是约束而非锁定几何和完全同色，独立解释内容与数量由调用方在获得图后决定。
 
 ## 先决定要解释什么
 

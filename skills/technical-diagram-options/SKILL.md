@@ -13,11 +13,21 @@ Read `../technical-architecture-diagrams/references/text-language.md` and its `l
 
 Set `language_profile` and explicit `text_role` values in new diagram IR. Use the shared checker from the sibling package; its role/character checks do not prove semantic correctness. Keep manual semantic/render review distinct and never silently translate source text. Existing unprofiled examples are legacy and cannot claim this profile's compliance.
 
+## Independent high-level execution
+
+When delegated by a presentation/report caller, read the sibling
+`../technical-architecture-diagrams/references/independent-workflow.md`. Own the
+full reference → semantic → component/layout design → render → visual comparison
+and revision workflow, not only the exporter. Run the selector before geometry;
+retain chosen candidate IDs, adoption/adjustment reasons and actual drawing-object
+applications in the delivery contract. Caller-supplied facts/theme are not a
+pre-authored diagram. Low-level check/render is not full generation.
+
 ## Work from the question
 
 1. Extract the question, audience, final display size, factual inputs, unknowns, required format, and preserved user edits. Separate **technical structure** (what relations exist), **visual presentation** (how shown), and **use case** (why this audience needs it). Current user/source constraints override examples and presets.
 2. Map the question to [structure modes](references/selection.md). Read the matching cards in `references/rules.json`, not all source material. Their triggers, required facts, alternatives, boundaries, counterexamples and checks are part of the rule—not optional footnotes. Compound questions may need combinations rather than one universal layout.
-3. Usually offer 2–3 materially different options, but do not force a count or wait when the user already chose or authorized you to choose. Each option says what question it answers, what it reveals/hides, facts still needed, and why it fits. A palette swap is not a structural alternative. Recommend one with a reason; don't invent timings, dimensions, topology or benchmarks to make another option possible.
+3. By default generate 3–4 materially different numbered designs (high-level brief defaults to 3); explicit user count/selection overrides. Archive all variants in one numbered PDF with per-variant editable sources and QA; the caller selects one for HTML and decides accompanying explanation after receiving the figure. Each option says what question it answers, what it reveals/hides, facts still needed, and why it fits. A palette swap is not a structural alternative. Recommend one with a reason; don't invent timings, dimensions, topology or benchmarks to make another option possible.
 4. Create a diagram **of the target mechanism** from verified task facts, not a new mechanism or a label-substituted source figure. Distilled sources justify presentation hypotheses, not facts about the new mechanism. Source-sensitive choices require reading the exact asset: `sources.json` gives public URLs and figure/version citations only; private archive paths, hashes and collector observations are excluded. A citation is not pixel inspection. Missing image access means visual validation of that reference is pending.
 5. Keep stable semantic IDs, facts, relationships and provenance separate from geometry/style. Use [generation contract](references/generation.md) and the task/IR schemas. Preserve locked user elements; a targeted edit should not silently reflow the whole drawing. Apply only the chosen treatment, not every example's colors.
 6. Validate semantics and editability, then render and inspect at final size. Structural parsing alone is not visual QA. Check labels, line/object intersections, arrow destinations, identities across panels, omitted conditions and units. Fix actual failures; no arbitrary iteration limit. Deliver the chosen editable source, preview, and concise assumptions/provenance/QA note. PNG/PDF alone is not editable source.
