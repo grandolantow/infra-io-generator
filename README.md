@@ -1,0 +1,95 @@
+# infra-io-generator
+
+面向论文、模型和核心机制的可编辑技术架构图 Skill 与生成、验证工具。
+
+代码仓库：<https://github.com/grandolantow/infra-io-generator>。
+
+从技术事实出发，选择结构模板，生成原生 draw.io，由实际绘图引擎导出，再用 Inkscape 精修。复杂公式或 LaTeX 集成按需使用 TikZ。
+
+当前整理版：**v0.9.7**。
+
+[Skill 完整性核对清单](docs/skill-inventory.md) · [外部 Skill 收藏](docs/external-skills.md) · [PPT 主流程设计存档](docs/ppt-workflow-design.md)。此仓库包含绘图 Skill 的完整代码；PPT 主流程设计、外部 draw.io/PlantUML 收藏以及其他工程 Skill 的恢复状态分别登记，不将它们冒充已实现模块。
+
+## 成图示例
+
+| 清彩论文（默认） | 素雅灰蓝（可选） |
+| --- | --- |
+| <img src="examples/minimax-m31/paper-clear/portrait.png" width="280" alt="清彩论文"> | <img src="examples/minimax-m31/blue-neutral/portrait.png" width="280" alt="素雅灰蓝"> |
+
+[下载后打开双配色预览](examples/minimax-m31/preview.html)。HTML 自包含，支持切换和原生源文件下载；GitHub 文件页不会执行 HTML，需下载后用浏览器打开。
+
+## 设计约定
+
+- **事实优先**：来源、版本、运算、数据流和残差端点可追溯。
+- **图形比例由内容决定**：模型可采用竖向主干，右侧展开可选；机制对照按真实关系安排，不强制三栏或 16:9。
+- **draw.io 管结构，Inkscape 管精修**：交付可编辑对象和文字；TikZ 按需启用。三者不自动双向同步。
+- **配色是独立选项**：默认 `paper-clear`（清彩论文），支持 `blue-neutral`（素雅灰蓝）和显式模板覆盖；换色不改事实与布局。
+- **Agent 负责理解与设计**：样例构建器是特定场景模板，不是自动理解任意论文的通用编译器。
+
+## 安装给 Agent
+
+把 `skills/technical-architecture-diagrams/` 整个目录放入所用 Agent 的 skills 目录。以 Codex 为例，可复制到 `~/.codex/skills/technical-architecture-diagrams/`；若已有同名 Skill，先比较并保留本地修改。
+
+然后使用：
+
+> 使用 $technical-architecture-diagrams，依据给定论文与版本绘制模型架构图。先核对事实，再选择图形结构；默认清彩论文配色，保留 draw.io 与 SVG，并实际渲染检查。
+
+也可以显式要求「素雅灰蓝」「只画竖向主干」或「增加可选局部展开」。
+
+## 本地准备
+
+基础命令需要 Python 3.10+。原生渲染还需要 Node.js 20+、Playwright 和 Chromium；精修使用 Inkscape CLI。TikZ 为可选后端，精修校准 TeX 使用 XeLaTeX、TikZ、fontspec 与 DejaVu 字体。
+
+```sh
+python -m venv .venv
+# 激活虚拟环境后：
+python -m pip install -r requirements.txt
+npm install
+npx playwright install chromium
+```
+
+Inkscape 需通过系统安装，并确保 `inkscape --version` 可运行。Node/Python 依赖只按使用范围加载；基础检查不需要浏览器、Inkscape 或 TeX。
+
+## 快速验证
+
+在仓库根目录执行：
+
+```sh
+# 配色单测、结构契约、golden 语义及源码路径检查
+python tools/check.py
+
+# 原生导出 + Inkscape 精修（Chromium 默认使用 Playwright 安装的版本）
+python tools/render_example.py --example minimax --palette blue-neutral --out build/minimax-plain
+
+# 同一个模板生成 Attention Residuals 校准图并实际渲染
+python tools/render_example.py --example attnres --out build/attnres
+```
+
+也可以指定已有浏览器 `--chrome /path/to/chrome`。环境集成可设置 `PLAYWRIGHT_MODULE`、`CHROME_BINARY`；普通本地安装无需这些变量。输出写入 `build/` 或显式目录，不修改已安装 Skill。
+
+底层调用方法见 [运行说明](docs/runtime.md)。
+
+## 目录
+
+| 路径 | 用途 |
+| --- | --- |
+| `skills/technical-architecture-diagrams/` | 可安装的 Skill、规则、配色、脚本及校准模板 |
+| `examples/minimax-m31/` | 竖向主干、独立 MSA 展开、双配色、事实与可编辑源 |
+| `tools/`、`tests/` | 仓库检查、样例渲染和画布尺寸回归 |
+| `third_party/drawio/` | 已核验的官方 Graph bundle、SHA pin 与上游许可证 |
+| `docs/` | 架构、运行、评测边界、Skill 清单、PPT 主流程设计及 v0.4 原包存档 |
+| `reports/` | 本次整理实际执行的检查摘要 |
+
+## 独立复现结果
+
+[独立 MiniMax 复现：离线 HTML](examples/independent-minimax/minimax-m31-flash.html) · [运行和问题记录](examples/independent-minimax/ACTUAL-RESULTS.md)。
+
+另起上下文，仅提供 Skill、固定事实和原始配置/代码，不提供之前的 MiniMax 成图或布局。重新生成竖向主干、MSA、MoE 三图及两套配色。首版存在文字溢出、连线穿过 bias 框和折角问题，已保留并修订。最后在全新输出目录完整运行，六份母版与正式版本逐字节一致。该例验证执行与修订闭环；视觉仍偏流程框式，未达到用户 golden 的结论不变，也不是新论文留出泛化测评。
+
+## 验证范围
+
+40 条人工评价是风格依据；100 图索引是参考检索集，没有训练模型权重。三轮十题属于开发与回归，不能称独立泛化测评。当前可复现检查覆盖来源结构、golden 候选集合、配色不改变结构、任意页面尺寸与实际 Graph 导出；几何通过不等于用户认可或技术语义全部正确。
+
+完整 draw.io EditorUi/Desktop、PPTX 对象编辑和宿主 HTML PPT 工作流集成仍需独立测试。详见 [评测与边界](docs/evaluation.md)。
+
+第三方组件说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。当前未替项目作者选择开源许可证，正式发布前由仓库所有者决定。
