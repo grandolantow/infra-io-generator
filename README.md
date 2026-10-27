@@ -6,7 +6,7 @@
 
 从技术事实出发，选择结构模板，生成原生 draw.io，由实际绘图引擎导出，再用 Inkscape 精修。复杂公式或 LaTeX 集成按需使用 TikZ。
 
-当前整理版：**v0.10.2**（一个入口、两个独立来源的 Skill）。
+当前整理版：**v0.10.3**（一个入口、两个独立来源的 Skill）。
 
 [Skill 完整性核对清单](docs/skill-inventory.md) · [外部 Skill 收藏](docs/external-skills.md) · [PPT 主流程设计存档](docs/ppt-workflow-design.md)。此仓库包含绘图 Skill 的完整代码；PPT 主流程设计、外部 draw.io/PlantUML 收藏以及其他工程 Skill 的恢复状态分别登记，不将它们冒充已实现模块。
 
@@ -142,3 +142,7 @@ python tools/render_example.py --example attnres --out build/attnres
 完整 draw.io EditorUi/Desktop、PPTX 对象编辑和宿主 HTML PPT 工作流集成仍需独立测试。详见 [评测与边界](docs/evaluation.md)。
 
 第三方组件说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。当前未替项目作者选择开源许可证，正式发布前由仓库所有者决定。
+
+### 可选模型 TikZ 执行
+
+对已核验、任务作者编写的自包含 TeX，使用 `tools/render_model_tikz.py` 实际生成 PDF/SVG/PNG 和运行 QA。保留 TeX 为可编辑源；它不是自动理解模型的生成器，也不是任意 TeX 沙箱。[依赖与边界](skills/technical-architecture-diagrams/references/tikz-runtime.md)。

@@ -39,3 +39,7 @@ TikZ使用84个显式坐标对及相对锚点。ELK模板版显式安排32个主
 `scripts/drawio_runtime/export.mjs` 需要Node、Playwright、Chromium与官方bundle。用 `PLAYWRIGHT_MODULE`、`CHROME_BINARY`、`--graph-js` 明确路径，输出到任务目录。
 
 `fetch_runtime.py --out /project/.cache/drawio/app.min.js` 只接受pin中的SHA。默认通过固定 Git blob URL 获取字节；原 dev URL 只保留为来源记录。下载仍核对SHA，不绕过hash检查。本次完整源码交付保留了实际bundle和上游LICENSE；Skill不携带浏览器或依赖树。
+
+## 通用作者 TeX 执行入口
+
+仓库提供 `tools/render_model_tikz.py`，用于已核验、自包含的模型 TeX 画稿，实际编译 PDF 并导出 SVG/PNG。读取 `references/tikz-runtime.md` 了解依赖、显式可信源门槛、受限执行和 QA 边界。它不理解任意模型、不替代结构母版或语言角色审核。

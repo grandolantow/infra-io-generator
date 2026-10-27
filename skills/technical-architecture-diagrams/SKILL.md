@@ -5,7 +5,7 @@ description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报
 
 # 技术图示：统一入口
 
-执行版本：v0.10.2。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
+执行版本：v0.10.3。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
 
 ## 先决定要解释什么
 
