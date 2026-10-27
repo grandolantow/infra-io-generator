@@ -1,0 +1,748 @@
+[
+  {
+    "id": "0",
+    "vertex": false,
+    "edge": false,
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "text_bbox": null
+  },
+  {
+    "id": "1",
+    "vertex": false,
+    "edge": false,
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "text_bbox": null
+  },
+  {
+    "id": "token_to_router",
+    "vertex": false,
+    "edge": true,
+    "x": 270,
+    "y": 230,
+    "w": 321,
+    "h": 120,
+    "source": "moe_token",
+    "target": "router",
+    "points": [
+      {
+        "x": 591,
+        "y": 230
+      },
+      {
+        "x": 591,
+        "y": 280
+      },
+      {
+        "x": 270,
+        "y": 280
+      },
+      {
+        "x": 270,
+        "y": 350
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "token_to_routed_experts",
+    "vertex": false,
+    "edge": true,
+    "x": 710,
+    "y": 230,
+    "w": 35,
+    "h": 450,
+    "source": "moe_token",
+    "target": "selected_experts",
+    "points": [
+      {
+        "x": 710,
+        "y": 230
+      },
+      {
+        "x": 710,
+        "y": 285
+      },
+      {
+        "x": 745,
+        "y": 285
+      },
+      {
+        "x": 745,
+        "y": 680
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "token_to_shared",
+    "vertex": false,
+    "edge": true,
+    "x": 829,
+    "y": 230,
+    "w": 351,
+    "h": 450,
+    "source": "moe_token",
+    "target": "shared_expert",
+    "points": [
+      {
+        "x": 829,
+        "y": 230
+      },
+      {
+        "x": 829,
+        "y": 280
+      },
+      {
+        "x": 1180,
+        "y": 280
+      },
+      {
+        "x": 1180,
+        "y": 680
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "router_to_selection",
+    "vertex": false,
+    "edge": true,
+    "x": 270,
+    "y": 440,
+    "w": 1,
+    "h": 240,
+    "source": "router",
+    "target": "expert_select",
+    "points": [
+      {
+        "x": 270,
+        "y": 440
+      },
+      {
+        "x": 270,
+        "y": 680
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "bias_to_selection",
+    "vertex": false,
+    "edge": true,
+    "x": 372,
+    "y": 547.5,
+    "w": 123,
+    "h": 132.5,
+    "source": "router_bias",
+    "target": "expert_select",
+    "points": [
+      {
+        "x": 495,
+        "y": 547.5
+      },
+      {
+        "x": 460,
+        "y": 547.5
+      },
+      {
+        "x": 460,
+        "y": 620
+      },
+      {
+        "x": 372,
+        "y": 620
+      },
+      {
+        "x": 372,
+        "y": 680
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "selection_to_experts",
+    "vertex": false,
+    "edge": true,
+    "x": 440,
+    "y": 725,
+    "w": 130,
+    "h": 17.5,
+    "source": "expert_select",
+    "target": "selected_experts",
+    "points": [
+      {
+        "x": 440,
+        "y": 725
+      },
+      {
+        "x": 505,
+        "y": 725
+      },
+      {
+        "x": 505,
+        "y": 742.5
+      },
+      {
+        "x": 570,
+        "y": 742.5
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "selection_to_weights",
+    "vertex": false,
+    "edge": true,
+    "x": 270,
+    "y": 770,
+    "w": 1,
+    "h": 175,
+    "source": "expert_select",
+    "target": "unbiased_weights",
+    "points": [
+      {
+        "x": 270,
+        "y": 770
+      },
+      {
+        "x": 270,
+        "y": 945
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "scores_to_weights",
+    "vertex": false,
+    "edge": true,
+    "x": 60,
+    "y": 395,
+    "w": 40,
+    "h": 620,
+    "source": "router",
+    "target": "unbiased_weights",
+    "points": [
+      {
+        "x": 100,
+        "y": 395
+      },
+      {
+        "x": 60,
+        "y": 395
+      },
+      {
+        "x": 60,
+        "y": 1015
+      },
+      {
+        "x": 100,
+        "y": 1015
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "experts_to_sum",
+    "vertex": false,
+    "edge": true,
+    "x": 745,
+    "y": 805,
+    "w": 1,
+    "h": 340,
+    "source": "selected_experts",
+    "target": "weighted_sum",
+    "points": [
+      {
+        "x": 745,
+        "y": 805
+      },
+      {
+        "x": 745,
+        "y": 1145
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "weights_to_sum",
+    "vertex": false,
+    "edge": true,
+    "x": 440,
+    "y": 1015,
+    "w": 130,
+    "h": 177.5,
+    "source": "unbiased_weights",
+    "target": "weighted_sum",
+    "points": [
+      {
+        "x": 440,
+        "y": 1015
+      },
+      {
+        "x": 515,
+        "y": 1015
+      },
+      {
+        "x": 515,
+        "y": 1192.5
+      },
+      {
+        "x": 570,
+        "y": 1192.5
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "sum_to_scale",
+    "vertex": false,
+    "edge": true,
+    "x": 745,
+    "y": 1240,
+    "w": 1,
+    "h": 75,
+    "source": "weighted_sum",
+    "target": "routed_scale",
+    "points": [
+      {
+        "x": 745,
+        "y": 1240
+      },
+      {
+        "x": 745,
+        "y": 1315
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "scale_to_add",
+    "vertex": false,
+    "edge": true,
+    "x": 745,
+    "y": 1385,
+    "w": 1,
+    "h": 100,
+    "source": "routed_scale",
+    "target": "shared_add",
+    "points": [
+      {
+        "x": 745,
+        "y": 1385
+      },
+      {
+        "x": 745,
+        "y": 1485
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "shared_to_add",
+    "vertex": false,
+    "edge": true,
+    "x": 769,
+    "y": 735,
+    "w": 601,
+    "h": 774,
+    "source": "shared_expert",
+    "target": "shared_add",
+    "points": [
+      {
+        "x": 1320,
+        "y": 735
+      },
+      {
+        "x": 1370,
+        "y": 735
+      },
+      {
+        "x": 1370,
+        "y": 1509
+      },
+      {
+        "x": 769,
+        "y": 1509
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "add_to_moe_output",
+    "vertex": false,
+    "edge": true,
+    "x": 745,
+    "y": 1533,
+    "w": 1,
+    "h": 82,
+    "source": "shared_add",
+    "target": "moe_output",
+    "points": [
+      {
+        "x": 745,
+        "y": 1533
+      },
+      {
+        "x": 745,
+        "y": 1615
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_title",
+    "vertex": true,
+    "edge": false,
+    "x": 60,
+    "y": 34,
+    "w": 1300,
+    "h": 48,
+    "label": "Mixture of Experts",
+    "text_bbox": {
+      "x": 60,
+      "y": 42.5,
+      "w": 367,
+      "h": 40
+    }
+  },
+  {
+    "id": "moe_subtitle",
+    "vertex": true,
+    "edge": false,
+    "x": 60,
+    "y": 94,
+    "w": 1300,
+    "h": 38,
+    "label": "Layers 3–59  ·  selection bias affects expert choice; original scores determine routed weights",
+    "text_bbox": {
+      "x": 60,
+      "y": 103.5,
+      "w": 970,
+      "h": 24
+    }
+  },
+  {
+    "id": "moe_tag",
+    "vertex": true,
+    "edge": false,
+    "x": 1210,
+    "y": 38,
+    "w": 150,
+    "h": 38,
+    "label": "DETAIL B",
+    "text_bbox": {
+      "x": 1257,
+      "y": 47.5,
+      "w": 103,
+      "h": 24
+    }
+  },
+  {
+    "id": "moe_token",
+    "vertex": true,
+    "edge": false,
+    "x": 540,
+    "y": 165,
+    "w": 340,
+    "h": 65,
+    "label": "z = Norm(h)",
+    "text_bbox": {
+      "x": 640,
+      "y": 187,
+      "w": 140,
+      "h": 26
+    }
+  },
+  {
+    "id": "router",
+    "vertex": true,
+    "edge": false,
+    "x": 100,
+    "y": 350,
+    "w": 340,
+    "h": 90,
+    "label": "Router: sigmoid(W_r z)\n128 original scores s_e",
+    "text_bbox": {
+      "x": 139,
+      "y": 370.5,
+      "w": 262,
+      "h": 54
+    }
+  },
+  {
+    "id": "router_bias",
+    "vertex": true,
+    "edge": false,
+    "x": 495,
+    "y": 510,
+    "w": 220,
+    "h": 75,
+    "label": "Correction bias b_e\nSelection only",
+    "text_bbox": {
+      "x": 499.5,
+      "y": 524.5,
+      "w": 211,
+      "h": 51
+    }
+  },
+  {
+    "id": "expert_select",
+    "vertex": true,
+    "edge": false,
+    "x": 100,
+    "y": 680,
+    "w": 340,
+    "h": 90,
+    "label": "S = Top4(s + b)\n4 of 128 routed experts",
+    "text_bbox": {
+      "x": 134,
+      "y": 700.5,
+      "w": 272,
+      "h": 54
+    }
+  },
+  {
+    "id": "selected_experts",
+    "vertex": true,
+    "edge": false,
+    "x": 570,
+    "y": 680,
+    "w": 350,
+    "h": 125,
+    "label": "Selected experts\nE_e(z), e in S\n4 of 128 routed\nExpert width = 3072",
+    "text_bbox": {
+      "x": 630.5,
+      "y": 693.5,
+      "w": 229,
+      "h": 103
+    }
+  },
+  {
+    "id": "shared_expert",
+    "vertex": true,
+    "edge": false,
+    "x": 1040,
+    "y": 680,
+    "w": 280,
+    "h": 110,
+    "label": "Shared expert E_s(z)\n1 always-on expert\nExpert width = 3072",
+    "text_bbox": {
+      "x": 1071,
+      "y": 700.5,
+      "w": 218,
+      "h": 74
+    }
+  },
+  {
+    "id": "unbiased_weights",
+    "vertex": true,
+    "edge": false,
+    "x": 100,
+    "y": 945,
+    "w": 340,
+    "h": 140,
+    "label": "Unbiased renormalization\nw_e = s_e / Σ_{r in S} s_r\nUse original scores s_e\nBias excluded",
+    "text_bbox": {
+      "x": 129.5,
+      "y": 966,
+      "w": 281.5,
+      "h": 103
+    }
+  },
+  {
+    "id": "weighted_sum",
+    "vertex": true,
+    "edge": false,
+    "x": 570,
+    "y": 1145,
+    "w": 350,
+    "h": 95,
+    "label": "Weighted routed sum\nΣ_{e in S} w_e E_e(z)",
+    "text_bbox": {
+      "x": 619.5,
+      "y": 1168,
+      "w": 251,
+      "h": 54
+    }
+  },
+  {
+    "id": "routed_scale",
+    "vertex": true,
+    "edge": false,
+    "x": 570,
+    "y": 1315,
+    "w": 350,
+    "h": 70,
+    "label": "Routed scale ×2",
+    "text_bbox": {
+      "x": 650.5,
+      "y": 1339.5,
+      "w": 189,
+      "h": 26
+    }
+  },
+  {
+    "id": "shared_add",
+    "vertex": true,
+    "edge": false,
+    "x": 721,
+    "y": 1485,
+    "w": 48,
+    "h": 48,
+    "label": "+",
+    "text_bbox": {
+      "x": 733,
+      "y": 1495.5,
+      "w": 24,
+      "h": 34
+    }
+  },
+  {
+    "id": "moe_output",
+    "vertex": true,
+    "edge": false,
+    "x": 570,
+    "y": 1615,
+    "w": 350,
+    "h": 65,
+    "label": "MoE output",
+    "text_bbox": {
+      "x": 678.5,
+      "y": 1637,
+      "w": 133,
+      "h": 26
+    }
+  },
+  {
+    "id": "original_score_label",
+    "vertex": true,
+    "edge": false,
+    "x": 290,
+    "y": 535,
+    "w": 200,
+    "h": 40,
+    "label": "original scores s_e",
+    "text_bbox": {
+      "x": 290,
+      "y": 545.5,
+      "w": 197,
+      "h": 24
+    }
+  },
+  {
+    "id": "expert_ids_label",
+    "vertex": true,
+    "edge": false,
+    "x": 461,
+    "y": 682,
+    "w": 85,
+    "h": 35,
+    "label": "IDs",
+    "text_bbox": {
+      "x": 489.5,
+      "y": 690.5,
+      "w": 28,
+      "h": 21
+    }
+  },
+  {
+    "id": "weight_subset_label",
+    "vertex": true,
+    "edge": false,
+    "x": 290,
+    "y": 846,
+    "w": 180,
+    "h": 34,
+    "label": "selected set S",
+    "text_bbox": {
+      "x": 290,
+      "y": 854,
+      "w": 125,
+      "h": 21
+    }
+  },
+  {
+    "id": "unbiased_scores_label",
+    "vertex": true,
+    "edge": false,
+    "x": 66,
+    "y": 866,
+    "w": 70,
+    "h": 35,
+    "label": "s_e",
+    "text_bbox": {
+      "x": 66,
+      "y": 873.5,
+      "w": 32,
+      "h": 24
+    }
+  },
+  {
+    "id": "weight_edge_label",
+    "vertex": true,
+    "edge": false,
+    "x": 455,
+    "y": 1124,
+    "w": 65,
+    "h": 35,
+    "label": "w_e",
+    "text_bbox": {
+      "x": 455,
+      "y": 1131.5,
+      "w": 38,
+      "h": 24
+    }
+  },
+  {
+    "id": "shared_bypass_note",
+    "vertex": true,
+    "edge": false,
+    "x": 1005,
+    "y": 940,
+    "w": 345,
+    "h": 94,
+    "label": "Shared output bypasses\nrouted mixing, renormalization\nand the routed ×2 scale.",
+    "text_bbox": {
+      "x": 1005,
+      "y": 951,
+      "w": 340,
+      "h": 77
+    }
+  },
+  {
+    "id": "moe_legend",
+    "vertex": true,
+    "edge": false,
+    "x": 60,
+    "y": 1712,
+    "w": 1300,
+    "h": 57,
+    "label": "Solid arrows: token data, scores, weights and expert outputs.   Dashed arrows: selection/control.\nRouted and shared expert boxes are schematic; the 128 experts are not drawn individually.",
+    "text_bbox": {
+      "x": 60,
+      "y": 1720.5,
+      "w": 853,
+      "h": 43
+    }
+  }
+]

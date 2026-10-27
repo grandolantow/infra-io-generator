@@ -1,0 +1,78 @@
+{
+  "id": "m31",
+  "source_url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/tree/54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e",
+  "scope_out": [
+    "vision frontend internals",
+    "draft head internals",
+    "training losses",
+    "quantization/QAT internals"
+  ],
+  "required_visual_facts": [
+    {
+      "id": "m1",
+      "statement": "60layers all MSA, first3dense othersMoE",
+      "locator": "config:text_config",
+      "visible_ids": [
+        "portrait/repeat-heading",
+        "portrait/first-layers",
+        "portrait/foot"
+      ]
+    },
+    {
+      "id": "m2",
+      "statement": "4GQA groups16queryheads each",
+      "locator": "config:heads",
+      "visible_ids": [
+        "detail/config",
+        "detail/q0",
+        "detail/q1"
+      ]
+    },
+    {
+      "id": "m3",
+      "statement": "Indexer token dot scores then block max Top16 incl local",
+      "locator": "config:sparse;MSA Eq5–7",
+      "visible_ids": [
+        "detail/idx",
+        "detail/max",
+        "detail/topk",
+        "detail/mask-note"
+      ]
+    },
+    {
+      "id": "m4",
+      "statement": "Group-specific masks shared within group, main attention selected KV",
+      "locator": "MSA Eq8",
+      "visible_ids": [
+        "detail/cache0",
+        "detail/cache1",
+        "detail/attn0",
+        "detail/attn1",
+        "detail/mask-note"
+      ]
+    },
+    {
+      "id": "m5",
+      "statement": "128routed top4 plus shared, weighted aggregate",
+      "locator": "config:MoE",
+      "visible_ids": [
+        "portrait/router",
+        "portrait/weights",
+        "portrait/mix",
+        "portrait/shared",
+        "portrait/mix-add"
+      ]
+    },
+    {
+      "id": "m6",
+      "statement": "Mixed-input frontend and auxiliary DSpark internals are collapsed; dense/MoE stage boundary is explicit.",
+      "locator": "model card/config",
+      "visible_ids": [
+        "portrait/input",
+        "portrait/first-layers",
+        "portrait/foot"
+      ]
+    }
+  ],
+  "visible_id_format": "figure/cell-id; figure is portrait or detail; references bind to the delivered vertical example, not the earlier horizontal prototype"
+}

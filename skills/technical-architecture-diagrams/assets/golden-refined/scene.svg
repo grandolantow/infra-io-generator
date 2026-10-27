@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <marker id="arrow-ink" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="6" markerHeight="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L10 4 L0 8 L2 4 Z" fill="#20252b" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="6" markerHeight="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L10 4 L0 8 L2 4 Z" fill="#96505b" />
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="6" markerHeight="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L10 4 L0 8 L2 4 Z" fill="#52606c" />
+    </marker>
+  </defs>
+  <g inkscape:groupmode="layer" inkscape:label="page" id="page">
+    <rect id="canvas" fill="white" stroke="none" stroke-width="1.7" x="0" y="0" width="1600" height="900" rx="0" />
+    <path id="divider" d="M 392,16 L 392,862" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="divider" stroke-dasharray="3 5" />
+    <text id="footnote" x="800.0" y="885.42" fill="#52606c" font-family="DejaVu Serif" font-size="13" text-anchor="middle" font-style="normal" font-weight="normal">Four illustrative sublayers; S=2. Block sums contain raw sublayer outputs only; Embedding remains a separate candidate.</text>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="standard" id="standard">
+    <rect id="s-frame" fill="white" stroke="#20252b" stroke-width="1.7" stroke-dasharray="7 6" x="40" y="82" width="290" height="651" rx="16" />
+    <rect id="s-v0" fill="#f1f1f1" stroke="#20252b" stroke-width="1.7" x="90.0" y="755.0" width="200" height="44" rx="4" />
+    <text id="s-v0-label" x="190.0" y="785.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">Embedding</text>
+    <circle id="s-a1" fill="white" stroke="#20252b" stroke-width="1.7" cx="190.0" cy="692.0" r="14.0" />
+    <text id="s-a1-label" x="190.0" y="700.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">+</text>
+    <circle id="s-a2" fill="white" stroke="#20252b" stroke-width="1.7" cx="190.0" cy="547.0" r="14.0" />
+    <text id="s-a2-label" x="190.0" y="555.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">+</text>
+    <circle id="s-a3" fill="white" stroke="#20252b" stroke-width="1.7" cx="190.0" cy="402.0" r="14.0" />
+    <text id="s-a3-label" x="190.0" y="410.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">+</text>
+    <circle id="s-a4" fill="white" stroke="#20252b" stroke-width="1.7" cx="190.0" cy="257.0" r="14.0" />
+    <text id="s-a4-label" x="190.0" y="265.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">+</text>
+    <circle id="s-a5" fill="white" stroke="#20252b" stroke-width="1.7" cx="190.0" cy="105.0" r="14.0" />
+    <text id="s-a5-label" x="190.0" y="113.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">+</text>
+    <path id="s-embed" d="M 190,755 L 190,706" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-v0" data-target="s-a1" marker-end="url(#arrow-ink)" />
+    <rect id="s-F1" fill="#d2e3f3" stroke="#20252b" stroke-width="1.7" x="102.0" y="598.0" width="176" height="44" rx="4" />
+    <text id="s-F1-label" x="190.0" y="628.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">Attention</text>
+    <path id="s-input1" d="M 190,678 L 190,642" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-a1" data-target="s-F1" marker-end="url(#arrow-ink)" />
+    <circle id="s-v1" fill="#20252b" stroke="none" stroke-width="1.7" cx="190.0" cy="587.0" r="1.5" />
+    <path id="s-raw1" d="M 190,598 L 190,587" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-F1" data-target="s-v1" />
+    <path id="s-direct1" d="M 190,587 L 190,561" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-v1" data-target="s-a2" marker-end="url(#arrow-ink)" />
+    <path id="s-skip1" d="M 176,692 L 89,692 C 82.3726,692 77,686.627 77,680 L 77,559 C 77,552.373 82.3726,547 89,547 L 176,547" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="unit_residual" data-source="s-a1" data-target="s-a2" marker-end="url(#arrow-ink)" />
+    <rect id="s-F2" fill="#fce0b9" stroke="#20252b" stroke-width="1.7" x="102.0" y="453.0" width="176" height="44" rx="4" />
+    <text id="s-F2-label" x="190.0" y="483.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">MoE</text>
+    <path id="s-input2" d="M 190,533 L 190,497" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-a2" data-target="s-F2" marker-end="url(#arrow-ink)" />
+    <circle id="s-v2" fill="#20252b" stroke="none" stroke-width="1.7" cx="190.0" cy="442.0" r="1.5" />
+    <path id="s-raw2" d="M 190,453 L 190,442" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-F2" data-target="s-v2" />
+    <path id="s-direct2" d="M 190,442 L 190,416" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-v2" data-target="s-a3" marker-end="url(#arrow-ink)" />
+    <path id="s-skip2" d="M 176,547 L 89,547 C 82.3726,547 77,541.627 77,535 L 77,414 C 77,407.373 82.3726,402 89,402 L 176,402" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="unit_residual" data-source="s-a2" data-target="s-a3" marker-end="url(#arrow-ink)" />
+    <rect id="s-F3" fill="#d2e3f3" stroke="#20252b" stroke-width="1.7" x="102.0" y="308.0" width="176" height="44" rx="4" />
+    <text id="s-F3-label" x="190.0" y="338.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">Attention</text>
+    <path id="s-input3" d="M 190,388 L 190,352" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-a3" data-target="s-F3" marker-end="url(#arrow-ink)" />
+    <circle id="s-v3" fill="#20252b" stroke="none" stroke-width="1.7" cx="190.0" cy="297.0" r="1.5" />
+    <path id="s-raw3" d="M 190,308 L 190,297" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-F3" data-target="s-v3" />
+    <path id="s-direct3" d="M 190,297 L 190,271" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-v3" data-target="s-a4" marker-end="url(#arrow-ink)" />
+    <path id="s-skip3" d="M 176,402 L 89,402 C 82.3726,402 77,396.627 77,390 L 77,269 C 77,262.373 82.3726,257 89,257 L 176,257" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="unit_residual" data-source="s-a3" data-target="s-a4" marker-end="url(#arrow-ink)" />
+    <rect id="s-F4" fill="#fce0b9" stroke="#20252b" stroke-width="1.7" x="102.0" y="163.0" width="176" height="44" rx="4" />
+    <text id="s-F4-label" x="190.0" y="193.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">MoE</text>
+    <path id="s-input4" d="M 190,243 L 190,207" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-a4" data-target="s-F4" marker-end="url(#arrow-ink)" />
+    <circle id="s-v4" fill="#20252b" stroke="none" stroke-width="1.7" cx="190.0" cy="152.0" r="1.5" />
+    <path id="s-raw4" d="M 190,163 L 190,152" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-F4" data-target="s-v4" />
+    <path id="s-direct4" d="M 190,152 L 190,119" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-v4" data-target="s-a5" marker-end="url(#arrow-ink)" />
+    <path id="s-skip4" d="M 176,257 L 89,257 C 82.3726,257 77,251.627 77,245 L 77,117 C 77,110.373 82.3726,105 89,105 L 176,105" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="unit_residual" data-source="s-a4" data-target="s-a5" marker-end="url(#arrow-ink)" />
+    <text id="s-output" x="190.0" y="30.36" fill="#20252b" font-family="DejaVu Serif" font-size="29" text-anchor="middle" font-style="normal" font-weight="normal">Output</text>
+    <path id="s-top" d="M 190,91 L 190,64" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="s-a5" marker-end="url(#arrow-ink)" />
+    <text id="s-caption" x="195.5" y="851.0" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">(a) Standard Residuals</text>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="full" id="full">
+    <rect id="f-frame" fill="white" stroke="#20252b" stroke-width="1.7" stroke-dasharray="7 6" x="455" y="132" width="277" height="600" rx="15" />
+    <rect id="f-v0" fill="#f1f1f1" stroke="#20252b" stroke-width="1.7" x="510.0" y="755.0" width="200" height="44" rx="4" />
+    <text id="f-v0-label" x="610.0" y="785.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">Embedding</text>
+    <circle id="f-a1" fill="white" stroke="#96505b" stroke-width="1.7" cx="610.0" cy="692.0" r="16.0" />
+    <text id="f-a1-label" x="610.0" y="700.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">1</text>
+    <rect id="f-F1" fill="#d2e3f3" stroke="#20252b" stroke-width="1.7" x="522.0" y="598.0" width="176" height="44" rx="4" />
+    <text id="f-F1-label" x="610.0" y="628.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">Attention</text>
+    <path id="f-input1" d="M 610,676 L 610,642" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="f-a1" data-target="f-F1" marker-end="url(#arrow-red)" />
+    <circle id="f-v1" fill="#20252b" stroke="none" stroke-width="1.7" cx="610.0" cy="587.0" r="1.5" />
+    <path id="f-raw1" d="M 610,598 L 610,587" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="f-F1" data-target="f-v1" />
+    <circle id="f-a2" fill="white" stroke="#96505b" stroke-width="1.7" cx="610.0" cy="547.0" r="16.0" />
+    <text id="f-a2-label" x="610.0" y="555.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">α</text>
+    <rect id="f-w2" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="524.5" y="534.0" width="27" height="26" rx="4" />
+    <text id="f-w2-label" x="538.0" y="554.48" fill="#20252b" font-family="DejaVu Serif" font-size="22" text-anchor="middle" font-style="normal" font-weight="normal">w</text>
+    <path id="f-w2-edge" d="M 551.5,547 L 594,547" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="query" data-source="f-w2" data-target="f-a2" marker-end="url(#arrow-red)" />
+    <rect id="f-F2" fill="#fce0b9" stroke="#20252b" stroke-width="1.7" x="522.0" y="453.0" width="176" height="44" rx="4" />
+    <text id="f-F2-label" x="610.0" y="483.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">MoE</text>
+    <path id="f-input2" d="M 610,531 L 610,497" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="f-a2" data-target="f-F2" marker-end="url(#arrow-red)" />
+    <circle id="f-v2" fill="#20252b" stroke="none" stroke-width="1.7" cx="610.0" cy="442.0" r="1.5" />
+    <path id="f-raw2" d="M 610,453 L 610,442" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="f-F2" data-target="f-v2" />
+    <circle id="f-a3" fill="white" stroke="#96505b" stroke-width="1.7" cx="610.0" cy="402.0" r="16.0" />
+    <text id="f-a3-label" x="610.0" y="410.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">α</text>
+    <rect id="f-w3" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="524.5" y="389.0" width="27" height="26" rx="4" />
+    <text id="f-w3-label" x="538.0" y="409.48" fill="#20252b" font-family="DejaVu Serif" font-size="22" text-anchor="middle" font-style="normal" font-weight="normal">w</text>
+    <path id="f-w3-edge" d="M 551.5,402 L 594,402" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="query" data-source="f-w3" data-target="f-a3" marker-end="url(#arrow-red)" />
+    <rect id="f-F3" fill="#d2e3f3" stroke="#20252b" stroke-width="1.7" x="522.0" y="308.0" width="176" height="44" rx="4" />
+    <text id="f-F3-label" x="610.0" y="338.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">Attention</text>
+    <path id="f-input3" d="M 610,386 L 610,352" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="f-a3" data-target="f-F3" marker-end="url(#arrow-red)" />
+    <circle id="f-v3" fill="#20252b" stroke="none" stroke-width="1.7" cx="610.0" cy="297.0" r="1.5" />
+    <path id="f-raw3" d="M 610,308 L 610,297" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="f-F3" data-target="f-v3" />
+    <circle id="f-a4" fill="white" stroke="#96505b" stroke-width="1.7" cx="610.0" cy="257.0" r="16.0" />
+    <text id="f-a4-label" x="610.0" y="265.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">α</text>
+    <rect id="f-w4" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="524.5" y="244.0" width="27" height="26" rx="4" />
+    <text id="f-w4-label" x="538.0" y="264.48" fill="#20252b" font-family="DejaVu Serif" font-size="22" text-anchor="middle" font-style="normal" font-weight="normal">w</text>
+    <path id="f-w4-edge" d="M 551.5,257 L 594,257" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="query" data-source="f-w4" data-target="f-a4" marker-end="url(#arrow-red)" />
+    <rect id="f-F4" fill="#fce0b9" stroke="#20252b" stroke-width="1.7" x="522.0" y="163.0" width="176" height="44" rx="4" />
+    <text id="f-F4-label" x="610.0" y="193.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">MoE</text>
+    <path id="f-input4" d="M 610,241 L 610,207" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="f-a4" data-target="f-F4" marker-end="url(#arrow-red)" />
+    <circle id="f-v4" fill="#20252b" stroke="none" stroke-width="1.7" cx="610.0" cy="152.0" r="1.5" />
+    <path id="f-raw4" d="M 610,163 L 610,152" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="f-F4" data-target="f-v4" />
+    <circle id="f-a5" fill="white" stroke="#96505b" stroke-width="1.7" cx="610.0" cy="74.0" r="16.0" />
+    <text id="f-a5-label" x="610.0" y="82.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">α</text>
+    <rect id="f-w5" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="524.5" y="61.0" width="27" height="26" rx="4" />
+    <text id="f-w5-label" x="538.0" y="81.48" fill="#20252b" font-family="DejaVu Serif" font-size="22" text-anchor="middle" font-style="normal" font-weight="normal">w</text>
+    <path id="f-w5-edge" d="M 551.5,74 L 594,74" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="query" data-source="f-w5" data-target="f-a5" marker-end="url(#arrow-red)" />
+    <path id="f-history0-1" d="M 610,755 L 610,708" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v0" data-target="f-a1" marker-end="url(#arrow-red)" />
+    <path id="f-history0-2" d="M 710,777 L 734,777 C 740.627,777 746,771.627 746,765 L 746,559 C 746,552.373 740.627,547 734,547 L 626,547" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v0" data-target="f-a2" marker-end="url(#arrow-red)" />
+    <path id="f-history0-3" d="M 710,777 L 734,777 C 740.627,777 746,771.627 746,765 L 746,414 C 746,407.373 740.627,402 734,402 L 626,402" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v0" data-target="f-a3" marker-end="url(#arrow-red)" />
+    <path id="f-history0-4" d="M 710,777 L 734,777 C 740.627,777 746,771.627 746,765 L 746,269 C 746,262.373 740.627,257 734,257 L 626,257" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v0" data-target="f-a4" marker-end="url(#arrow-red)" />
+    <path id="f-history0-5" d="M 710,777 L 734,777 C 740.627,777 746,771.627 746,765 L 746,86 C 746,79.3726 740.627,74 734,74 L 626,74" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v0" data-target="f-a5" marker-end="url(#arrow-red)" />
+    <path id="f-history1-2" d="M 610,587 L 610,563" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v1" data-target="f-a2" marker-end="url(#arrow-red)" />
+    <path id="f-history1-3" d="M 610,587 L 756,587 C 762.627,587 768,581.627 768,575 L 768,414 C 768,407.373 762.627,402 756,402 L 626,402" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v1" data-target="f-a3" marker-end="url(#arrow-red)" />
+    <path id="f-history1-4" d="M 610,587 L 756,587 C 762.627,587 768,581.627 768,575 L 768,269 C 768,262.373 762.627,257 756,257 L 626,257" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v1" data-target="f-a4" marker-end="url(#arrow-red)" />
+    <path id="f-history1-5" d="M 610,587 L 756,587 C 762.627,587 768,581.627 768,575 L 768,86 C 768,79.3726 762.627,74 756,74 L 626,74" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v1" data-target="f-a5" marker-end="url(#arrow-red)" />
+    <path id="f-history2-3" d="M 610,442 L 610,418" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v2" data-target="f-a3" marker-end="url(#arrow-red)" />
+    <path id="f-history2-4" d="M 610,442 L 778,442 C 784.627,442 790,436.627 790,430 L 790,269 C 790,262.373 784.627,257 778,257 L 626,257" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v2" data-target="f-a4" marker-end="url(#arrow-red)" />
+    <path id="f-history2-5" d="M 610,442 L 778,442 C 784.627,442 790,436.627 790,430 L 790,86 C 790,79.3726 784.627,74 778,74 L 626,74" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v2" data-target="f-a5" marker-end="url(#arrow-red)" />
+    <path id="f-history3-4" d="M 610,297 L 610,273" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v3" data-target="f-a4" marker-end="url(#arrow-red)" />
+    <path id="f-history3-5" d="M 610,297 L 800,297 C 806.627,297 812,291.627 812,285 L 812,86 C 812,79.3726 806.627,74 800,74 L 626,74" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v3" data-target="f-a5" marker-end="url(#arrow-red)" />
+    <path id="f-history4-5" d="M 610,152 L 610,90" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="f-v4" data-target="f-a5" marker-end="url(#arrow-red)" />
+    <text id="f-output" x="610.0" y="30.36" fill="#20252b" font-family="DejaVu Serif" font-size="29" text-anchor="middle" font-style="normal" font-weight="normal">Output</text>
+    <path id="f-top" d="M 610,58 L 610,46" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="f-a5" marker-end="url(#arrow-red)" />
+    <text id="f-caption" x="617.0" y="851.0" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">(b) Full Attention Residuals</text>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="block" id="block">
+    <rect id="b-frame1" fill="white" stroke="#20252b" stroke-width="1.7" stroke-dasharray="7 6" x="1108" y="414" width="391" height="318" rx="15" />
+    <rect id="b-frame2" fill="white" stroke="#20252b" stroke-width="1.7" stroke-dasharray="7 6" x="1108" y="132" width="391" height="232" rx="15" />
+    <text id="b-block1" x="1164.0" y="708.78" fill="#52606c" font-family="DejaVu Serif" font-size="17" text-anchor="middle" font-style="italic" font-weight="normal">Block 1</text>
+    <text id="b-block2" x="1164.0" y="355.78" fill="#52606c" font-family="DejaVu Serif" font-size="17" text-anchor="middle" font-style="italic" font-weight="normal">Block 2</text>
+    <rect id="b-v0" fill="#f1f1f1" stroke="#20252b" stroke-width="1.7" x="1190.0" y="755.0" width="200" height="44" rx="4" />
+    <text id="b-v0-label" x="1290.0" y="785.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">Embedding</text>
+    <rect id="b-F1" fill="#d2e3f3" stroke="#20252b" stroke-width="1.7" x="1210.0" y="598.0" width="160" height="44" rx="4" />
+    <text id="b-F1-label" x="1290.0" y="628.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">Attention</text>
+    <circle id="b-a1" fill="white" stroke="#96505b" stroke-width="1.7" cx="1430.0" cy="620.0" r="16.0" />
+    <text id="b-a1-label" x="1430.0" y="628.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">1</text>
+    <path id="b-input1" d="M 1414,620 L 1370,620" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="b-a1" data-target="b-F1" marker-end="url(#arrow-red)" />
+    <circle id="b-v1" fill="#20252b" stroke="none" stroke-width="1.7" cx="1290.0" cy="587.0" r="1.5" />
+    <path id="b-raw1" d="M 1290,598 L 1290,587" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="b-F1" data-target="b-v1" />
+    <rect id="b-F2" fill="#fce0b9" stroke="#20252b" stroke-width="1.7" x="1210.0" y="453.0" width="160" height="44" rx="4" />
+    <text id="b-F2-label" x="1290.0" y="483.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">MoE</text>
+    <circle id="b-a2" fill="white" stroke="#96505b" stroke-width="1.7" cx="1430.0" cy="475.0" r="16.0" />
+    <text id="b-a2-label" x="1430.0" y="483.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">α</text>
+    <path id="b-input2" d="M 1414,475 L 1370,475" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="b-a2" data-target="b-F2" marker-end="url(#arrow-red)" />
+    <rect id="b-w2" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="1416.5" y="420.0" width="27" height="26" rx="4" />
+    <text id="b-w2-label" x="1430.0" y="440.48" fill="#20252b" font-family="DejaVu Serif" font-size="22" text-anchor="middle" font-style="normal" font-weight="normal">w</text>
+    <path id="b-query2" d="M 1430,446 L 1430,459" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="query" data-source="b-w2" data-target="b-a2" marker-end="url(#arrow-red)" />
+    <circle id="b-v2" fill="#20252b" stroke="none" stroke-width="1.7" cx="1290.0" cy="442.0" r="1.5" />
+    <path id="b-raw2" d="M 1290,453 L 1290,442" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="b-F2" data-target="b-v2" />
+    <rect id="b-F3" fill="#d2e3f3" stroke="#20252b" stroke-width="1.7" x="1210.0" y="308.0" width="160" height="44" rx="4" />
+    <text id="b-F3-label" x="1290.0" y="338.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">Attention</text>
+    <circle id="b-a3" fill="white" stroke="#96505b" stroke-width="1.7" cx="1430.0" cy="330.0" r="16.0" />
+    <text id="b-a3-label" x="1430.0" y="338.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">α</text>
+    <path id="b-input3" d="M 1414,330 L 1370,330" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="b-a3" data-target="b-F3" marker-end="url(#arrow-red)" />
+    <rect id="b-w3" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="1416.5" y="259.0" width="27" height="26" rx="4" />
+    <text id="b-w3-label" x="1430.0" y="279.48" fill="#20252b" font-family="DejaVu Serif" font-size="22" text-anchor="middle" font-style="normal" font-weight="normal">w</text>
+    <path id="b-query3" d="M 1430,285 L 1430,314" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="query" data-source="b-w3" data-target="b-a3" marker-end="url(#arrow-red)" />
+    <circle id="b-v3" fill="#20252b" stroke="none" stroke-width="1.7" cx="1290.0" cy="297.0" r="1.5" />
+    <path id="b-raw3" d="M 1290,308 L 1290,297" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="b-F3" data-target="b-v3" />
+    <rect id="b-F4" fill="#fce0b9" stroke="#20252b" stroke-width="1.7" x="1210.0" y="163.0" width="160" height="44" rx="4" />
+    <text id="b-F4-label" x="1290.0" y="193.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">MoE</text>
+    <circle id="b-a4" fill="white" stroke="#96505b" stroke-width="1.7" cx="1430.0" cy="185.0" r="16.0" />
+    <text id="b-a4-label" x="1430.0" y="193.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">α</text>
+    <path id="b-input4" d="M 1414,185 L 1370,185" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="b-a4" data-target="b-F4" marker-end="url(#arrow-red)" />
+    <rect id="b-w4" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="1416.5" y="130.0" width="27" height="26" rx="4" />
+    <text id="b-w4-label" x="1430.0" y="150.48" fill="#20252b" font-family="DejaVu Serif" font-size="22" text-anchor="middle" font-style="normal" font-weight="normal">w</text>
+    <path id="b-query4" d="M 1430,156 L 1430,169" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="query" data-source="b-w4" data-target="b-a4" marker-end="url(#arrow-red)" />
+    <circle id="b-v4" fill="#20252b" stroke="none" stroke-width="1.7" cx="1290.0" cy="152.0" r="1.5" />
+    <path id="b-raw4" d="M 1290,163 L 1290,152" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="b-F4" data-target="b-v4" />
+    <circle id="b-a5" fill="white" stroke="#96505b" stroke-width="1.7" cx="1290.0" cy="74.0" r="16.0" />
+    <text id="b-a5-label" x="1290.0" y="82.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">α</text>
+    <rect id="b-w5" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="1204.5" y="61.0" width="27" height="26" rx="4" />
+    <text id="b-w5-label" x="1218.0" y="81.48" fill="#20252b" font-family="DejaVu Serif" font-size="22" text-anchor="middle" font-style="normal" font-weight="normal">w</text>
+    <path id="b-w5-edge" d="M 1231.5,74 L 1274,74" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="query" data-source="b-w5" data-target="b-a5" marker-end="url(#arrow-red)" />
+    <path id="b-embed1" d="M 1390,777 L 1560,777 C 1566.63,777 1572,771.627 1572,765 L 1572,632 C 1572,625.373 1566.63,620 1560,620 L 1446,620" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-v0" data-target="b-a1" marker-end="url(#arrow-red)" />
+    <path id="b-embed2" d="M 1390,777 L 1560,777 C 1566.63,777 1572,771.627 1572,765 L 1572,487 C 1572,480.373 1566.63,475 1560,475 L 1446,475" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-v0" data-target="b-a2" marker-end="url(#arrow-red)" />
+    <path id="b-embed3" d="M 1390,777 L 1560,777 C 1566.63,777 1572,771.627 1572,765 L 1572,342 C 1572,335.373 1566.63,330 1560,330 L 1446,330" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-v0" data-target="b-a3" marker-end="url(#arrow-red)" />
+    <path id="b-embed4" d="M 1390,777 L 1560,777 C 1566.63,777 1572,771.627 1572,765 L 1572,197 C 1572,190.373 1566.63,185 1560,185 L 1446,185" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-v0" data-target="b-a4" marker-end="url(#arrow-red)" />
+    <path id="b-embed5" d="M 1390,777 L 1560,777 C 1566.63,777 1572,771.627 1572,765 L 1572,86 C 1572,79.3726 1566.63,74 1560,74 L 1306,74" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-v0" data-target="b-a5" marker-end="url(#arrow-red)" />
+    <circle id="b-sum1" fill="white" stroke="#20252b" stroke-width="1.7" cx="1290.0" cy="390.0" r="14.0" />
+    <text id="b-sum1-label" x="1290.0" y="398.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">+</text>
+    <path id="b-sum-current1" d="M 1290,442 L 1290,404" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="raw_sum" data-source="b-v2" data-target="b-sum1" marker-end="url(#arrow-ink)" />
+    <path id="b-sum-partial1" d="M 1290,587 L 1182,587 C 1175.37,587 1170,581.627 1170,575 L 1170,402 C 1170,395.373 1175.37,390 1182,390 L 1276,390" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="raw_sum" data-source="b-v1" data-target="b-sum1" marker-end="url(#arrow-ink)" />
+    <text id="b-sum-note1" x="1336.0" y="379.78" fill="#52606c" font-family="DejaVu Serif" font-size="17" text-anchor="middle" font-style="italic" font-weight="normal">b1</text>
+    <path id="b-completed1-3" d="M 1304,390 L 1535,390 C 1541.63,390 1547,384.627 1547,378 L 1547,342 C 1547,335.373 1541.63,330 1535,330 L 1446,330" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-sum1" data-target="b-a3" marker-end="url(#arrow-red)" />
+    <path id="b-completed1-4" d="M 1304,390 L 1535,390 C 1541.63,390 1547,384.627 1547,378 L 1547,197 C 1547,190.373 1541.63,185 1535,185 L 1446,185" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-sum1" data-target="b-a4" marker-end="url(#arrow-red)" />
+    <path id="b-completed1-5" d="M 1304,390 L 1535,390 C 1541.63,390 1547,384.627 1547,378 L 1547,86 C 1547,79.3726 1541.63,74 1535,74 L 1306,74" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-sum1" data-target="b-a5" marker-end="url(#arrow-red)" />
+    <path id="b-partial1" d="M 1290,587 L 1507,587 C 1513.63,587 1519,581.627 1519,575 L 1519,487 C 1519,480.373 1513.63,475 1507,475 L 1446,475" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-v1" data-target="b-a2" marker-end="url(#arrow-red)" />
+    <circle id="b-sum2" fill="white" stroke="#20252b" stroke-width="1.7" cx="1290.0" cy="122.0" r="14.0" />
+    <text id="b-sum2-label" x="1290.0" y="130.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">+</text>
+    <path id="b-sum-current2" d="M 1290,152 L 1290,136" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="raw_sum" data-source="b-v4" data-target="b-sum2" marker-end="url(#arrow-ink)" />
+    <path id="b-sum-partial2" d="M 1290,297 L 1182,297 C 1175.37,297 1170,291.627 1170,285 L 1170,134 C 1170,127.373 1175.37,122 1182,122 L 1276,122" fill="none" stroke="#20252b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="raw_sum" data-source="b-v3" data-target="b-sum2" marker-end="url(#arrow-ink)" />
+    <text id="b-sum-note2" x="1336.0" y="125.78" fill="#52606c" font-family="DejaVu Serif" font-size="17" text-anchor="middle" font-style="italic" font-weight="normal">b2</text>
+    <path id="b-completed2-5" d="M 1290,108 L 1290,90" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-sum2" data-target="b-a5" marker-end="url(#arrow-red)" />
+    <path id="b-partial2" d="M 1290,297 L 1507,297 C 1513.63,297 1519,291.627 1519,285 L 1519,197 C 1519,190.373 1513.63,185 1507,185 L 1446,185" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="candidate" data-source="b-v3" data-target="b-a4" marker-end="url(#arrow-red)" />
+    <text id="b-output" x="1290.0" y="30.36" fill="#20252b" font-family="DejaVu Serif" font-size="29" text-anchor="middle" font-style="normal" font-weight="normal">Output</text>
+    <path id="b-top" d="M 1290,58 L 1290,46" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="b-a5" marker-end="url(#arrow-red)" />
+    <text id="b-caption" x="1325.0" y="851.0" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">(c) Block Attention Residuals</text>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="operator" id="operator">
+    <rect id="op-frame" fill="white" stroke="#52606c" stroke-width="1.7" stroke-dasharray="7 6" x="830" y="182" width="230" height="309" rx="0" />
+    <text id="op-K-title" x="922.0" y="233.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="italic" font-weight="normal">K</text>
+    <rect id="op-K0" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="909" y="255" width="26" height="25" rx="4" />
+    <rect id="op-K1" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="909" y="287" width="26" height="25" rx="4" />
+    <rect id="op-K2" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="909" y="319" width="26" height="25" rx="4" />
+    <rect id="op-K3" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="909" y="351" width="26" height="25" rx="4" />
+    <text id="op-V-title" x="1006.0" y="233.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="italic" font-weight="normal">V</text>
+    <rect id="op-V0" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="993" y="255" width="26" height="25" rx="4" />
+    <rect id="op-V1" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="993" y="287" width="26" height="25" rx="4" />
+    <rect id="op-V2" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="993" y="319" width="26" height="25" rx="4" />
+    <rect id="op-V3" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="993" y="351" width="26" height="25" rx="4" />
+    <rect id="op-q" fill="#dce8cc" stroke="#20252b" stroke-width="1.7" x="847.5" y="330.5" width="27" height="27" rx="4" />
+    <text id="op-q-label" x="861.0" y="352.16" fill="#20252b" font-family="DejaVu Serif" font-size="24" text-anchor="middle" font-style="normal" font-weight="normal">w</text>
+    <text id="op-q-title" x="861.0" y="319.16" fill="#20252b" font-family="DejaVu Serif" font-size="24" text-anchor="middle" font-style="italic" font-weight="normal">Q</text>
+    <circle id="op-dot" fill="white" stroke="#20252b" stroke-width="1.7" cx="922.0" cy="411.0" r="13.0" />
+    <text id="op-dot-label" x="922.0" y="419.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">×</text>
+    <circle id="op-sum" fill="white" stroke="#20252b" stroke-width="1.7" cx="965.0" cy="466.0" r="14.0" />
+    <text id="op-sum-label" x="965.0" y="474.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="normal" font-weight="normal">Σ</text>
+    <path id="op-query" d="M 861,357.5 L 861,399 C 861,405.627 866.373,411 873,411 L 909,411" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="op-q" data-target="op-dot" marker-end="url(#arrow-red)" />
+    <path id="op-key" d="M 922,376 L 922,398" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="op-K3" data-target="op-dot" marker-end="url(#arrow-red)" />
+    <path id="op-weight" d="M 922,424 L 922,454 C 922,460.627 927.373,466 934,466 L 951,466" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="op-dot" data-target="op-sum" marker-end="url(#arrow-red)" />
+    <path id="op-value" d="M 1006,376 L 1006,454 C 1006,460.627 1000.63,466 994,466 L 979,466" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="op-V3" data-target="op-sum" marker-end="url(#arrow-red)" />
+    <path id="op-out" d="M 965,480 L 965,507" fill="none" stroke="#96505b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="data" data-source="op-sum" marker-end="url(#arrow-red)" />
+    <text id="op-label" x="945.0" y="549.5" fill="#20252b" font-family="DejaVu Serif" font-size="25" text-anchor="middle" font-style="italic" font-weight="normal">AttnRes Op (α)</text>
+    <text id="op-key-note" x="949.0" y="596.94" fill="#52606c" font-family="DejaVu Serif" font-size="16" text-anchor="middle" font-style="normal" font-weight="normal">K = RMSNorm(C)</text>
+    <text id="op-value-note" x="952.0" y="625.94" fill="#52606c" font-family="DejaVu Serif" font-size="16" text-anchor="middle" font-style="normal" font-weight="normal">V = C (raw candidates)</text>
+    <text id="op-soft-note" x="948.5" y="654.6" fill="#52606c" font-family="DejaVu Serif" font-size="15" text-anchor="middle" font-style="normal" font-weight="normal">softmax over depth, per token</text>
+    <rect id="op-target-frame" fill="none" stroke="#52606c" stroke-width="1.7" stroke-dasharray="7 6" x="1190" y="49" width="126" height="48" rx="0" />
+    <path id="zoom-top" d="M 1060,182 L 1190,49" fill="none" stroke="#52606c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="callout" stroke-dasharray="3 5" data-source="op-frame" data-target="op-target-frame" />
+    <path id="zoom-bottom" d="M 1060,491 L 1190,97" fill="none" stroke="#52606c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-role="callout" stroke-dasharray="3 5" data-source="op-frame" data-target="op-target-frame" />
+  </g>
+</svg>

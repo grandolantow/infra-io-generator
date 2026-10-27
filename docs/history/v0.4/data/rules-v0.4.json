@@ -1,0 +1,153 @@
+{
+  "version": "0.4-draft",
+  "status": "specification_not_quality_validated",
+  "rules": [
+    {
+      "id": "R01",
+      "evidence_level": "用户明确偏好",
+      "title": "优先浅色论文风",
+      "instruction": "默认白底或浅底；深色背景仅在明确指定时使用。",
+      "feedback_sample_ids": [
+        "28"
+      ],
+      "boundary": "不从单个负例推断所有深色图必然差。"
+    },
+    {
+      "id": "R02",
+      "evidence_level": "用户明确偏好",
+      "title": "40式机制对照优先",
+      "instruction": "有真实基线和改进关系时优先做同尺度对照；保持模块对齐，突出连接和运算的变化。",
+      "feedback_sample_ids": [
+        "40"
+      ],
+      "boundary": "不存在可核实基线时不编造对照。"
+    },
+    {
+      "id": "R03",
+      "evidence_level": "用户明确偏好",
+      "title": "31式主干加展开为标准备选",
+      "instruction": "完整模型介绍优先保留整体主干，并展开最关键模块。",
+      "feedback_sample_ids": [
+        "31"
+      ],
+      "boundary": "不强迫每张局部机制图补一个完整Decoder。"
+    },
+    {
+      "id": "R04",
+      "evidence_level": "用户明确偏好",
+      "title": "保留分块与直观机制配方",
+      "instruction": "混合并行模块用33式；记忆、状态和反馈机制可用34式。",
+      "feedback_sample_ids": [
+        "33",
+        "34"
+      ],
+      "boundary": "按技术关系选，不按固定版式机械套用。"
+    },
+    {
+      "id": "R05",
+      "evidence_level": "用户明确偏好",
+      "title": "参数说明按需出现",
+      "instruction": "必要数值优先贴近对应结构；需要集中讲规模或配置时才增参数侧栏。",
+      "feedback_sample_ids": [
+        "23"
+      ],
+      "boundary": "不把规格表作为每图必选项。"
+    },
+    {
+      "id": "R06",
+      "evidence_level": "用户明确偏好",
+      "title": "允许多个真实结构选项",
+      "instruction": "需要比较时生成实际可查看的多个成图；结构不同，事实与任务边界保持一致。",
+      "feedback_sample_ids": [
+        "40"
+      ],
+      "boundary": "用户已指定布局或只是局部修改时不强制多版本。"
+    },
+    {
+      "id": "R07",
+      "evidence_level": "样本支持的候选规则",
+      "title": "创新机制获得更高视觉权重",
+      "instruction": "通用层适度压缩，重点机制给出足以理解的输入、运算和输出。",
+      "feedback_sample_ids": [
+        "01",
+        "17",
+        "18",
+        "21",
+        "22",
+        "26",
+        "31",
+        "35",
+        "38",
+        "40"
+      ],
+      "boundary": "尚不能由整体评分归因到单一绘图因素。"
+    },
+    {
+      "id": "R08",
+      "evidence_level": "样本支持的候选规则",
+      "title": "细节按层级组织而非一律删减",
+      "instruction": "先呈现主要关系，再展开必要细节；允许高信息密度但避免同权重堆积。",
+      "feedback_sample_ids": [
+        "17",
+        "22",
+        "26",
+        "35",
+        "38"
+      ],
+      "boundary": "10的负面评价不等于排斥所有算子细节。"
+    },
+    {
+      "id": "R09",
+      "evidence_level": "样本支持的候选规则",
+      "title": "对照要揭示机制而非罗列名字",
+      "instruction": "选择对齐的输入输出、共享结构和关键变化；少做仅模块顺序的对照。",
+      "feedback_sample_ids": [
+        "20",
+        "27",
+        "30",
+        "40"
+      ],
+      "boundary": "不能把27或30的评价解释为一律拒绝对照。"
+    },
+    {
+      "id": "R10",
+      "evidence_level": "工程约束",
+      "title": "事实与布局分离",
+      "instruction": "来源支撑的语义契约先冻结，布局只能改变位置、分组与视觉编码。",
+      "feedback_sample_ids": [],
+      "boundary": "不得为了套模板添加未经来源确认的连接。"
+    },
+    {
+      "id": "R11",
+      "evidence_level": "工程约束",
+      "title": "线与汇合具有明确语义",
+      "instruction": "区分数据、控制、残差、状态与选择；加和、拼接、门控不能用含混Merge替代。",
+      "feedback_sample_ids": [],
+      "boundary": "图例只保留当前图实际使用的类型。"
+    },
+    {
+      "id": "R12",
+      "evidence_level": "工程约束",
+      "title": "主次和重复显式表达",
+      "instruction": "同类模块保持视觉一致，重复结构用标注压缩；跨层连接不得因压缩而改变语义。",
+      "feedback_sample_ids": [],
+      "boundary": "固定颜色数量、布局比例并未被用户验证。"
+    },
+    {
+      "id": "R13",
+      "evidence_level": "工程约束",
+      "title": "按目标画布做可编辑交付",
+      "instruction": "默认HTML内联SVG，文字与形状可编辑；按最终嵌入尺寸验收。",
+      "feedback_sample_ids": [],
+      "boundary": "PPTX按既有导出链路处理，不用整图截图伪装可编辑。"
+    },
+    {
+      "id": "R14",
+      "evidence_level": "工程约束",
+      "title": "来源、核验状态与失败透明",
+      "instruction": "原图、来源、重绘图、规则版本和QA状态分别记录；无实际图像时不称已视觉核验。",
+      "feedback_sample_ids": [],
+      "boundary": "本包没有原图资产或生成质量结果。"
+    }
+  ]
+}

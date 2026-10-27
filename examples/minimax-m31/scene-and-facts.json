@@ -1,0 +1,745 @@
+{
+  "id": "portrait",
+  "source_url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/tree/54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e",
+  "scope_out": [
+    "vision frontend internals",
+    "DSpark draft internals"
+  ],
+  "nodes": [
+    {
+      "id": "title",
+      "label": "MiniMax M3.1-Flash",
+      "bbox": [
+        52,
+        28,
+        590,
+        45
+      ],
+      "role": "annotation"
+    },
+    {
+      "id": "subtitle",
+      "label": "Model backbone · bottom to top",
+      "bbox": [
+        52,
+        80,
+        590,
+        30
+      ],
+      "role": "annotation"
+    },
+    {
+      "id": "repeat",
+      "label": "",
+      "bbox": [
+        55,
+        280,
+        570,
+        1120
+      ],
+      "role": "region"
+    },
+    {
+      "id": "repeat-heading",
+      "label": "Decoder block ×60",
+      "bbox": [
+        75,
+        290,
+        530,
+        32
+      ],
+      "role": "annotation"
+    },
+    {
+      "id": "head",
+      "label": "Final norm → LM head",
+      "bbox": [
+        180,
+        180,
+        320,
+        56
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "add2",
+      "label": "+",
+      "bbox": [
+        318,
+        330,
+        44,
+        44
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "moe",
+      "label": "",
+      "bbox": [
+        110,
+        420,
+        445,
+        420
+      ],
+      "role": "region"
+    },
+    {
+      "id": "moe-heading",
+      "label": "MoE · Top-4",
+      "bbox": [
+        130,
+        430,
+        405,
+        32
+      ],
+      "role": "annotation"
+    },
+    {
+      "id": "moe-count",
+      "label": "128 routed\n1 shared",
+      "bbox": [
+        405,
+        430,
+        130,
+        38
+      ],
+      "role": "annotation"
+    },
+    {
+      "id": "mix-add",
+      "label": "+",
+      "bbox": [
+        318,
+        465,
+        44,
+        44
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "mix",
+      "label": "Weighted sum · renorm ×2",
+      "bbox": [
+        170,
+        535,
+        330,
+        42
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "selected",
+      "label": "",
+      "bbox": [
+        140,
+        600,
+        375,
+        80
+      ],
+      "role": "group"
+    },
+    {
+      "id": "E0",
+      "label": "E1",
+      "bbox": [
+        150,
+        615,
+        75,
+        45
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "E1",
+      "label": "E2",
+      "bbox": [
+        240,
+        615,
+        75,
+        45
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "E2",
+      "label": "E3",
+      "bbox": [
+        330,
+        615,
+        75,
+        45
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "E3",
+      "label": "E4",
+      "bbox": [
+        420,
+        615,
+        75,
+        45
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "router",
+      "label": "Sigmoid scores\nBias → Top-4",
+      "bbox": [
+        145,
+        720,
+        170,
+        60
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "shared",
+      "label": "Shared\nexpert",
+      "bbox": [
+        405,
+        720,
+        125,
+        60
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "ffn-in",
+      "label": "",
+      "bbox": [
+        332,
+        808,
+        16,
+        16
+      ],
+      "role": "state"
+    },
+    {
+      "id": "weight-label",
+      "label": "weights",
+      "bbox": [
+        120,
+        533,
+        48,
+        18
+      ],
+      "role": "annotation"
+    },
+    {
+      "id": "norm2",
+      "label": "Norm",
+      "bbox": [
+        180,
+        910,
+        320,
+        52
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "add1",
+      "label": "+",
+      "bbox": [
+        318,
+        1020,
+        44,
+        44
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "msa",
+      "label": "MiniMax Sparse Attention\n64 Q heads / 4 KV heads",
+      "bbox": [
+        180,
+        1140,
+        320,
+        76
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "norm1",
+      "label": "Norm",
+      "bbox": [
+        180,
+        1280,
+        320,
+        52
+      ],
+      "role": "operation"
+    },
+    {
+      "id": "state",
+      "label": "",
+      "bbox": [
+        330,
+        1370,
+        20,
+        20
+      ],
+      "role": "state"
+    },
+    {
+      "id": "input-sheet2",
+      "label": "",
+      "bbox": [
+        150,
+        1450,
+        400,
+        50
+      ],
+      "role": "tensor_sheet"
+    },
+    {
+      "id": "input-sheet1",
+      "label": "",
+      "bbox": [
+        145,
+        1455,
+        400,
+        50
+      ],
+      "role": "tensor_sheet"
+    },
+    {
+      "id": "input",
+      "label": "Text / image / video embeddings",
+      "bbox": [
+        140,
+        1460,
+        400,
+        50
+      ],
+      "role": "tensor"
+    },
+    {
+      "id": "first-layers",
+      "label": "Layers 0–2: dense FFN\nLayers 3–59: MoE",
+      "bbox": [
+        130,
+        850,
+        195,
+        48
+      ],
+      "role": "annotation"
+    },
+    {
+      "id": "moe-note",
+      "label": "E1–E4: examples\nSelected IDs vary",
+      "bbox": [
+        365,
+        850,
+        210,
+        48
+      ],
+      "role": "annotation"
+    },
+    {
+      "id": "foot",
+      "label": "All 60 layers use MSA · d_model 6144\nMSA: 16 blocks ×128 tokens; causal mask retained.\nVision frontend and auxiliary DSpark draft are collapsed.",
+      "bbox": [
+        55,
+        1540,
+        575,
+        75
+      ],
+      "role": "annotation"
+    },
+    {
+      "id": "source",
+      "label": "Official config @54e4e69d · MSA paper v1 §3.1",
+      "bbox": [
+        55,
+        1622,
+        575,
+        24
+      ],
+      "role": "annotation"
+    }
+  ],
+  "edges": [
+    {
+      "id": "select",
+      "from": "router",
+      "to": "selected",
+      "kind": "selection",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": [
+        [
+          230,
+          700
+        ],
+        [
+          327.5,
+          700
+        ]
+      ]
+    },
+    {
+      "id": "selected-data",
+      "from": "ffn-in",
+      "to": "selected",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0,
+        0.5
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "waypoints": [
+        [
+          128,
+          816
+        ],
+        [
+          128,
+          640
+        ]
+      ]
+    },
+    {
+      "id": "token-router",
+      "from": "ffn-in",
+      "to": "router",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": [
+        [
+          340,
+          795
+        ],
+        [
+          230,
+          795
+        ]
+      ]
+    },
+    {
+      "id": "token-shared",
+      "from": "ffn-in",
+      "to": "shared",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": [
+        [
+          340,
+          795
+        ],
+        [
+          467.5,
+          795
+        ]
+      ]
+    },
+    {
+      "id": "experts-mix",
+      "from": "selected",
+      "to": "mix",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": [
+        [
+          327.5,
+          590
+        ],
+        [
+          335,
+          590
+        ]
+      ]
+    },
+    {
+      "id": "weights",
+      "from": "router",
+      "to": "mix",
+      "kind": "selection",
+      "label": "",
+      "source_port": [
+        0,
+        0.5
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "waypoints": [
+        [
+          118,
+          750
+        ],
+        [
+          118,
+          556
+        ]
+      ]
+    },
+    {
+      "id": "mix-sum",
+      "from": "mix",
+      "to": "mix-add",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": [
+        [
+          335,
+          520
+        ],
+        [
+          340,
+          520
+        ]
+      ]
+    },
+    {
+      "id": "shared-sum",
+      "from": "shared",
+      "to": "mix-add",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        1,
+        0.5
+      ],
+      "target_port": [
+        1,
+        0.5
+      ],
+      "waypoints": [
+        [
+          575,
+          750
+        ],
+        [
+          575,
+          487
+        ]
+      ]
+    },
+    {
+      "id": "ffn-result",
+      "from": "mix-add",
+      "to": "add2",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": []
+    },
+    {
+      "id": "to-state",
+      "from": "input",
+      "to": "state",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": []
+    },
+    {
+      "id": "to-norm",
+      "from": "state",
+      "to": "norm1",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": []
+    },
+    {
+      "id": "to-msa",
+      "from": "norm1",
+      "to": "msa",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": []
+    },
+    {
+      "id": "msa-result",
+      "from": "msa",
+      "to": "add1",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": []
+    },
+    {
+      "id": "next-norm",
+      "from": "add1",
+      "to": "norm2",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": []
+    },
+    {
+      "id": "norm-ffn",
+      "from": "norm2",
+      "to": "ffn-in",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": []
+    },
+    {
+      "id": "logits",
+      "from": "add2",
+      "to": "head",
+      "kind": "data",
+      "label": "",
+      "source_port": [
+        0.5,
+        0
+      ],
+      "target_port": [
+        0.5,
+        1
+      ],
+      "waypoints": []
+    },
+    {
+      "id": "residual-attn",
+      "from": "state",
+      "to": "add1",
+      "kind": "residual",
+      "label": "",
+      "source_port": [
+        0,
+        0.5
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "waypoints": [
+        [
+          85,
+          1380
+        ],
+        [
+          85,
+          1042
+        ]
+      ]
+    },
+    {
+      "id": "residual-ffn",
+      "from": "add1",
+      "to": "add2",
+      "kind": "residual",
+      "label": "",
+      "source_port": [
+        1,
+        0.5
+      ],
+      "target_port": [
+        1,
+        0.5
+      ],
+      "waypoints": [
+        [
+          600,
+          1042
+        ],
+        [
+          600,
+          352
+        ]
+      ]
+    }
+  ],
+  "required_visual_facts": [],
+  "authored_layout": true,
+  "review_status": "pending_render_review"
+}

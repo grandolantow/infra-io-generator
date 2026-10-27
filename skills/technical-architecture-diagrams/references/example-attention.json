@@ -1,0 +1,269 @@
+{
+  "id": "attention_residuals",
+  "title": "Attention Residuals",
+  "subtitle": "用深度方向的内容相关加权，替换固定单位权重累加",
+  "source_url": "https://github.com/MoonshotAI/Attention-Residuals",
+  "paper_title": "Attention Residuals",
+  "source_locator": "arXiv 2603.15031v1 §3.1 Eq.2–4; official README Overview and forward pseudocode",
+  "secondary_primary_sources": [
+    "https://arxiv.org/abs/2603.15031"
+  ],
+  "scope_in": [
+    "标准PreNorm残差与Full AttnRes对照",
+    "单个子层的输入聚合",
+    "权重生成与value加权两条路径"
+  ],
+  "scope_out": [
+    "Block AttnRes具体缓存和边界逻辑",
+    "训练性能及数值收益",
+    "序列方向self-attention内部实现"
+  ],
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "标准残差可展开为嵌入与此前子层输出的单位权重和。",
+      "locator": "README Overview"
+    },
+    {
+      "id": "F2",
+      "statement": "Full AttnRes沿网络深度聚合此前表示。",
+      "locator": "paper §3.1 Eq.4"
+    },
+    {
+      "id": "F3",
+      "statement": "每个聚合位置有可学习pseudo-query w_l。",
+      "locator": "paper §3.1 Eq.3"
+    },
+    {
+      "id": "F4",
+      "statement": "RMSNorm归一化候选表示后生成key。",
+      "locator": "paper §3.1 Eq.2"
+    },
+    {
+      "id": "F5",
+      "statement": "query与key点积得到logits，softmax沿深度候选轴归一化。",
+      "locator": "paper §3.1 Eq.2"
+    },
+    {
+      "id": "F6",
+      "statement": "加权求和使用未经过key归一化的原始value。",
+      "locator": "paper §3.1 Eq.3–4"
+    },
+    {
+      "id": "F7",
+      "statement": "聚合结果进入原有Norm和子层计算，产生新的子层输出。",
+      "locator": "README forward pseudocode"
+    },
+    {
+      "id": "F8",
+      "statement": "Full与Block是不同实现；本图只展开Full。",
+      "locator": "README Block AttnRes",
+      "fact_role": "scope_boundary"
+    }
+  ],
+  "baseline": {
+    "name": "标准残差：单位权重累加",
+    "nodes": [
+      {
+        "id": "b_hist",
+        "label": "此前输出 v_i",
+        "detail": "含初始嵌入 v_0"
+      },
+      {
+        "id": "b_sum",
+        "label": "固定权重求和",
+        "detail": "h_l = Σ v_i"
+      },
+      {
+        "id": "b_norm",
+        "label": "子层 Norm",
+        "detail": ""
+      },
+      {
+        "id": "b_layer",
+        "label": "子层 F_l",
+        "detail": ""
+      },
+      {
+        "id": "b_new",
+        "label": "新输出 v_l",
+        "detail": ""
+      },
+      {
+        "id": "b_next",
+        "label": "后续层累加",
+        "detail": "新输出加入历史"
+      }
+    ],
+    "edges": [
+      {
+        "from": "b_hist",
+        "to": "b_sum",
+        "label": "全部权重=1",
+        "kind": "data"
+      },
+      {
+        "from": "b_sum",
+        "to": "b_norm",
+        "label": "",
+        "kind": "data"
+      },
+      {
+        "from": "b_norm",
+        "to": "b_layer",
+        "label": "",
+        "kind": "data"
+      },
+      {
+        "from": "b_layer",
+        "to": "b_new",
+        "label": "",
+        "kind": "data"
+      },
+      {
+        "from": "b_new",
+        "to": "b_next",
+        "label": "",
+        "kind": "data"
+      },
+      {
+        "from": "b_hist",
+        "to": "b_next",
+        "label": "保留此前项",
+        "kind": "residual"
+      }
+    ]
+  },
+  "proposed": {
+    "name": "Full AttnRes：按内容选择历史",
+    "nodes": [
+      {
+        "id": "p_hist",
+        "label": "历史表示 V",
+        "detail": "v_0 … v_(l−1)"
+      },
+      {
+        "id": "p_norm",
+        "label": "RMSNorm keys",
+        "detail": "只用于计算权重"
+      },
+      {
+        "id": "p_query",
+        "label": "可学习查询 w_l",
+        "detail": "每个聚合位置独立"
+      },
+      {
+        "id": "p_dot",
+        "label": "点积得分",
+        "detail": "logits_i = w_l·K_i"
+      },
+      {
+        "id": "p_softmax",
+        "label": "深度 Softmax",
+        "detail": "对历史候选归一化"
+      },
+      {
+        "id": "p_sum",
+        "label": "加权求和",
+        "detail": "h_l = Σ α_i v_i"
+      },
+      {
+        "id": "p_sublayer",
+        "label": "Norm → F_l",
+        "detail": "原有子层计算"
+      },
+      {
+        "id": "p_new",
+        "label": "新输出 v_l",
+        "detail": ""
+      },
+      {
+        "id": "p_next",
+        "label": "供后续层读取",
+        "detail": "加入历史候选集合"
+      }
+    ],
+    "edges": [
+      {
+        "from": "p_hist",
+        "to": "p_norm",
+        "label": "key路径",
+        "kind": "data"
+      },
+      {
+        "from": "p_norm",
+        "to": "p_dot",
+        "label": "K_i",
+        "kind": "data"
+      },
+      {
+        "from": "p_query",
+        "to": "p_dot",
+        "label": "w_l",
+        "kind": "data"
+      },
+      {
+        "from": "p_dot",
+        "to": "p_softmax",
+        "label": "",
+        "kind": "data"
+      },
+      {
+        "from": "p_softmax",
+        "to": "p_sum",
+        "label": "α_i",
+        "kind": "selection"
+      },
+      {
+        "from": "p_hist",
+        "to": "p_sum",
+        "label": "原始value旁路",
+        "kind": "data"
+      },
+      {
+        "from": "p_sum",
+        "to": "p_sublayer",
+        "label": "",
+        "kind": "data"
+      },
+      {
+        "from": "p_sublayer",
+        "to": "p_new",
+        "label": "",
+        "kind": "data"
+      },
+      {
+        "from": "p_new",
+        "to": "p_next",
+        "label": "",
+        "kind": "data"
+      },
+      {
+        "from": "p_hist",
+        "to": "p_next",
+        "label": "保留历史",
+        "kind": "state_read"
+      }
+    ]
+  },
+  "mechanism_notes": [
+    "注意力轴是深度候选，不是token序列。",
+    "key归一化路径与原始value路径应分开。",
+    "softmax后的权重非负且和为1。"
+  ],
+  "uncertainties": [
+    "历史第40张是否为官方overview.png尚未确认；作为同主题原始锚点使用。"
+  ],
+  "reference_figure_id": "Paper Figure 1; identical official README overview asset",
+  "reference_identity": "同主题原始来源锚点；未确认与历史展示图逐字节一致",
+  "review_status": "source_checked_by_authoring_agent_pending_independent_review",
+  "source_version": "retrieved 2026-10-26; arXiv explicit version noted in locator",
+  "paper_pdf_path": "facts_1/Attention_Residuals.pdf",
+  "paper_pdf_sha256": "e5831b0db1347606453b5176b0142115a18887b6a9c2e1d05a266d4805a26b2f",
+  "allowed_omissions": [
+    {
+      "item": "Block AttnRes",
+      "reason": "该题固定比较标准残差与Full AttnRes；Block仅作为原图参照与范围说明，不混入Full的候选集合。"
+    }
+  ]
+}

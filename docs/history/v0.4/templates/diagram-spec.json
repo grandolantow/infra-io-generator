@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1",
+  "status": "template_requires_evidence",
+  "task_id": "REPLACE_WITH_TASK_ID",
+  "brief": {
+    "audience": "AI Infra / NPU engineers",
+    "core_question": null,
+    "single_main_conclusion": null,
+    "scope_in": [],
+    "scope_out": [],
+    "canvas": {
+      "width": null,
+      "height": null,
+      "unit": "px",
+      "origin": "user_or_host_layout"
+    },
+    "preferred_recipe": "auto",
+    "requested_variants": 1,
+    "parameter_panel": "only_if_needed"
+  },
+  "sources": [
+    {
+      "source_id": "src-1",
+      "kind": "paper_or_official_code_or_blog",
+      "title": null,
+      "url_or_file": null,
+      "version": null,
+      "locator": null,
+      "verified": false,
+      "original_asset": null,
+      "sha256": null
+    }
+  ],
+  "required_facts": [
+    {
+      "fact_id": "fact-1",
+      "statement": null,
+      "source_refs": [],
+      "verification_status": "unverified"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "node-1",
+      "label": null,
+      "semantic_type": null,
+      "fact_refs": [],
+      "scenario_id": null,
+      "group_id": null
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "edge-1",
+      "from": null,
+      "to": null,
+      "kind": null,
+      "join_operation": null,
+      "fact_refs": [],
+      "scenario_id": null
+    }
+  ],
+  "edge_kind_vocabulary": [
+    "data",
+    "control",
+    "residual",
+    "state_read",
+    "state_update",
+    "selection"
+  ],
+  "scenarios": [],
+  "groups": [],
+  "uncertainties": [],
+  "allowed_omissions": [],
+  "layout_variants": [
+    {
+      "variant_id": "A",
+      "recipe": null,
+      "required_fact_ids": [],
+      "layout_file": null,
+      "svg_file": null
+    }
+  ],
+  "qa": {
+    "semantic_checked": false,
+    "rendered": false,
+    "target_size_checked": false,
+    "critical_error_count": null,
+    "status": "not_run"
+  }
+}

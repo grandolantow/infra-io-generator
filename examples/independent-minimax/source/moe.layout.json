@@ -1,0 +1,628 @@
+{
+  "id": "moe",
+  "title": "Mixture of Experts",
+  "canvas": {
+    "width": 1420,
+    "height": 1780
+  },
+  "regions": [],
+  "nodes": [
+    {
+      "id": "moe_title",
+      "label": "Mixture of Experts",
+      "bbox": [
+        60,
+        34,
+        1300,
+        48
+      ],
+      "role": "text",
+      "size": 35,
+      "shape": "text",
+      "bold": true,
+      "align": "left"
+    },
+    {
+      "id": "moe_subtitle",
+      "label": "Layers 3–59  ·  selection bias affects expert choice; original scores determine routed weights",
+      "bbox": [
+        60,
+        94,
+        1300,
+        38
+      ],
+      "role": "text-secondary",
+      "size": 21,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "moe_tag",
+      "label": "DETAIL B",
+      "bbox": [
+        1210,
+        38,
+        150,
+        38
+      ],
+      "role": "text-secondary",
+      "size": 21,
+      "shape": "text",
+      "bold": true,
+      "align": "right"
+    },
+    {
+      "id": "moe_token",
+      "label": "z = Norm(h)",
+      "bbox": [
+        540,
+        165,
+        340,
+        65
+      ],
+      "role": "communication",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "router",
+      "label": "Router: sigmoid(W_r z)\n128 original scores s_e",
+      "bbox": [
+        100,
+        350,
+        340,
+        90
+      ],
+      "role": "state",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "router_bias",
+      "label": "Correction bias b_e\nSelection only",
+      "bbox": [
+        495,
+        510,
+        220,
+        75
+      ],
+      "role": "rank1",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "expert_select",
+      "label": "S = Top4(s + b)\n4 of 128 routed experts",
+      "bbox": [
+        100,
+        680,
+        340,
+        90
+      ],
+      "role": "rank1",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "selected_experts",
+      "label": "Selected experts\nE_e(z), e in S\n4 of 128 routed\nExpert width = 3072",
+      "bbox": [
+        570,
+        680,
+        350,
+        125
+      ],
+      "role": "rank0",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "shared_expert",
+      "label": "Shared expert E_s(z)\n1 always-on expert\nExpert width = 3072",
+      "bbox": [
+        1040,
+        680,
+        280,
+        110
+      ],
+      "role": "communication",
+      "size": 21,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "unbiased_weights",
+      "label": "Unbiased renormalization\nw_e = s_e / Σ_{r in S} s_r\nUse original scores s_e\nBias excluded",
+      "bbox": [
+        100,
+        945,
+        340,
+        140
+      ],
+      "role": "state",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "weighted_sum",
+      "label": "Weighted routed sum\nΣ_{e in S} w_e E_e(z)",
+      "bbox": [
+        570,
+        1145,
+        350,
+        95
+      ],
+      "role": "rank0",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "routed_scale",
+      "label": "Routed scale ×2",
+      "bbox": [
+        570,
+        1315,
+        350,
+        70
+      ],
+      "role": "rank0",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "shared_add",
+      "label": "+",
+      "bbox": [
+        721,
+        1485,
+        48,
+        48
+      ],
+      "role": "operator",
+      "size": 29,
+      "shape": "ellipse",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "moe_output",
+      "label": "MoE output",
+      "bbox": [
+        570,
+        1615,
+        350,
+        65
+      ],
+      "role": "communication",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "original_score_label",
+      "label": "original scores s_e",
+      "bbox": [
+        290,
+        470,
+        200,
+        40
+      ],
+      "role": "text-secondary",
+      "size": 21,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "expert_ids_label",
+      "label": "IDs",
+      "bbox": [
+        461,
+        682,
+        85,
+        35
+      ],
+      "role": "text-secondary",
+      "size": 18,
+      "shape": "text",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "weight_subset_label",
+      "label": "selected set S",
+      "bbox": [
+        290,
+        846,
+        180,
+        34
+      ],
+      "role": "text-secondary",
+      "size": 18,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "unbiased_scores_label",
+      "label": "s_e",
+      "bbox": [
+        66,
+        866,
+        70,
+        35
+      ],
+      "role": "text-secondary",
+      "size": 20,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "weight_edge_label",
+      "label": "w_e",
+      "bbox": [
+        455,
+        1124,
+        65,
+        35
+      ],
+      "role": "text-secondary",
+      "size": 20,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "shared_bypass_note",
+      "label": "Shared output bypasses\nrouted mixing, renormalization\nand the routed ×2 scale.",
+      "bbox": [
+        1005,
+        940,
+        345,
+        94
+      ],
+      "role": "text-secondary",
+      "size": 22,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "moe_legend",
+      "label": "Solid arrows: token data, scores, weights and expert outputs.   Dashed arrows: selection/control.\nRouted and shared expert boxes are schematic; the 128 experts are not drawn individually.",
+      "bbox": [
+        60,
+        1712,
+        1300,
+        57
+      ],
+      "role": "text-secondary",
+      "size": 18,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    }
+  ],
+  "edges": [
+    {
+      "id": "token_to_router",
+      "source": "moe_token",
+      "target": "router",
+      "source_port": [
+        0.15,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [
+        [
+          591,
+          280
+        ],
+        [
+          270,
+          280
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "token_to_routed_experts",
+      "source": "moe_token",
+      "target": "selected_experts",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [
+        [
+          710,
+          285
+        ],
+        [
+          745,
+          285
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "token_to_shared",
+      "source": "moe_token",
+      "target": "shared_expert",
+      "source_port": [
+        0.85,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [
+        [
+          829,
+          280
+        ],
+        [
+          1180,
+          280
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "router_to_selection",
+      "source": "router",
+      "target": "expert_select",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "bias_to_selection",
+      "source": "router_bias",
+      "target": "expert_select",
+      "source_port": [
+        0,
+        0.5
+      ],
+      "target_port": [
+        0.8,
+        0
+      ],
+      "points": [
+        [
+          460,
+          547.5
+        ],
+        [
+          460,
+          620
+        ],
+        [
+          372,
+          620
+        ]
+      ],
+      "kind": "selection",
+      "label": ""
+    },
+    {
+      "id": "selection_to_experts",
+      "source": "expert_select",
+      "target": "selected_experts",
+      "source_port": [
+        1,
+        0.5
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "points": [
+        [
+          505,
+          725
+        ],
+        [
+          505,
+          742.5
+        ]
+      ],
+      "kind": "selection",
+      "label": ""
+    },
+    {
+      "id": "selection_to_weights",
+      "source": "expert_select",
+      "target": "unbiased_weights",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "selection",
+      "label": ""
+    },
+    {
+      "id": "scores_to_weights",
+      "source": "router",
+      "target": "unbiased_weights",
+      "source_port": [
+        0,
+        0.5
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "points": [
+        [
+          60,
+          395
+        ],
+        [
+          60,
+          1015
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "experts_to_sum",
+      "source": "selected_experts",
+      "target": "weighted_sum",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "weights_to_sum",
+      "source": "unbiased_weights",
+      "target": "weighted_sum",
+      "source_port": [
+        1,
+        0.5
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "points": [
+        [
+          515,
+          1015
+        ],
+        [
+          515,
+          1192.5
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "sum_to_scale",
+      "source": "weighted_sum",
+      "target": "routed_scale",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "scale_to_add",
+      "source": "routed_scale",
+      "target": "shared_add",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "shared_to_add",
+      "source": "shared_expert",
+      "target": "shared_add",
+      "source_port": [
+        1,
+        0.5
+      ],
+      "target_port": [
+        1,
+        0.5
+      ],
+      "points": [
+        [
+          1370,
+          735
+        ],
+        [
+          1370,
+          1509
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "add_to_moe_output",
+      "source": "shared_add",
+      "target": "moe_output",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    }
+  ]
+}

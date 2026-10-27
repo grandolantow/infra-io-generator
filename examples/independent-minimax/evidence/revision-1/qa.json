@@ -1,0 +1,24 @@
+{
+  "status": "needs_local_revision",
+  "findings": [
+    {
+      "id": "I04",
+      "view": "moe",
+      "severity": "minor",
+      "finding": "The original scores annotation intersects the bias selection dashed path.",
+      "repair": "Move the annotation upward into reserved whitespace."
+    }
+  ],
+  "resolved_from_first_generation": [
+    "Explicit line breaks remove module text overflow.",
+    "Residual and other orthogonal turns now use Graph rounded corners.",
+    "Module boundary clearances and title entry corridors repaired.",
+    "The routed token-data path no longer crosses the correction-bias box."
+  ],
+  "actual_checks": [
+    "Viewed all three Graph PNGs.",
+    "All Graph label bounding boxes remain inside assigned bounding boxes.",
+    "Actual mouse drag executed for one module on each page; attached edges changed and unrelated nodes did not."
+  ],
+  "edit_limit": "Fixed-waypoint edges retain endpoint attachment during drag, but can become diagonal after an arbitrary drag; layout reflow is not claimed."
+}

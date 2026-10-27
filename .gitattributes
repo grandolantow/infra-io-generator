@@ -1,0 +1,2 @@
+# Preserve the upstream license bytes, including their original whitespace.
+examples/independent-minimax/source-input/sources/LICENSE -whitespace

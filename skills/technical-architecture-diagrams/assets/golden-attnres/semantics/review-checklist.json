@@ -1,0 +1,102 @@
+{
+  "task_id": "attention_residuals_golden",
+  "status": "ready_for_artifact_review_not_yet_passed",
+  "critical_semantic_checks": [
+    {
+      "id": "C01",
+      "check": "Four aligned illustrative sublayers and S=2 boundary are declared; no actual model-depth claim.",
+      "result": "not_run"
+    },
+    {
+      "id": "C02",
+      "check": "Standard identity/current raw output enter each + exactly once; no duplicate expanded-history input.",
+      "result": "not_run"
+    },
+    {
+      "id": "C03",
+      "check": "Standard coefficients are 1, never 1/C uniform average.",
+      "result": "not_run"
+    },
+    {
+      "id": "C04",
+      "check": "Full candidate counts before F1,F2,F3,F4,output are 1,2,3,4,5.",
+      "result": "not_run"
+    },
+    {
+      "id": "C05",
+      "check": "Block candidate counts before F1,F2,F3,F4,output are 1,2,2,3,3.",
+      "result": "not_run"
+    },
+    {
+      "id": "C06",
+      "check": "Block F3 reads v0,b1, not separately readable v1/v2 across completed-block boundary.",
+      "result": "not_run"
+    },
+    {
+      "id": "C07",
+      "check": "Block F4 includes current partial v3 beside v0,b1; omission is critical.",
+      "result": "not_run"
+    },
+    {
+      "id": "C08",
+      "check": "b1=v1+v2 and b2=v3+v4 use raw outputs only; no weighted h or embedding in local sums.",
+      "result": "not_run"
+    },
+    {
+      "id": "C09",
+      "check": "Block-first input omits empty partial, not extra zero softmax candidate.",
+      "result": "not_run"
+    },
+    {
+      "id": "C10",
+      "check": "v0=b0 remains separate in later Full/Block aggregation and readout.",
+      "result": "not_run"
+    },
+    {
+      "id": "C11",
+      "check": "Independent w_l per aggregation; singleton may simplify to direct edge.",
+      "result": "not_run"
+    },
+    {
+      "id": "C12",
+      "check": "Normalized keys only for scores; raw values go to final weighted sum.",
+      "result": "not_run"
+    },
+    {
+      "id": "C13",
+      "check": "Softmax over candidate depth; dot and weighted-sum operators are distinguishable.",
+      "result": "not_run"
+    },
+    {
+      "id": "C14",
+      "check": "Local + and α operators differ semantically and have actual source-specific attachments.",
+      "result": "not_run"
+    },
+    {
+      "id": "C15",
+      "check": "Shared buses preserve candidate-source identity without adding, duplicating or erasing inputs.",
+      "result": "not_run"
+    },
+    {
+      "id": "C16",
+      "check": "Labels/boxes/arrows do not visually change causal relations; metadata edges alone cannot establish correctness.",
+      "result": "not_run"
+    }
+  ],
+  "candidate_count_table": {
+    "full": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "block": [
+      1,
+      2,
+      2,
+      3,
+      3
+    ]
+  }
+}

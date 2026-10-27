@@ -1,0 +1,28 @@
+{
+  "example": "attnres",
+  "palette": "historical-golden",
+  "renderer": "official draw.io Graph + Inkscape CLI",
+  "checks": [
+    {
+      "figure": "attnres_refined",
+      "canvas": {
+        "width": 1600,
+        "height": 900,
+        "page": 0
+      },
+      "metrics": {
+        "text": 61,
+        "foreignObject": 0,
+        "images": 0,
+        "embedded_native_model": true
+      },
+      "javascript_errors": [],
+      "edit_probe": "not_run"
+    }
+  ],
+  "not_run": [
+    "draw.io Desktop/EditorUi",
+    "PPTX edit",
+    "user preference evaluation"
+  ]
+}

@@ -1,0 +1,282 @@
+{
+  "canvas": {
+    "width": 1420,
+    "height": 1780,
+    "page": 0
+  },
+  "renderer": "draw.io Graph from official app.min.js; 32.6.1",
+  "vertices": 21,
+  "edges": 14,
+  "cellIds": [
+    "0",
+    "1",
+    "token_to_router",
+    "token_to_routed_experts",
+    "token_to_shared",
+    "router_to_selection",
+    "bias_to_selection",
+    "selection_to_experts",
+    "selection_to_weights",
+    "scores_to_weights",
+    "experts_to_sum",
+    "weights_to_sum",
+    "sum_to_scale",
+    "scale_to_add",
+    "shared_to_add",
+    "add_to_moe_output",
+    "moe_title",
+    "moe_subtitle",
+    "moe_tag",
+    "moe_token",
+    "router",
+    "router_bias",
+    "expert_select",
+    "selected_experts",
+    "shared_expert",
+    "unbiased_weights",
+    "weighted_sum",
+    "routed_scale",
+    "shared_add",
+    "moe_output",
+    "original_score_label",
+    "expert_ids_label",
+    "weight_subset_label",
+    "unbiased_scores_label",
+    "weight_edge_label",
+    "shared_bypass_note",
+    "moe_legend"
+  ],
+  "source": "Native .drawio XML decoded by mxCodec; shapes and connectors rendered by mxGraph, not manually authored SVG",
+  "desktop_drawio_tested": false,
+  "edit_flags": {
+    "enabled": true,
+    "movable": true,
+    "handlerEnabled": true,
+    "cellAt": "shared_expert",
+    "svg": true,
+    "pointer": true,
+    "canvas": "<g><g></g><g><g style=\"visibility: visible;\"><path d=\"M 591 230 L 591 274 Q 591 280 585 280 L 276 280 Q 270 280 270 286 L 270 336.76\" fill=\"none\" stroke=\"white\" stroke-width=\"10\" stroke-miterlimit=\"10\" pointer-events=\"stroke\" style=\"stroke: light-dark(rgb(40, 52, 61), rgb(185, 196, 203));\" visibilit"
+  },
+  "event_log": [
+    [
+      "move",
+      "shared_expert",
+      1180,
+      735
+    ],
+    [
+      "down",
+      "shared_expert",
+      1180,
+      735
+    ],
+    [
+      "move",
+      "shared_expert",
+      1182.5,
+      736.25
+    ],
+    [
+      "move",
+      "shared_expert",
+      1185,
+      737.5
+    ],
+    [
+      "move",
+      null,
+      1187.5,
+      738.75
+    ],
+    [
+      "move",
+      null,
+      1190,
+      740
+    ],
+    [
+      "move",
+      null,
+      1192.5,
+      741.25
+    ],
+    [
+      "move",
+      null,
+      1195,
+      742.5
+    ],
+    [
+      "move",
+      null,
+      1197.5,
+      743.75
+    ],
+    [
+      "move",
+      null,
+      1200,
+      745
+    ],
+    [
+      "move",
+      null,
+      1202.5,
+      746.25
+    ],
+    [
+      "move",
+      null,
+      1205,
+      747.5
+    ],
+    [
+      "move",
+      null,
+      1207.5,
+      748.75
+    ],
+    [
+      "move",
+      null,
+      1210,
+      750
+    ],
+    [
+      "up",
+      null,
+      1210,
+      750
+    ]
+  ],
+  "unrelated_nodes_changed": [],
+  "edit_test": {
+    "method": "Select a child cell using native graph API, then actual Playwright mouse drag in mxGraph editor",
+    "cell_id": "shared_expert",
+    "before": {
+      "geometry": {
+        "x": 1040,
+        "y": 680
+      },
+      "screen": {
+        "x": 1180,
+        "y": 735
+      },
+      "edges": [
+        {
+          "id": "token_to_shared",
+          "points": [
+            {
+              "x": 829,
+              "y": 230
+            },
+            {
+              "x": 829,
+              "y": 280
+            },
+            {
+              "x": 1180,
+              "y": 280
+            },
+            {
+              "x": 1180,
+              "y": 680
+            }
+          ]
+        },
+        {
+          "id": "shared_to_add",
+          "points": [
+            {
+              "x": 1320,
+              "y": 735
+            },
+            {
+              "x": 1370,
+              "y": 735
+            },
+            {
+              "x": 1370,
+              "y": 1509
+            },
+            {
+              "x": 769,
+              "y": 1509
+            }
+          ]
+        }
+      ]
+    },
+    "after": {
+      "geometry": {
+        "x": 1070,
+        "y": 695
+      },
+      "edges": [
+        {
+          "id": "token_to_shared",
+          "source": "moe_token",
+          "target": "shared_expert",
+          "points": [
+            {
+              "x": 829,
+              "y": 230
+            },
+            {
+              "x": 829,
+              "y": 280
+            },
+            {
+              "x": 1180,
+              "y": 280
+            },
+            {
+              "x": 1210,
+              "y": 695
+            }
+          ]
+        },
+        {
+          "id": "shared_to_add",
+          "source": "shared_expert",
+          "target": "shared_add",
+          "points": [
+            {
+              "x": 1350,
+              "y": 750
+            },
+            {
+              "x": 1370,
+              "y": 735
+            },
+            {
+              "x": 1370,
+              "y": 1509
+            },
+            {
+              "x": 769,
+              "y": 1509
+            }
+          ]
+        }
+      ]
+    },
+    "moved": true,
+    "edge_points_changed": true,
+    "native_xml_reserialized": true
+  },
+  "label_mode": "plain",
+  "source_drawio_sha256": "29a2e3e38695228abaa7631c1b556f7d64de7d7c19612a4eb0ecfce0d4a54581",
+  "svg_sha256": "324927658feb57871fd0f37f046d64c815389bdd29b1bcd3a21d1c3721482ae9",
+  "library_source": "https://raw.githubusercontent.com/jgraph/drawio/dev/src/main/webapp/js/app.min.js",
+  "library_sha256": "f8a3fcdcf4fcc49bdcb78ce06c20ad17006a72a4f8f0c1514a834e7f70bdf03c",
+  "native_shape_metrics": {
+    "text": 36,
+    "foreignObject": 0,
+    "images": 0,
+    "embedded_native_model": true
+  },
+  "javascript_errors": [],
+  "png": "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/moe-paper-clear.png",
+  "svg": "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/moe-paper-clear.svg"
+}

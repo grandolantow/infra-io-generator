@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "target": "paper",
+  "palette": "blue-neutral",
+  "customized": false,
+  "tokens": {
+    "text": {
+      "primary": "#1D1D1A",
+      "secondary": "#596671"
+    },
+    "background": {
+      "canvas": "#FFFFFF",
+      "panel": "#F2F4F6"
+    },
+    "line": {
+      "default": "#AEB8C0",
+      "strong": "#1D1D1A"
+    },
+    "accent": {
+      "primary": "#38698F"
+    },
+    "compute": {
+      "fill": "#EDF4FA",
+      "stroke": "#688BA8"
+    },
+    "state": {
+      "fill": "#F2F5F8",
+      "stroke": "#8193A3"
+    },
+    "communication": {
+      "fill": "#D7E3EC",
+      "stroke": "#628D9B"
+    },
+    "rank0": {
+      "fill": "#E6EFF7",
+      "stroke": "#5D83A4"
+    },
+    "rank1": {
+      "fill": "#F0F3F6",
+      "stroke": "#7D8E9E"
+    }
+  }
+}

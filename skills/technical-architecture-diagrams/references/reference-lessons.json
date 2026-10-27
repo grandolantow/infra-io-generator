@@ -1,0 +1,130 @@
+[
+  {
+    "id": "A-L01",
+    "rule": "全局主干和局部展开共享模块名称及对应关系；展开区仍显示输入与输出。",
+    "evidence": [
+      "A001",
+      "A002",
+      "A007",
+      "A021",
+      "A032"
+    ],
+    "status": "agent_inferred_candidate",
+    "boundary": "仅局部机制任务无需补完整模型主干。"
+  },
+  {
+    "id": "A-L02",
+    "rule": "比较方案采用同一抽象粒度并对齐共同结构，差异用具体运算及连接表达。",
+    "evidence": [
+      "A003",
+      "A011",
+      "A015",
+      "A019",
+      "A024"
+    ],
+    "status": "agent_inferred_candidate",
+    "boundary": "没有真实共有结构时不为对齐新增模块。"
+  },
+  {
+    "id": "A-L03",
+    "rule": "模块存在不同输入角色时标明角色及来源，尤其查询、键和值。",
+    "evidence": [
+      "A006",
+      "A017",
+      "A022",
+      "A023",
+      "A024"
+    ],
+    "status": "agent_inferred_candidate",
+    "boundary": "只在来源说明这些角色且讲解需要时展开，不将所有输入机械标QKV。"
+  },
+  {
+    "id": "A-L04",
+    "rule": "可训练与冻结部分同时使用文字或图例符号，不能仅凭颜色区分。",
+    "evidence": [
+      "A013",
+      "A015",
+      "A016",
+      "A019",
+      "A020",
+      "A029"
+    ],
+    "status": "agent_inferred_candidate",
+    "boundary": "训练状态不是当前任务重点时，不占据额外主视觉。"
+  },
+  {
+    "id": "A-L05",
+    "rule": "权重更新、监督损失与前向数据连接采用不同语义类型。",
+    "evidence": [
+      "A012",
+      "A025",
+      "A027",
+      "A050"
+    ],
+    "status": "agent_inferred_candidate",
+    "boundary": "不将教师参数更新误画为当前样本前向输入。"
+  },
+  {
+    "id": "A-L06",
+    "rule": "跨分支汇合就近标明加和、拼接或乘法，保留身份及残差支路。",
+    "evidence": [
+      "A019",
+      "A021",
+      "A035",
+      "A038",
+      "A041",
+      "A042"
+    ],
+    "status": "agent_inferred_candidate",
+    "boundary": "图例只列当前图实际使用的汇合运算。"
+  },
+  {
+    "id": "A-L07",
+    "rule": "网格和空间切块变种用于解释位置划分、窗口移位或采样关系。",
+    "evidence": [
+      "A036",
+      "A037",
+      "A043",
+      "A047",
+      "A049"
+    ],
+    "status": "agent_inferred_candidate",
+    "boundary": "不把没有空间语义的模型模块装饰成网格。"
+  },
+  {
+    "id": "A-L08",
+    "rule": "张量立体变种用几何长度或并列层表达可核实的分辨率、通道与阶段差别。",
+    "evidence": [
+      "A005",
+      "A039",
+      "A041",
+      "A045",
+      "A048"
+    ],
+    "status": "agent_inferred_candidate",
+    "boundary": "示意长度不代表精确量纲时标示schematic，不编造数值。"
+  },
+  {
+    "id": "A-L09",
+    "rule": "公式锚定或单色机制变种保留明确箭头和少量运算符，优先关系而非颜色。",
+    "evidence": [
+      "A027",
+      "A038",
+      "A042",
+      "A050"
+    ],
+    "status": "agent_inferred_candidate",
+    "boundary": "公式可补充机制，不应代替来源已知且必要的数据路径。"
+  },
+  {
+    "id": "A-L10",
+    "rule": "原图资产和展示预览分离；透明原图合成白底、裁剪预览白边不产生新训练样本。",
+    "evidence": [
+      "A009",
+      "A036",
+      "A040"
+    ],
+    "status": "engineering_constraint_observed",
+    "boundary": "保留原始字节、图号与SHA256，预览仍属于同一figure family。"
+  }
+]

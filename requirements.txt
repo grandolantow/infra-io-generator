@@ -1,0 +1,4 @@
+# Known working versions in the verified execution environment.
+lxml==6.1.1
+Pillow==12.3.0
+PyYAML==6.0.3

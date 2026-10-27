@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="drawio" version="independent-authoring-v1" compressed="false">
+  <diagram id="msa" name="MiniMax Sparse Attention">
+    <mxGraphModel dx="1360" dy="1880" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="1" pageScale="1" pageWidth="1360" pageHeight="1880" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="indexer_region" value="" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontColor=#28343D;fontStyle=0;fillColor=#FAFBFC;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=4;dashed=1;dashPattern=5 4;strokeWidth=1.5;" vertex="1" parent="1" role="panel">
+          <mxGeometry x="60" y="305" width="600" height="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="content_region" value="" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontColor=#28343D;fontStyle=0;fillColor=#FAFBFC;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=4;dashed=1;dashPattern=5 4;strokeWidth=1.5;" vertex="1" parent="1" role="panel">
+          <mxGeometry x="720" y="305" width="580" height="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="u_to_index_queries" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.2;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="msa_input" target="index_queries" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="572.0" y="260" />
+              <mxPoint x="217.5" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u_to_index_keys" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.4;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="msa_input" target="index_keys" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="644.0" y="260" />
+              <mxPoint x="502.5" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u_to_content_queries" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.6;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="msa_input" target="content_queries" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="716.0" y="260" />
+              <mxPoint x="880" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u_to_content_kv" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.8;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="msa_input" target="content_kv" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="788.0" y="260" />
+              <mxPoint x="1152.5" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="index_q_to_dot" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.2;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="index_queries" target="index_dot" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="217.5" y="550" />
+              <mxPoint x="222" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="index_k_to_dot" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.8;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="index_keys" target="index_dot" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="502.5" y="550" />
+              <mxPoint x="498" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dot_to_causal" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="index_dot" target="causal_index" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="causal_to_max" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="causal_index" target="block_max" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="max_to_top16" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="block_max" target="select_blocks" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="top16_to_ids" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="select_blocks" target="block_ids" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ids_to_gather" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=7 5;" edge="1" parent="1" source="block_ids" target="selected_kv" kind="selection">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="1337.5" />
+              <mxPoint x="690" y="1172" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="main_kv_to_gather" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.8;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="content_kv" target="selected_kv" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1152.5" y="1050" />
+              <mxPoint x="1164" y="1050" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gather_to_exact" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.72;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="selected_kv" target="exact_attention" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1027.5" y="1270" />
+              <mxPoint x="1124.4" y="1270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="main_q_to_exact" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="content_queries" target="exact_attention" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="880" y="560" />
+              <mxPoint x="740" y="560" />
+              <mxPoint x="740" y="1372.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="exact_to_outproj" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="exact_attention" target="attn_output_proj" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1010" y="1490" />
+              <mxPoint x="1085" y="1490" />
+              <mxPoint x="1085" y="1585" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="outproj_to_output" value="" style="edgeStyle=none;orthogonal=1;rounded=0;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="attn_output_proj" target="attention_output" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msa_title" value="MiniMax Sparse Attention" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=35;fontColor=#28343D;fontStyle=1;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="60" y="34" width="1240" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="msa_subtitle" value="One query position i  ·  four GQA groups  ·  selection and exact attention are separate" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="60" y="94" width="1240" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="msa_tag" value="DETAIL A" style="html=0;whiteSpace=wrap;align=right;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#657581;fontStyle=1;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="1150" y="38" width="150" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="msa_input" value="u = Norm(x)" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="communication">
+          <mxGeometry x="500" y="165" width="360" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="indexer_region_title" value="A1  Block indexer" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=1;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="86" y="321" width="548" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="content_region_title" value="A2  Exact content attention" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=1;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="746" y="321" width="528" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="index_queries" value="Index Q&#10;4 heads ×128&#10;One head per GQA group" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#FAEECF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="state">
+          <mxGeometry x="100" y="405" width="235" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="index_keys" value="Index K&#10;1 shared head ×128&#10;Distinct from main K" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#FAEECF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="state">
+          <mxGeometry x="385" y="405" width="235" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="index_dot" value="Scaled token dot scores&#10;s_g(i,j) = q^I_g(i) · k^I(j) / sqrt(128)" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#28343D;fontStyle=0;fillColor=#FAEECF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="state">
+          <mxGeometry x="130" y="590" width="460" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="causal_index" value="Causal index eligibility: j ≤ i&#10;Fully future blocks score −∞" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#FAEECF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="state">
+          <mxGeometry x="130" y="770" width="460" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="block_max" value="Block max over128-token blocks&#10;b_g(i,b) = max s_g(i,j),  j in b and j ≤ i" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#28343D;fontStyle=0;fillColor=#FAEECF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="state">
+          <mxGeometry x="130" y="945" width="460" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="select_blocks" value="Top16 blocks per group&#10;Local block is included within the16-block budget" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#F7DFDA;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="rank1">
+          <mxGeometry x="130" y="1120" width="460" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="block_ids" value="Selected block IDs S_g(i)" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#F7DFDA;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="rank1">
+          <mxGeometry x="160" y="1310" width="400" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="content_queries" value="Main Q&#10;64 heads =4 groups ×16&#10;d_head128" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="compute">
+          <mxGeometry x="755" y="405" width="250" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="content_kv" value="Main K / V&#10;4 group-specific KV heads&#10;d_head128" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#28343D;fontStyle=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="compute">
+          <mxGeometry x="1040" y="405" width="225" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="selected_kv" value="Gather group-specific K / V&#10;K_g[S_g(i)], V_g[S_g(i)]" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="compute">
+          <mxGeometry x="800" y="1120" width="455" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="exact_attention" value="Exact content attention on selected blocks&#10;Softmax(Q_g K_g[S_g]^T / sqrt(128) + causal mask) V_g[S_g]&#10;Causal j ≤ i in every selected block, including local" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontColor=#28343D;fontStyle=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="compute">
+          <mxGeometry x="750" y="1310" width="520" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="attn_output_proj" value="Concatenate all query heads &amp; output projection" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="compute">
+          <mxGeometry x="335" y="1550" width="690" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="attention_output" value="Attention output" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="communication">
+          <mxGeometry x="480" y="1700" width="400" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="selection_edge_label" value="block IDs" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="685" y="1105" width="110" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="msa_scope" value="Index K is shared across groups; main K / V are group-specific. No attention output gate.&#10;Q/K normalization, positional encoding and cache implementation details are omitted here.&#10;The same MSA mechanism is used in all60 decoder layers." style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="60" y="1790" width="1240" height="72" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

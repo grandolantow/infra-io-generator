@@ -1,0 +1,1295 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1160"
+   height="460"
+   viewBox="0 0 1160 460"
+   content="&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;mxfile host=&quot;app.diagrams.net&quot;&gt;
+  &lt;diagram name=&quot;MiniMax M3.1-Flash&quot; id=&quot;m31&quot;&gt;
+    &lt;mxGraphModel dx=&quot;1600&quot; dy=&quot;900&quot; page=&quot;1&quot; pageWidth=&quot;1160&quot; pageHeight=&quot;460&quot; grid=&quot;1&quot; gridSize=&quot;10&quot;&gt;
+      &lt;root&gt;
+        &lt;mxCell id=&quot;0&quot;/&gt;
+        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot;/&gt;
+        &lt;mxCell id=&quot;msa-detail&quot; value=&quot;&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F6FAF3;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=21;align=center;verticalAlign=middle;spacing=5;dashed=1;dashPattern=6 4;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;20.0&quot; y=&quot;20.0&quot; width=&quot;1120&quot; height=&quot;420&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;msa-detail-heading&quot; value=&quot;MSA · one token, different GQA-group selections&quot; style=&quot;text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontFamily=DejaVu Sans;fontSize=23;fontColor=#28343D;fontStyle=1;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;40.0&quot; y=&quot;30.0&quot; width=&quot;1080&quot; height=&quot;32&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;idx&quot; value=&quot;Index Q(r) · shared index K&amp;#10;Scaled token scores&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=19;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;50.0&quot; y=&quot;95.0&quot; width=&quot;325&quot; height=&quot;54&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;max&quot; value=&quot;Max within&amp;#10;128-token blocks&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=19;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;425.0&quot; y=&quot;95.0&quot; width=&quot;210&quot; height=&quot;54&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;topk&quot; value=&quot;Top-16 blocks / group&amp;#10;Local block included&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#EAE2F4;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=19;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;705.0&quot; y=&quot;95.0&quot; width=&quot;395&quot; height=&quot;54&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;idx-max&quot; value=&quot;&quot; source=&quot;idx&quot; target=&quot;max&quot; edge=&quot;1&quot; parent=&quot;1&quot; style=&quot;edgeStyle=none;rounded=1;arcSize=24;html=0;strokeColor=#28343D;strokeWidth=1.8;endArrow=block;endFill=1;endSize=8;exitX=1;exitY=0.5;exitPerimeter=0;entryX=0;entryY=0.5;entryPerimeter=0;fontFamily=DejaVu Sans;fontSize=17;labelBackgroundColor=#FFFFFF;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;max-topk&quot; value=&quot;&quot; source=&quot;max&quot; target=&quot;topk&quot; edge=&quot;1&quot; parent=&quot;1&quot; style=&quot;edgeStyle=none;rounded=1;arcSize=24;html=0;strokeColor=#28343D;strokeWidth=1.8;endArrow=block;endFill=1;endSize=8;exitX=1;exitY=0.5;exitPerimeter=0;entryX=0;entryY=0.5;entryPerimeter=0;fontFamily=DejaVu Sans;fontSize=17;labelBackgroundColor=#FFFFFF;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;config&quot; value=&quot;64 query heads / 4 KV heads → 4 groups, 16 query heads per group. Index width = 128.&quot; style=&quot;text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontFamily=DejaVu Sans;fontSize=17;fontColor=#28343D;fontStyle=0;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;50.0&quot; y=&quot;63.0&quot; width=&quot;1050&quot; height=&quot;27&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;q0-sheet2&quot; value=&quot;&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=21;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;60.0&quot; y=&quot;203.0&quot; width=&quot;235&quot; height=&quot;40&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;q0-sheet1&quot; value=&quot;&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=21;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;55.0&quot; y=&quot;208.0&quot; width=&quot;235&quot; height=&quot;40&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;q0&quot; value=&quot;Q heads 0–15&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=20;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;50.0&quot; y=&quot;213.0&quot; width=&quot;235&quot; height=&quot;40&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cache0&quot; value=&quot;&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=21;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;360.0&quot; y=&quot;205.0&quot; width=&quot;540&quot; height=&quot;63&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g0b0&quot; value=&quot;b0&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;370.0&quot; y=&quot;217.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g0b1&quot; value=&quot;b1&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F3F4F5;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;435.0&quot; y=&quot;217.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g0b2&quot; value=&quot;b2&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F3F4F5;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;500.0&quot; y=&quot;217.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g0b3&quot; value=&quot;b3&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;565.0&quot; y=&quot;217.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g0b4&quot; value=&quot;b4&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F3F4F5;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;630.0&quot; y=&quot;217.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g0b5&quot; value=&quot;b5&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F3F4F5;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;695.0&quot; y=&quot;217.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g0b6&quot; value=&quot;b6&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F3F4F5;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;760.0&quot; y=&quot;217.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g0b7&quot; value=&quot;b7&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;825.0&quot; y=&quot;217.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;attn0&quot; value=&quot;QKᵀ → softmax&amp;#10;→ weighted V&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;945.0&quot; y=&quot;209.0&quot; width=&quot;165&quot; height=&quot;54&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;q-attn0&quot; value=&quot;&quot; source=&quot;q0&quot; target=&quot;attn0&quot; edge=&quot;1&quot; parent=&quot;1&quot; style=&quot;edgeStyle=none;rounded=1;arcSize=24;html=0;strokeColor=#28343D;strokeWidth=1.8;endArrow=block;endFill=1;endSize=8;exitX=1;exitY=0.5;exitPerimeter=0;entryX=0.5;entryY=0;entryPerimeter=0;fontFamily=DejaVu Sans;fontSize=17;labelBackgroundColor=#FFFFFF;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
+            &lt;Array as=&quot;points&quot;&gt;
+              &lt;mxPoint x=&quot;320.0&quot; y=&quot;233.0&quot;/&gt;
+              &lt;mxPoint x=&quot;320.0&quot; y=&quot;187.0&quot;/&gt;
+              &lt;mxPoint x=&quot;1027.5&quot; y=&quot;187.0&quot;/&gt;
+            &lt;/Array&gt;
+          &lt;/mxGeometry&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cache-attn0&quot; value=&quot;&quot; source=&quot;cache0&quot; target=&quot;attn0&quot; edge=&quot;1&quot; parent=&quot;1&quot; style=&quot;edgeStyle=none;rounded=1;arcSize=24;html=0;strokeColor=#28343D;strokeWidth=1.8;endArrow=block;endFill=1;endSize=8;exitX=1;exitY=0.6634920635;exitPerimeter=0;entryX=0;entryY=0.7;entryPerimeter=0;fontFamily=DejaVu Sans;fontSize=17;labelBackgroundColor=#FFFFFF;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;selection0&quot; value=&quot;&quot; source=&quot;topk&quot; target=&quot;cache0&quot; edge=&quot;1&quot; parent=&quot;1&quot; style=&quot;edgeStyle=none;rounded=1;arcSize=24;html=0;strokeColor=#8B6BA5;strokeWidth=1.8;endArrow=block;endFill=1;endSize=8;exitX=0.5;exitY=1;exitPerimeter=0;entryX=1;entryY=0.5;entryPerimeter=0;fontFamily=DejaVu Sans;fontSize=17;labelBackgroundColor=#FFFFFF;dashed=1;dashPattern=6 4;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
+            &lt;Array as=&quot;points&quot;&gt;
+              &lt;mxPoint x=&quot;902.5&quot; y=&quot;170.0&quot;/&gt;
+              &lt;mxPoint x=&quot;920.0&quot; y=&quot;170.0&quot;/&gt;
+              &lt;mxPoint x=&quot;920.0&quot; y=&quot;236.5&quot;/&gt;
+            &lt;/Array&gt;
+          &lt;/mxGeometry&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;group0&quot; value=&quot;Group 0 · shared selection&quot; style=&quot;text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontFamily=DejaVu Sans;fontSize=16;fontColor=#28343D;fontStyle=0;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;50.0&quot; y=&quot;257.0&quot; width=&quot;270&quot; height=&quot;24&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;q1-sheet2&quot; value=&quot;&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=21;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;60.0&quot; y=&quot;303.0&quot; width=&quot;235&quot; height=&quot;40&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;q1-sheet1&quot; value=&quot;&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=21;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;55.0&quot; y=&quot;308.0&quot; width=&quot;235&quot; height=&quot;40&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;q1&quot; value=&quot;Q heads 16–31&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=20;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;50.0&quot; y=&quot;313.0&quot; width=&quot;235&quot; height=&quot;40&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cache1&quot; value=&quot;&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=21;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;360.0&quot; y=&quot;305.0&quot; width=&quot;540&quot; height=&quot;63&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g1b0&quot; value=&quot;b0&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F3F4F5;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;370.0&quot; y=&quot;317.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g1b1&quot; value=&quot;b1&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F7DFDA;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;435.0&quot; y=&quot;317.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g1b2&quot; value=&quot;b2&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F3F4F5;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;500.0&quot; y=&quot;317.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g1b3&quot; value=&quot;b3&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F3F4F5;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;565.0&quot; y=&quot;317.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g1b4&quot; value=&quot;b4&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F3F4F5;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;630.0&quot; y=&quot;317.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g1b5&quot; value=&quot;b5&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F7DFDA;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;695.0&quot; y=&quot;317.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g1b6&quot; value=&quot;b6&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F3F4F5;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;760.0&quot; y=&quot;317.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;g1b7&quot; value=&quot;b7&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F7DFDA;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;825.0&quot; y=&quot;317.0&quot; width=&quot;55&quot; height=&quot;35&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;attn1&quot; value=&quot;QKᵀ → softmax&amp;#10;→ weighted V&quot; style=&quot;rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#F7DFDA;strokeColor=#42647C;strokeWidth=1.6;fontColor=#28343D;fontFamily=DejaVu Sans;fontSize=17;align=center;verticalAlign=middle;spacing=5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;945.0&quot; y=&quot;309.0&quot; width=&quot;165&quot; height=&quot;54&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;q-attn1&quot; value=&quot;&quot; source=&quot;q1&quot; target=&quot;attn1&quot; edge=&quot;1&quot; parent=&quot;1&quot; style=&quot;edgeStyle=none;rounded=1;arcSize=24;html=0;strokeColor=#28343D;strokeWidth=1.8;endArrow=block;endFill=1;endSize=8;exitX=1;exitY=0.5;exitPerimeter=0;entryX=0.5;entryY=0;entryPerimeter=0;fontFamily=DejaVu Sans;fontSize=17;labelBackgroundColor=#FFFFFF;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
+            &lt;Array as=&quot;points&quot;&gt;
+              &lt;mxPoint x=&quot;320.0&quot; y=&quot;333.0&quot;/&gt;
+              &lt;mxPoint x=&quot;320.0&quot; y=&quot;287.0&quot;/&gt;
+              &lt;mxPoint x=&quot;1027.5&quot; y=&quot;287.0&quot;/&gt;
+            &lt;/Array&gt;
+          &lt;/mxGeometry&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cache-attn1&quot; value=&quot;&quot; source=&quot;cache1&quot; target=&quot;attn1&quot; edge=&quot;1&quot; parent=&quot;1&quot; style=&quot;edgeStyle=none;rounded=1;arcSize=24;html=0;strokeColor=#28343D;strokeWidth=1.8;endArrow=block;endFill=1;endSize=8;exitX=1;exitY=0.6634920635;exitPerimeter=0;entryX=0;entryY=0.7;entryPerimeter=0;fontFamily=DejaVu Sans;fontSize=17;labelBackgroundColor=#FFFFFF;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;selection1&quot; value=&quot;&quot; source=&quot;topk&quot; target=&quot;cache1&quot; edge=&quot;1&quot; parent=&quot;1&quot; style=&quot;edgeStyle=none;rounded=1;arcSize=24;html=0;strokeColor=#8B6BA5;strokeWidth=1.8;endArrow=block;endFill=1;endSize=8;exitX=0.5;exitY=1;exitPerimeter=0;entryX=1;entryY=0.5;entryPerimeter=0;fontFamily=DejaVu Sans;fontSize=17;labelBackgroundColor=#FFFFFF;dashed=1;dashPattern=6 4;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
+            &lt;Array as=&quot;points&quot;&gt;
+              &lt;mxPoint x=&quot;902.5&quot; y=&quot;170.0&quot;/&gt;
+              &lt;mxPoint x=&quot;920.0&quot; y=&quot;170.0&quot;/&gt;
+              &lt;mxPoint x=&quot;920.0&quot; y=&quot;336.5&quot;/&gt;
+            &lt;/Array&gt;
+          &lt;/mxGeometry&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;group1&quot; value=&quot;Group 1 · shared selection&quot; style=&quot;text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontFamily=DejaVu Sans;fontSize=16;fontColor=#28343D;fontStyle=0;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;50.0&quot; y=&quot;357.0&quot; width=&quot;270&quot; height=&quot;24&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;mask-note&quot; value=&quot;Gray: unselected. Index max: j ≤ i; future blocks −∞. Main: causal mask inside selected blocks, including local.&amp;#10;2/4 groups shown, with distinct K/V. 8 blocks / 3 colored are illustrative; actual Top-16 × 128 tokens. b7: local.&quot; style=&quot;text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontFamily=DejaVu Sans;fontSize=14;fontColor=#28343D;fontStyle=0;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+          &lt;mxGeometry x=&quot;50.0&quot; y=&quot;396.0&quot; width=&quot;1060&quot; height=&quot;40&quot; as=&quot;geometry&quot;/&gt;
+        &lt;/mxCell&gt;
+        &lt;/root&gt;
+    &lt;/mxGraphModel&gt;
+  &lt;/diagram&gt;
+&lt;/mxfile&gt;"
+   data-renderer="mxGraph 32.6.1"
+   id="detail-presentation"
+   version="1.1"
+   sodipodi:docname="visual-stage.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs370" />
+  <sodipodi:namedview
+     id="namedview368"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <g
+     id="editable-native-objects"
+     inkscape:groupmode="layer"
+     inkscape:label="Architecture — native export, visual finish">
+    <defs
+       id="defs2" />
+    <rect
+       width="1160"
+       height="460"
+       fill="#fff"
+       id="rect4" />
+    <g
+       id="g8">
+      <rect
+         x="20"
+         y="20"
+         width="1120"
+         height="420"
+         rx="33.6"
+         ry="33.6"
+         fill="#f6faf3"
+         stroke="#42647c"
+         stroke-width="1.6"
+         stroke-dasharray="9.6 6.4"
+         pointer-events="none"
+         id="rect6" />
+    </g>
+    <g
+       id="g10" />
+    <g
+       id="g16">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         font-weight="bold"
+         pointer-events="none"
+         text-anchor="start"
+         font-size="23px"
+         id="g14">
+        <text
+           x="42"
+           y="56.5"
+           id="text12">MSA · one token, different GQA-group selections</text>
+      </g>
+    </g>
+    <g
+       id="g20">
+      <rect
+         x="50"
+         y="95"
+         width="325"
+         height="54"
+         rx="4.32"
+         ry="4.32"
+         fill="#e1eedd"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect18" />
+    </g>
+    <g
+       id="g28">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="19px"
+         id="g26">
+        <text
+           x="212.5"
+           y="119"
+           id="text22">Index Q(r) · shared index K</text>
+        <text
+           x="212.5"
+           y="142"
+           id="text24">Scaled token scores</text>
+      </g>
+    </g>
+    <g
+       id="g32">
+      <rect
+         x="425"
+         y="95"
+         width="210"
+         height="54"
+         rx="4.32"
+         ry="4.32"
+         fill="#e1eedd"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect30" />
+    </g>
+    <g
+       id="g40">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="19px"
+         id="g38">
+        <text
+           x="530"
+           y="119"
+           id="text34">Max within</text>
+        <text
+           x="530"
+           y="142"
+           id="text36">128-token blocks</text>
+      </g>
+    </g>
+    <g
+       id="g44">
+      <rect
+         x="705"
+         y="95"
+         width="395"
+         height="54"
+         rx="4.32"
+         ry="4.32"
+         fill="#eae2f4"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect42" />
+    </g>
+    <g
+       id="g52">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="19px"
+         id="g50">
+        <text
+           x="902.5"
+           y="119"
+           id="text46">Top-16 blocks / group</text>
+        <text
+           x="902.5"
+           y="142"
+           id="text48">Local block included</text>
+      </g>
+    </g>
+    <g
+       id="g58">
+      <path
+         d="M 375 122 L 413.19 122"
+         fill="none"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path54" />
+      <path
+         d="M 422.99 122 L 413.19 126.9 L 413.19 117.1 Z"
+         fill="#28343d"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path56" />
+    </g>
+    <g
+       id="g64">
+      <path
+         d="M 635 122 L 693.19 122"
+         fill="none"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path60" />
+      <path
+         d="M 702.99 122 L 693.19 126.9 L 693.19 117.1 Z"
+         fill="#28343d"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path62" />
+    </g>
+    <g
+       id="g66" />
+    <g
+       id="g72">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="start"
+         font-size="17px"
+         id="g70">
+        <text
+           x="52"
+           y="84"
+           id="text68">64 query heads / 4 KV heads → 4 groups, 16 query heads per group. Index width = 128.</text>
+      </g>
+    </g>
+    <g
+       id="g76">
+      <rect
+         x="60"
+         y="203"
+         width="235"
+         height="40"
+         rx="3.2"
+         ry="3.2"
+         fill="#ddecf7"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect74" />
+    </g>
+    <g
+       id="g80">
+      <rect
+         x="55"
+         y="208"
+         width="235"
+         height="40"
+         rx="3.2"
+         ry="3.2"
+         fill="#ddecf7"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect78" />
+    </g>
+    <g
+       id="g84">
+      <rect
+         x="50"
+         y="213"
+         width="235"
+         height="40"
+         rx="3.2"
+         ry="3.2"
+         fill="#ddecf7"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect82" />
+    </g>
+    <g
+       id="g90">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="20px"
+         id="g88">
+        <text
+           x="167.5"
+           y="242"
+           id="text86">Q heads 0–15</text>
+      </g>
+    </g>
+    <g
+       id="g94">
+      <rect
+         x="360"
+         y="205"
+         width="540"
+         height="63"
+         rx="5.04"
+         ry="5.04"
+         fill="#ffffff"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect92" />
+    </g>
+    <g
+       id="g98">
+      <rect
+         x="370"
+         y="217"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#e1eedd"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect96" />
+    </g>
+    <g
+       id="g104">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g102">
+        <text
+           x="397.5"
+           y="242"
+           id="text100">b0</text>
+      </g>
+    </g>
+    <g
+       id="g108">
+      <rect
+         x="435"
+         y="217"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f3f4f5"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect106" />
+    </g>
+    <g
+       id="g114">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g112">
+        <text
+           x="462.5"
+           y="242"
+           id="text110">b1</text>
+      </g>
+    </g>
+    <g
+       id="g118">
+      <rect
+         x="500"
+         y="217"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f3f4f5"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect116" />
+    </g>
+    <g
+       id="g124">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g122">
+        <text
+           x="527.5"
+           y="242"
+           id="text120">b2</text>
+      </g>
+    </g>
+    <g
+       id="g128">
+      <rect
+         x="565"
+         y="217"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#e1eedd"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect126" />
+    </g>
+    <g
+       id="g134">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g132">
+        <text
+           x="592.5"
+           y="242"
+           id="text130">b3</text>
+      </g>
+    </g>
+    <g
+       id="g138">
+      <rect
+         x="630"
+         y="217"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f3f4f5"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect136" />
+    </g>
+    <g
+       id="g144">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g142">
+        <text
+           x="657.5"
+           y="242"
+           id="text140">b4</text>
+      </g>
+    </g>
+    <g
+       id="g148">
+      <rect
+         x="695"
+         y="217"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f3f4f5"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect146" />
+    </g>
+    <g
+       id="g154">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g152">
+        <text
+           x="722.5"
+           y="242"
+           id="text150">b5</text>
+      </g>
+    </g>
+    <g
+       id="g158">
+      <rect
+         x="760"
+         y="217"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f3f4f5"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect156" />
+    </g>
+    <g
+       id="g164">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g162">
+        <text
+           x="787.5"
+           y="242"
+           id="text160">b6</text>
+      </g>
+    </g>
+    <g
+       id="g168">
+      <rect
+         x="825"
+         y="217"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#e1eedd"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect166" />
+    </g>
+    <g
+       id="g174">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g172">
+        <text
+           x="852.5"
+           y="242"
+           id="text170">b7</text>
+      </g>
+    </g>
+    <g
+       id="g178">
+      <rect
+         x="945"
+         y="209"
+         width="165"
+         height="54"
+         rx="4.32"
+         ry="4.32"
+         fill="#e1eedd"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect176" />
+    </g>
+    <g
+       id="g186">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g184">
+        <text
+           x="1027.5"
+           y="233.5"
+           id="text180">QKᵀ → softmax</text>
+        <text
+           x="1027.5"
+           y="253.5"
+           id="text182">→ weighted V</text>
+      </g>
+    </g>
+    <g
+       id="g192">
+      <path
+         d="M 285 233 L 308 233 Q 320 233 320 221 L 320 199 Q 320 187 332 187 L 1015.5 187 Q 1027.5 187 1027.5 192.09 L 1027.5 197.19"
+         fill="none"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path188" />
+      <path
+         d="M 1027.5 206.99 L 1022.6 197.19 L 1032.4 197.19 Z"
+         fill="#28343d"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path190" />
+    </g>
+    <g
+       id="g198">
+      <path
+         d="M 900 246.8 L 933.19 246.8"
+         fill="none"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path194" />
+      <path
+         d="M 942.99 246.8 L 933.19 251.7 L 933.19 241.9 Z"
+         fill="#28343d"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path196" />
+    </g>
+    <g
+       id="g204">
+      <path
+         d="M 902.5 149 L 902.5 159.5 Q 902.5 170 911.25 170 L 915.63 170 Q 920 170 920 182 L 920 224.5 Q 920 236.5 915.91 236.5 L 911.81 236.5"
+         fill="none"
+         stroke="#8b6ba5"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         stroke-dasharray="10.8 7.2"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path200" />
+      <path
+         d="M 902.01 236.5 L 911.81 231.6 L 911.81 241.4 Z"
+         fill="#8b6ba5"
+         stroke="#8b6ba5"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path202" />
+    </g>
+    <g
+       id="g206" />
+    <g
+       id="g212">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="start"
+         font-size="16px"
+         id="g210">
+        <text
+           x="52"
+           y="276"
+           id="text208">Group 0 · shared selection</text>
+      </g>
+    </g>
+    <g
+       id="g216">
+      <rect
+         x="60"
+         y="303"
+         width="235"
+         height="40"
+         rx="3.2"
+         ry="3.2"
+         fill="#ddecf7"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect214" />
+    </g>
+    <g
+       id="g220">
+      <rect
+         x="55"
+         y="308"
+         width="235"
+         height="40"
+         rx="3.2"
+         ry="3.2"
+         fill="#ddecf7"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect218" />
+    </g>
+    <g
+       id="g224">
+      <rect
+         x="50"
+         y="313"
+         width="235"
+         height="40"
+         rx="3.2"
+         ry="3.2"
+         fill="#ddecf7"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect222" />
+    </g>
+    <g
+       id="g230">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="20px"
+         id="g228">
+        <text
+           x="167.5"
+           y="342"
+           id="text226">Q heads 16–31</text>
+      </g>
+    </g>
+    <g
+       id="g234">
+      <rect
+         x="360"
+         y="305"
+         width="540"
+         height="63"
+         rx="5.04"
+         ry="5.04"
+         fill="#ffffff"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect232" />
+    </g>
+    <g
+       id="g238">
+      <rect
+         x="370"
+         y="317"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f3f4f5"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect236" />
+    </g>
+    <g
+       id="g244">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g242">
+        <text
+           x="397.5"
+           y="342"
+           id="text240">b0</text>
+      </g>
+    </g>
+    <g
+       id="g248">
+      <rect
+         x="435"
+         y="317"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f7dfda"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect246" />
+    </g>
+    <g
+       id="g254">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g252">
+        <text
+           x="462.5"
+           y="342"
+           id="text250">b1</text>
+      </g>
+    </g>
+    <g
+       id="g258">
+      <rect
+         x="500"
+         y="317"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f3f4f5"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect256" />
+    </g>
+    <g
+       id="g264">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g262">
+        <text
+           x="527.5"
+           y="342"
+           id="text260">b2</text>
+      </g>
+    </g>
+    <g
+       id="g268">
+      <rect
+         x="565"
+         y="317"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f3f4f5"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect266" />
+    </g>
+    <g
+       id="g274">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g272">
+        <text
+           x="592.5"
+           y="342"
+           id="text270">b3</text>
+      </g>
+    </g>
+    <g
+       id="g278">
+      <rect
+         x="630"
+         y="317"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f3f4f5"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect276" />
+    </g>
+    <g
+       id="g284">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g282">
+        <text
+           x="657.5"
+           y="342"
+           id="text280">b4</text>
+      </g>
+    </g>
+    <g
+       id="g288">
+      <rect
+         x="695"
+         y="317"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f7dfda"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect286" />
+    </g>
+    <g
+       id="g294">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g292">
+        <text
+           x="722.5"
+           y="342"
+           id="text290">b5</text>
+      </g>
+    </g>
+    <g
+       id="g298">
+      <rect
+         x="760"
+         y="317"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f3f4f5"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect296" />
+    </g>
+    <g
+       id="g304">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g302">
+        <text
+           x="787.5"
+           y="342"
+           id="text300">b6</text>
+      </g>
+    </g>
+    <g
+       id="g308">
+      <rect
+         x="825"
+         y="317"
+         width="55"
+         height="35"
+         rx="2.8"
+         ry="2.8"
+         fill="#f7dfda"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect306" />
+    </g>
+    <g
+       id="g314">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g312">
+        <text
+           x="852.5"
+           y="342"
+           id="text310">b7</text>
+      </g>
+    </g>
+    <g
+       id="g318">
+      <rect
+         x="945"
+         y="309"
+         width="165"
+         height="54"
+         rx="4.32"
+         ry="4.32"
+         fill="#f7dfda"
+         stroke="#42647c"
+         stroke-width="1.6"
+         pointer-events="none"
+         id="rect316" />
+    </g>
+    <g
+       id="g326">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="middle"
+         font-size="17px"
+         id="g324">
+        <text
+           x="1027.5"
+           y="333.5"
+           id="text320">QKᵀ → softmax</text>
+        <text
+           x="1027.5"
+           y="353.5"
+           id="text322">→ weighted V</text>
+      </g>
+    </g>
+    <g
+       id="g332">
+      <path
+         d="M 285 333 L 308 333 Q 320 333 320 321 L 320 299 Q 320 287 332 287 L 1015.5 287 Q 1027.5 287 1027.5 292.09 L 1027.5 297.19"
+         fill="none"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path328" />
+      <path
+         d="M 1027.5 306.99 L 1022.6 297.19 L 1032.4 297.19 Z"
+         fill="#28343d"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path330" />
+    </g>
+    <g
+       id="g338">
+      <path
+         d="M 900 346.8 L 933.19 346.8"
+         fill="none"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path334" />
+      <path
+         d="M 942.99 346.8 L 933.19 351.7 L 933.19 341.9 Z"
+         fill="#28343d"
+         stroke="#28343d"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path336" />
+    </g>
+    <g
+       id="g344">
+      <path
+         d="M 902.5 149 L 902.5 159.5 Q 902.5 170 911.25 170 L 915.63 170 Q 920 170 920 182 L 920 324.5 Q 920 336.5 915.91 336.5 L 911.81 336.5"
+         fill="none"
+         stroke="#8b6ba5"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         stroke-dasharray="10.8 7.2"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path340" />
+      <path
+         d="M 902.01 336.5 L 911.81 331.6 L 911.81 341.4 Z"
+         fill="#8b6ba5"
+         stroke="#8b6ba5"
+         stroke-width="1.8"
+         stroke-miterlimit="10"
+         pointer-events="none"
+         stroke-linejoin="round"
+         stroke-linecap="round"
+         id="path342" />
+    </g>
+    <g
+       id="g346" />
+    <g
+       id="g352">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="start"
+         font-size="16px"
+         id="g350">
+        <text
+           x="52"
+           y="376"
+           id="text348">Group 1 · shared selection</text>
+      </g>
+    </g>
+    <g
+       id="g354" />
+    <g
+       id="g362">
+      <g
+         fill="#28343D"
+         font-family="'DejaVu Sans'"
+         pointer-events="none"
+         text-anchor="start"
+         font-size="14px"
+         id="g360">
+        <text
+           x="52"
+           y="413.5"
+           id="text356">Gray: unselected. Index max: j ≤ i; future blocks −∞. Main: causal mask inside selected blocks, including local.</text>
+        <text
+           x="52"
+           y="430.5"
+           id="text358">2/4 groups shown, with distinct K/V. 8 blocks / 3 colored are illustrative; actual Top-16 × 128 tokens. b7: local.</text>
+      </g>
+    </g>
+  </g>
+  <metadata
+     id="metadata365">{&quot;structure_master&quot;: &quot;detail.drawio&quot;, &quot;master_sha256&quot;: &quot;c0c0efc61cfa0ed959cfbafbbcf89af7e06fe88724ad94ac3fe0fc806d0a210d&quot;, &quot;source_svg_sha256&quot;: &quot;b01f94bae24d88f0948e1ec5f48cbe4f14f5e669110f8fcfafd6186381416357&quot;, &quot;visual_changes&quot;: [&quot;round stroke joins and caps&quot;, &quot;fixed light palette fallback&quot;, &quot;editable Inkscape layer&quot;], &quot;bidirectional_sync&quot;: false}</metadata>
+</svg>

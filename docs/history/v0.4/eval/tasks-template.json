@@ -1,0 +1,32 @@
+{
+  "status": "design_only_no_real_tasks_run",
+  "development_papers": 3,
+  "holdout_papers": 2,
+  "tasks_per_paper": 2,
+  "total_tasks_planned": 10,
+  "split_unit": "paper_and_figure_family",
+  "required_task_coverage": [
+    "mechanism_comparison",
+    "backbone_and_zoom",
+    "functional_blocks",
+    "state_or_memory_flow"
+  ],
+  "task_template": {
+    "task_id": null,
+    "paper_family_id": null,
+    "split": null,
+    "question": null,
+    "source_bundle": [],
+    "required_facts": [],
+    "canvas": null,
+    "baseline_prompt": null,
+    "frozen": false
+  },
+  "report_requirements": [
+    "development_and_holdout_separate",
+    "top1_and_best_of_3_separate",
+    "failures_in_denominator",
+    "record_execution_budget",
+    "no_statistical_claim_from_pilot_alone"
+  ]
+}

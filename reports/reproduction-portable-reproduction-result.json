@@ -1,0 +1,57 @@
+{
+  "method": "Full source/reproduce.py execution in a newly created --out directory, not an existing-output rerun.",
+  "output_directory": "evidence/portable-reproduction",
+  "exit_code": 0,
+  "command": [
+    "python",
+    "source/reproduce.py",
+    "--input",
+    "source-input",
+    "--out",
+    "evidence/portable-reproduction",
+    "--chrome",
+    "<explicit Chromium path>",
+    "--playwright",
+    "<explicit Playwright module path>"
+  ],
+  "input_materials_retained": true,
+  "fresh_native_count": 6,
+  "fresh_final_svg_count": 6,
+  "fresh_final_png_count": 6,
+  "fresh_qa_status": "agent_self_check_passed",
+  "fresh_browser_pass": true,
+  "native_byte_comparison": {
+    "model-blue-neutral.drawio": {
+      "formal_sha256": "2db0c5e71a821bc64b085fb497d64e54a90427e7e99043b24b0e35d524121671",
+      "fresh_sha256": "2db0c5e71a821bc64b085fb497d64e54a90427e7e99043b24b0e35d524121671",
+      "equal": true
+    },
+    "model-paper-clear.drawio": {
+      "formal_sha256": "086d1c3e185b34732ff778e75b67b9d009a5d553eb2c1aa045bb9792e9386a7b",
+      "fresh_sha256": "086d1c3e185b34732ff778e75b67b9d009a5d553eb2c1aa045bb9792e9386a7b",
+      "equal": true
+    },
+    "moe-blue-neutral.drawio": {
+      "formal_sha256": "05c9125609d6b44898dcc3a47f32f37e0285ebcdc21a6da9f77b42dd21985cc5",
+      "fresh_sha256": "05c9125609d6b44898dcc3a47f32f37e0285ebcdc21a6da9f77b42dd21985cc5",
+      "equal": true
+    },
+    "moe-paper-clear.drawio": {
+      "formal_sha256": "f5d2cc2ddf7cdc20111512d5405ce42d669ebebbdcdf1a84c2c5dd716d4dfd2b",
+      "fresh_sha256": "f5d2cc2ddf7cdc20111512d5405ce42d669ebebbdcdf1a84c2c5dd716d4dfd2b",
+      "equal": true
+    },
+    "msa-blue-neutral.drawio": {
+      "formal_sha256": "347729566eda0b7d7c2e6b586730c89ed21ff2df29acf58ddd6cb19d607d3f59",
+      "fresh_sha256": "347729566eda0b7d7c2e6b586730c89ed21ff2df29acf58ddd6cb19d607d3f59",
+      "equal": true
+    },
+    "msa-paper-clear.drawio": {
+      "formal_sha256": "82e02f6279cf42f565fa7b36dc0c08e71d50d0cd72f9fa8019388c517a669b9d",
+      "fresh_sha256": "82e02f6279cf42f565fa7b36dc0c08e71d50d0cd72f9fa8019388c517a669b9d",
+      "equal": true
+    }
+  },
+  "all_native_byte_identical": true,
+  "fix": "build.py explicitly retains raw fact/source inputs in every --out/source-input, skipping identical source/destination paths."
+}

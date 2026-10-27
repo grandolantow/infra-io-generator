@@ -1,0 +1,698 @@
+[
+  {
+    "id": "0",
+    "vertex": false,
+    "edge": false,
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+  },
+  {
+    "id": "1",
+    "vertex": false,
+    "edge": false,
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+  },
+  {
+    "id": "indexer_region",
+    "vertex": true,
+    "edge": false,
+    "x": 60,
+    "y": 305,
+    "w": 600,
+    "h": 1130,
+    "label": ""
+  },
+  {
+    "id": "content_region",
+    "vertex": true,
+    "edge": false,
+    "x": 720,
+    "y": 305,
+    "w": 580,
+    "h": 1130,
+    "label": ""
+  },
+  {
+    "id": "u_to_index_queries",
+    "vertex": false,
+    "edge": true,
+    "x": 217.5,
+    "y": 225,
+    "w": 354.5,
+    "h": 180,
+    "source": "msa_input",
+    "target": "index_queries",
+    "points": [
+      {
+        "x": 572,
+        "y": 225
+      },
+      {
+        "x": 572,
+        "y": 260
+      },
+      {
+        "x": 217.5,
+        "y": 260
+      },
+      {
+        "x": 217.5,
+        "y": 405
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "u_to_index_keys",
+    "vertex": false,
+    "edge": true,
+    "x": 502.5,
+    "y": 225,
+    "w": 141.5,
+    "h": 180,
+    "source": "msa_input",
+    "target": "index_keys",
+    "points": [
+      {
+        "x": 644,
+        "y": 225
+      },
+      {
+        "x": 644,
+        "y": 260
+      },
+      {
+        "x": 502.5,
+        "y": 260
+      },
+      {
+        "x": 502.5,
+        "y": 405
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "u_to_content_queries",
+    "vertex": false,
+    "edge": true,
+    "x": 716,
+    "y": 225,
+    "w": 164,
+    "h": 180,
+    "source": "msa_input",
+    "target": "content_queries",
+    "points": [
+      {
+        "x": 716,
+        "y": 225
+      },
+      {
+        "x": 716,
+        "y": 260
+      },
+      {
+        "x": 880,
+        "y": 260
+      },
+      {
+        "x": 880,
+        "y": 405
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "u_to_content_kv",
+    "vertex": false,
+    "edge": true,
+    "x": 788,
+    "y": 225,
+    "w": 364.5,
+    "h": 180,
+    "source": "msa_input",
+    "target": "content_kv",
+    "points": [
+      {
+        "x": 788,
+        "y": 225
+      },
+      {
+        "x": 788,
+        "y": 260
+      },
+      {
+        "x": 1152.5,
+        "y": 260
+      },
+      {
+        "x": 1152.5,
+        "y": 405
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "index_q_to_dot",
+    "vertex": false,
+    "edge": true,
+    "x": 217.5,
+    "y": 510,
+    "w": 4.5,
+    "h": 80,
+    "source": "index_queries",
+    "target": "index_dot",
+    "points": [
+      {
+        "x": 217.5,
+        "y": 510
+      },
+      {
+        "x": 217.5,
+        "y": 550
+      },
+      {
+        "x": 222,
+        "y": 550
+      },
+      {
+        "x": 222,
+        "y": 590
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "index_k_to_dot",
+    "vertex": false,
+    "edge": true,
+    "x": 498,
+    "y": 510,
+    "w": 4.5,
+    "h": 80,
+    "source": "index_keys",
+    "target": "index_dot",
+    "points": [
+      {
+        "x": 502.5,
+        "y": 510
+      },
+      {
+        "x": 502.5,
+        "y": 550
+      },
+      {
+        "x": 498,
+        "y": 550
+      },
+      {
+        "x": 498,
+        "y": 590
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "dot_to_causal",
+    "vertex": false,
+    "edge": true,
+    "x": 360,
+    "y": 684,
+    "w": 1,
+    "h": 86,
+    "source": "index_dot",
+    "target": "causal_index",
+    "points": [
+      {
+        "x": 360,
+        "y": 684
+      },
+      {
+        "x": 360,
+        "y": 770
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "causal_to_max",
+    "vertex": false,
+    "edge": true,
+    "x": 360,
+    "y": 860,
+    "w": 1,
+    "h": 85,
+    "source": "causal_index",
+    "target": "block_max",
+    "points": [
+      {
+        "x": 360,
+        "y": 860
+      },
+      {
+        "x": 360,
+        "y": 945
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "max_to_top16",
+    "vertex": false,
+    "edge": true,
+    "x": 360,
+    "y": 1039,
+    "w": 1,
+    "h": 81,
+    "source": "block_max",
+    "target": "select_blocks",
+    "points": [
+      {
+        "x": 360,
+        "y": 1039
+      },
+      {
+        "x": 360,
+        "y": 1120
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "top16_to_ids",
+    "vertex": false,
+    "edge": true,
+    "x": 360,
+    "y": 1224,
+    "w": 1,
+    "h": 86,
+    "source": "select_blocks",
+    "target": "block_ids",
+    "points": [
+      {
+        "x": 360,
+        "y": 1224
+      },
+      {
+        "x": 360,
+        "y": 1310
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "ids_to_gather",
+    "vertex": false,
+    "edge": true,
+    "x": 560,
+    "y": 1172,
+    "w": 240,
+    "h": 165.5,
+    "source": "block_ids",
+    "target": "selected_kv",
+    "points": [
+      {
+        "x": 560,
+        "y": 1337.5
+      },
+      {
+        "x": 690,
+        "y": 1337.5
+      },
+      {
+        "x": 690,
+        "y": 1172
+      },
+      {
+        "x": 800,
+        "y": 1172
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "main_kv_to_gather",
+    "vertex": false,
+    "edge": true,
+    "x": 1152.5,
+    "y": 510,
+    "w": 11.5,
+    "h": 610,
+    "source": "content_kv",
+    "target": "selected_kv",
+    "points": [
+      {
+        "x": 1152.5,
+        "y": 510
+      },
+      {
+        "x": 1152.5,
+        "y": 1050
+      },
+      {
+        "x": 1164,
+        "y": 1050
+      },
+      {
+        "x": 1164,
+        "y": 1120
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "gather_to_exact",
+    "vertex": false,
+    "edge": true,
+    "x": 1027.5,
+    "y": 1224,
+    "w": 96.90000000000009,
+    "h": 86,
+    "source": "selected_kv",
+    "target": "exact_attention",
+    "points": [
+      {
+        "x": 1027.5,
+        "y": 1224
+      },
+      {
+        "x": 1027.5,
+        "y": 1270
+      },
+      {
+        "x": 1124.4,
+        "y": 1270
+      },
+      {
+        "x": 1124.4,
+        "y": 1310
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "main_q_to_exact",
+    "vertex": false,
+    "edge": true,
+    "x": 740,
+    "y": 510,
+    "w": 140,
+    "h": 862.5,
+    "source": "content_queries",
+    "target": "exact_attention",
+    "points": [
+      {
+        "x": 880,
+        "y": 510
+      },
+      {
+        "x": 880,
+        "y": 560
+      },
+      {
+        "x": 740,
+        "y": 560
+      },
+      {
+        "x": 740,
+        "y": 1372.5
+      },
+      {
+        "x": 750,
+        "y": 1372.5
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "exact_to_outproj",
+    "vertex": false,
+    "edge": true,
+    "x": 1010,
+    "y": 1435,
+    "w": 75,
+    "h": 150,
+    "source": "exact_attention",
+    "target": "attn_output_proj",
+    "points": [
+      {
+        "x": 1010,
+        "y": 1435
+      },
+      {
+        "x": 1010,
+        "y": 1490
+      },
+      {
+        "x": 1085,
+        "y": 1490
+      },
+      {
+        "x": 1085,
+        "y": 1585
+      },
+      {
+        "x": 1025,
+        "y": 1585
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "outproj_to_output",
+    "vertex": false,
+    "edge": true,
+    "x": 680,
+    "y": 1620,
+    "w": 1,
+    "h": 80,
+    "source": "attn_output_proj",
+    "target": "attention_output",
+    "points": [
+      {
+        "x": 680,
+        "y": 1620
+      },
+      {
+        "x": 680,
+        "y": 1700
+      }
+    ],
+    "label": ""
+  },
+  {
+    "id": "msa_title",
+    "vertex": true,
+    "edge": false,
+    "x": 60,
+    "y": 34,
+    "w": 1240,
+    "h": 48,
+    "label": "MiniMax Sparse Attention"
+  },
+  {
+    "id": "msa_subtitle",
+    "vertex": true,
+    "edge": false,
+    "x": 60,
+    "y": 94,
+    "w": 1240,
+    "h": 38,
+    "label": "One query position i  ·  four GQA groups  ·  selection and exact attention are separate"
+  },
+  {
+    "id": "msa_tag",
+    "vertex": true,
+    "edge": false,
+    "x": 1150,
+    "y": 38,
+    "w": 150,
+    "h": 38,
+    "label": "DETAIL A"
+  },
+  {
+    "id": "msa_input",
+    "vertex": true,
+    "edge": false,
+    "x": 500,
+    "y": 165,
+    "w": 360,
+    "h": 60,
+    "label": "u = Norm(x)"
+  },
+  {
+    "id": "indexer_region_title",
+    "vertex": true,
+    "edge": false,
+    "x": 86,
+    "y": 321,
+    "w": 548,
+    "h": 34,
+    "label": "A1  Block indexer"
+  },
+  {
+    "id": "content_region_title",
+    "vertex": true,
+    "edge": false,
+    "x": 746,
+    "y": 321,
+    "w": 528,
+    "h": 34,
+    "label": "A2  Exact content attention"
+  },
+  {
+    "id": "index_queries",
+    "vertex": true,
+    "edge": false,
+    "x": 100,
+    "y": 405,
+    "w": 235,
+    "h": 105,
+    "label": "Index Q\n4 heads ×128\nOne head per GQA group"
+  },
+  {
+    "id": "index_keys",
+    "vertex": true,
+    "edge": false,
+    "x": 385,
+    "y": 405,
+    "w": 235,
+    "h": 105,
+    "label": "Index K\n1 shared head ×128\nDistinct from main K"
+  },
+  {
+    "id": "index_dot",
+    "vertex": true,
+    "edge": false,
+    "x": 130,
+    "y": 590,
+    "w": 460,
+    "h": 94,
+    "label": "Scaled token dot scores\ns_g(i,j) = q^I_g(i) · k^I(j) / sqrt(128)"
+  },
+  {
+    "id": "causal_index",
+    "vertex": true,
+    "edge": false,
+    "x": 130,
+    "y": 770,
+    "w": 460,
+    "h": 90,
+    "label": "Causal index eligibility: j ≤ i\nFully future blocks score −∞"
+  },
+  {
+    "id": "block_max",
+    "vertex": true,
+    "edge": false,
+    "x": 130,
+    "y": 945,
+    "w": 460,
+    "h": 94,
+    "label": "Block max over128-token blocks\nb_g(i,b) = max s_g(i,j),  j in b and j ≤ i"
+  },
+  {
+    "id": "select_blocks",
+    "vertex": true,
+    "edge": false,
+    "x": 130,
+    "y": 1120,
+    "w": 460,
+    "h": 104,
+    "label": "Top16 blocks per group\nLocal block is included within the16-block budget"
+  },
+  {
+    "id": "block_ids",
+    "vertex": true,
+    "edge": false,
+    "x": 160,
+    "y": 1310,
+    "w": 400,
+    "h": 55,
+    "label": "Selected block IDs S_g(i)"
+  },
+  {
+    "id": "content_queries",
+    "vertex": true,
+    "edge": false,
+    "x": 755,
+    "y": 405,
+    "w": 250,
+    "h": 105,
+    "label": "Main Q\n64 heads =4 groups ×16\nd_head128"
+  },
+  {
+    "id": "content_kv",
+    "vertex": true,
+    "edge": false,
+    "x": 1040,
+    "y": 405,
+    "w": 225,
+    "h": 105,
+    "label": "Main K / V\n4 group-specific KV heads\nd_head128"
+  },
+  {
+    "id": "selected_kv",
+    "vertex": true,
+    "edge": false,
+    "x": 800,
+    "y": 1120,
+    "w": 455,
+    "h": 104,
+    "label": "Gather group-specific K / V\nK_g[S_g(i)], V_g[S_g(i)]"
+  },
+  {
+    "id": "exact_attention",
+    "vertex": true,
+    "edge": false,
+    "x": 750,
+    "y": 1310,
+    "w": 520,
+    "h": 125,
+    "label": "Exact content attention on selected blocks\nSoftmax(Q_g K_g[S_g]^T / sqrt(128) + causal mask) V_g[S_g]\nCausal j ≤ i in every selected block, including local"
+  },
+  {
+    "id": "attn_output_proj",
+    "vertex": true,
+    "edge": false,
+    "x": 335,
+    "y": 1550,
+    "w": 690,
+    "h": 70,
+    "label": "Concatenate all query heads & output projection"
+  },
+  {
+    "id": "attention_output",
+    "vertex": true,
+    "edge": false,
+    "x": 480,
+    "y": 1700,
+    "w": 400,
+    "h": 62,
+    "label": "Attention output"
+  },
+  {
+    "id": "selection_edge_label",
+    "vertex": true,
+    "edge": false,
+    "x": 685,
+    "y": 1105,
+    "w": 110,
+    "h": 35,
+    "label": "block IDs"
+  },
+  {
+    "id": "msa_scope",
+    "vertex": true,
+    "edge": false,
+    "x": 60,
+    "y": 1790,
+    "w": 1240,
+    "h": 72,
+    "label": "Index K is shared across groups; main K / V are group-specific. No attention output gate.\nQ/K normalization, positional encoding and cache implementation details are omitted here.\nThe same MSA mechanism is used in all60 decoder layers."
+  }
+]

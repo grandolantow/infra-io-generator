@@ -1,0 +1,443 @@
+{
+  "candidate_status": "agent_self_check_passed",
+  "not_user_approved": true,
+  "config_and_source_checks": {
+    "hidden_size_6144": true,
+    "decoder_layers_60": true,
+    "all_60_msa": true,
+    "dense_layers_0_2": true,
+    "moe_layers_3_59": true,
+    "64q_4kv_128": true,
+    "gqa_4_groups_16q": true,
+    "no_attention_output_gate": true,
+    "index_heads_4_width128": true,
+    "top16_block128_max_local1": true,
+    "128_experts_top4_shared1": true,
+    "sigmoid_bias_scale2": true,
+    "expert_width_3072": true,
+    "snapshot_hash_matches_provenance": true,
+    "shared_index_key_1_in_code": true,
+    "topk_call_renormalizes": true,
+    "shared_output_add_in_code": true,
+    "pre_norm_and_final_norm_declared": true
+  },
+  "source_coverage": [
+    {
+      "claim": "Input modalities / text output / MSA throughout / auxiliary DSpark",
+      "status": "corroborated",
+      "source": "supplied README, Model at a Glance; DSpark-not-extra-layers boundary also supplied facts"
+    },
+    {
+      "claim": "Depth, hidden width, layer split, heads, block/index settings, experts and routing hyperparameters",
+      "status": "verified_in_pinned_config",
+      "source": "sources/config.json / text_config"
+    },
+    {
+      "claim": "Shared index K distinct from content K/V; norms and terminal LM path; shared expert add",
+      "status": "corroborated_in_model_code",
+      "source": "model-code.py lines730–894,1690–1833,1882–1888,1955–1959,2092–2110,603–656"
+    },
+    {
+      "claim": "Causal index score eligibility; fully-future−∞; local within Top16 budget; exact selected content attention",
+      "status": "provided_facts_only_beyond_config",
+      "source": "technical-facts.json facts4–5; full MSA paper/backend kernels not supplied"
+    },
+    {
+      "claim": "Correction bias selection-only; original unbiased selected scores renormalized",
+      "status": "provided_facts_with_api_parameter_corroboration",
+      "source": "technical-facts.json fact6; model-code.py TopK call443–452 sets sigmoid/correction/renormalize but TopK internals are not supplied"
+    }
+  ],
+  "visual_fact_coverage": [
+    {
+      "id": "V01",
+      "fact": "Text/image/video fuse before text backbone; text output",
+      "objects_present": true,
+      "evidence_objects": [
+        "input_text",
+        "input_image",
+        "input_video",
+        "multimodal_fusion",
+        "text_output"
+      ]
+    },
+    {
+      "id": "V02",
+      "fact": "60 MSA decoder layers, hidden6144; dense0–2, MoE3–59",
+      "objects_present": true,
+      "evidence_objects": [
+        "model_subtitle",
+        "dense_decoder_title",
+        "moe_decoder_title",
+        "model_scope"
+      ]
+    },
+    {
+      "id": "V03",
+      "fact": "Both pre-norm stages and each identity residual",
+      "objects_present": true,
+      "evidence_objects": [
+        "dense_input",
+        "dense_norm_attn",
+        "dense_attention",
+        "dense_add_attn",
+        "dense_norm_ffn",
+        "dense_ffn",
+        "dense_add_ffn",
+        "dense_attn_residual",
+        "dense_ffn_residual",
+        "moe_input",
+        "moe_norm_attn",
+        "moe_attention",
+        "moe_add_attn",
+        "moe_norm_ffn",
+        "moe_ffn",
+        "moe_add_ffn",
+        "moe_attn_residual",
+        "moe_ffn_residual"
+      ]
+    },
+    {
+      "id": "V04",
+      "fact": "Final norm then LM head; no attention gate",
+      "objects_present": true,
+      "evidence_objects": [
+        "final_norm",
+        "lm_head",
+        "model_scope",
+        "msa_scope"
+      ]
+    },
+    {
+      "id": "V05",
+      "fact": "64Q/4KV/128, four groups with16Q each",
+      "objects_present": true,
+      "evidence_objects": [
+        "content_queries",
+        "content_kv",
+        "msa_subtitle"
+      ]
+    },
+    {
+      "id": "V06",
+      "fact": "4 index Q; one shared128-wide index K distinct from main K",
+      "objects_present": true,
+      "evidence_objects": [
+        "index_queries",
+        "index_keys",
+        "msa_scope"
+      ]
+    },
+    {
+      "id": "V07",
+      "fact": "Scaled token dot scores, causal block max128, future−∞",
+      "objects_present": true,
+      "evidence_objects": [
+        "index_dot",
+        "causal_index",
+        "block_max"
+      ]
+    },
+    {
+      "id": "V08",
+      "fact": "Top16 per group includes local within budget",
+      "objects_present": true,
+      "evidence_objects": [
+        "select_blocks",
+        "block_ids"
+      ]
+    },
+    {
+      "id": "V09",
+      "fact": "Selected group-specific K/V; exact content attention; causal in all selected blocks",
+      "objects_present": true,
+      "evidence_objects": [
+        "content_kv",
+        "selected_kv",
+        "exact_attention",
+        "main_q_to_exact",
+        "gather_to_exact"
+      ]
+    },
+    {
+      "id": "V10",
+      "fact": "128 routed/Top4/one shared; token data to all branches",
+      "objects_present": true,
+      "evidence_objects": [
+        "router",
+        "expert_select",
+        "selected_experts",
+        "shared_expert",
+        "token_to_router",
+        "token_to_routed_experts",
+        "token_to_shared"
+      ]
+    },
+    {
+      "id": "V11",
+      "fact": "Sigmoid scoring; correction bias affects selection only",
+      "objects_present": true,
+      "evidence_objects": [
+        "router",
+        "router_bias",
+        "bias_to_selection"
+      ]
+    },
+    {
+      "id": "V12",
+      "fact": "Original selected unbiased scores renormalized and fed to weighted sum",
+      "objects_present": true,
+      "evidence_objects": [
+        "unbiased_weights",
+        "scores_to_weights",
+        "selection_to_weights",
+        "weights_to_sum",
+        "weighted_sum"
+      ]
+    },
+    {
+      "id": "V13",
+      "fact": "Routed sum×2; then shared added outside routed mixing/renorm",
+      "objects_present": true,
+      "evidence_objects": [
+        "routed_scale",
+        "shared_add",
+        "shared_to_add",
+        "shared_bypass_note"
+      ]
+    },
+    {
+      "id": "V14",
+      "fact": "DSpark auxiliary draft, not extra decoder layers; internals omitted",
+      "objects_present": true,
+      "evidence_objects": [
+        "model_scope"
+      ]
+    }
+  ],
+  "visual_coverage_count": {
+    "present": 14,
+    "required": 14,
+    "note": "Existence is checked separately from the recorded visual/semantic review; counts alone are not a quality score."
+  },
+  "semantic_endpoint_checks": {
+    "attention_residual_origins": true,
+    "ffn_residual_origins": true,
+    "separate_index_and_main_keys": true,
+    "weight_dependency_drawn": true,
+    "shared_bypasses_routed_mixing": true
+  },
+  "native": {
+    "model": {
+      "all_node_ids_unique": true,
+      "all_edge_ids_unique": true,
+      "every_edge_connects_real_objects": true,
+      "no_embedded_image_cells": true,
+      "vertices": 37,
+      "edges": 24
+    },
+    "msa": {
+      "all_node_ids_unique": true,
+      "all_edge_ids_unique": true,
+      "every_edge_connects_real_objects": true,
+      "no_embedded_image_cells": true,
+      "vertices": 22,
+      "edges": 16
+    },
+    "moe": {
+      "all_node_ids_unique": true,
+      "all_edge_ids_unique": true,
+      "every_edge_connects_real_objects": true,
+      "no_embedded_image_cells": true,
+      "vertices": 21,
+      "edges": 14
+    }
+  },
+  "palette_invariance": {
+    "model": {
+      "same_ids": true,
+      "same_labels_endpoints_geometry": true,
+      "same_noncolor_styles": true
+    },
+    "msa": {
+      "same_ids": true,
+      "same_labels_endpoints_geometry": true,
+      "same_noncolor_styles": true
+    },
+    "moe": {
+      "same_ids": true,
+      "same_labels_endpoints_geometry": true,
+      "same_noncolor_styles": true
+    }
+  },
+  "geometry": {
+    "model-paper-clear": {
+      "source": "actual Graph states, label bounding boxes and edge absolutePoints; corners are rounded in the exported SVG",
+      "label_overflow": [],
+      "canvas_overflow": [],
+      "nonorthogonal_segments": [],
+      "edge_obstructions": [],
+      "region_border_label_intersections": [],
+      "javascript_errors": []
+    },
+    "model-blue-neutral": {
+      "source": "actual Graph states, label bounding boxes and edge absolutePoints; corners are rounded in the exported SVG",
+      "label_overflow": [],
+      "canvas_overflow": [],
+      "nonorthogonal_segments": [],
+      "edge_obstructions": [],
+      "region_border_label_intersections": [],
+      "javascript_errors": []
+    },
+    "msa-paper-clear": {
+      "source": "actual Graph states, label bounding boxes and edge absolutePoints; corners are rounded in the exported SVG",
+      "label_overflow": [],
+      "canvas_overflow": [],
+      "nonorthogonal_segments": [],
+      "edge_obstructions": [],
+      "region_border_label_intersections": [],
+      "javascript_errors": []
+    },
+    "msa-blue-neutral": {
+      "source": "actual Graph states, label bounding boxes and edge absolutePoints; corners are rounded in the exported SVG",
+      "label_overflow": [],
+      "canvas_overflow": [],
+      "nonorthogonal_segments": [],
+      "edge_obstructions": [],
+      "region_border_label_intersections": [],
+      "javascript_errors": []
+    },
+    "moe-paper-clear": {
+      "source": "actual Graph states, label bounding boxes and edge absolutePoints; corners are rounded in the exported SVG",
+      "label_overflow": [],
+      "canvas_overflow": [],
+      "nonorthogonal_segments": [],
+      "edge_obstructions": [],
+      "region_border_label_intersections": [],
+      "javascript_errors": []
+    },
+    "moe-blue-neutral": {
+      "source": "actual Graph states, label bounding boxes and edge absolutePoints; corners are rounded in the exported SVG",
+      "label_overflow": [],
+      "canvas_overflow": [],
+      "nonorthogonal_segments": [],
+      "edge_obstructions": [],
+      "region_border_label_intersections": [],
+      "javascript_errors": []
+    }
+  },
+  "svg": {
+    "model-paper-clear": {
+      "text": 42,
+      "foreignObject": 0,
+      "image": 0,
+      "path": 48,
+      "rect": 18,
+      "ellipse": 6,
+      "has_embedded_native_model": true,
+      "viewBox": "0 0 1000 2200",
+      "inkscape_query_executed": true,
+      "inkscape_measured_text_outside_assigned_object": []
+    },
+    "model-blue-neutral": {
+      "text": 42,
+      "foreignObject": 0,
+      "image": 0,
+      "path": 48,
+      "rect": 18,
+      "ellipse": 6,
+      "has_embedded_native_model": true,
+      "viewBox": "0 0 1000 2200",
+      "inkscape_query_executed": true,
+      "inkscape_measured_text_outside_assigned_object": []
+    },
+    "msa-paper-clear": {
+      "text": 42,
+      "foreignObject": 0,
+      "image": 0,
+      "path": 32,
+      "rect": 17,
+      "ellipse": 0,
+      "has_embedded_native_model": true,
+      "viewBox": "0 0 1360 1880",
+      "inkscape_query_executed": true,
+      "inkscape_measured_text_outside_assigned_object": []
+    },
+    "msa-blue-neutral": {
+      "text": 42,
+      "foreignObject": 0,
+      "image": 0,
+      "path": 32,
+      "rect": 17,
+      "ellipse": 0,
+      "has_embedded_native_model": true,
+      "viewBox": "0 0 1360 1880",
+      "inkscape_query_executed": true,
+      "inkscape_measured_text_outside_assigned_object": []
+    },
+    "moe-paper-clear": {
+      "text": 36,
+      "foreignObject": 0,
+      "image": 0,
+      "path": 28,
+      "rect": 11,
+      "ellipse": 1,
+      "has_embedded_native_model": true,
+      "viewBox": "0 0 1420 1780",
+      "inkscape_query_executed": true,
+      "inkscape_measured_text_outside_assigned_object": []
+    },
+    "moe-blue-neutral": {
+      "text": 36,
+      "foreignObject": 0,
+      "image": 0,
+      "path": 28,
+      "rect": 11,
+      "ellipse": 1,
+      "has_embedded_native_model": true,
+      "viewBox": "0 0 1420 1780",
+      "inkscape_query_executed": true,
+      "inkscape_measured_text_outside_assigned_object": []
+    }
+  },
+  "edit_probes": {
+    "model": {
+      "actual_mouse_drag": true,
+      "attached_edges_followed": true,
+      "unrelated_nodes_changed": [],
+      "ids_preserved": true,
+      "edge_endpoints_preserved": true,
+      "reserialized": true,
+      "limitation": "Fixed waypoints remain fixed on an arbitrary drag and can create diagonal edge segments in the separate edit proof. Automatic reflow is not claimed."
+    },
+    "msa": {
+      "actual_mouse_drag": true,
+      "attached_edges_followed": true,
+      "unrelated_nodes_changed": [],
+      "ids_preserved": true,
+      "edge_endpoints_preserved": true,
+      "reserialized": true,
+      "limitation": "Fixed waypoints remain fixed on an arbitrary drag and can create diagonal edge segments in the separate edit proof. Automatic reflow is not claimed."
+    },
+    "moe": {
+      "actual_mouse_drag": true,
+      "attached_edges_followed": true,
+      "unrelated_nodes_changed": [],
+      "ids_preserved": true,
+      "edge_endpoints_preserved": true,
+      "reserialized": true,
+      "limitation": "Fixed waypoints remain fixed on an arbitrary drag and can create diagonal edge segments in the separate edit proof. Automatic reflow is not claimed."
+    }
+  },
+  "not_run": [
+    "Full draw.io EditorUi/Desktop",
+    "Inkscape GUI dragging",
+    "PDF page export/inspection",
+    "PPT/PPTX insertion and editing",
+    "Model inference or weight loading",
+    "Independent full-paper verification",
+    "User aesthetic/golden acceptance",
+    "Automatic layout generalization"
+  ],
+  "quality_boundary": "The views remain a module-and-flow abstraction. Source/endpoint/geometry checks and engine execution do not establish user aesthetic approval or golden quality."
+}

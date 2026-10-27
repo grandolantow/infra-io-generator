@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "0",
+    "vertex": false,
+    "edge": false,
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "text_bbox": null
+  },
+  {
+    "id": "1",
+    "vertex": false,
+    "edge": false,
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "text_bbox": null
+  },
+  {
+    "id": "dense_decoder",
+    "vertex": true,
+    "edge": false,
+    "x": 140,
+    "y": 390,
+    "w": 720,
+    "h": 655,
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_decoder",
+    "vertex": true,
+    "edge": false,
+    "x": 140,
+    "y": 1080,
+    "w": 720,
+    "h": 655,
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "input_text_to_fusion",
+    "vertex": false,
+    "edge": true,
+    "x": 210,
+    "y": 220,
+    "w": 137,
+    "h": 50,
+    "source": "input_text",
+    "target": "multimodal_fusion",
+    "points": [
+      {
+        "x": 210,
+        "y": 220
+      },
+      {
+        "x": 210,
+        "y": 245
+      },
+      {
+        "x": 347,
+        "y": 245
+      },
+      {
+        "x": 347,
+        "y": 270
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "input_image_to_fusion",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 220,
+    "w": 1,
+    "h": 50,
+    "source": "input_image",
+    "target": "multimodal_fusion",
+    "points": [
+      {
+        "x": 500,
+        "y": 220
+      },
+      {
+        "x": 500,
+        "y": 245
+      },
+      {
+        "x": 500,
+        "y": 245
+      },
+      {
+        "x": 500,
+        "y": 270
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "input_video_to_fusion",
+    "vertex": false,
+    "edge": true,
+    "x": 653,
+    "y": 220,
+    "w": 137,
+    "h": 50,
+    "source": "input_video",
+    "target": "multimodal_fusion",
+    "points": [
+      {
+        "x": 790,
+        "y": 220
+      },
+      {
+        "x": 790,
+        "y": 245
+      },
+      {
+        "x": 653,
+        "y": 245
+      },
+      {
+        "x": 653,
+        "y": 270
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "dense_input_to_norm",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 470,
+    "w": 1,
+    "h": 40,
+    "source": "dense_input",
+    "target": "dense_norm_attn",
+    "points": [
+      {
+        "x": 500,
+        "y": 470
+      },
+      {
+        "x": 500,
+        "y": 510
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "dense_norm_to_attn",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 560,
+    "w": 1,
+    "h": 30,
+    "source": "dense_norm_attn",
+    "target": "dense_attention",
+    "points": [
+      {
+        "x": 500,
+        "y": 560
+      },
+      {
+        "x": 500,
+        "y": 590
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "dense_attn_to_add",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 678,
+    "w": 1,
+    "h": 34,
+    "source": "dense_attention",
+    "target": "dense_add_attn",
+    "points": [
+      {
+        "x": 500,
+        "y": 678
+      },
+      {
+        "x": 500,
+        "y": 712
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "dense_attn_residual",
+    "vertex": false,
+    "edge": true,
+    "x": 215,
+    "y": 464,
+    "w": 279,
+    "h": 272,
+    "source": "dense_input",
+    "target": "dense_add_attn",
+    "points": [
+      {
+        "x": 494,
+        "y": 464
+      },
+      {
+        "x": 215,
+        "y": 464
+      },
+      {
+        "x": 215,
+        "y": 736
+      },
+      {
+        "x": 476,
+        "y": 736
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "dense_add_to_norm",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 760,
+    "w": 1,
+    "h": 32,
+    "source": "dense_add_attn",
+    "target": "dense_norm_ffn",
+    "points": [
+      {
+        "x": 500,
+        "y": 760
+      },
+      {
+        "x": 500,
+        "y": 792
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "dense_norm_to_ffn",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 842,
+    "w": 1,
+    "h": 33,
+    "source": "dense_norm_ffn",
+    "target": "dense_ffn",
+    "points": [
+      {
+        "x": 500,
+        "y": 842
+      },
+      {
+        "x": 500,
+        "y": 875
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "dense_ffn_to_add",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 951,
+    "w": 1,
+    "h": 29,
+    "source": "dense_ffn",
+    "target": "dense_add_ffn",
+    "points": [
+      {
+        "x": 500,
+        "y": 951
+      },
+      {
+        "x": 500,
+        "y": 980
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "dense_ffn_residual",
+    "vertex": false,
+    "edge": true,
+    "x": 524,
+    "y": 736,
+    "w": 261,
+    "h": 268,
+    "source": "dense_add_attn",
+    "target": "dense_add_ffn",
+    "points": [
+      {
+        "x": 524,
+        "y": 736
+      },
+      {
+        "x": 785,
+        "y": 736
+      },
+      {
+        "x": 785,
+        "y": 1004
+      },
+      {
+        "x": 524,
+        "y": 1004
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_input_to_norm",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 1160,
+    "w": 1,
+    "h": 40,
+    "source": "moe_input",
+    "target": "moe_norm_attn",
+    "points": [
+      {
+        "x": 500,
+        "y": 1160
+      },
+      {
+        "x": 500,
+        "y": 1200
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_norm_to_attn",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 1250,
+    "w": 1,
+    "h": 30,
+    "source": "moe_norm_attn",
+    "target": "moe_attention",
+    "points": [
+      {
+        "x": 500,
+        "y": 1250
+      },
+      {
+        "x": 500,
+        "y": 1280
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_attn_to_add",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 1368,
+    "w": 1,
+    "h": 34,
+    "source": "moe_attention",
+    "target": "moe_add_attn",
+    "points": [
+      {
+        "x": 500,
+        "y": 1368
+      },
+      {
+        "x": 500,
+        "y": 1402
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_attn_residual",
+    "vertex": false,
+    "edge": true,
+    "x": 215,
+    "y": 1154,
+    "w": 279,
+    "h": 272,
+    "source": "moe_input",
+    "target": "moe_add_attn",
+    "points": [
+      {
+        "x": 494,
+        "y": 1154
+      },
+      {
+        "x": 215,
+        "y": 1154
+      },
+      {
+        "x": 215,
+        "y": 1426
+      },
+      {
+        "x": 476,
+        "y": 1426
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_add_to_norm",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 1450,
+    "w": 1,
+    "h": 32,
+    "source": "moe_add_attn",
+    "target": "moe_norm_ffn",
+    "points": [
+      {
+        "x": 500,
+        "y": 1450
+      },
+      {
+        "x": 500,
+        "y": 1482
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_norm_to_ffn",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 1532,
+    "w": 1,
+    "h": 33,
+    "source": "moe_norm_ffn",
+    "target": "moe_ffn",
+    "points": [
+      {
+        "x": 500,
+        "y": 1532
+      },
+      {
+        "x": 500,
+        "y": 1565
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_ffn_to_add",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 1641,
+    "w": 1,
+    "h": 29,
+    "source": "moe_ffn",
+    "target": "moe_add_ffn",
+    "points": [
+      {
+        "x": 500,
+        "y": 1641
+      },
+      {
+        "x": 500,
+        "y": 1670
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_ffn_residual",
+    "vertex": false,
+    "edge": true,
+    "x": 524,
+    "y": 1426,
+    "w": 261,
+    "h": 268,
+    "source": "moe_add_attn",
+    "target": "moe_add_ffn",
+    "points": [
+      {
+        "x": 524,
+        "y": 1426
+      },
+      {
+        "x": 785,
+        "y": 1426
+      },
+      {
+        "x": 785,
+        "y": 1694
+      },
+      {
+        "x": 524,
+        "y": 1694
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "fusion_to_dense",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 344,
+    "w": 1,
+    "h": 114,
+    "source": "multimodal_fusion",
+    "target": "dense_input",
+    "points": [
+      {
+        "x": 500,
+        "y": 344
+      },
+      {
+        "x": 500,
+        "y": 458
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "dense_to_moe",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 1028,
+    "w": 1,
+    "h": 120,
+    "source": "dense_add_ffn",
+    "target": "moe_input",
+    "points": [
+      {
+        "x": 500,
+        "y": 1028
+      },
+      {
+        "x": 500,
+        "y": 1148
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_to_final_norm",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 1718,
+    "w": 1,
+    "h": 87,
+    "source": "moe_add_ffn",
+    "target": "final_norm",
+    "points": [
+      {
+        "x": 500,
+        "y": 1718
+      },
+      {
+        "x": 500,
+        "y": 1805
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "norm_to_lm",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 1861,
+    "w": 1,
+    "h": 49,
+    "source": "final_norm",
+    "target": "lm_head",
+    "points": [
+      {
+        "x": 500,
+        "y": 1861
+      },
+      {
+        "x": 500,
+        "y": 1910
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "lm_to_output",
+    "vertex": false,
+    "edge": true,
+    "x": 500,
+    "y": 1966,
+    "w": 1,
+    "h": 49,
+    "source": "lm_head",
+    "target": "text_output",
+    "points": [
+      {
+        "x": 500,
+        "y": 1966
+      },
+      {
+        "x": 500,
+        "y": 2015
+      }
+    ],
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "model_title",
+    "vertex": true,
+    "edge": false,
+    "x": 60,
+    "y": 34,
+    "w": 880,
+    "h": 48,
+    "label": "MiniMax M3.1-Flash",
+    "text_bbox": {
+      "x": 60,
+      "y": 42.5,
+      "w": 395,
+      "h": 40
+    }
+  },
+  {
+    "id": "model_subtitle",
+    "vertex": true,
+    "edge": false,
+    "x": 60,
+    "y": 94,
+    "w": 880,
+    "h": 38,
+    "label": "Native multimodal MoE  ·  text hidden size 6144  ·  60 decoder layers",
+    "text_bbox": {
+      "x": 60,
+      "y": 103.5,
+      "w": 702,
+      "h": 24
+    }
+  },
+  {
+    "id": "model_tag",
+    "vertex": true,
+    "edge": false,
+    "x": 790,
+    "y": 38,
+    "w": 150,
+    "h": 38,
+    "label": "MODEL",
+    "text_bbox": {
+      "x": 857,
+      "y": 47.5,
+      "w": 83,
+      "h": 24
+    }
+  },
+  {
+    "id": "input_text",
+    "vertex": true,
+    "edge": false,
+    "x": 100,
+    "y": 164,
+    "w": 220,
+    "h": 56,
+    "label": "Text",
+    "text_bbox": {
+      "x": 185.5,
+      "y": 181.5,
+      "w": 48,
+      "h": 26
+    }
+  },
+  {
+    "id": "input_image",
+    "vertex": true,
+    "edge": false,
+    "x": 390,
+    "y": 164,
+    "w": 220,
+    "h": 56,
+    "label": "Image",
+    "text_bbox": {
+      "x": 464,
+      "y": 181.5,
+      "w": 72,
+      "h": 26
+    }
+  },
+  {
+    "id": "input_video",
+    "vertex": true,
+    "edge": false,
+    "x": 680,
+    "y": 164,
+    "w": 220,
+    "h": 56,
+    "label": "Video",
+    "text_bbox": {
+      "x": 758,
+      "y": 181.5,
+      "w": 64,
+      "h": 26
+    }
+  },
+  {
+    "id": "multimodal_fusion",
+    "vertex": true,
+    "edge": false,
+    "x": 245,
+    "y": 270,
+    "w": 510,
+    "h": 74,
+    "label": "Input embeddings & multimodal fusion\nFrontend internals omitted",
+    "text_bbox": {
+      "x": 275.5,
+      "y": 282.5,
+      "w": 449,
+      "h": 54
+    }
+  },
+  {
+    "id": "dense_decoder_title",
+    "vertex": true,
+    "edge": false,
+    "x": 166,
+    "y": 406,
+    "w": 668,
+    "h": 34,
+    "label": "Layers 0–2  ·  repeat ×3",
+    "text_bbox": {
+      "x": 166,
+      "y": 412.5,
+      "w": 292,
+      "h": 26
+    }
+  },
+  {
+    "id": "dense_input",
+    "vertex": true,
+    "edge": false,
+    "x": 494,
+    "y": 458,
+    "w": 12,
+    "h": 12,
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "dense_input_label",
+    "vertex": true,
+    "edge": false,
+    "x": 528,
+    "y": 442,
+    "w": 110,
+    "h": 38,
+    "label": "x_l",
+    "text_bbox": {
+      "x": 528,
+      "y": 450.5,
+      "w": 32,
+      "h": 26
+    }
+  },
+  {
+    "id": "dense_norm_attn",
+    "vertex": true,
+    "edge": false,
+    "x": 350,
+    "y": 510,
+    "w": 300,
+    "h": 50,
+    "label": "Norm",
+    "text_bbox": {
+      "x": 469,
+      "y": 524.5,
+      "w": 62,
+      "h": 26
+    }
+  },
+  {
+    "id": "dense_attention",
+    "vertex": true,
+    "edge": false,
+    "x": 285,
+    "y": 590,
+    "w": 430,
+    "h": 88,
+    "label": "MiniMax Sparse Attention\n64 Q /4 KV heads  ·  d_head = 128\nDetail A",
+    "text_bbox": {
+      "x": 318,
+      "y": 598,
+      "w": 364,
+      "h": 77
+    }
+  },
+  {
+    "id": "dense_add_attn",
+    "vertex": true,
+    "edge": false,
+    "x": 476,
+    "y": 712,
+    "w": 48,
+    "h": 48,
+    "label": "+",
+    "text_bbox": {
+      "x": 488.5,
+      "y": 723,
+      "w": 23,
+      "h": 33
+    }
+  },
+  {
+    "id": "dense_h_label",
+    "vertex": true,
+    "edge": false,
+    "x": 536,
+    "y": 682,
+    "w": 90,
+    "h": 32,
+    "label": "h_l",
+    "text_bbox": {
+      "x": 536,
+      "y": 687.5,
+      "w": 33,
+      "h": 26
+    }
+  },
+  {
+    "id": "dense_norm_ffn",
+    "vertex": true,
+    "edge": false,
+    "x": 350,
+    "y": 792,
+    "w": 300,
+    "h": 50,
+    "label": "Norm",
+    "text_bbox": {
+      "x": 469,
+      "y": 806.5,
+      "w": 62,
+      "h": 26
+    }
+  },
+  {
+    "id": "dense_ffn",
+    "vertex": true,
+    "edge": false,
+    "x": 265,
+    "y": 875,
+    "w": 470,
+    "h": 76,
+    "label": "Dense FFN\nSwiGLU",
+    "text_bbox": {
+      "x": 440.5,
+      "y": 890,
+      "w": 119,
+      "h": 51
+    }
+  },
+  {
+    "id": "dense_add_ffn",
+    "vertex": true,
+    "edge": false,
+    "x": 476,
+    "y": 980,
+    "w": 48,
+    "h": 48,
+    "label": "+",
+    "text_bbox": {
+      "x": 488.5,
+      "y": 991,
+      "w": 23,
+      "h": 33
+    }
+  },
+  {
+    "id": "dense_residual1_label",
+    "vertex": true,
+    "edge": false,
+    "x": 159,
+    "y": 566,
+    "w": 50,
+    "h": 30,
+    "label": "skip",
+    "text_bbox": {
+      "x": 159,
+      "y": 572,
+      "w": 35,
+      "h": 21
+    }
+  },
+  {
+    "id": "dense_residual2_label",
+    "vertex": true,
+    "edge": false,
+    "x": 797,
+    "y": 831,
+    "w": 50,
+    "h": 30,
+    "label": "skip",
+    "text_bbox": {
+      "x": 797,
+      "y": 837,
+      "w": 35,
+      "h": 21
+    }
+  },
+  {
+    "id": "moe_decoder_title",
+    "vertex": true,
+    "edge": false,
+    "x": 166,
+    "y": 1096,
+    "w": 668,
+    "h": 34,
+    "label": "Layers 3–59  ·  repeat ×57",
+    "text_bbox": {
+      "x": 166,
+      "y": 1102.5,
+      "w": 324,
+      "h": 26
+    }
+  },
+  {
+    "id": "moe_input",
+    "vertex": true,
+    "edge": false,
+    "x": 494,
+    "y": 1148,
+    "w": 12,
+    "h": 12,
+    "label": "",
+    "text_bbox": null
+  },
+  {
+    "id": "moe_input_label",
+    "vertex": true,
+    "edge": false,
+    "x": 528,
+    "y": 1132,
+    "w": 110,
+    "h": 38,
+    "label": "x_l",
+    "text_bbox": {
+      "x": 528,
+      "y": 1140.5,
+      "w": 32,
+      "h": 26
+    }
+  },
+  {
+    "id": "moe_norm_attn",
+    "vertex": true,
+    "edge": false,
+    "x": 350,
+    "y": 1200,
+    "w": 300,
+    "h": 50,
+    "label": "Norm",
+    "text_bbox": {
+      "x": 469,
+      "y": 1214.5,
+      "w": 62,
+      "h": 26
+    }
+  },
+  {
+    "id": "moe_attention",
+    "vertex": true,
+    "edge": false,
+    "x": 285,
+    "y": 1280,
+    "w": 430,
+    "h": 88,
+    "label": "MiniMax Sparse Attention\n64 Q /4 KV heads  ·  d_head = 128\nDetail A",
+    "text_bbox": {
+      "x": 318,
+      "y": 1288,
+      "w": 364,
+      "h": 77
+    }
+  },
+  {
+    "id": "moe_add_attn",
+    "vertex": true,
+    "edge": false,
+    "x": 476,
+    "y": 1402,
+    "w": 48,
+    "h": 48,
+    "label": "+",
+    "text_bbox": {
+      "x": 488.5,
+      "y": 1413,
+      "w": 23,
+      "h": 33
+    }
+  },
+  {
+    "id": "moe_h_label",
+    "vertex": true,
+    "edge": false,
+    "x": 536,
+    "y": 1372,
+    "w": 90,
+    "h": 32,
+    "label": "h_l",
+    "text_bbox": {
+      "x": 536,
+      "y": 1377.5,
+      "w": 33,
+      "h": 26
+    }
+  },
+  {
+    "id": "moe_norm_ffn",
+    "vertex": true,
+    "edge": false,
+    "x": 350,
+    "y": 1482,
+    "w": 300,
+    "h": 50,
+    "label": "Norm",
+    "text_bbox": {
+      "x": 469,
+      "y": 1496.5,
+      "w": 62,
+      "h": 26
+    }
+  },
+  {
+    "id": "moe_ffn",
+    "vertex": true,
+    "edge": false,
+    "x": 265,
+    "y": 1565,
+    "w": 470,
+    "h": 76,
+    "label": "MoE  ·  Top4 of 128 routed +1 shared\nRouted ×2; then add shared  ·  Detail B",
+    "text_bbox": {
+      "x": 290,
+      "y": 1580,
+      "w": 420,
+      "h": 51
+    }
+  },
+  {
+    "id": "moe_add_ffn",
+    "vertex": true,
+    "edge": false,
+    "x": 476,
+    "y": 1670,
+    "w": 48,
+    "h": 48,
+    "label": "+",
+    "text_bbox": {
+      "x": 488.5,
+      "y": 1681,
+      "w": 23,
+      "h": 33
+    }
+  },
+  {
+    "id": "moe_residual1_label",
+    "vertex": true,
+    "edge": false,
+    "x": 159,
+    "y": 1256,
+    "w": 50,
+    "h": 30,
+    "label": "skip",
+    "text_bbox": {
+      "x": 159,
+      "y": 1262,
+      "w": 35,
+      "h": 21
+    }
+  },
+  {
+    "id": "moe_residual2_label",
+    "vertex": true,
+    "edge": false,
+    "x": 797,
+    "y": 1521,
+    "w": 50,
+    "h": 30,
+    "label": "skip",
+    "text_bbox": {
+      "x": 797,
+      "y": 1527,
+      "w": 35,
+      "h": 21
+    }
+  },
+  {
+    "id": "final_norm",
+    "vertex": true,
+    "edge": false,
+    "x": 350,
+    "y": 1805,
+    "w": 300,
+    "h": 56,
+    "label": "Final Norm",
+    "text_bbox": {
+      "x": 439.5,
+      "y": 1822.5,
+      "w": 121,
+      "h": 26
+    }
+  },
+  {
+    "id": "lm_head",
+    "vertex": true,
+    "edge": false,
+    "x": 350,
+    "y": 1910,
+    "w": 300,
+    "h": 56,
+    "label": "LM head",
+    "text_bbox": {
+      "x": 451,
+      "y": 1927.5,
+      "w": 98,
+      "h": 26
+    }
+  },
+  {
+    "id": "text_output",
+    "vertex": true,
+    "edge": false,
+    "x": 350,
+    "y": 2015,
+    "w": 300,
+    "h": 56,
+    "label": "Text output",
+    "text_bbox": {
+      "x": 433.5,
+      "y": 2032.5,
+      "w": 132,
+      "h": 26
+    }
+  },
+  {
+    "id": "model_scope",
+    "vertex": true,
+    "edge": false,
+    "x": 60,
+    "y": 2105,
+    "w": 880,
+    "h": 75,
+    "label": "All 60 layers use MSA; no attention output gate.\nDSpark is an auxiliary draft, not extra decoder layers; internals omitted.\nVision frontend details and training losses are outside this view.",
+    "text_bbox": {
+      "x": 60,
+      "y": 2111.5,
+      "w": 646,
+      "h": 65
+    }
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "status": "template",
+  "task_id": null,
+  "paper_family_id": null,
+  "split": null,
+  "run_id": null,
+  "skill_version": null,
+  "execution_model": null,
+  "prompt_hash": null,
+  "source_bundle_hash": null,
+  "canvas": null,
+  "generation_budget": null,
+  "max_retries": null,
+  "candidate_count": null,
+  "selected_top1_before_feedback": null,
+  "candidate_ids": [],
+  "technical_check": {
+    "critical_error_count": null,
+    "required_facts_covered": null,
+    "unverified_claim_count": null
+  },
+  "delivery_check": {
+    "html_opened": null,
+    "editable_svg_verified": null,
+    "target_size_visual_check": null
+  },
+  "user_review": {
+    "preferred_candidate": null,
+    "acceptability": "unreviewed",
+    "largest_problem": null,
+    "pairwise_preference": null,
+    "both_unusable": null
+  },
+  "allowed_acceptability_values": [
+    "usable",
+    "local_edits",
+    "structural_redraw",
+    "unreviewed"
+  ],
+  "cost_observed": {
+    "elapsed_seconds": null,
+    "total_candidates_including_failures": null,
+    "revision_rounds": null
+  },
+  "failure_tags": [],
+  "changed_rules": [],
+  "notes": "不得用参考图评分填充实际生成质量；所有null均表示未测，而非通过。"
+}

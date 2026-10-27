@@ -1,0 +1,16 @@
+{
+  "scope": "first-use documentation and source review",
+  "findings": [
+    {
+      "issue": "Skill quick-start did not supply graph-js; installed Skill omitted bundle",
+      "resolution": "quick-start now fetches pinned Git blob into task cache and passes graph-js; actual immutable download SHA verified"
+    },
+    {
+      "issue": "render_example captured child stderr without showing it",
+      "resolution": "nonzero child exit now includes stderr; missing runtime dependency remains explicit"
+    }
+  ],
+  "independent_render_attempts": "not completed: browser executable missing at reviewer-selected path",
+  "owner_render_checks": "MiniMax and AttnRes actually rendered using explicitly configured existing Chromium; see adjacent reports",
+  "second_independent_pass": "not_run"
+}

@@ -1,0 +1,684 @@
+{
+  "id": "attention_residuals_golden",
+  "version": {
+    "paper": "arXiv:2603.15031v1",
+    "paper_url": "https://arxiv.org/pdf/2603.15031v1",
+    "official_commit": "85e22310fe5ee860b4a023de312d791de8a5a5e6",
+    "readme_blob": "a8cc8834a75d384891481d7d414853cafc1407e9"
+  },
+  "scope": "Same-token depth mixing; Standard, Full and Block, four illustrative sublayers in two blocks; shared aggregation operator. Not an actual model depth or default block count.",
+  "notation": {
+    "v0": "embedding = b0 = paper h1",
+    "v_l": "raw f_l(h_l), not residual accumulated h_(l+1)",
+    "h_l": "input to F_l",
+    "b1": "v1+v2",
+    "b2": "v3+v4",
+    "A_l": "independent learned w_l at each aggregation site",
+    "blocks": [
+      [
+        "F1",
+        "F2"
+      ],
+      [
+        "F3",
+        "F4"
+      ]
+    ]
+  },
+  "required_facts": [
+    {
+      "id": "G01",
+      "statement": "Standard gives every raw output and embedding coefficient 1; identity bypass accumulates the previous residual with current output.",
+      "equation": "h_(l+1)=h_l+v_l; h1=v0",
+      "source": "paper §2.1 p3"
+    },
+    {
+      "id": "G02",
+      "statement": "Full retains separate raw sublayer outputs and embedding for all subsequent aggregation sites.",
+      "equation": "h_l=Σ_(i=0)^(l−1) α_(i→l) v_i",
+      "source": "paper §3.1 Eq1–4 pp3–4"
+    },
+    {
+      "id": "G03",
+      "statement": "Every aggregation site uses its own learned query vector; it is not projected from the current hidden state. Keys make weights content-dependent.",
+      "equation": "q_l=w_l",
+      "source": "paper Eq3; official forward has separate attention/MLP aggregation parameters"
+    },
+    {
+      "id": "G04",
+      "statement": "RMSNorm supplies normalized keys for scoring; values remain the original candidates.",
+      "equation": "K=RMSNorm(V); s_j=w_lᵀK_j; α=softmax_candidates(s); h=Σ_j α_jV_j",
+      "source": "paper Eq2–4; official block_attn_res"
+    },
+    {
+      "id": "G05",
+      "statement": "Weights normalize over depth candidates independently per batch/token, not over sequence positions.",
+      "equation": "V:[C,B,T,D], logits/α:[C,B,T], softmax axis C",
+      "source": "official einsum and softmax(0)"
+    },
+    {
+      "id": "G06",
+      "statement": "A block representation is a unit sum of that block's raw outputs; weighted inputs and embedding do not enter the local sum.",
+      "equation": "b_n=Σ_(j∈B_n) f_j(h_j)",
+      "source": "paper §3.2 Eq5 p4"
+    },
+    {
+      "id": "G07",
+      "statement": "Block-first sublayer attends to embedding and completed prior blocks; later sublayers additionally attend to current partial sum as one candidate.",
+      "equation": "V_(n,1)=[b0,…,b_(n−1)]; V_(n,i≥2)=[b0,…,b_(n−1),b_n^(i−1)]",
+      "source": "paper §3.2 Eq6 p5"
+    },
+    {
+      "id": "G08",
+      "statement": "Embedding stays separate. At block start the empty partial is omitted, not added as a zero candidate.",
+      "equation": "b0=v0; no b_n^0 in first branch",
+      "source": "paper Eq6; official history includes embedding"
+    },
+    {
+      "id": "G09",
+      "statement": "Final readout aggregates all completed block summaries plus separately retained embedding.",
+      "equation": "Full:[v0,v1,v2,v3,v4]; Block:[v0,b1,b2]",
+      "source": "paper final-output paragraph with Eq6 embedding source; official history list"
+    },
+    {
+      "id": "G10",
+      "statement": "The ordinary sublayer transformations remain on the backbone; the change concerns residual mixing, not the sequence-attention mechanism inside F_l.",
+      "equation": "v_l=f_l(h_l)",
+      "source": "paper §2 notation; official forward applies Norm and Attention/MLP"
+    }
+  ],
+  "candidate_tables": {
+    "full": {
+      "F1": {
+        "aggregation": "A1",
+        "candidates": [
+          "v0"
+        ],
+        "count": 1,
+        "query": "w1",
+        "output": "h1"
+      },
+      "F2": {
+        "aggregation": "A2",
+        "candidates": [
+          "v0",
+          "v1"
+        ],
+        "count": 2,
+        "query": "w2",
+        "output": "h2"
+      },
+      "F3": {
+        "aggregation": "A3",
+        "candidates": [
+          "v0",
+          "v1",
+          "v2"
+        ],
+        "count": 3,
+        "query": "w3",
+        "output": "h3"
+      },
+      "F4": {
+        "aggregation": "A4",
+        "candidates": [
+          "v0",
+          "v1",
+          "v2",
+          "v3"
+        ],
+        "count": 4,
+        "query": "w4",
+        "output": "h4"
+      },
+      "output": {
+        "aggregation": "Aout",
+        "candidates": [
+          "v0",
+          "v1",
+          "v2",
+          "v3",
+          "v4"
+        ],
+        "count": 5,
+        "query": "w_out",
+        "output": "h_out"
+      }
+    },
+    "block": {
+      "F1": {
+        "aggregation": "A1",
+        "candidates": [
+          "v0"
+        ],
+        "count": 1,
+        "query": "w1",
+        "output": "h1",
+        "block": 1,
+        "within_block_index": 1
+      },
+      "F2": {
+        "aggregation": "A2",
+        "candidates": [
+          "v0",
+          "v1"
+        ],
+        "count": 2,
+        "query": "w2",
+        "output": "h2",
+        "block": 1,
+        "within_block_index": 2
+      },
+      "F3": {
+        "aggregation": "A3",
+        "candidates": [
+          "v0",
+          "b1"
+        ],
+        "count": 2,
+        "query": "w3",
+        "output": "h3",
+        "block": 2,
+        "within_block_index": 1
+      },
+      "F4": {
+        "aggregation": "A4",
+        "candidates": [
+          "v0",
+          "b1",
+          "v3"
+        ],
+        "count": 3,
+        "query": "w4",
+        "output": "h4",
+        "block": 2,
+        "within_block_index": 2
+      },
+      "output": {
+        "aggregation": "Aout",
+        "candidates": [
+          "v0",
+          "b1",
+          "b2"
+        ],
+        "count": 3,
+        "query": "w_out",
+        "output": "h_out"
+      }
+    },
+    "standard_expanded": {
+      "F1": [
+        "v0"
+      ],
+      "F2": [
+        "v0",
+        "v1"
+      ],
+      "F3": [
+        "v0",
+        "v1",
+        "v2"
+      ],
+      "F4": [
+        "v0",
+        "v1",
+        "v2",
+        "v3"
+      ]
+    }
+  },
+  "graph_contract": {
+    "full": {
+      "edges": [
+        {
+          "from": "v0",
+          "to": "A1",
+          "kind": "candidate_value",
+          "site": "F1"
+        },
+        {
+          "from": "w1",
+          "to": "A1",
+          "kind": "learned_query",
+          "site": "F1"
+        },
+        {
+          "from": "A1",
+          "to": "F1",
+          "kind": "aggregated_input"
+        },
+        {
+          "from": "F1",
+          "to": "v1",
+          "kind": "raw_output"
+        },
+        {
+          "from": "v0",
+          "to": "A2",
+          "kind": "candidate_value",
+          "site": "F2"
+        },
+        {
+          "from": "v1",
+          "to": "A2",
+          "kind": "candidate_value",
+          "site": "F2"
+        },
+        {
+          "from": "w2",
+          "to": "A2",
+          "kind": "learned_query",
+          "site": "F2"
+        },
+        {
+          "from": "A2",
+          "to": "F2",
+          "kind": "aggregated_input"
+        },
+        {
+          "from": "F2",
+          "to": "v2",
+          "kind": "raw_output"
+        },
+        {
+          "from": "v0",
+          "to": "A3",
+          "kind": "candidate_value",
+          "site": "F3"
+        },
+        {
+          "from": "v1",
+          "to": "A3",
+          "kind": "candidate_value",
+          "site": "F3"
+        },
+        {
+          "from": "v2",
+          "to": "A3",
+          "kind": "candidate_value",
+          "site": "F3"
+        },
+        {
+          "from": "w3",
+          "to": "A3",
+          "kind": "learned_query",
+          "site": "F3"
+        },
+        {
+          "from": "A3",
+          "to": "F3",
+          "kind": "aggregated_input"
+        },
+        {
+          "from": "F3",
+          "to": "v3",
+          "kind": "raw_output"
+        },
+        {
+          "from": "v0",
+          "to": "A4",
+          "kind": "candidate_value",
+          "site": "F4"
+        },
+        {
+          "from": "v1",
+          "to": "A4",
+          "kind": "candidate_value",
+          "site": "F4"
+        },
+        {
+          "from": "v2",
+          "to": "A4",
+          "kind": "candidate_value",
+          "site": "F4"
+        },
+        {
+          "from": "v3",
+          "to": "A4",
+          "kind": "candidate_value",
+          "site": "F4"
+        },
+        {
+          "from": "w4",
+          "to": "A4",
+          "kind": "learned_query",
+          "site": "F4"
+        },
+        {
+          "from": "A4",
+          "to": "F4",
+          "kind": "aggregated_input"
+        },
+        {
+          "from": "F4",
+          "to": "v4",
+          "kind": "raw_output"
+        },
+        {
+          "from": "v0",
+          "to": "Aout",
+          "kind": "candidate_value",
+          "site": "output"
+        },
+        {
+          "from": "v1",
+          "to": "Aout",
+          "kind": "candidate_value",
+          "site": "output"
+        },
+        {
+          "from": "v2",
+          "to": "Aout",
+          "kind": "candidate_value",
+          "site": "output"
+        },
+        {
+          "from": "v3",
+          "to": "Aout",
+          "kind": "candidate_value",
+          "site": "output"
+        },
+        {
+          "from": "v4",
+          "to": "Aout",
+          "kind": "candidate_value",
+          "site": "output"
+        },
+        {
+          "from": "w_out",
+          "to": "Aout",
+          "kind": "learned_query",
+          "site": "output"
+        },
+        {
+          "from": "Aout",
+          "to": "h_out",
+          "kind": "aggregated_output"
+        }
+      ],
+      "singleton_can_be_direct": true,
+      "no_duplicate_sources": true
+    },
+    "block": {
+      "edges": [
+        {
+          "from": "v0",
+          "to": "A1",
+          "kind": "candidate_value",
+          "site": "F1"
+        },
+        {
+          "from": "w1",
+          "to": "A1",
+          "kind": "learned_query",
+          "site": "F1"
+        },
+        {
+          "from": "A1",
+          "to": "F1",
+          "kind": "aggregated_input"
+        },
+        {
+          "from": "F1",
+          "to": "v1",
+          "kind": "raw_output"
+        },
+        {
+          "from": "v0",
+          "to": "A2",
+          "kind": "candidate_value",
+          "site": "F2"
+        },
+        {
+          "from": "v1",
+          "to": "A2",
+          "kind": "candidate_value",
+          "site": "F2"
+        },
+        {
+          "from": "w2",
+          "to": "A2",
+          "kind": "learned_query",
+          "site": "F2"
+        },
+        {
+          "from": "A2",
+          "to": "F2",
+          "kind": "aggregated_input"
+        },
+        {
+          "from": "F2",
+          "to": "v2",
+          "kind": "raw_output"
+        },
+        {
+          "from": "v0",
+          "to": "A3",
+          "kind": "candidate_value",
+          "site": "F3"
+        },
+        {
+          "from": "b1",
+          "to": "A3",
+          "kind": "candidate_value",
+          "site": "F3"
+        },
+        {
+          "from": "w3",
+          "to": "A3",
+          "kind": "learned_query",
+          "site": "F3"
+        },
+        {
+          "from": "A3",
+          "to": "F3",
+          "kind": "aggregated_input"
+        },
+        {
+          "from": "F3",
+          "to": "v3",
+          "kind": "raw_output"
+        },
+        {
+          "from": "v0",
+          "to": "A4",
+          "kind": "candidate_value",
+          "site": "F4"
+        },
+        {
+          "from": "b1",
+          "to": "A4",
+          "kind": "candidate_value",
+          "site": "F4"
+        },
+        {
+          "from": "v3",
+          "to": "A4",
+          "kind": "candidate_value",
+          "site": "F4"
+        },
+        {
+          "from": "w4",
+          "to": "A4",
+          "kind": "learned_query",
+          "site": "F4"
+        },
+        {
+          "from": "A4",
+          "to": "F4",
+          "kind": "aggregated_input"
+        },
+        {
+          "from": "F4",
+          "to": "v4",
+          "kind": "raw_output"
+        },
+        {
+          "from": "v0",
+          "to": "Aout",
+          "kind": "candidate_value",
+          "site": "output"
+        },
+        {
+          "from": "b1",
+          "to": "Aout",
+          "kind": "candidate_value",
+          "site": "output"
+        },
+        {
+          "from": "b2",
+          "to": "Aout",
+          "kind": "candidate_value",
+          "site": "output"
+        },
+        {
+          "from": "w_out",
+          "to": "Aout",
+          "kind": "learned_query",
+          "site": "output"
+        },
+        {
+          "from": "Aout",
+          "to": "h_out",
+          "kind": "aggregated_output"
+        },
+        {
+          "from": "v1",
+          "to": "b1",
+          "kind": "local_unit_sum"
+        },
+        {
+          "from": "v2",
+          "to": "b1",
+          "kind": "local_unit_sum"
+        },
+        {
+          "from": "v3",
+          "to": "b2",
+          "kind": "local_unit_sum"
+        },
+        {
+          "from": "v4",
+          "to": "b2",
+          "kind": "local_unit_sum"
+        }
+      ],
+      "singleton_can_be_direct": true,
+      "no_duplicate_sources": true
+    },
+    "standard": {
+      "edges": [
+        {
+          "from": "h1",
+          "to": "F1",
+          "kind": "sublayer_input"
+        },
+        {
+          "from": "F1",
+          "to": "v1",
+          "kind": "raw_output"
+        },
+        {
+          "from": "h1",
+          "to": "plus1",
+          "kind": "identity_bypass"
+        },
+        {
+          "from": "v1",
+          "to": "plus1",
+          "kind": "unit_add"
+        },
+        {
+          "from": "plus1",
+          "to": "h2",
+          "kind": "updated_residual"
+        },
+        {
+          "from": "h2",
+          "to": "F2",
+          "kind": "sublayer_input"
+        },
+        {
+          "from": "F2",
+          "to": "v2",
+          "kind": "raw_output"
+        },
+        {
+          "from": "h2",
+          "to": "plus2",
+          "kind": "identity_bypass"
+        },
+        {
+          "from": "v2",
+          "to": "plus2",
+          "kind": "unit_add"
+        },
+        {
+          "from": "plus2",
+          "to": "h3",
+          "kind": "updated_residual"
+        },
+        {
+          "from": "h3",
+          "to": "F3",
+          "kind": "sublayer_input"
+        },
+        {
+          "from": "F3",
+          "to": "v3",
+          "kind": "raw_output"
+        },
+        {
+          "from": "h3",
+          "to": "plus3",
+          "kind": "identity_bypass"
+        },
+        {
+          "from": "v3",
+          "to": "plus3",
+          "kind": "unit_add"
+        },
+        {
+          "from": "plus3",
+          "to": "h4",
+          "kind": "updated_residual"
+        },
+        {
+          "from": "h4",
+          "to": "F4",
+          "kind": "sublayer_input"
+        },
+        {
+          "from": "F4",
+          "to": "v4",
+          "kind": "raw_output"
+        },
+        {
+          "from": "h4",
+          "to": "plus4",
+          "kind": "identity_bypass"
+        },
+        {
+          "from": "v4",
+          "to": "plus4",
+          "kind": "unit_add"
+        },
+        {
+          "from": "plus4",
+          "to": "h5",
+          "kind": "updated_residual"
+        }
+      ],
+      "h1_alias": "v0",
+      "output_alias": "h5",
+      "coefficient_per_input": 1
+    }
+  },
+  "visual_components": {
+    "identity_sum": "circle +, each identity/raw-output input once",
+    "attnres": "circle α abbreviating shared aggregation operator",
+    "completed_block": "box b_n receives only its constituent raw outputs",
+    "current_partial": "local partial, distinct from completed b_n and weighted h_l",
+    "operator_inset": "query, normalized key stack, raw value stack, score, depth Softmax, weighted reduction"
+  }
+}

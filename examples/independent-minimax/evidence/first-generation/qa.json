@@ -1,0 +1,52 @@
+{
+  "version": "first-generation",
+  "status": "needs_local_revision",
+  "actual_engine": "draw.io Graph32.6.1",
+  "viewed_pngs": [
+    "model.png",
+    "msa.png",
+    "moe.png"
+  ],
+  "issues": [
+    {
+      "id": "I01",
+      "severity": "medium",
+      "views": [
+        "model",
+        "msa",
+        "moe"
+      ],
+      "finding": "Plain-label export does not wrap long authored lines. Several annotations spill outside module boundaries.",
+      "repair": "Add explicit line breaks and use readable shorter parameter notation; do not reduce font sizes indiscriminately."
+    },
+    {
+      "id": "I02",
+      "severity": "medium",
+      "views": [
+        "model",
+        "msa",
+        "moe"
+      ],
+      "finding": "Some text and section headings intersect connector paths or dashed region boundaries. Final residual add circles extend beyond decoder boundary.",
+      "repair": "Move annotations to reserved whitespace, enter regions through side/top free ports, enlarge region bottom clearances."
+    },
+    {
+      "id": "I03",
+      "severity": "technical_error",
+      "views": [
+        "moe"
+      ],
+      "finding": "The token-to-routed-experts vertical data path passes behind the correction-bias box, suggesting a dependency through bias.",
+      "repair": "Move the bias box entirely outside the routed token-data corridor."
+    }
+  ],
+  "evidence_boundary": "Visual agent self-check only; no user preference rating.",
+  "received_review": {
+    "from": "parent agent after viewing frozen model.png",
+    "findings": [
+      "Two MSA annotation lines slightly exceed module width.",
+      "Residual corners are sharp; request rounded turns."
+    ],
+    "scope": "Image review; not user aesthetic approval."
+  }
+}

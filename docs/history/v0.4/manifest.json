@@ -1,0 +1,90 @@
+{
+  "bundle": "technical-architecture-diagrams",
+  "version": "0.4-draft",
+  "date": "2026-10-26",
+  "status": "specification_package_not_rendering_implementation",
+  "included_original_images": 0,
+  "rendered_diagrams": 0,
+  "files": [
+    {
+      "path": "HANDOFF-CODEX.md",
+      "bytes": 2001,
+      "sha256": "9930c080226c9fa76618c5d7556b8764e1364e83114c74e154c259903c9ce8c1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2180,
+      "sha256": "bb82d0bd7991ad1caa325c543d713d617cde5c724c51cf324f267c3059e7634e"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 6095,
+      "sha256": "d20582cabbe9b0b7e494319022e5f144cfbe1fb47ec62ee7219edc55d5def734"
+    },
+    {
+      "path": "SUMMARY_CN.md",
+      "bytes": 2295,
+      "sha256": "932832809bf4c4d289af582fbce19ea6c43976976bcb995a42034b4c1f579280"
+    },
+    {
+      "path": "VERIFICATION.md",
+      "bytes": 860,
+      "sha256": "2b272417720d846c54439758eb2be46be4fc1222b92b407f7a837fc8c6e613bd"
+    },
+    {
+      "path": "data/ratings-40.json",
+      "bytes": 23582,
+      "sha256": "aba986a9e6cb27dbddf4171612e8a902bbd87296c299a89880a79acd05412e44"
+    },
+    {
+      "path": "data/rules-v0.4.json",
+      "bytes": 5442,
+      "sha256": "8d6e41215ee3267924543d35d0d0f0aeb3ad55c9875e01c18342519de1f15f8b"
+    },
+    {
+      "path": "eval/tasks-template.json",
+      "bytes": 784,
+      "sha256": "5175cc9011526142f0eeaaca32d853affa115a0761e3689531199b94b38948f9"
+    },
+    {
+      "path": "references/evidence-and-limits.md",
+      "bytes": 2577,
+      "sha256": "23ef6ab5e256423e25e3da5f7c79c2df77953a64ca5921d2c4dea57e3cc00190"
+    },
+    {
+      "path": "references/iteration-plan.md",
+      "bytes": 6050,
+      "sha256": "f9c01447dc2f4ed6ddea46c7a287045dfac4ec90e70f3819a506e904ce253b0f"
+    },
+    {
+      "path": "references/layout-recipes.md",
+      "bytes": 3223,
+      "sha256": "13b38c4f77f854b7812b108ffbc44cf02e77998486d1e6a13c2200232f56df4c"
+    },
+    {
+      "path": "references/rules-v0.4.md",
+      "bytes": 4317,
+      "sha256": "c776f44c500b8e5cb18c7a66b850aece2900193e0589b54b52303bd4ec58aafa"
+    },
+    {
+      "path": "scripts/check_bundle.py",
+      "bytes": 4070,
+      "sha256": "fdca6add2981f5f979fcc5e622381bf2e97f2a6ae2acaf03900acca1309c4364"
+    },
+    {
+      "path": "templates/case-card.json",
+      "bytes": 911,
+      "sha256": "84b036de94a0c5671e66774644baa57f6f3d91171dae069d51bc9e5088475a7e"
+    },
+    {
+      "path": "templates/diagram-spec.json",
+      "bytes": 1854,
+      "sha256": "e3b8c7cfd1c1312f6f4ff95a9c32135b7f51e785de80a824d62e7519a1245a1a"
+    },
+    {
+      "path": "templates/review-record.json",
+      "bytes": 1213,
+      "sha256": "259735f0df5b6cd366d946b49379a56564871e21db735b9d6fe44eb0b2fb6a83"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "version": "0.9.7",
+  "scope": "repository checks; not scientific or aesthetic certification",
+  "runtime_tests_enabled": true,
+  "passed": true,
+  "checks": [
+    {
+      "name": "palette-tests",
+      "passed": true,
+      "output": "test_bad_config (__main__.Palettes.test_bad_config) ... ok\ntest_custom (__main__.Palettes.test_custom) ... ok\ntest_defaults (__main__.Palettes.test_defaults) ... ok\ntest_drawio_only_color_patch (__main__.Palettes.test_drawio_only_color_patch) ... ok\ntest_drawio_quoted_delimiter_preserves_label (__main__.Palettes.test_drawio_quoted_delimiter_preserves_label) ... ok\ntest_formats (__main__.Palettes.test_formats) ... ok\ntest_invalid (__main__.Palettes.test_invalid) ... ok\ntest_override (__main__.Palettes.test_override) ... ok\ntest_primary_contrast (__main__.Palettes.test_primary_contrast) ... ok\ntest_reject_compressed (__main__.Palettes.test_reject_compressed) ... ok\ntest_svg_only_color_patch (__main__.Palettes.test_svg_only_color_patch) ... ok\ntest_svg_quoted_delimiter_preserves_metadata (__main__.Palettes.test_svg_quoted_delimiter_preserves_metadata) ... ok\ntest_target_defaults_requires_object (__main__.Palettes.test_target_defaults_requires_object) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.010s\n\nOK"
+    },
+    {
+      "name": "repository-tests",
+      "passed": true,
+      "output": "test_landscape_golden_page (test_canvas_runtime.CanvasRuntimeTests.test_landscape_golden_page) ... ok\ntest_portrait_selected_from_second_page (test_canvas_runtime.CanvasRuntimeTests.test_portrait_selected_from_second_page) ... ok\ntest_wide_detail_page (test_canvas_runtime.CanvasRuntimeTests.test_wide_detail_page) ... ok\ntest_minimax_palette_keeps_native_structure (test_repository.RepositoryTests.test_minimax_palette_keeps_native_structure) ... ok\ntest_native_edges_have_existing_endpoints (test_repository.RepositoryTests.test_native_edges_have_existing_endpoints) ... ok\ntest_no_machine_paths_in_maintained_sources (test_repository.RepositoryTests.test_no_machine_paths_in_maintained_sources) ... ok\ntest_runtime_license_and_hash_match (test_repository.RepositoryTests.test_runtime_license_and_hash_match) ... ok\ntest_skill_references_exist (test_repository.RepositoryTests.test_skill_references_exist) ... ok\ntest_visible_fact_ids_bind_to_shipped_figures (test_repository.RepositoryTests.test_visible_fact_ids_bind_to_shipped_figures) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 6.827s\n\nOK"
+    },
+    {
+      "name": "legacy-fact-contract",
+      "passed": true,
+      "output": "{\"status\": \"structural_contract_only\", \"errors\": [], \"warnings\": [], \"scientific_accuracy\": \"requires_source_review\"}"
+    },
+    {
+      "name": "golden-build",
+      "passed": true,
+      "output": "Built three native sources; 12 semantic checks; zero diagonal data segments"
+    },
+    {
+      "name": "golden-verify",
+      "passed": true,
+      "output": "{\"candidate_and_raw_sum_checks\": 12, \"passed\": true, \"source_nonorthogonal_data_edges\": [], \"native_endpoints_match_scene\": true, \"rendered_geometry\": null, \"scope\": \"This checks geometry and source contracts, not user aesthetic acceptance.\"}"
+    }
+  ]
+}

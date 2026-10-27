@@ -1,0 +1,17 @@
+{
+  "allowed_input_root": "/workspace/scratch/212a015bd2a3/independent-reproduction-input",
+  "source_revision": "54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e",
+  "inputs": {
+    "runtime/LICENSE.drawio": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+    "runtime/app.min.js": "f8a3fcdcf4fcc49bdcb78ce06c20ad17006a72a4f8f0c1514a834e7f70bdf03c",
+    "runtime/graph-runtime.json": "275c1db23e21c9f28b816f87abacdcf5057e80734286137268daae905b10b845",
+    "sources/README.md": "11a354bec1bb89e6e92b33888dc081e212811c2de437bd64e7521ca22d64b812",
+    "sources/config.json": "df6a3668e2de5b8dc0e883e3767495ad17af7e4d69fabe9683088be015fda9ab",
+    "sources/model-code.py": "02dc1271a04ea3da25a88ce393b7448b08fdff8d185334731ee6b722b5f041ed",
+    "sources/provenance.json": "3cd9abe23c99b9358982b0c9dc87e3279b48afb89b85d42cfc22d04d373cdb48",
+    "technical-facts.json": "2763a0c78d4fb15f38bc89e32a95859abdc27092472acfd34692b15399c8d9c1"
+  },
+  "skill_file": "/root/.codex/skills/remote-skills/skill-6adf2f382d988191b2dc39ad8791ccd6/SKILL.md",
+  "skill_sha256": "8abd36efbe4b3d1ee6f7dd4c6f2fde136b10a18f727eb1653844f8c244ecbd17",
+  "independence": "No prior generated MiniMax diagrams, scenes, coordinates, generator or evaluation was read. This model-specific template was authored from the permitted facts and source text."
+}

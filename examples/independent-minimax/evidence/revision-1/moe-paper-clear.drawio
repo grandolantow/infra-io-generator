@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="drawio" version="independent-authoring-v1" compressed="false">
+  <diagram id="moe" name="Mixture of Experts">
+    <mxGraphModel dx="1420" dy="1780" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="1" pageScale="1" pageWidth="1420" pageHeight="1780" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="token_to_router" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.15;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_token" target="router" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="591" y="280" />
+              <mxPoint x="270" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="token_to_routed_experts" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_token" target="selected_experts" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="710" y="285" />
+              <mxPoint x="745" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="token_to_shared" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.85;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_token" target="shared_expert" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="829" y="280" />
+              <mxPoint x="1180" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="router_to_selection" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="router" target="expert_select" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bias_to_selection" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0;exitY=0.5;entryX=0.8;entryY=0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=7 5;" edge="1" parent="1" source="router_bias" target="expert_select" kind="selection">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="547.5" />
+              <mxPoint x="460" y="620" />
+              <mxPoint x="372" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="selection_to_experts" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=7 5;" edge="1" parent="1" source="expert_select" target="selected_experts" kind="selection">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="505" y="725" />
+              <mxPoint x="505" y="742.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="selection_to_weights" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=7 5;" edge="1" parent="1" source="expert_select" target="unbiased_weights" kind="selection">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="scores_to_weights" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="router" target="unbiased_weights" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="60" y="395" />
+              <mxPoint x="60" y="1015" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="experts_to_sum" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="selected_experts" target="weighted_sum" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="weights_to_sum" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="unbiased_weights" target="weighted_sum" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="515" y="1015" />
+              <mxPoint x="515" y="1192.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sum_to_scale" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="weighted_sum" target="routed_scale" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="scale_to_add" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="routed_scale" target="shared_add" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="shared_to_add" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=1;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="shared_expert" target="shared_add" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1370" y="735" />
+              <mxPoint x="1370" y="1509" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="add_to_moe_output" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="shared_add" target="moe_output" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_title" value="Mixture of Experts" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=35;fontColor=#28343D;fontStyle=1;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="60" y="34" width="1300" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_subtitle" value="Layers 3–59  ·  selection bias affects expert choice; original scores determine routed weights" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="60" y="94" width="1300" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_tag" value="DETAIL B" style="html=0;whiteSpace=wrap;align=right;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#657581;fontStyle=1;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="1210" y="38" width="150" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_token" value="z = Norm(h)" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="communication">
+          <mxGeometry x="540" y="165" width="340" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="router" value="Router: sigmoid(W_r z)&#10;128 original scores s_e" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#FAEECF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="state">
+          <mxGeometry x="100" y="350" width="340" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="router_bias" value="Correction bias b_e&#10;Selection only" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#F7DFDA;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="rank1">
+          <mxGeometry x="495" y="510" width="220" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="expert_select" value="S = Top4(s + b)&#10;4 of 128 routed experts" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#F7DFDA;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="rank1">
+          <mxGeometry x="100" y="680" width="340" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="selected_experts" value="Selected experts&#10;E_e(z), e in S&#10;4 of 128 routed&#10;Expert width = 3072" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#EAE2F4;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="rank0">
+          <mxGeometry x="570" y="680" width="350" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="shared_expert" value="Shared expert E_s(z)&#10;1 always-on expert&#10;Expert width = 3072" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#28343D;fontStyle=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="communication">
+          <mxGeometry x="1040" y="680" width="280" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="unbiased_weights" value="Unbiased renormalization&#10;w_e = s_e / Σ_{r in S} s_r&#10;Use original scores s_e&#10;Bias excluded" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#FAEECF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="state">
+          <mxGeometry x="100" y="945" width="340" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="weighted_sum" value="Weighted routed sum&#10;Σ_{e in S} w_e E_e(z)" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#EAE2F4;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="rank0">
+          <mxGeometry x="570" y="1145" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="routed_scale" value="Routed scale ×2" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#EAE2F4;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="rank0">
+          <mxGeometry x="570" y="1315" width="350" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="shared_add" value="+" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=29;fontColor=#28343D;fontStyle=0;fillColor=#FFFFFF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=ellipse;perimeter=ellipsePerimeter;" vertex="1" parent="1" role="operator">
+          <mxGeometry x="721" y="1485" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_output" value="MoE output" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="communication">
+          <mxGeometry x="570" y="1615" width="350" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="original_score_label" value="original scores s_e" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="290" y="535" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="expert_ids_label" value="IDs" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="461" y="682" width="85" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="weight_subset_label" value="selected set S" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="290" y="846" width="180" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="unbiased_scores_label" value="s_e" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="66" y="866" width="70" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="weight_edge_label" value="w_e" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="455" y="1124" width="65" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="shared_bypass_note" value="Shared output bypasses&#10;routed mixing, renormalization&#10;and the routed ×2 scale." style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="1005" y="940" width="345" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_legend" value="Solid arrows: token data, scores, weights and expert outputs.   Dashed arrows: selection/control.&#10;Routed and shared expert boxes are schematic; the 128 experts are not drawn individually." style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="60" y="1712" width="1300" height="57" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

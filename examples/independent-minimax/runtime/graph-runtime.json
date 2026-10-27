@@ -1,0 +1,9 @@
+{
+  "tool": "draw.io Graph",
+  "version": "32.6.1",
+  "source_url": "https://raw.githubusercontent.com/jgraph/drawio/dev/src/main/webapp/js/app.min.js",
+  "sha256": "f8a3fcdcf4fcc49bdcb78ce06c20ad17006a72a4f8f0c1514a834e7f70bdf03c",
+  "source_blob_sha1": "a78067a06c842d8caa8fafce8fbe1224bf90a0ef",
+  "bytes": 10395039,
+  "pin_policy": "Retain this exact bundle; fetch_runtime.py verifies SHA and rejects changed rolling source."
+}

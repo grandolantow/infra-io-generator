@@ -1,0 +1,796 @@
+{
+  "model": "MiniMax M3.1-Flash",
+  "source_revision": "54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e",
+  "sources": {
+    "config": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/blob/54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e/config.json",
+    "msa_paper": "https://arxiv.org/html/2606.13392v1",
+    "code": "https://raw.githubusercontent.com/sgl-project/sglang/main/python/sglang/srt/models/minimax_m3.py"
+  },
+  "scope_out": [
+    "vision frontend internals",
+    "DSpark draft internals",
+    "training losses"
+  ],
+  "facts": [
+    {
+      "id": "F01",
+      "statement": "Native text/image/video inputs are fused before the text backbone; text output.",
+      "locator": "technical-facts.json / facts / 0"
+    },
+    {
+      "id": "F02",
+      "statement": "Text hidden size 6144; 60 decoder layers; all 60 use MiniMax Sparse Attention (MSA). Layers 0–2 use dense FFN; layers 3–59 use MoE.",
+      "locator": "technical-facts.json / facts / 1"
+    },
+    {
+      "id": "F03",
+      "statement": "Pre-normalized decoder: x enters Norm then attention; attention output is added to x. The resulting hidden state enters Norm then FFN/MoE; FFN output is added to the pre-FFN hidden state. Final norm and LM head lie after the decoder stack.",
+      "locator": "technical-facts.json / facts / 2"
+    },
+    {
+      "id": "F04",
+      "statement": "64 query heads, 4 KV heads, head dimension128: 4 GQA groups, 16 Q heads per group. No attention output gate.",
+      "locator": "technical-facts.json / facts / 3"
+    },
+    {
+      "id": "F05",
+      "statement": "Indexer has 4 query heads (one/group), width128, and shared index key. Scaled token dot scores are reduced by maximum within each 128-token block; each group selects Top16 blocks, including the local block within the 16-block budget.",
+      "locator": "technical-facts.json / facts / 4"
+    },
+    {
+      "id": "F06",
+      "statement": "Indexer considers causal j<=i, fully future blocks score minus infinity. Main attention uses exact content QK softmax V on the selected group KV with causal masking within all selected blocks, including the local block. Main K/V are group-specific; shared index K is distinct from main K.",
+      "locator": "technical-facts.json / facts / 5"
+    },
+    {
+      "id": "F07",
+      "statement": "128 routed experts, Top4, one shared expert. Token data feeds router, selected experts, shared expert. Router computes sigmoid scores; correction bias affects selection only. Selected original unbiased scores are renormalized as mixing weights, and routed sum is scaled by2. Shared expert output is then added; shared does not pass through routed mixing/renorm.",
+      "locator": "technical-facts.json / facts / 6"
+    },
+    {
+      "id": "F08",
+      "statement": "Router intermediate expert size3072. Only parameter annotations that aid understanding are required.",
+      "locator": "technical-facts.json / facts / 7"
+    },
+    {
+      "id": "F09",
+      "statement": "DSpark is an auxiliary draft, not extra decoder layers. Omit its internals in this scope.",
+      "locator": "technical-facts.json / facts / 8"
+    }
+  ],
+  "id": "minimax-m31-flash-independent",
+  "title": "MiniMax M3.1-Flash architecture",
+  "subtitle": "Vertical backbone with separately scoped MSA and MoE mechanisms",
+  "source_url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/blob/54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e/config.json",
+  "source_locator": "config at pinned HF revision; supplied SGLang snapshot; supplied technical-facts.json",
+  "scope_in": [
+    "multimodal input boundary",
+    "text backbone",
+    "pre-norm residual computation",
+    "MSA block selection and exact attention",
+    "MoE selection and weighting"
+  ],
+  "baseline": null,
+  "proposed": {
+    "name": "MiniMax M3.1-Flash",
+    "nodes": [
+      {
+        "id": "input_text",
+        "label": "Text",
+        "detail": "communication"
+      },
+      {
+        "id": "input_image",
+        "label": "Image",
+        "detail": "communication"
+      },
+      {
+        "id": "input_video",
+        "label": "Video",
+        "detail": "communication"
+      },
+      {
+        "id": "multimodal_fusion",
+        "label": "Input embeddings & multimodal fusion\nFrontend internals omitted",
+        "detail": "communication"
+      },
+      {
+        "id": "dense_input",
+        "label": "",
+        "detail": "junction"
+      },
+      {
+        "id": "dense_norm_attn",
+        "label": "Norm",
+        "detail": "panel"
+      },
+      {
+        "id": "dense_attention",
+        "label": "MiniMax Sparse Attention\n64 Q /4 KV heads  ·  d_head = 128\nDetail A",
+        "detail": "compute"
+      },
+      {
+        "id": "dense_add_attn",
+        "label": "+",
+        "detail": "operator"
+      },
+      {
+        "id": "dense_norm_ffn",
+        "label": "Norm",
+        "detail": "panel"
+      },
+      {
+        "id": "dense_ffn",
+        "label": "Dense FFN\nSwiGLU",
+        "detail": "state"
+      },
+      {
+        "id": "dense_add_ffn",
+        "label": "+",
+        "detail": "operator"
+      },
+      {
+        "id": "moe_input",
+        "label": "",
+        "detail": "junction"
+      },
+      {
+        "id": "moe_norm_attn",
+        "label": "Norm",
+        "detail": "panel"
+      },
+      {
+        "id": "moe_attention",
+        "label": "MiniMax Sparse Attention\n64 Q /4 KV heads  ·  d_head = 128\nDetail A",
+        "detail": "compute"
+      },
+      {
+        "id": "moe_add_attn",
+        "label": "+",
+        "detail": "operator"
+      },
+      {
+        "id": "moe_norm_ffn",
+        "label": "Norm",
+        "detail": "panel"
+      },
+      {
+        "id": "moe_ffn",
+        "label": "MoE  ·  Top4 of 128 routed +1 shared\nRouted ×2; then add shared  ·  Detail B",
+        "detail": "rank0"
+      },
+      {
+        "id": "moe_add_ffn",
+        "label": "+",
+        "detail": "operator"
+      },
+      {
+        "id": "final_norm",
+        "label": "Final Norm",
+        "detail": "panel"
+      },
+      {
+        "id": "lm_head",
+        "label": "LM head",
+        "detail": "compute"
+      },
+      {
+        "id": "text_output",
+        "label": "Text output",
+        "detail": "communication"
+      },
+      {
+        "id": "msa_input",
+        "label": "u = Norm(x)",
+        "detail": "communication"
+      },
+      {
+        "id": "index_queries",
+        "label": "Index Q\n4 heads ×128\n1 head per group",
+        "detail": "state"
+      },
+      {
+        "id": "index_keys",
+        "label": "Index K\n1 shared ×128\nDistinct from main K",
+        "detail": "state"
+      },
+      {
+        "id": "index_dot",
+        "label": "Scaled token dot scores\ns_g(i,j) = q^I_g(i) · k^I(j) / sqrt(128)",
+        "detail": "state"
+      },
+      {
+        "id": "causal_index",
+        "label": "Causal index eligibility: j ≤ i\nFully future blocks score −∞",
+        "detail": "state"
+      },
+      {
+        "id": "block_max",
+        "label": "Block max: 128 tokens\nb_g(i,b) = max s_g(i,j)\nfor j in block b and j ≤ i",
+        "detail": "state"
+      },
+      {
+        "id": "select_blocks",
+        "label": "Top16 blocks per group\nLocal block included\nwithin the 16-block budget",
+        "detail": "rank1"
+      },
+      {
+        "id": "block_ids",
+        "label": "Selected block IDs S_g(i)",
+        "detail": "rank1"
+      },
+      {
+        "id": "content_queries",
+        "label": "Main Q\n64 Q heads\n4 groups ×16 Q\n128 per head",
+        "detail": "compute"
+      },
+      {
+        "id": "content_kv",
+        "label": "Main K / V\n4 group KV heads\n128 per head",
+        "detail": "compute"
+      },
+      {
+        "id": "selected_kv",
+        "label": "Gather group-specific K / V\nK_g[S_g(i)], V_g[S_g(i)]",
+        "detail": "compute"
+      },
+      {
+        "id": "exact_attention",
+        "label": "Exact content attention\nA_g = Softmax(Q_g K_g[S_g]^T /√128 + M)\nOutput_g = A_g V_g[S_g]\nM: causal j ≤ i in all selected blocks,\nincluding the local block",
+        "detail": "compute"
+      },
+      {
+        "id": "attn_output_proj",
+        "label": "Concatenate all query heads & output projection",
+        "detail": "compute"
+      },
+      {
+        "id": "attention_output",
+        "label": "Attention output",
+        "detail": "communication"
+      },
+      {
+        "id": "moe_token",
+        "label": "z = Norm(h)",
+        "detail": "communication"
+      },
+      {
+        "id": "router",
+        "label": "Router: sigmoid(W_r z)\n128 original scores s_e",
+        "detail": "state"
+      },
+      {
+        "id": "router_bias",
+        "label": "Correction bias b_e\nSelection only",
+        "detail": "rank1"
+      },
+      {
+        "id": "expert_select",
+        "label": "S = Top4(s + b)\n4 of 128 routed experts",
+        "detail": "rank1"
+      },
+      {
+        "id": "selected_experts",
+        "label": "Selected experts\nE_e(z), e in S\n4 of 128 routed\nExpert width = 3072",
+        "detail": "rank0"
+      },
+      {
+        "id": "shared_expert",
+        "label": "Shared expert E_s(z)\n1 always-on expert\nExpert width = 3072",
+        "detail": "communication"
+      },
+      {
+        "id": "unbiased_weights",
+        "label": "Unbiased renormalization\nw_e = s_e / Σ_{r in S} s_r\nUse original scores s_e\nBias excluded",
+        "detail": "state"
+      },
+      {
+        "id": "weighted_sum",
+        "label": "Weighted routed sum\nΣ_{e in S} w_e E_e(z)",
+        "detail": "rank0"
+      },
+      {
+        "id": "routed_scale",
+        "label": "Routed scale ×2",
+        "detail": "rank0"
+      },
+      {
+        "id": "shared_add",
+        "label": "+",
+        "detail": "operator"
+      },
+      {
+        "id": "moe_output",
+        "label": "MoE output",
+        "detail": "communication"
+      }
+    ],
+    "edges": [
+      {
+        "from": "input_text",
+        "to": "multimodal_fusion",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "input_image",
+        "to": "multimodal_fusion",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "input_video",
+        "to": "multimodal_fusion",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "dense_input",
+        "to": "dense_norm_attn",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "dense_norm_attn",
+        "to": "dense_attention",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "dense_attention",
+        "to": "dense_add_attn",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "dense_input",
+        "to": "dense_add_attn",
+        "kind": "residual",
+        "label": ""
+      },
+      {
+        "from": "dense_add_attn",
+        "to": "dense_norm_ffn",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "dense_norm_ffn",
+        "to": "dense_ffn",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "dense_ffn",
+        "to": "dense_add_ffn",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "dense_add_attn",
+        "to": "dense_add_ffn",
+        "kind": "residual",
+        "label": ""
+      },
+      {
+        "from": "moe_input",
+        "to": "moe_norm_attn",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "moe_norm_attn",
+        "to": "moe_attention",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "moe_attention",
+        "to": "moe_add_attn",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "moe_input",
+        "to": "moe_add_attn",
+        "kind": "residual",
+        "label": ""
+      },
+      {
+        "from": "moe_add_attn",
+        "to": "moe_norm_ffn",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "moe_norm_ffn",
+        "to": "moe_ffn",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "moe_ffn",
+        "to": "moe_add_ffn",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "moe_add_attn",
+        "to": "moe_add_ffn",
+        "kind": "residual",
+        "label": ""
+      },
+      {
+        "from": "multimodal_fusion",
+        "to": "dense_input",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "dense_add_ffn",
+        "to": "moe_input",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "moe_add_ffn",
+        "to": "final_norm",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "final_norm",
+        "to": "lm_head",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "lm_head",
+        "to": "text_output",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "msa_input",
+        "to": "index_queries",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "msa_input",
+        "to": "index_keys",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "msa_input",
+        "to": "content_kv",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "msa_input",
+        "to": "content_queries",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "index_queries",
+        "to": "index_dot",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "index_keys",
+        "to": "index_dot",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "index_dot",
+        "to": "causal_index",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "causal_index",
+        "to": "block_max",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "block_max",
+        "to": "select_blocks",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "select_blocks",
+        "to": "block_ids",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "block_ids",
+        "to": "selected_kv",
+        "kind": "selection",
+        "label": ""
+      },
+      {
+        "from": "content_kv",
+        "to": "selected_kv",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "selected_kv",
+        "to": "exact_attention",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "content_queries",
+        "to": "exact_attention",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "exact_attention",
+        "to": "attn_output_proj",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "attn_output_proj",
+        "to": "attention_output",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "moe_token",
+        "to": "router",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "moe_token",
+        "to": "selected_experts",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "moe_token",
+        "to": "shared_expert",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "router",
+        "to": "expert_select",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "router_bias",
+        "to": "expert_select",
+        "kind": "selection",
+        "label": ""
+      },
+      {
+        "from": "expert_select",
+        "to": "selected_experts",
+        "kind": "selection",
+        "label": ""
+      },
+      {
+        "from": "expert_select",
+        "to": "unbiased_weights",
+        "kind": "selection",
+        "label": ""
+      },
+      {
+        "from": "router",
+        "to": "unbiased_weights",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "selected_experts",
+        "to": "weighted_sum",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "unbiased_weights",
+        "to": "weighted_sum",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "weighted_sum",
+        "to": "routed_scale",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "routed_scale",
+        "to": "shared_add",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "shared_expert",
+        "to": "shared_add",
+        "kind": "data",
+        "label": ""
+      },
+      {
+        "from": "shared_add",
+        "to": "moe_output",
+        "kind": "data",
+        "label": ""
+      }
+    ]
+  },
+  "mechanism_notes": [
+    "MSA main Q/K/V and shared index K are distinct objects.",
+    "The shared expert bypasses routed mixing and scale."
+  ],
+  "uncertainties": [
+    "The MSA paper itself is not present among the permitted local sources. Algorithm constraints beyond config/model-code are transcribed from the supplied facts, not independently checked against the full paper.",
+    "The supplied SGLang file delegates top-k scoring and sparse attention kernels to other modules which are not supplied."
+  ],
+  "required_visual_facts": [
+    {
+      "id": "V01",
+      "fact": "Text/image/video fuse before text backbone; text output",
+      "objects": [
+        "input_text",
+        "input_image",
+        "input_video",
+        "multimodal_fusion",
+        "text_output"
+      ]
+    },
+    {
+      "id": "V02",
+      "fact": "60 MSA decoder layers, hidden6144; dense0–2, MoE3–59",
+      "objects": [
+        "model_subtitle",
+        "dense_decoder_title",
+        "moe_decoder_title",
+        "model_scope"
+      ]
+    },
+    {
+      "id": "V03",
+      "fact": "Both pre-norm stages and each identity residual",
+      "objects": [
+        "dense_input",
+        "dense_norm_attn",
+        "dense_attention",
+        "dense_add_attn",
+        "dense_norm_ffn",
+        "dense_ffn",
+        "dense_add_ffn",
+        "dense_attn_residual",
+        "dense_ffn_residual",
+        "moe_input",
+        "moe_norm_attn",
+        "moe_attention",
+        "moe_add_attn",
+        "moe_norm_ffn",
+        "moe_ffn",
+        "moe_add_ffn",
+        "moe_attn_residual",
+        "moe_ffn_residual"
+      ]
+    },
+    {
+      "id": "V04",
+      "fact": "Final norm then LM head; no attention gate",
+      "objects": [
+        "final_norm",
+        "lm_head",
+        "model_scope",
+        "msa_scope"
+      ]
+    },
+    {
+      "id": "V05",
+      "fact": "64Q/4KV/128, four groups with16Q each",
+      "objects": [
+        "content_queries",
+        "content_kv",
+        "msa_subtitle"
+      ]
+    },
+    {
+      "id": "V06",
+      "fact": "4 index Q; one shared128-wide index K distinct from main K",
+      "objects": [
+        "index_queries",
+        "index_keys",
+        "msa_scope"
+      ]
+    },
+    {
+      "id": "V07",
+      "fact": "Scaled token dot scores, causal block max128, future−∞",
+      "objects": [
+        "index_dot",
+        "causal_index",
+        "block_max"
+      ]
+    },
+    {
+      "id": "V08",
+      "fact": "Top16 per group includes local within budget",
+      "objects": [
+        "select_blocks",
+        "block_ids"
+      ]
+    },
+    {
+      "id": "V09",
+      "fact": "Selected group-specific K/V; exact content attention; causal in all selected blocks",
+      "objects": [
+        "content_kv",
+        "selected_kv",
+        "exact_attention",
+        "main_q_to_exact",
+        "gather_to_exact"
+      ]
+    },
+    {
+      "id": "V10",
+      "fact": "128 routed/Top4/one shared; token data to all branches",
+      "objects": [
+        "router",
+        "expert_select",
+        "selected_experts",
+        "shared_expert",
+        "token_to_router",
+        "token_to_routed_experts",
+        "token_to_shared"
+      ]
+    },
+    {
+      "id": "V11",
+      "fact": "Sigmoid scoring; correction bias affects selection only",
+      "objects": [
+        "router",
+        "router_bias",
+        "bias_to_selection"
+      ]
+    },
+    {
+      "id": "V12",
+      "fact": "Original selected unbiased scores renormalized and fed to weighted sum",
+      "objects": [
+        "unbiased_weights",
+        "scores_to_weights",
+        "selection_to_weights",
+        "weights_to_sum",
+        "weighted_sum"
+      ]
+    },
+    {
+      "id": "V13",
+      "fact": "Routed sum×2; then shared added outside routed mixing/renorm",
+      "objects": [
+        "routed_scale",
+        "shared_add",
+        "shared_to_add",
+        "shared_bypass_note"
+      ]
+    },
+    {
+      "id": "V14",
+      "fact": "DSpark auxiliary draft, not extra decoder layers; internals omitted",
+      "objects": [
+        "model_scope"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "method": "Actual local Chromium at1280×900; document JavaScript disabled; native HTML radio-label click changes CSS palette; secondary390×844 layout check.",
+  "desktopClear": {
+    "clearChecked": true,
+    "neutralChecked": false,
+    "visibleArtwork": [
+      {
+        "classes": "art paper-clear",
+        "width": 870,
+        "height": 1914,
+        "textCount": 42,
+        "minRenderedTextPx": 15.66,
+        "foreignObject": 0,
+        "images": 0
+      },
+      {
+        "classes": "art paper-clear",
+        "width": 1090,
+        "height": 1506.75,
+        "textCount": 42,
+        "minRenderedTextPx": 14.426329787234042,
+        "foreignObject": 0,
+        "images": 0
+      },
+      {
+        "classes": "art paper-clear",
+        "width": 1090,
+        "height": 1366.328125,
+        "textCount": 36,
+        "minRenderedTextPx": 13.816801264044944,
+        "foreignObject": 0,
+        "images": 0
+      }
+    ],
+    "horizontalOverflow": false,
+    "scripts": 0,
+    "externalAssets": [
+      "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/blob/54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e/config.json"
+    ]
+  },
+  "desktopNeutral": {
+    "clearChecked": false,
+    "neutralChecked": true,
+    "visibleArtwork": [
+      {
+        "classes": "art blue-neutral",
+        "width": 870,
+        "height": 1914,
+        "textCount": 42,
+        "minRenderedTextPx": 15.66,
+        "foreignObject": 0,
+        "images": 0
+      },
+      {
+        "classes": "art blue-neutral",
+        "width": 1090,
+        "height": 1506.75,
+        "textCount": 42,
+        "minRenderedTextPx": 14.426329787234042,
+        "foreignObject": 0,
+        "images": 0
+      },
+      {
+        "classes": "art blue-neutral",
+        "width": 1090,
+        "height": 1366.328125,
+        "textCount": 36,
+        "minRenderedTextPx": 13.816801264044944,
+        "foreignObject": 0,
+        "images": 0
+      }
+    ],
+    "horizontalOverflow": false,
+    "scripts": 0,
+    "externalAssets": [
+      "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/blob/54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e/config.json"
+    ]
+  },
+  "mobile": {
+    "clearChecked": false,
+    "neutralChecked": true,
+    "visibleArtwork": [
+      {
+        "classes": "art blue-neutral",
+        "width": 352,
+        "height": 774.390625,
+        "textCount": 42,
+        "minRenderedTextPx": 6.3359232954545455,
+        "foreignObject": 0,
+        "images": 0
+      },
+      {
+        "classes": "art blue-neutral",
+        "width": 352,
+        "height": 486.578125,
+        "textCount": 42,
+        "minRenderedTextPx": 4.658726728723404,
+        "foreignObject": 0,
+        "images": 0
+      },
+      {
+        "classes": "art blue-neutral",
+        "width": 352,
+        "height": 441.234375,
+        "textCount": 36,
+        "minRenderedTextPx": 4.461920646067416,
+        "foreignObject": 0,
+        "images": 0
+      }
+    ],
+    "horizontalOverflow": false,
+    "scripts": 0,
+    "externalAssets": [
+      "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/blob/54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e/config.json"
+    ]
+  },
+  "networkRequests": [],
+  "javascriptErrors": [],
+  "pass": true,
+  "caveat": "Mobile check measures containment only. Scientific figure text is intended for desktop viewing, zooming, or standalone SVG; mobile full-figure text legibility is not claimed."
+}

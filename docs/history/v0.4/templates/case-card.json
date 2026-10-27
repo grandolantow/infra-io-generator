@@ -1,0 +1,38 @@
+{
+  "status": "template",
+  "case_id": null,
+  "source": {
+    "title": null,
+    "url": null,
+    "kind": null,
+    "figure_id": null,
+    "version": null,
+    "verified": false
+  },
+  "original_asset": {
+    "path": null,
+    "sha256": null,
+    "crop_description": null,
+    "figure_family_id": null,
+    "perceptual_similarity_candidates": []
+  },
+  "reference_feedback": {
+    "rating": null,
+    "user_comment": null,
+    "feedback_sample_id": null
+  },
+  "visual_learning": {
+    "recipe": null,
+    "what_to_learn": [],
+    "when_to_use": [],
+    "when_not_to_use": [],
+    "hypothesis_vs_explicit_preference": null
+  },
+  "reconstruction": {
+    "svg_path": null,
+    "shared_spec_path": null,
+    "rules_used": [],
+    "validation_status": "not_run"
+  },
+  "rights_note": "保留原作者与出处；引用/学习不等于获得重发布授权。公开打包原图前检查授权与引用边界。"
+}

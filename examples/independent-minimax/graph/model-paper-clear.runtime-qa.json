@@ -1,0 +1,276 @@
+{
+  "canvas": {
+    "width": 1000,
+    "height": 2200,
+    "page": 0
+  },
+  "renderer": "draw.io Graph from official app.min.js; 32.6.1",
+  "vertices": 37,
+  "edges": 24,
+  "cellIds": [
+    "0",
+    "1",
+    "dense_decoder",
+    "moe_decoder",
+    "input_text_to_fusion",
+    "input_image_to_fusion",
+    "input_video_to_fusion",
+    "dense_input_to_norm",
+    "dense_norm_to_attn",
+    "dense_attn_to_add",
+    "dense_attn_residual",
+    "dense_add_to_norm",
+    "dense_norm_to_ffn",
+    "dense_ffn_to_add",
+    "dense_ffn_residual",
+    "moe_input_to_norm",
+    "moe_norm_to_attn",
+    "moe_attn_to_add",
+    "moe_attn_residual",
+    "moe_add_to_norm",
+    "moe_norm_to_ffn",
+    "moe_ffn_to_add",
+    "moe_ffn_residual",
+    "fusion_to_dense",
+    "dense_to_moe",
+    "moe_to_final_norm",
+    "norm_to_lm",
+    "lm_to_output",
+    "model_title",
+    "model_subtitle",
+    "model_tag",
+    "input_text",
+    "input_image",
+    "input_video",
+    "multimodal_fusion",
+    "dense_decoder_title",
+    "dense_input",
+    "dense_input_label",
+    "dense_norm_attn",
+    "dense_attention",
+    "dense_add_attn",
+    "dense_h_label",
+    "dense_norm_ffn",
+    "dense_ffn",
+    "dense_add_ffn",
+    "dense_residual1_label",
+    "dense_residual2_label",
+    "moe_decoder_title",
+    "moe_input",
+    "moe_input_label",
+    "moe_norm_attn",
+    "moe_attention",
+    "moe_add_attn",
+    "moe_h_label",
+    "moe_norm_ffn",
+    "moe_ffn",
+    "moe_add_ffn",
+    "moe_residual1_label",
+    "moe_residual2_label",
+    "final_norm",
+    "lm_head",
+    "text_output",
+    "model_scope"
+  ],
+  "source": "Native .drawio XML decoded by mxCodec; shapes and connectors rendered by mxGraph, not manually authored SVG",
+  "desktop_drawio_tested": false,
+  "edit_flags": {
+    "enabled": true,
+    "movable": true,
+    "handlerEnabled": true,
+    "cellAt": "dense_attention",
+    "svg": true,
+    "pointer": true,
+    "canvas": "<g><g></g><g><g style=\"visibility: visible;\"><rect x=\"140\" y=\"390\" width=\"720\" height=\"655\" rx=\"26.2\" ry=\"26.2\" fill=\"#fafbfc\" stroke=\"#42647c\" stroke-width=\"1.5\" stroke-dasharray=\"7.5 6\" pointer-events=\"all\" style=\"fill: light-dark(rgb(250, 251, 252), rgb(20, 21, 22)); stroke: light-dark(rgb(66, 10"
+  },
+  "event_log": [
+    [
+      "move",
+      "dense_attention",
+      500,
+      634
+    ],
+    [
+      "down",
+      "dense_attention",
+      500,
+      634
+    ],
+    [
+      "move",
+      "dense_attention",
+      502.5,
+      635.25
+    ],
+    [
+      "move",
+      "dense_attention",
+      505,
+      636.5
+    ],
+    [
+      "move",
+      "dense_decoder",
+      507.5,
+      637.75
+    ],
+    [
+      "move",
+      "dense_decoder",
+      510,
+      639
+    ],
+    [
+      "move",
+      "dense_decoder",
+      512.5,
+      640.25
+    ],
+    [
+      "move",
+      "dense_decoder",
+      515,
+      641.5
+    ],
+    [
+      "move",
+      "dense_decoder",
+      517.5,
+      642.75
+    ],
+    [
+      "move",
+      "dense_decoder",
+      520,
+      644
+    ],
+    [
+      "move",
+      "dense_decoder",
+      522.5,
+      645.25
+    ],
+    [
+      "move",
+      "dense_decoder",
+      525,
+      646.5
+    ],
+    [
+      "move",
+      "dense_decoder",
+      527.5,
+      647.75
+    ],
+    [
+      "move",
+      "dense_decoder",
+      530,
+      649
+    ],
+    [
+      "up",
+      "dense_decoder",
+      530,
+      649
+    ]
+  ],
+  "unrelated_nodes_changed": [],
+  "edit_test": {
+    "method": "Select a child cell using native graph API, then actual Playwright mouse drag in mxGraph editor",
+    "cell_id": "dense_attention",
+    "before": {
+      "geometry": {
+        "x": 285,
+        "y": 590
+      },
+      "screen": {
+        "x": 500,
+        "y": 634
+      },
+      "edges": [
+        {
+          "id": "dense_norm_to_attn",
+          "points": [
+            {
+              "x": 500,
+              "y": 560
+            },
+            {
+              "x": 500,
+              "y": 590
+            }
+          ]
+        },
+        {
+          "id": "dense_attn_to_add",
+          "points": [
+            {
+              "x": 500,
+              "y": 678
+            },
+            {
+              "x": 500,
+              "y": 712
+            }
+          ]
+        }
+      ]
+    },
+    "after": {
+      "geometry": {
+        "x": 320,
+        "y": 610
+      },
+      "edges": [
+        {
+          "id": "dense_norm_to_attn",
+          "source": "dense_norm_attn",
+          "target": "dense_attention",
+          "points": [
+            {
+              "x": 500,
+              "y": 560
+            },
+            {
+              "x": 535,
+              "y": 610
+            }
+          ]
+        },
+        {
+          "id": "dense_attn_to_add",
+          "source": "dense_attention",
+          "target": "dense_add_attn",
+          "points": [
+            {
+              "x": 535,
+              "y": 698
+            },
+            {
+              "x": 500,
+              "y": 712
+            }
+          ]
+        }
+      ]
+    },
+    "moved": true,
+    "edge_points_changed": true,
+    "native_xml_reserialized": true
+  },
+  "label_mode": "plain",
+  "source_drawio_sha256": "086d1c3e185b34732ff778e75b67b9d009a5d553eb2c1aa045bb9792e9386a7b",
+  "svg_sha256": "a915976c681369ad11668ac7df098fb5f9020522e6e0454f56fccdb37c5c8f32",
+  "library_source": "https://raw.githubusercontent.com/jgraph/drawio/dev/src/main/webapp/js/app.min.js",
+  "library_sha256": "f8a3fcdcf4fcc49bdcb78ce06c20ad17006a72a4f8f0c1514a834e7f70bdf03c",
+  "native_shape_metrics": {
+    "text": 42,
+    "foreignObject": 0,
+    "images": 0,
+    "embedded_native_model": true
+  },
+  "javascript_errors": [],
+  "png": "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/model-paper-clear.png",
+  "svg": "/workspace/scratch/212a015bd2a3/independent-reproduction-output/graph/model-paper-clear.svg"
+}

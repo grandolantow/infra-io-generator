@@ -1,0 +1,8 @@
+{
+  "model_repository": "MiniMaxAI/MiniMax-M3.1-Flash",
+  "revision": "54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e",
+  "msa_paper": "arXiv:2606.13392v1",
+  "sglang_snapshot_url": "https://raw.githubusercontent.com/sgl-project/sglang/main/python/sglang/srt/models/minimax_m3.py",
+  "sglang_snapshot_sha256": "02dc1271a04ea3da25a88ce393b7448b08fdff8d185334731ee6b722b5f041ed",
+  "notes": "SGLang source used as implementation corroboration. No weights downloaded or model inference executed."
+}

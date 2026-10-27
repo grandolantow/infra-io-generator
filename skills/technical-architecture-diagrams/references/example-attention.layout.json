@@ -1,0 +1,44 @@
+{
+  "task_id": "attention_residuals",
+  "annotations": [
+    "本图比较标准残差与 Full AttnRes；Block AttnRes 不在本题范围。",
+    "注意力沿深度候选轴进行；key 归一化只用于权重，value 保持原始表示。"
+  ],
+  "semantic_groups": [
+    {
+      "id": "sources",
+      "label": "历史与查询",
+      "nodes": [
+        "p_hist",
+        "p_query"
+      ]
+    },
+    {
+      "id": "weights",
+      "label": "深度权重生成",
+      "nodes": [
+        "p_norm",
+        "p_dot",
+        "p_softmax"
+      ]
+    },
+    {
+      "id": "aggregate",
+      "label": "原始value加权",
+      "nodes": [
+        "p_sum"
+      ]
+    },
+    {
+      "id": "sublayer",
+      "label": "子层与后续历史",
+      "nodes": [
+        "p_sublayer",
+        "p_new",
+        "p_next"
+      ]
+    }
+  ],
+  "annotation_width_hanzi_equivalent": 63.5,
+  "semantic_group_policy": "Each proposed node is assigned exactly once; derive overview edges from actual graph edges, preserving kinds and temporal labels."
+}

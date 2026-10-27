@@ -1,0 +1,715 @@
+{
+  "id": "msa",
+  "title": "MiniMax Sparse Attention",
+  "canvas": {
+    "width": 1360,
+    "height": 1880
+  },
+  "regions": [
+    {
+      "id": "indexer_region",
+      "label": "",
+      "bbox": [
+        60,
+        305,
+        600,
+        1180
+      ],
+      "role": "panel",
+      "size": 20,
+      "shape": "region",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "content_region",
+      "label": "",
+      "bbox": [
+        720,
+        305,
+        580,
+        1180
+      ],
+      "role": "panel",
+      "size": 20,
+      "shape": "region",
+      "bold": false,
+      "align": "left"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "msa_title",
+      "label": "MiniMax Sparse Attention",
+      "bbox": [
+        60,
+        34,
+        1240,
+        48
+      ],
+      "role": "text",
+      "size": 35,
+      "shape": "text",
+      "bold": true,
+      "align": "left"
+    },
+    {
+      "id": "msa_subtitle",
+      "label": "One query position i  ·  four GQA groups  ·  selection and exact attention are separate",
+      "bbox": [
+        60,
+        94,
+        1240,
+        38
+      ],
+      "role": "text-secondary",
+      "size": 21,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "msa_tag",
+      "label": "DETAIL A",
+      "bbox": [
+        1150,
+        38,
+        150,
+        38
+      ],
+      "role": "text-secondary",
+      "size": 21,
+      "shape": "text",
+      "bold": true,
+      "align": "right"
+    },
+    {
+      "id": "msa_input",
+      "label": "u = Norm(x)",
+      "bbox": [
+        500,
+        165,
+        360,
+        60
+      ],
+      "role": "communication",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "indexer_region_title",
+      "label": "A1  Block indexer",
+      "bbox": [
+        86,
+        321,
+        548,
+        34
+      ],
+      "role": "text",
+      "size": 23,
+      "shape": "text",
+      "bold": true,
+      "align": "left"
+    },
+    {
+      "id": "content_region_title",
+      "label": "A2  Exact content attention",
+      "bbox": [
+        746,
+        321,
+        528,
+        34
+      ],
+      "role": "text",
+      "size": 23,
+      "shape": "text",
+      "bold": true,
+      "align": "left"
+    },
+    {
+      "id": "index_queries",
+      "label": "Index Q\n4 heads ×128\n1 head per group",
+      "bbox": [
+        100,
+        405,
+        235,
+        105
+      ],
+      "role": "state",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "index_keys",
+      "label": "Index K\n1 shared ×128\nDistinct from main K",
+      "bbox": [
+        385,
+        405,
+        235,
+        105
+      ],
+      "role": "state",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "index_dot",
+      "label": "Scaled token dot scores\ns_g(i,j) = q^I_g(i) · k^I(j) / sqrt(128)",
+      "bbox": [
+        130,
+        590,
+        460,
+        94
+      ],
+      "role": "state",
+      "size": 21,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "causal_index",
+      "label": "Causal index eligibility: j ≤ i\nFully future blocks score −∞",
+      "bbox": [
+        130,
+        770,
+        460,
+        90
+      ],
+      "role": "state",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "block_max",
+      "label": "Block max: 128 tokens\nb_g(i,b) = max s_g(i,j)\nfor j in block b and j ≤ i",
+      "bbox": [
+        130,
+        935,
+        460,
+        114
+      ],
+      "role": "state",
+      "size": 21,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "select_blocks",
+      "label": "Top16 blocks per group\nLocal block included\nwithin the 16-block budget",
+      "bbox": [
+        130,
+        1120,
+        460,
+        104
+      ],
+      "role": "rank1",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "block_ids",
+      "label": "Selected block IDs S_g(i)",
+      "bbox": [
+        160,
+        1310,
+        400,
+        55
+      ],
+      "role": "rank1",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "content_queries",
+      "label": "Main Q\n64 Q heads\n4 groups ×16 Q\n128 per head",
+      "bbox": [
+        1040,
+        405,
+        225,
+        120
+      ],
+      "role": "compute",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "content_kv",
+      "label": "Main K / V\n4 group KV heads\n128 per head",
+      "bbox": [
+        755,
+        405,
+        250,
+        105
+      ],
+      "role": "compute",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "selected_kv",
+      "label": "Gather group-specific K / V\nK_g[S_g(i)], V_g[S_g(i)]",
+      "bbox": [
+        755,
+        1120,
+        350,
+        104
+      ],
+      "role": "compute",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "exact_attention",
+      "label": "Exact content attention\nA_g = Softmax(Q_g K_g[S_g]^T /√128 + M)\nOutput_g = A_g V_g[S_g]\nM: causal j ≤ i in all selected blocks,\nincluding the local block",
+      "bbox": [
+        750,
+        1310,
+        520,
+        150
+      ],
+      "role": "compute",
+      "size": 20,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "attn_output_proj",
+      "label": "Concatenate all query heads & output projection",
+      "bbox": [
+        335,
+        1550,
+        690,
+        70
+      ],
+      "role": "compute",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "attention_output",
+      "label": "Attention output",
+      "bbox": [
+        480,
+        1700,
+        400,
+        62
+      ],
+      "role": "communication",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "msa_scope",
+      "label": "Index K is shared across groups; main K / V are group-specific. No attention output gate.\nQ/K normalization, positional encoding and cache implementation details are omitted here.\nThe same MSA mechanism is used in all 60 decoder layers.",
+      "bbox": [
+        60,
+        1790,
+        1240,
+        72
+      ],
+      "role": "text-secondary",
+      "size": 18,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    }
+  ],
+  "edges": [
+    {
+      "id": "u_to_index_queries",
+      "source": "msa_input",
+      "target": "index_queries",
+      "source_port": [
+        0,
+        0.5
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "points": [
+        [
+          80,
+          195
+        ],
+        [
+          80,
+          457.5
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "u_to_index_keys",
+      "source": "msa_input",
+      "target": "index_keys",
+      "source_port": [
+        0.3,
+        1
+      ],
+      "target_port": [
+        1,
+        0.5
+      ],
+      "points": [
+        [
+          608,
+          260
+        ],
+        [
+          645,
+          260
+        ],
+        [
+          645,
+          457.5
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "u_to_content_kv",
+      "source": "msa_input",
+      "target": "content_kv",
+      "source_port": [
+        0.7,
+        1
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "points": [
+        [
+          752,
+          260
+        ],
+        [
+          735,
+          260
+        ],
+        [
+          735,
+          457.5
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "u_to_content_queries",
+      "source": "msa_input",
+      "target": "content_queries",
+      "source_port": [
+        1,
+        0.5
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [
+        [
+          1280,
+          195
+        ],
+        [
+          1280,
+          380
+        ],
+        [
+          1152.5,
+          380
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "index_q_to_dot",
+      "source": "index_queries",
+      "target": "index_dot",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.2,
+        0
+      ],
+      "points": [
+        [
+          217.5,
+          550
+        ],
+        [
+          222,
+          550
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "index_k_to_dot",
+      "source": "index_keys",
+      "target": "index_dot",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.8,
+        0
+      ],
+      "points": [
+        [
+          502.5,
+          550
+        ],
+        [
+          498,
+          550
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "dot_to_causal",
+      "source": "index_dot",
+      "target": "causal_index",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "causal_to_max",
+      "source": "causal_index",
+      "target": "block_max",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "max_to_top16",
+      "source": "block_max",
+      "target": "select_blocks",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "top16_to_ids",
+      "source": "select_blocks",
+      "target": "block_ids",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "ids_to_gather",
+      "source": "block_ids",
+      "target": "selected_kv",
+      "source_port": [
+        1,
+        0.5
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "points": [
+        [
+          690,
+          1337.5
+        ],
+        [
+          690,
+          1172
+        ]
+      ],
+      "kind": "selection",
+      "label": ""
+    },
+    {
+      "id": "main_kv_to_gather",
+      "source": "content_kv",
+      "target": "selected_kv",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [
+        [
+          880,
+          1050
+        ],
+        [
+          930,
+          1050
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "gather_to_exact",
+      "source": "selected_kv",
+      "target": "exact_attention",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.35,
+        0
+      ],
+      "points": [
+        [
+          930,
+          1270
+        ],
+        [
+          932,
+          1270
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "main_q_to_exact",
+      "source": "content_queries",
+      "target": "exact_attention",
+      "source_port": [
+        1,
+        0.5
+      ],
+      "target_port": [
+        1,
+        0.5
+      ],
+      "points": [
+        [
+          1280,
+          465
+        ],
+        [
+          1280,
+          1385
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "exact_to_outproj",
+      "source": "exact_attention",
+      "target": "attn_output_proj",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        1,
+        0.5
+      ],
+      "points": [
+        [
+          1010,
+          1490
+        ],
+        [
+          1085,
+          1490
+        ],
+        [
+          1085,
+          1585
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "outproj_to_output",
+      "source": "attn_output_proj",
+      "target": "attention_output",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    }
+  ]
+}

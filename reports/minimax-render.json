@@ -1,0 +1,44 @@
+{
+  "example": "minimax",
+  "palette": "blue-neutral",
+  "renderer": "official draw.io Graph + Inkscape CLI",
+  "checks": [
+    {
+      "figure": "portrait",
+      "canvas": {
+        "width": 680,
+        "height": 1660,
+        "page": 0
+      },
+      "metrics": {
+        "text": 33,
+        "foreignObject": 0,
+        "images": 0,
+        "embedded_native_model": true
+      },
+      "javascript_errors": [],
+      "edit_probe": true
+    },
+    {
+      "figure": "detail",
+      "canvas": {
+        "width": 1160,
+        "height": 460,
+        "page": 0
+      },
+      "metrics": {
+        "text": 34,
+        "foreignObject": 0,
+        "images": 0,
+        "embedded_native_model": true
+      },
+      "javascript_errors": [],
+      "edit_probe": "not_run"
+    }
+  ],
+  "not_run": [
+    "draw.io Desktop/EditorUi",
+    "PPTX edit",
+    "user preference evaluation"
+  ]
+}

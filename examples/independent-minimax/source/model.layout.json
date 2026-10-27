@@ -1,0 +1,1016 @@
+{
+  "id": "model",
+  "title": "MiniMax M3.1-Flash",
+  "canvas": {
+    "width": 1000,
+    "height": 2200
+  },
+  "regions": [
+    {
+      "id": "dense_decoder",
+      "label": "",
+      "bbox": [
+        140,
+        390,
+        720,
+        655
+      ],
+      "role": "panel",
+      "size": 20,
+      "shape": "region",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "moe_decoder",
+      "label": "",
+      "bbox": [
+        140,
+        1080,
+        720,
+        655
+      ],
+      "role": "panel",
+      "size": 20,
+      "shape": "region",
+      "bold": false,
+      "align": "left"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "model_title",
+      "label": "MiniMax M3.1-Flash",
+      "bbox": [
+        60,
+        34,
+        880,
+        48
+      ],
+      "role": "text",
+      "size": 35,
+      "shape": "text",
+      "bold": true,
+      "align": "left"
+    },
+    {
+      "id": "model_subtitle",
+      "label": "Native multimodal MoE  ·  text hidden size 6144  ·  60 decoder layers",
+      "bbox": [
+        60,
+        94,
+        880,
+        38
+      ],
+      "role": "text-secondary",
+      "size": 21,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "model_tag",
+      "label": "MODEL",
+      "bbox": [
+        790,
+        38,
+        150,
+        38
+      ],
+      "role": "text-secondary",
+      "size": 21,
+      "shape": "text",
+      "bold": true,
+      "align": "right"
+    },
+    {
+      "id": "input_text",
+      "label": "Text",
+      "bbox": [
+        100,
+        164,
+        220,
+        56
+      ],
+      "role": "communication",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "input_image",
+      "label": "Image",
+      "bbox": [
+        390,
+        164,
+        220,
+        56
+      ],
+      "role": "communication",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "input_video",
+      "label": "Video",
+      "bbox": [
+        680,
+        164,
+        220,
+        56
+      ],
+      "role": "communication",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "multimodal_fusion",
+      "label": "Input embeddings & multimodal fusion\nFrontend internals omitted",
+      "bbox": [
+        245,
+        270,
+        510,
+        74
+      ],
+      "role": "communication",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "dense_decoder_title",
+      "label": "Layers 0–2  ·  repeat ×3",
+      "bbox": [
+        166,
+        406,
+        668,
+        34
+      ],
+      "role": "text",
+      "size": 23,
+      "shape": "text",
+      "bold": true,
+      "align": "left"
+    },
+    {
+      "id": "dense_input",
+      "label": "",
+      "bbox": [
+        494,
+        458,
+        12,
+        12
+      ],
+      "role": "junction",
+      "size": 23,
+      "shape": "ellipse",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "dense_input_label",
+      "label": "x_l",
+      "bbox": [
+        528,
+        442,
+        110,
+        38
+      ],
+      "role": "text",
+      "size": 23,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "dense_norm_attn",
+      "label": "Norm",
+      "bbox": [
+        350,
+        510,
+        300,
+        50
+      ],
+      "role": "panel",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "dense_attention",
+      "label": "MiniMax Sparse Attention\n64 Q /4 KV heads  ·  d_head = 128\nDetail A",
+      "bbox": [
+        285,
+        590,
+        430,
+        88
+      ],
+      "role": "compute",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "dense_add_attn",
+      "label": "+",
+      "bbox": [
+        476,
+        712,
+        48,
+        48
+      ],
+      "role": "operator",
+      "size": 28,
+      "shape": "ellipse",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "dense_h_label",
+      "label": "h_l",
+      "bbox": [
+        536,
+        682,
+        90,
+        32
+      ],
+      "role": "text",
+      "size": 23,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "dense_norm_ffn",
+      "label": "Norm",
+      "bbox": [
+        350,
+        792,
+        300,
+        50
+      ],
+      "role": "panel",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "dense_ffn",
+      "label": "Dense FFN\nSwiGLU",
+      "bbox": [
+        265,
+        875,
+        470,
+        76
+      ],
+      "role": "state",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "dense_add_ffn",
+      "label": "+",
+      "bbox": [
+        476,
+        980,
+        48,
+        48
+      ],
+      "role": "operator",
+      "size": 28,
+      "shape": "ellipse",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "dense_residual1_label",
+      "label": "skip",
+      "bbox": [
+        159,
+        566,
+        50,
+        30
+      ],
+      "role": "text-secondary",
+      "size": 18,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "dense_residual2_label",
+      "label": "skip",
+      "bbox": [
+        797,
+        831,
+        50,
+        30
+      ],
+      "role": "text-secondary",
+      "size": 18,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "moe_decoder_title",
+      "label": "Layers 3–59  ·  repeat ×57",
+      "bbox": [
+        166,
+        1096,
+        668,
+        34
+      ],
+      "role": "text",
+      "size": 23,
+      "shape": "text",
+      "bold": true,
+      "align": "left"
+    },
+    {
+      "id": "moe_input",
+      "label": "",
+      "bbox": [
+        494,
+        1148,
+        12,
+        12
+      ],
+      "role": "junction",
+      "size": 23,
+      "shape": "ellipse",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "moe_input_label",
+      "label": "x_l",
+      "bbox": [
+        528,
+        1132,
+        110,
+        38
+      ],
+      "role": "text",
+      "size": 23,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "moe_norm_attn",
+      "label": "Norm",
+      "bbox": [
+        350,
+        1200,
+        300,
+        50
+      ],
+      "role": "panel",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "moe_attention",
+      "label": "MiniMax Sparse Attention\n64 Q /4 KV heads  ·  d_head = 128\nDetail A",
+      "bbox": [
+        285,
+        1280,
+        430,
+        88
+      ],
+      "role": "compute",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "moe_add_attn",
+      "label": "+",
+      "bbox": [
+        476,
+        1402,
+        48,
+        48
+      ],
+      "role": "operator",
+      "size": 28,
+      "shape": "ellipse",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "moe_h_label",
+      "label": "h_l",
+      "bbox": [
+        536,
+        1372,
+        90,
+        32
+      ],
+      "role": "text",
+      "size": 23,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "moe_norm_ffn",
+      "label": "Norm",
+      "bbox": [
+        350,
+        1482,
+        300,
+        50
+      ],
+      "role": "panel",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "moe_ffn",
+      "label": "MoE  ·  Top4 of 128 routed +1 shared\nRouted ×2; then add shared  ·  Detail B",
+      "bbox": [
+        265,
+        1565,
+        470,
+        76
+      ],
+      "role": "rank0",
+      "size": 22,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "moe_add_ffn",
+      "label": "+",
+      "bbox": [
+        476,
+        1670,
+        48,
+        48
+      ],
+      "role": "operator",
+      "size": 28,
+      "shape": "ellipse",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "moe_residual1_label",
+      "label": "skip",
+      "bbox": [
+        159,
+        1256,
+        50,
+        30
+      ],
+      "role": "text-secondary",
+      "size": 18,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "moe_residual2_label",
+      "label": "skip",
+      "bbox": [
+        797,
+        1521,
+        50,
+        30
+      ],
+      "role": "text-secondary",
+      "size": 18,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    },
+    {
+      "id": "final_norm",
+      "label": "Final Norm",
+      "bbox": [
+        350,
+        1805,
+        300,
+        56
+      ],
+      "role": "panel",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "lm_head",
+      "label": "LM head",
+      "bbox": [
+        350,
+        1910,
+        300,
+        56
+      ],
+      "role": "compute",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "text_output",
+      "label": "Text output",
+      "bbox": [
+        350,
+        2015,
+        300,
+        56
+      ],
+      "role": "communication",
+      "size": 23,
+      "shape": "rect",
+      "bold": false,
+      "align": "center"
+    },
+    {
+      "id": "model_scope",
+      "label": "All 60 layers use MSA; no attention output gate.\nDSpark is an auxiliary draft, not extra decoder layers; internals omitted.\nVision frontend details and training losses are outside this view.",
+      "bbox": [
+        60,
+        2105,
+        880,
+        75
+      ],
+      "role": "text-secondary",
+      "size": 18,
+      "shape": "text",
+      "bold": false,
+      "align": "left"
+    }
+  ],
+  "edges": [
+    {
+      "id": "input_text_to_fusion",
+      "source": "input_text",
+      "target": "multimodal_fusion",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.2,
+        0
+      ],
+      "points": [
+        [
+          210,
+          245
+        ],
+        [
+          347,
+          245
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "input_image_to_fusion",
+      "source": "input_image",
+      "target": "multimodal_fusion",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [
+        [
+          500,
+          245
+        ],
+        [
+          500,
+          245
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "input_video_to_fusion",
+      "source": "input_video",
+      "target": "multimodal_fusion",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.8,
+        0
+      ],
+      "points": [
+        [
+          790,
+          245
+        ],
+        [
+          653,
+          245
+        ]
+      ],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "dense_input_to_norm",
+      "source": "dense_input",
+      "target": "dense_norm_attn",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "dense_norm_to_attn",
+      "source": "dense_norm_attn",
+      "target": "dense_attention",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "dense_attn_to_add",
+      "source": "dense_attention",
+      "target": "dense_add_attn",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "dense_attn_residual",
+      "source": "dense_input",
+      "target": "dense_add_attn",
+      "source_port": [
+        0,
+        0.5
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "points": [
+        [
+          215,
+          464
+        ],
+        [
+          215,
+          736
+        ]
+      ],
+      "kind": "residual",
+      "label": ""
+    },
+    {
+      "id": "dense_add_to_norm",
+      "source": "dense_add_attn",
+      "target": "dense_norm_ffn",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "dense_norm_to_ffn",
+      "source": "dense_norm_ffn",
+      "target": "dense_ffn",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "dense_ffn_to_add",
+      "source": "dense_ffn",
+      "target": "dense_add_ffn",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "dense_ffn_residual",
+      "source": "dense_add_attn",
+      "target": "dense_add_ffn",
+      "source_port": [
+        1,
+        0.5
+      ],
+      "target_port": [
+        1,
+        0.5
+      ],
+      "points": [
+        [
+          785,
+          736
+        ],
+        [
+          785,
+          1004
+        ]
+      ],
+      "kind": "residual",
+      "label": ""
+    },
+    {
+      "id": "moe_input_to_norm",
+      "source": "moe_input",
+      "target": "moe_norm_attn",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "moe_norm_to_attn",
+      "source": "moe_norm_attn",
+      "target": "moe_attention",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "moe_attn_to_add",
+      "source": "moe_attention",
+      "target": "moe_add_attn",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "moe_attn_residual",
+      "source": "moe_input",
+      "target": "moe_add_attn",
+      "source_port": [
+        0,
+        0.5
+      ],
+      "target_port": [
+        0,
+        0.5
+      ],
+      "points": [
+        [
+          215,
+          1154
+        ],
+        [
+          215,
+          1426
+        ]
+      ],
+      "kind": "residual",
+      "label": ""
+    },
+    {
+      "id": "moe_add_to_norm",
+      "source": "moe_add_attn",
+      "target": "moe_norm_ffn",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "moe_norm_to_ffn",
+      "source": "moe_norm_ffn",
+      "target": "moe_ffn",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "moe_ffn_to_add",
+      "source": "moe_ffn",
+      "target": "moe_add_ffn",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "moe_ffn_residual",
+      "source": "moe_add_attn",
+      "target": "moe_add_ffn",
+      "source_port": [
+        1,
+        0.5
+      ],
+      "target_port": [
+        1,
+        0.5
+      ],
+      "points": [
+        [
+          785,
+          1426
+        ],
+        [
+          785,
+          1694
+        ]
+      ],
+      "kind": "residual",
+      "label": ""
+    },
+    {
+      "id": "fusion_to_dense",
+      "source": "multimodal_fusion",
+      "target": "dense_input",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "dense_to_moe",
+      "source": "dense_add_ffn",
+      "target": "moe_input",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "moe_to_final_norm",
+      "source": "moe_add_ffn",
+      "target": "final_norm",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "norm_to_lm",
+      "source": "final_norm",
+      "target": "lm_head",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    },
+    {
+      "id": "lm_to_output",
+      "source": "lm_head",
+      "target": "text_output",
+      "source_port": [
+        0.5,
+        1
+      ],
+      "target_port": [
+        0.5,
+        0
+      ],
+      "points": [],
+      "kind": "data",
+      "label": ""
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "scope": "current environment and project-visible sources only",
+  "active_personal_skill_names": [
+    "technical-architecture-diagrams"
+  ],
+  "cloud_catalog_items_seen": 62,
+  "disabled_personal_skills_found": 0,
+  "installed_source_matches_submission": true,
+  "broken_markdown_links": [],
+  "historical_v04_archived": true,
+  "ppt_workflow_design_archived": true,
+  "external_catalog_only": [
+    "drawio-skill",
+    "plantuml-skill",
+    "huawei-html-ppt"
+  ],
+  "github_target": "Songzeyu666/infra-io-generator",
+  "github_target_empty": true,
+  "github_push_permission_at_check": false,
+  "independent_reproduction": "completed: first version needed revision; repaired candidate agent self-check passed; fresh-output complete pipeline exit0 and six native byte matches"
+}

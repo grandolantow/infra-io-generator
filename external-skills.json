@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "scope": "PPT and technical diagram skill collection",
+  "items": [
+    {
+      "name": "drawio-skill",
+      "repository": "https://github.com/Agents365-ai/drawio-skill",
+      "status": "catalog-only",
+      "vendored": false,
+      "installed_by_this_project": false,
+      "verified_revision": null
+    },
+    {
+      "name": "plantuml-skill",
+      "repository": "https://github.com/samonysh/plantuml-skill",
+      "status": "catalog-only",
+      "vendored": false,
+      "installed_by_this_project": false,
+      "verified_revision": null
+    },
+    {
+      "name": "huawei-html-ppt",
+      "repository": "https://github.com/LookAround0301/huawei-html-ppt",
+      "status": "catalog-only",
+      "vendored": false,
+      "installed_by_this_project": false,
+      "verified_revision": null
+    }
+  ]
+}

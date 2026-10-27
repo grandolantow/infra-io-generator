@@ -1,0 +1,13 @@
+interface:
+  display_name: 技术架构图
+  short_description: 用语义与架构模板制作原生draw.io论文图，实际渲染并验证数据流和编辑
+  default_prompt: 使用 $technical-architecture-diagrams 为这份材料制作原生draw.io技术架构图，默认清彩论文配色，可选素雅灰蓝，先核对事实、选择架构图元与模板，再实际渲染和检查局部编辑。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

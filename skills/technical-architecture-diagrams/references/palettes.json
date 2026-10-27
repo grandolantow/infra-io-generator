@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "default_target": "paper",
+  "target_defaults": {
+    "ppt": "paper-clear",
+    "paper": "paper-clear"
+  },
+  "provenance": {
+    "huawei-plain": {
+      "commit": "cb1a8d2de0490ab5c01cb4c5d1a46ee3fcfc3ecd",
+      "paths": [
+        "skills/huawei-html-ppt/assets/two-style/style.css",
+        "skills/huawei-html-ppt/references/style-guide.md"
+      ],
+      "note": "Plain white/red/neutral main slide palette, not its blue variant. Semantic nodes default to neutral fills; use explicit custom overrides for gentle functional fills.",
+      "repository": "https://github.com/LookAround0301/huawei-html-ppt"
+    },
+    "paper-vivid": {
+      "note": "Skill semantic preset: blue compute, orange state, green communication, purple rank0, blue rank1. Not an extracted slide theme."
+    },
+    "blue-neutral": {
+      "note": "Optional subdued blue/neutral variant; not the default PPT style."
+    },
+    "paper-clear": {
+      "note": "Current user-approved M3.1-Flash light paper palette. Default unless a palette or template is explicitly requested. Extra panel tints remain diagram-specific."
+    }
+  },
+  "palettes": {
+    "huawei-plain": {
+      "text": {
+        "primary": "#1D1D1A",
+        "secondary": "#666666"
+      },
+      "background": {
+        "canvas": "#FFFFFF",
+        "panel": "#F2F4F6"
+      },
+      "line": {
+        "default": "#AEB8C0",
+        "strong": "#1D1D1A"
+      },
+      "accent": {
+        "primary": "#C00000"
+      },
+      "compute": {
+        "fill": "#F2F4F6",
+        "stroke": "#AEB8C0"
+      },
+      "state": {
+        "fill": "#F2F4F6",
+        "stroke": "#AEB8C0"
+      },
+      "communication": {
+        "fill": "#F2F4F6",
+        "stroke": "#AEB8C0"
+      },
+      "rank0": {
+        "fill": "#F2F4F6",
+        "stroke": "#AEB8C0"
+      },
+      "rank1": {
+        "fill": "#F2F4F6",
+        "stroke": "#AEB8C0"
+      }
+    },
+    "paper-vivid": {
+      "text": {
+        "primary": "#1D1D1A",
+        "secondary": "#595959"
+      },
+      "background": {
+        "canvas": "#FFFFFF",
+        "panel": "#F5F7FA"
+      },
+      "line": {
+        "default": "#B1BBC7",
+        "strong": "#1D1D1A"
+      },
+      "accent": {
+        "primary": "#377BC0"
+      },
+      "compute": {
+        "fill": "#E7F1FF",
+        "stroke": "#377BC0"
+      },
+      "state": {
+        "fill": "#FFF0DB",
+        "stroke": "#CD7B20"
+      },
+      "communication": {
+        "fill": "#E7F5EA",
+        "stroke": "#3A9158"
+      },
+      "rank0": {
+        "fill": "#F0E8FA",
+        "stroke": "#8C64B0"
+      },
+      "rank1": {
+        "fill": "#E7F1FF",
+        "stroke": "#377BC0"
+      }
+    },
+    "blue-neutral": {
+      "text": {
+        "primary": "#1D1D1A",
+        "secondary": "#596671"
+      },
+      "background": {
+        "canvas": "#FFFFFF",
+        "panel": "#F2F4F6"
+      },
+      "line": {
+        "default": "#AEB8C0",
+        "strong": "#1D1D1A"
+      },
+      "accent": {
+        "primary": "#38698F"
+      },
+      "compute": {
+        "fill": "#EDF4FA",
+        "stroke": "#688BA8"
+      },
+      "state": {
+        "fill": "#F2F5F8",
+        "stroke": "#8193A3"
+      },
+      "communication": {
+        "fill": "#D7E3EC",
+        "stroke": "#628D9B"
+      },
+      "rank0": {
+        "fill": "#E6EFF7",
+        "stroke": "#5D83A4"
+      },
+      "rank1": {
+        "fill": "#F0F3F6",
+        "stroke": "#7D8E9E"
+      }
+    },
+    "paper-clear": {
+      "text": {
+        "primary": "#28343D",
+        "secondary": "#657581"
+      },
+      "background": {
+        "canvas": "#FFFFFF",
+        "panel": "#FAFBFC"
+      },
+      "line": {
+        "default": "#42647C",
+        "strong": "#28343D"
+      },
+      "accent": {
+        "primary": "#42647C"
+      },
+      "compute": {
+        "fill": "#DDECF7",
+        "stroke": "#42647C"
+      },
+      "state": {
+        "fill": "#FAEECF",
+        "stroke": "#42647C"
+      },
+      "communication": {
+        "fill": "#E1EEDD",
+        "stroke": "#42647C"
+      },
+      "rank0": {
+        "fill": "#EAE2F4",
+        "stroke": "#42647C"
+      },
+      "rank1": {
+        "fill": "#F7DFDA",
+        "stroke": "#42647C"
+      }
+    }
+  },
+  "display_names": {
+    "paper-clear": "清彩论文",
+    "blue-neutral": "素雅灰蓝",
+    "paper-vivid": "明艳论文（旧预设）",
+    "huawei-plain": "华为朴素（指定模板）"
+  }
+}

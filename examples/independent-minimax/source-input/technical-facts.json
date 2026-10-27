@@ -1,0 +1,25 @@
+{
+  "model": "MiniMax M3.1-Flash",
+  "source_revision": "54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e",
+  "sources": {
+    "config": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/blob/54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e/config.json",
+    "msa_paper": "https://arxiv.org/html/2606.13392v1",
+    "code": "https://raw.githubusercontent.com/sgl-project/sglang/main/python/sglang/srt/models/minimax_m3.py"
+  },
+  "scope_out": [
+    "vision frontend internals",
+    "DSpark draft internals",
+    "training losses"
+  ],
+  "facts": [
+    "Native text/image/video inputs are fused before the text backbone; text output.",
+    "Text hidden size 6144; 60 decoder layers; all 60 use MiniMax Sparse Attention (MSA). Layers 0–2 use dense FFN; layers 3–59 use MoE.",
+    "Pre-normalized decoder: x enters Norm then attention; attention output is added to x. The resulting hidden state enters Norm then FFN/MoE; FFN output is added to the pre-FFN hidden state. Final norm and LM head lie after the decoder stack.",
+    "64 query heads, 4 KV heads, head dimension128: 4 GQA groups, 16 Q heads per group. No attention output gate.",
+    "Indexer has 4 query heads (one/group), width128, and shared index key. Scaled token dot scores are reduced by maximum within each 128-token block; each group selects Top16 blocks, including the local block within the 16-block budget.",
+    "Indexer considers causal j<=i, fully future blocks score minus infinity. Main attention uses exact content QK softmax V on the selected group KV with causal masking within all selected blocks, including the local block. Main K/V are group-specific; shared index K is distinct from main K.",
+    "128 routed experts, Top4, one shared expert. Token data feeds router, selected experts, shared expert. Router computes sigmoid scores; correction bias affects selection only. Selected original unbiased scores are renormalized as mixing weights, and routed sum is scaled by2. Shared expert output is then added; shared does not pass through routed mixing/renorm.",
+    "Router intermediate expert size3072. Only parameter annotations that aid understanding are required.",
+    "DSpark is an auxiliary draft, not extra decoder layers. Omit its internals in this scope."
+  ]
+}

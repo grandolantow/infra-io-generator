@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="drawio" version="independent-authoring-v1" compressed="false">
+  <diagram id="model" name="MiniMax M3.1-Flash">
+    <mxGraphModel dx="1000" dy="2200" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="1" pageScale="1" pageWidth="1000" pageHeight="2200" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dense_decoder" value="" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontColor=#28343D;fontStyle=0;fillColor=#FAFBFC;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=4;dashed=1;dashPattern=5 4;strokeWidth=1.5;" vertex="1" parent="1" role="panel">
+          <mxGeometry x="140" y="390" width="720" height="655" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_decoder" value="" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontColor=#28343D;fontStyle=0;fillColor=#FAFBFC;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=4;dashed=1;dashPattern=5 4;strokeWidth=1.5;" vertex="1" parent="1" role="panel">
+          <mxGeometry x="140" y="1080" width="720" height="655" as="geometry" />
+        </mxCell>
+        <mxCell id="input_text_to_fusion" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.2;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="input_text" target="multimodal_fusion" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="210" y="245" />
+              <mxPoint x="347" y="245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="input_image_to_fusion" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="input_image" target="multimodal_fusion" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="245" />
+              <mxPoint x="500" y="245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="input_video_to_fusion" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.8;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="input_video" target="multimodal_fusion" kind="data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="245" />
+              <mxPoint x="653" y="245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dense_input_to_norm" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="dense_input" target="dense_norm_attn" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_norm_to_attn" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="dense_norm_attn" target="dense_attention" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_attn_to_add" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="dense_attention" target="dense_add_attn" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_attn_residual" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="dense_input" target="dense_add_attn" kind="residual">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="215" y="464" />
+              <mxPoint x="215" y="736" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dense_add_to_norm" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="dense_add_attn" target="dense_norm_ffn" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_norm_to_ffn" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="dense_norm_ffn" target="dense_ffn" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_ffn_to_add" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="dense_ffn" target="dense_add_ffn" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_ffn_residual" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=1;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="dense_add_attn" target="dense_add_ffn" kind="residual">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="785" y="736" />
+              <mxPoint x="785" y="1004" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="moe_input_to_norm" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_input" target="moe_norm_attn" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_norm_to_attn" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_norm_attn" target="moe_attention" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_attn_to_add" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_attention" target="moe_add_attn" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_attn_residual" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_input" target="moe_add_attn" kind="residual">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="215" y="1154" />
+              <mxPoint x="215" y="1426" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="moe_add_to_norm" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_add_attn" target="moe_norm_ffn" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_norm_to_ffn" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_norm_ffn" target="moe_ffn" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_ffn_to_add" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_ffn" target="moe_add_ffn" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_ffn_residual" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=1;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_add_attn" target="moe_add_ffn" kind="residual">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="785" y="1426" />
+              <mxPoint x="785" y="1694" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fusion_to_dense" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="multimodal_fusion" target="dense_input" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_to_moe" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="dense_add_ffn" target="moe_input" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_to_final_norm" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="moe_add_ffn" target="final_norm" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="norm_to_lm" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="final_norm" target="lm_head" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lm_to_output" value="" style="edgeStyle=none;orthogonal=1;rounded=1;arcSize=12;html=0;endArrow=block;endFill=1;endSize=9;strokeWidth=2;strokeColor=#28343D;fontColor=#657581;fontFamily=Arial;fontSize=18;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="lm_head" target="text_output" kind="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="model_title" value="MiniMax M3.1-Flash" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=35;fontColor=#28343D;fontStyle=1;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="60" y="34" width="880" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="model_subtitle" value="Native multimodal MoE  ·  text hidden size 6144  ·  60 decoder layers" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="60" y="94" width="880" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="model_tag" value="MODEL" style="html=0;whiteSpace=wrap;align=right;verticalAlign=middle;fontFamily=Arial;fontSize=21;fontColor=#657581;fontStyle=1;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="790" y="38" width="150" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="input_text" value="Text" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="communication">
+          <mxGeometry x="100" y="164" width="220" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="input_image" value="Image" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="communication">
+          <mxGeometry x="390" y="164" width="220" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="input_video" value="Video" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="communication">
+          <mxGeometry x="680" y="164" width="220" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="multimodal_fusion" value="Input embeddings &amp; multimodal fusion&#10;Frontend internals omitted" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="communication">
+          <mxGeometry x="245" y="270" width="510" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_decoder_title" value="Layers 0–2  ·  repeat ×3" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=1;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="166" y="406" width="668" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_input" value="" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#28343D;strokeColor=#28343D;strokeWidth=1.8;spacing=8;shape=ellipse;perimeter=ellipsePerimeter;" vertex="1" parent="1" role="junction">
+          <mxGeometry x="494" y="458" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_input_label" value="x_l" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="528" y="442" width="110" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_norm_attn" value="Norm" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#FAFBFC;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="panel">
+          <mxGeometry x="350" y="510" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_attention" value="MiniMax Sparse Attention&#10;64 Q /4 KV heads  ·  d_head = 128&#10;Detail A" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="compute">
+          <mxGeometry x="285" y="590" width="430" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_add_attn" value="+" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontColor=#28343D;fontStyle=0;fillColor=#FFFFFF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=ellipse;perimeter=ellipsePerimeter;" vertex="1" parent="1" role="operator">
+          <mxGeometry x="476" y="712" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_h_label" value="h_l" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="536" y="682" width="90" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_norm_ffn" value="Norm" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#FAFBFC;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="panel">
+          <mxGeometry x="350" y="792" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_ffn" value="Dense FFN&#10;SwiGLU" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#FAEECF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="state">
+          <mxGeometry x="265" y="875" width="470" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_add_ffn" value="+" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontColor=#28343D;fontStyle=0;fillColor=#FFFFFF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=ellipse;perimeter=ellipsePerimeter;" vertex="1" parent="1" role="operator">
+          <mxGeometry x="476" y="980" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_residual1_label" value="skip" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="159" y="566" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dense_residual2_label" value="skip" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="797" y="831" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_decoder_title" value="Layers 3–59  ·  repeat ×57" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=1;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="166" y="1096" width="668" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_input" value="" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#28343D;strokeColor=#28343D;strokeWidth=1.8;spacing=8;shape=ellipse;perimeter=ellipsePerimeter;" vertex="1" parent="1" role="junction">
+          <mxGeometry x="494" y="1148" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_input_label" value="x_l" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="528" y="1132" width="110" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_norm_attn" value="Norm" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#FAFBFC;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="panel">
+          <mxGeometry x="350" y="1200" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_attention" value="MiniMax Sparse Attention&#10;64 Q /4 KV heads  ·  d_head = 128&#10;Detail A" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="compute">
+          <mxGeometry x="285" y="1280" width="430" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_add_attn" value="+" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontColor=#28343D;fontStyle=0;fillColor=#FFFFFF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=ellipse;perimeter=ellipsePerimeter;" vertex="1" parent="1" role="operator">
+          <mxGeometry x="476" y="1402" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_h_label" value="h_l" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text">
+          <mxGeometry x="536" y="1372" width="90" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_norm_ffn" value="Norm" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#FAFBFC;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="panel">
+          <mxGeometry x="350" y="1482" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_ffn" value="MoE  ·  Top4 of 128 routed +1 shared&#10;Routed ×2; then add shared  ·  Detail B" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontColor=#28343D;fontStyle=0;fillColor=#EAE2F4;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="rank0">
+          <mxGeometry x="265" y="1565" width="470" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_add_ffn" value="+" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontColor=#28343D;fontStyle=0;fillColor=#FFFFFF;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=ellipse;perimeter=ellipsePerimeter;" vertex="1" parent="1" role="operator">
+          <mxGeometry x="476" y="1670" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_residual1_label" value="skip" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="159" y="1256" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="moe_residual2_label" value="skip" style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="797" y="1521" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="final_norm" value="Final Norm" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#FAFBFC;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="panel">
+          <mxGeometry x="350" y="1805" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="lm_head" value="LM head" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#DDECF7;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="compute">
+          <mxGeometry x="350" y="1910" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="text_output" value="Text output" style="html=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=23;fontColor=#28343D;fontStyle=0;fillColor=#E1EEDD;strokeColor=#42647C;strokeWidth=1.8;spacing=8;shape=rectangle;rounded=1;arcSize=7;" vertex="1" parent="1" role="communication">
+          <mxGeometry x="350" y="2015" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="model_scope" value="All 60 layers use MSA; no attention output gate.&#10;DSpark is an auxiliary draft, not extra decoder layers; internals omitted.&#10;Vision frontend details and training losses are outside this view." style="html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#657581;fontStyle=0;fillColor=none;strokeColor=none;strokeWidth=1.8;spacing=8;shape=rectangle;spacing=0;" vertex="1" parent="1" role="text-secondary">
+          <mxGeometry x="60" y="2105" width="880" height="75" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
