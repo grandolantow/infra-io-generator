@@ -3,6 +3,7 @@
   "files": [
     "SKILL.md",
     "examples/toy-mapping.diagram.json",
+    "examples/toy-mapping.language.diagram.json",
     "examples/toy-mapping.task.json",
     "references/cases.json",
     "references/corpus_snapshot.json",

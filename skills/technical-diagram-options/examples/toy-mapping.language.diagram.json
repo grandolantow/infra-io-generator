@@ -1,0 +1,300 @@
+{
+  "schema_version": "1.0",
+  "diagram_id": "toy_mapping_language",
+  "semantic": {
+    "facts": [
+      {
+        "id": "f_map0",
+        "statement": "L0 maps to physical slot7.",
+        "provenance": "Invented toy demonstration."
+      },
+      {
+        "id": "f_map1",
+        "statement": "L1 maps to physical slot2.",
+        "provenance": "Invented toy demonstration."
+      }
+    ],
+    "nodes": [
+      {
+        "id": "L0",
+        "label": "L0",
+        "type": "logical_page",
+        "fact_ids": [
+          "f_map0"
+        ]
+      },
+      {
+        "id": "L1",
+        "label": "L1",
+        "type": "logical_page",
+        "fact_ids": [
+          "f_map1"
+        ]
+      },
+      {
+        "id": "P2",
+        "label": "slot2",
+        "type": "physical_slot",
+        "fact_ids": [
+          "f_map1"
+        ]
+      },
+      {
+        "id": "P7",
+        "label": "slot7",
+        "type": "physical_slot",
+        "fact_ids": [
+          "f_map0"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "map0",
+        "source": "L0",
+        "target": "P7",
+        "relation": "maps_to",
+        "fact_ids": [
+          "f_map0"
+        ]
+      },
+      {
+        "id": "map1",
+        "source": "L1",
+        "target": "P2",
+        "relation": "maps_to",
+        "fact_ids": [
+          "f_map1"
+        ]
+      }
+    ]
+  },
+  "views": [
+    {
+      "id": "mapping",
+      "title": "Logical-to-Physical Mapping",
+      "canvas": {
+        "width": 900,
+        "height": 420,
+        "background": "#FFFFFF"
+      },
+      "scope": "同时展示两组映射；交叉线表示物理顺序不同，不表示耗时或分配过程。",
+      "rule_ids": [
+        "S04"
+      ],
+      "glyphs": [
+        {
+          "id": "title",
+          "shape": "text",
+          "x": 50,
+          "y": 22,
+          "w": 800,
+          "h": 50,
+          "label_lines": [
+            "Same pages, different order"
+          ],
+          "style": {
+            "font_size": 26,
+            "fill": "none",
+            "stroke": "none",
+            "text_color": "#111827"
+          },
+          "text_role": "diagram_title"
+        },
+        {
+          "id": "left_heading",
+          "shape": "text",
+          "x": 80,
+          "y": 90,
+          "w": 220,
+          "h": 35,
+          "label_lines": [
+            "Logical order"
+          ],
+          "style": {
+            "font_size": 18,
+            "fill": "none",
+            "stroke": "none",
+            "text_color": "#1F2937"
+          },
+          "text_role": "section_title"
+        },
+        {
+          "id": "right_heading",
+          "shape": "text",
+          "x": 570,
+          "y": 90,
+          "w": 220,
+          "h": 35,
+          "label_lines": [
+            "Physical order"
+          ],
+          "style": {
+            "font_size": 18,
+            "fill": "none",
+            "stroke": "none",
+            "text_color": "#1F2937"
+          },
+          "text_role": "section_title"
+        },
+        {
+          "id": "v_L0",
+          "shape": "rect",
+          "x": 80,
+          "y": 145,
+          "w": 220,
+          "h": 65,
+          "label_lines": [
+            "L0"
+          ],
+          "style": {
+            "font_size": 22,
+            "fill": "#D6E9FF",
+            "stroke": "#334155",
+            "stroke_width": 1.5,
+            "text_color": "#111827"
+          },
+          "semantic_ref": "L0",
+          "text_role": "variable"
+        },
+        {
+          "id": "v_L1",
+          "shape": "rect",
+          "x": 80,
+          "y": 255,
+          "w": 220,
+          "h": 65,
+          "label_lines": [
+            "L1"
+          ],
+          "style": {
+            "font_size": 22,
+            "fill": "#FCE3C4",
+            "stroke": "#334155",
+            "stroke_width": 1.5,
+            "text_color": "#111827"
+          },
+          "semantic_ref": "L1",
+          "text_role": "variable"
+        },
+        {
+          "id": "v_P2",
+          "shape": "rect",
+          "x": 570,
+          "y": 145,
+          "w": 220,
+          "h": 65,
+          "label_lines": [
+            "slot2"
+          ],
+          "style": {
+            "font_size": 22,
+            "fill": "#FCE3C4",
+            "stroke": "#334155",
+            "stroke_width": 1.5,
+            "text_color": "#111827"
+          },
+          "semantic_ref": "P2",
+          "text_role": "variable"
+        },
+        {
+          "id": "v_P7",
+          "shape": "rect",
+          "x": 570,
+          "y": 255,
+          "w": 220,
+          "h": 65,
+          "label_lines": [
+            "slot7"
+          ],
+          "style": {
+            "font_size": 22,
+            "fill": "#D6E9FF",
+            "stroke": "#334155",
+            "stroke_width": 1.5,
+            "text_color": "#111827"
+          },
+          "semantic_ref": "P7",
+          "text_role": "variable"
+        },
+        {
+          "id": "note",
+          "shape": "text",
+          "x": 60,
+          "y": 350,
+          "w": 780,
+          "h": 45,
+          "label_lines": [
+            "Mapping only; no timing claim"
+          ],
+          "style": {
+            "font_size": 16,
+            "fill": "none",
+            "stroke": "none",
+            "text_color": "#475569"
+          },
+          "text_role": "short_annotation"
+        }
+      ],
+      "paths": [
+        {
+          "id": "v_map0",
+          "semantic_ref": "map0",
+          "source_instance": "v_L0",
+          "target_instance": "v_P7",
+          "points": [
+            [
+              300,
+              177.5
+            ],
+            [
+              570,
+              287.5
+            ]
+          ],
+          "arrow": "end",
+          "style": {
+            "stroke": "#2563A0",
+            "stroke_width": 2.5
+          }
+        },
+        {
+          "id": "v_map1",
+          "semantic_ref": "map1",
+          "source_instance": "v_L1",
+          "target_instance": "v_P2",
+          "points": [
+            [
+              300,
+              287.5
+            ],
+            [
+              570,
+              177.5
+            ]
+          ],
+          "arrow": "end",
+          "style": {
+            "stroke": "#AE6517",
+            "stroke_width": 2.5,
+            "dashed": true
+          }
+        }
+      ],
+      "title_text_role": "diagram_title",
+      "scope_text_role": "prose"
+    }
+  ],
+  "edit_policy": {
+    "locked_ids": [],
+    "user_owned_fields": []
+  },
+  "language_profile": "diagram-en-prose-zh",
+  "surrounding_texts": [
+    {
+      "id": "source",
+      "text": "来源：虚构示例，仅用于说明映射关系",
+      "text_role": "prose"
+    }
+  ]
+}

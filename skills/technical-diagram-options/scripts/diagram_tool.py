@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
 """Validate authored diagram IR and export source-editable SVG / native draw.io. No auto-layout."""
-import argparse,json,math,re,sys
+import argparse,json,math,re,sys,importlib.util,hashlib
 from pathlib import Path
 import xml.etree.ElementTree as E
+def language_check(doc):
+    profile=doc.get('language_profile')
+    if 'language_profile' not in doc:
+        return {'status':'not_run','contract_status':'not_run','semantic_review':'not_run','profile':None,'input_sha256':None,'errors':[],'warnings':['Legacy IR has no language_profile; no language compliance is claimed.']}
+    path=Path(__file__).resolve().parents[2]/'technical-architecture-diagrams/scripts/check_language.py'
+    if not path.is_file():
+        return {'status':'fail','contract_status':'fail','semantic_review':'not_run','profile':profile,'input_sha256':None,'errors':['Shared language checker missing; install both sibling skill directories.'],'warnings':[]}
+    spec=importlib.util.spec_from_file_location('shared_diagram_language',path);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    return module.check_document(doc,format='report',profile=profile)
+
 SAFE_ID=re.compile(r'^[A-Za-z_][A-Za-z0-9_.:-]*$')
 def dup(xs):return sorted({x for x in xs if xs.count(x)>1})
 def bbox(g):return [g[k] for k in ('x','y','w','h')]
@@ -72,18 +82,20 @@ def check(doc):
                 if hit:warnings.append(f'{vid}/{pid}: crosses unrelated glyph {g.get("id")}; inspect')
         # A view may deliberately omit facts; require its scope to explain partial coverage.
         if not v.get('scope'):warnings.append(f'{vid}: no scope/omission note')
-    return {'valid':not errors,'errors':errors,'warnings':sorted(set(warnings)),'limits':['Geometry checks are conservative warnings, not pixel QA.','No factual correctness, overlap timing, accessibility, typography or empirical effectiveness is proved.']}
+    language_qa=language_check(doc)
+    errors.extend(language_qa['errors']);warnings.extend(language_qa['warnings'])
+    return {'valid':not errors,'errors':errors,'warnings':sorted(set(warnings)),'language_qa':language_qa,'limits':['Geometry checks are conservative warnings, not pixel QA.','No factual correctness, overlap timing, accessibility, typography or empirical effectiveness is proved.']}
 def style(g):
     s=g.get('style',{});return {'fill':s.get('fill','white'),'stroke':s.get('stroke','black'),'stroke_width':s.get('stroke_width',1.5),'font_size':s.get('font_size',16),'font_family':s.get('font_family','sans-serif'),'text_color':s.get('text_color','black'),'dashed':s.get('dashed',False)}
 def svg_view(v,doc):
-    root=E.Element('svg',{'xmlns':'http://www.w3.org/2000/svg','width':str(v['canvas']['width']),'height':str(v['canvas']['height']),'viewBox':f"0 0 {v['canvas']['width']} {v['canvas']['height']}",'role':'img'})
-    E.SubElement(root,'title').text=v.get('title',doc['diagram_id']);E.SubElement(root,'desc').text=v.get('scope','')
+    root=E.Element('svg',{'xmlns':'http://www.w3.org/2000/svg','width':str(v['canvas']['width']),'height':str(v['canvas']['height']),'viewBox':f"0 0 {v['canvas']['width']} {v['canvas']['height']}",'role':'img','data-language-profile':doc.get('language_profile','')})
+    E.SubElement(root,'title',{'data-text-role':v.get('title_text_role','')}).text=v.get('title',doc['diagram_id']);E.SubElement(root,'desc',{'data-text-role':v.get('scope_text_role','')}).text=v.get('scope','')
     E.SubElement(root,'metadata').text=json.dumps({'diagram_id':doc['diagram_id'],'view_id':v['id'],'fact_ids':[f['id'] for f in doc['semantic'].get('facts',[])]})
     if v['canvas'].get('background'):E.SubElement(root,'rect',{'width':'100%','height':'100%','fill':v['canvas']['background']})
     defs=E.SubElement(root,'defs')
     # Containers first, edges second, object labels last. Their IDs persist across exports.
     def draw_g(g):
-        s=style(g);x,y,w,h=bbox(g);group=E.SubElement(root,'g',{'id':g['id'],'data-semantic-ref':g.get('semantic_ref','')})
+        s=style(g);x,y,w,h=bbox(g);group=E.SubElement(root,'g',{'id':g['id'],'data-semantic-ref':g.get('semantic_ref',''),'data-text-role':g.get('text_role','')})
         attrs={'fill':s['fill'],'stroke':s['stroke'],'stroke-width':str(s['stroke_width'])}
         if s['dashed']:attrs['stroke-dasharray']='5 4'
         shape=g.get('shape','rect')
@@ -103,20 +115,20 @@ def svg_view(v,doc):
             if p.get('arrow')=='both':attrs['marker-start']=f'url(#{marker_id})'
         E.SubElement(root,'polyline',attrs)
         if p.get('label'):
-            x,y=p['label_position'];E.SubElement(root,'text',{'x':str(x),'y':str(y),'font-size':str(s['font_size']),'font-family':s['font_family'],'fill':s['text_color'],'text-anchor':'middle'}).text=p['label']
+            x,y=p['label_position'];E.SubElement(root,'text',{'x':str(x),'y':str(y),'font-size':str(s['font_size']),'font-family':s['font_family'],'fill':s['text_color'],'text-anchor':'middle','data-text-role':p.get('text_role','')}).text=p['label']
     for g in v.get('glyphs',[]):
         if g.get('role')!='container':draw_g(g)
     return root
 
 def drawio(doc):
-    root=E.Element('mxfile',{'host':'app.diagrams.net','agent':'technical-diagram-options','version':'24.0.0'})
+    root=E.Element('mxfile',{'host':'app.diagrams.net','agent':'technical-diagram-options','version':'24.0.0','language_profile':doc.get('language_profile','')})
     for v in doc['views']:
         page=E.SubElement(root,'diagram',{'id':v['id'],'name':v.get('title',v['id'])});model=E.SubElement(page,'mxGraphModel',{'dx':str(v['canvas']['width']),'dy':str(v['canvas']['height']),'page':'1','pageWidth':str(v['canvas']['width']),'pageHeight':str(v['canvas']['height'])});r=E.SubElement(model,'root');E.SubElement(r,'mxCell',{'id':'0'});E.SubElement(r,'mxCell',{'id':'1','parent':'0'});gby={g['id']:g for g in v['glyphs']}
         for g in v['glyphs']:
             s=style(g);shape=g.get('shape','rect');shape_style={'rect':'rounded=0','rounded_rect':'rounded=1','ellipse':'ellipse','diamond':'rhombus','text':'text;strokeColor=none;fillColor=none'}[shape]
             st=f"{shape_style};html=0;whiteSpace=wrap;fillColor={s['fill']};strokeColor={s['stroke']};strokeWidth={s['stroke_width']};fontSize={s['font_size']};fontFamily={s['font_family']};fontColor={s['text_color']};dashed={int(s['dashed'])};"
             if shape=='text':st+='strokeColor=none;fillColor=none;'
-            cell=E.SubElement(r,'mxCell',{'id':g['id'],'value':'\n'.join(g.get('label_lines',[g.get('label','')])),'style':st,'vertex':'1','parent':'1','semanticRef':g.get('semantic_ref','')});E.SubElement(cell,'mxGeometry',dict(zip(('x','y','width','height'),map(str,bbox(g)))),**{'as':'geometry'})
+            cell=E.SubElement(r,'mxCell',{'id':g['id'],'value':'\n'.join(g.get('label_lines',[g.get('label','')])),'style':st,'vertex':'1','parent':'1','semanticRef':g.get('semantic_ref',''),'text_role':g.get('text_role','')});E.SubElement(cell,'mxGeometry',dict(zip(('x','y','width','height'),map(str,bbox(g)))),**{'as':'geometry'})
         for p in v.get('paths',[]):
             s=style(p);a=gby[p['source_instance']];b=gby[p['target_instance']];q=p['points'][0];z=p['points'][-1]
             st=f"edgeStyle=none;noEdgeStyle=1;html=0;rounded=0;endArrow={'none' if p.get('arrow','end')=='none' else 'block'};startArrow={'block' if p.get('arrow')=='both' else 'none'};strokeColor={s['stroke']};strokeWidth={s['stroke_width']};dashed={int(s['dashed'])};fontSize={s['font_size']};fontColor={s['text_color']};exitX={(q[0]-a['x'])/a['w']};exitY={(q[1]-a['y'])/a['h']};exitPerimeter=0;entryX={(z[0]-b['x'])/b['w']};entryY={(z[1]-b['y'])/b['h']};entryPerimeter=0;"
@@ -124,7 +136,7 @@ def drawio(doc):
             for x,y in p['points'][1:-1]:E.SubElement(points,'mxPoint',{'x':str(x),'y':str(y)})
             if p.get('label'):
                 # Independent native text glyph preserves explicit authored label placement.
-                x,y=p['label_position'];cell=E.SubElement(r,'mxCell',{'id':p['id']+'-label','value':p['label'],'style':f'text;html=0;strokeColor=none;fillColor=none;fontSize={s["font_size"]};fontColor={s["text_color"]};','vertex':'1','parent':'1'});E.SubElement(cell,'mxGeometry',{'x':str(x-100),'y':str(y-s['font_size']),'width':'200','height':str(s['font_size']*1.5),'as':'geometry'})
+                x,y=p['label_position'];cell=E.SubElement(r,'mxCell',{'id':p['id']+'-label','value':p['label'],'style':f'text;html=0;strokeColor=none;fillColor=none;fontSize={s["font_size"]};fontColor={s["text_color"]};','vertex':'1','parent':'1','text_role':p.get('text_role','')});E.SubElement(cell,'mxGeometry',{'x':str(x-100),'y':str(y-s['font_size']),'width':'200','height':str(s['font_size']*1.5),'as':'geometry'})
     return root
 
 def render(doc,out):
@@ -135,7 +147,10 @@ def render(doc,out):
         name=out/(v['id']+'.svg');E.ElementTree(svg_view(v,doc)).write(name,encoding='utf-8',xml_declaration=True);files.append(str(name))
     name=out/(doc['diagram_id']+'.drawio');E.ElementTree(drawio(doc)).write(name,encoding='utf-8',xml_declaration=True);files.append(str(name))
     name=out/(doc['diagram_id']+'.source.json');name.write_text(json.dumps(doc,ensure_ascii=False,indent=2)+'\n');files.append(str(name))
-    (out/'structural-qa.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');return files
+    qa=result['language_qa'];qa['input_sha256']=hashlib.sha256(name.read_bytes()).hexdigest()
+    (out/'structural-qa.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+    (out/'language-qa.json').write_text(json.dumps(qa,ensure_ascii=False,indent=2)+'\n')
+    return files
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('command',choices=['check','render']);p.add_argument('input',type=Path);p.add_argument('--out-dir',type=Path,default=Path('output'));a=p.parse_args();doc=json.loads(a.input.read_text())

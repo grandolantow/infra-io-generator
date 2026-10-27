@@ -1,0 +1,44 @@
+{
+  "id": "diagram-en-prose-zh",
+  "roles": {
+    "node_label": {
+      "language": "en"
+    },
+    "diagram_title": {
+      "language": "en"
+    },
+    "section_title": {
+      "language": "en"
+    },
+    "legend": {
+      "language": "en"
+    },
+    "edge_annotation": {
+      "language": "en"
+    },
+    "short_annotation": {
+      "language": "en"
+    },
+    "prose": {
+      "language": "zh"
+    },
+    "technical_term": {
+      "language": "preserve"
+    },
+    "model_name": {
+      "language": "preserve"
+    },
+    "formula": {
+      "language": "preserve"
+    },
+    "variable": {
+      "language": "preserve"
+    },
+    "source_citation": {
+      "language": "preserve"
+    }
+  },
+  "scope": "Diagram-integrated short labels and annotations use English; standalone explanatory prose uses Chinese, irrespective of geometric position or character count. Technical terms, names, citations and formulas preserve source notation.",
+  "automatic_check_scope": "Explicit role coverage and character-based hints only; semantic/visual review required.",
+  "translation": "Never translate text silently."
+}

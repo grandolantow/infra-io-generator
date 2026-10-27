@@ -30,7 +30,7 @@
 
 ## 配色与实际实现
 
-PPT 默认 `huawei-plain`，论文和未指定用途默认 `paper-vivid`；`blue-neutral`、`paper-clear` 及自定义可覆盖。主色来源及 exact tokens 共用 `palette-config.md`，框内英文术语/标签、框外中文解释不随配色变化。
+PPT 默认 `huawei-plain`，论文和未指定用途默认 `paper-vivid`；`blue-neutral`、`paper-clear` 及自定义可覆盖。主色来源及 exact tokens 共用 `palette-config.md`，图内英文短标签/短注释与可独立阅读的中文长段解释不随配色变化。
 
 ```sh
 python scripts/route_request.py --intent report --target ppt --request 'PCP communication timeline' --output route.json
@@ -42,3 +42,5 @@ python scripts/resolve_palette.py --target ppt --palette huawei-plain --output p
 ## 评估
 
 分别检查逻辑清晰、布局舒服、信息密度、语义配色、组件表达和来源正确性；先列可复现问题再局部修正。结构与质量需按当前任务单独核验；路由与合同测试不能证明所有主题均达到参考图质量。
+
+独立报告入口也必须消费共享 `text-language.md` 与 `language-profile.json`；不能依赖仅统一入口加载的 overlay。

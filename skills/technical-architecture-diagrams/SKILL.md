@@ -5,7 +5,7 @@ description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报
 
 # 技术图示：统一入口
 
-执行版本：v0.10.1。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
+执行版本：v0.10.2。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
 
 ## 先决定要解释什么
 
@@ -39,7 +39,7 @@ report 子任务使用 `../technical-diagram-options/scripts/select_options.py` 
 
 先读取 `references/spec-contract.md`。固定论文/官方实现版本及图号，区分事实、推断、未知；不能因风格需要造矩阵数值、性能曲线或通信操作。图上必须可见核心事实，不只写进 metadata。
 
-框内功能标签与技术术语默认英文，框外解释可中文；用户指定语言优先。密度来自真实图元而非大段文字；保持正常字号，复杂推导分步拆图。颜色承担语义但不是唯一编码。
+默认语言 profile 为 `diagram-en-prose-zh`：图中功能标签、短注释与箭头说明英文，可独立阅读的长段解释中文，术语/缩写/模型名/公式/变量保留英文符号。两分支必须读取 `references/text-language.md`，并使用 `scripts/check_language.py`；按语义角色而非矩形包含关系判定，不能把“可中文”当任选。密度来自真实图元而非大段文字；保持正常字号，复杂推导分步拆图。颜色承担语义但不是唯一编码。
 
 按 `references/golden-backends.md` 使用 draw.io 结构母版、Inkscape 精修 SVG，复杂公式/LaTeX 才按需 TikZ。矩阵、时序和图表仍交付可编辑原生对象/数据源，不把整图位图称为可编辑。使用已有运行时实际渲染；缺依赖注明未测，不以手写 SVG 冒称已跑 draw.io。
 

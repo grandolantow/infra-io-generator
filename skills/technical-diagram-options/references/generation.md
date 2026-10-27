@@ -60,3 +60,7 @@ If native PPT is selected, use the available presentation-authoring workflow. Cr
 - **Comparison:** alternatives differ in explanation or structural composition, not merely colors; unsupported extra views are flagged.
 
 Automated geometry warnings are approximate and may flag purposeful crossing or nested labels. Explain justified exceptions rather than mechanically deleting complexity. If a viewer or renderer is unavailable, deliver the source with that exact verification limitation and do not label it visually approved.
+
+## Shared language profile
+
+New outputs use `language_profile: diagram-en-prose-zh`, glyph/path `text_role`, view `title_text_role`/`scope_text_role`, and optional `surrounding_texts` entries. Read the sibling architecture package's `references/text-language.md`; do not duplicate its role rules here. The generator retains roles in SVG/draw.io and runs the shared checker when a profile is specified. Missing profiles preserve legacy rendering but language QA is explicitly not_run, not a compliance pass. Surrounding entries must be rendered by the caller and checked against the final artifact.

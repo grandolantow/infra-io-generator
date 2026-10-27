@@ -7,6 +7,12 @@ description: Choose and generate source-grounded technical mechanism diagrams wi
 
 Help the user choose a diagram **for this explanation**, not conform every task to one style. This candidate rulepack links structural choices to public technical sources; it is not evidence that a preset improves comprehension or performance. Read `references/corpus_snapshot.json` for the public catalog scope and `references/validation.md` for tested scope.
 
+## Shared drawing-language profile
+
+Read `../technical-architecture-diagrams/references/text-language.md` and its `language-profile.json` even when this package is invoked directly. Default `diagram-en-prose-zh`: diagram-integrated short labels, titles, legends and arrow annotations in English; standalone explanatory prose in Chinese, regardless of geometric position or character count. Preserve technical terms, model names, formulas and variables. Semantic text roles override container geometry. All diagram-surrounding HTML text is part of drawing QA, not deferred to PPT.
+
+Set `language_profile` and explicit `text_role` values in new diagram IR. Use the shared checker from the sibling package; its role/character checks do not prove semantic correctness. Keep manual semantic/render review distinct and never silently translate source text. Existing unprofiled examples are legacy and cannot claim this profile's compliance.
+
 ## Work from the question
 
 1. Extract the question, audience, final display size, factual inputs, unknowns, required format, and preserved user edits. Separate **technical structure** (what relations exist), **visual presentation** (how shown), and **use case** (why this audience needs it). Current user/source constraints override examples and presets.

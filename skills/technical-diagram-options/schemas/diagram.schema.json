@@ -228,6 +228,22 @@
                 },
                 "style": {
                   "type": "object"
+                },
+                "text_role": {
+                  "enum": [
+                    "node_label",
+                    "diagram_title",
+                    "section_title",
+                    "legend",
+                    "edge_annotation",
+                    "short_annotation",
+                    "prose",
+                    "technical_term",
+                    "model_name",
+                    "formula",
+                    "variable",
+                    "source_citation"
+                  ]
                 }
               }
             }
@@ -302,9 +318,57 @@
                 },
                 "style": {
                   "type": "object"
+                },
+                "text_role": {
+                  "enum": [
+                    "node_label",
+                    "diagram_title",
+                    "section_title",
+                    "legend",
+                    "edge_annotation",
+                    "short_annotation",
+                    "prose",
+                    "technical_term",
+                    "model_name",
+                    "formula",
+                    "variable",
+                    "source_citation"
+                  ]
                 }
               }
             }
+          },
+          "title_text_role": {
+            "enum": [
+              "node_label",
+              "diagram_title",
+              "section_title",
+              "legend",
+              "edge_annotation",
+              "short_annotation",
+              "prose",
+              "technical_term",
+              "model_name",
+              "formula",
+              "variable",
+              "source_citation"
+            ]
+          },
+          "scope_text_role": {
+            "enum": [
+              "node_label",
+              "diagram_title",
+              "section_title",
+              "legend",
+              "edge_annotation",
+              "short_annotation",
+              "prose",
+              "technical_term",
+              "model_name",
+              "formula",
+              "variable",
+              "source_citation"
+            ]
           }
         }
       },
@@ -323,6 +387,44 @@
           "type": "array",
           "items": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "language_profile": {
+      "const": "diagram-en-prose-zh"
+    },
+    "surrounding_texts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "text_role"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "text_role": {
+            "enum": [
+              "node_label",
+              "diagram_title",
+              "section_title",
+              "legend",
+              "edge_annotation",
+              "short_annotation",
+              "prose",
+              "technical_term",
+              "model_name",
+              "formula",
+              "variable",
+              "source_citation"
+            ]
           }
         }
       }

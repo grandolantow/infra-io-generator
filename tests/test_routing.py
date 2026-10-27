@@ -136,7 +136,7 @@ class ReportPackageIntegrationTests(unittest.TestCase):
         import hashlib
         report = ROOT / 'skills/technical-diagram-options'
         m = json.loads((ROOT / 'reports/report-skill-files.json').read_text())
-        self.assertEqual(len(m['files']), 24)
+        self.assertEqual(len(m['files']), 25)
         for path in m['files']:
             self.assertTrue((report / path).is_file())
         for f in report.rglob('*'):

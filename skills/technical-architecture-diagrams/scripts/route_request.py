@@ -75,6 +75,8 @@ def route(request, intent='auto', target='paper', palette='auto', custom=None):
             'decision_basis': 'keyword_hint_only' if intent == 'auto' else 'explicit_intent',
             'matched_hints': hits, 'target': target, 'parts': parts,
             'shared_fact_contract': 'references/spec-contract.md',
+            'language_profile': json.loads((Path(__file__).resolve().parents[1] / 'references/language-profile.json').read_text())['id'],
+            'language_checker': 'scripts/check_language.py',
             'note': 'Review semantic goal before rendering; preserve shared facts when decomposing.'}
 
 

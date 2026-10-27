@@ -6,7 +6,7 @@
 
 从技术事实出发，选择结构模板，生成原生 draw.io，由实际绘图引擎导出，再用 Inkscape 精修。复杂公式或 LaTeX 集成按需使用 TikZ。
 
-当前整理版：**v0.10.1**（一个入口、两个独立来源的 Skill）。
+当前整理版：**v0.10.2**（一个入口、两个独立来源的 Skill）。
 
 [Skill 完整性核对清单](docs/skill-inventory.md) · [外部 Skill 收藏](docs/external-skills.md) · [PPT 主流程设计存档](docs/ppt-workflow-design.md)。此仓库包含绘图 Skill 的完整代码；PPT 主流程设计、外部 draw.io/PlantUML 收藏以及其他工程 Skill 的恢复状态分别登记，不将它们冒充已实现模块。
 
@@ -72,6 +72,18 @@ python -m unittest discover -s skills/technical-diagram-options/tests -v
 ```
 
 例子是虚构 toy mapping，只验证执行契约；不是新的论文成图或模型能力评测。报告 palette tokens 是外部 overlay，Agent 按角色写入 diagram IR 的 styles 后生成；导出器不自动理解自然语言或替换配色。原始图库/collector manifests 不随代码发布；公开版只校验引用关系，`--corpus-root`/`--gallery-root` 明确拒绝执行，不能据此假称资产完整性通过。
+
+## 绘图语言规范
+
+默认 `diagram-en-prose-zh`：图中的功能标签、短注释、箭头说明和短图例用英文；能脱离图独立阅读的长段解释用中文；术语、缩写、模型名、公式和变量保留原英文/符号。按语义角色，不按框内外、容器位置或机械字数划分。图周边的说明也属于绘图产物和 QA。
+
+两套 Skill 共用 [语言规范](skills/technical-architecture-diagrams/references/text-language.md) 与显式 `text_role`。报告生成器在指定 profile 时消费共享检查器，原生 SVG/draw.io 保留角色；缺失角色不得被当成已合规。旧无 profile 输入仅兼容旧生成，语言检查为 not_run。PPT 只透传 profile、消费 QA，不复制规则。
+
+```sh
+python skills/technical-architecture-diagrams/scripts/check_language.py --input skills/technical-diagram-options/examples/toy-mapping.language.diagram.json --format report --profile diagram-en-prose-zh --output build/language-qa.json
+```
+
+检查器只做角色合同和有限字符检查。`contract_status=pass` 仍为 `status=needs_review`，不代替语义和实际渲染审查；不会自动翻译技术内容。
 
 ## 本地准备
 
