@@ -5,7 +5,7 @@ description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报
 
 # 技术图示：统一入口
 
-执行版本：v0.10.3。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
+执行版本：v0.10.4。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
 
 ## 先决定要解释什么
 
@@ -21,6 +21,12 @@ description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报
 “技术报告中的模型结构图”仍走模型分支；“论文中的 KV cache 映射”仍走报告分支。一个 MoE 模块连接图与一个 MoE dispatch 通信图可以属于不同分支。混合图不强制三栏，也不为填满页面添加解释框。
 
 先记录 `intent`、`target`、`palette`、必要事实及依据。可运行 `scripts/route_request.py` 得到保守的关键词建议与配色结果；它不理解完整自然语言，否定、引用、上下文含糊时要求语义复核，不能替代 Agent 判断。用 `--intent model|report|mixed` 记录复核结果。未知意图返回 `needs_clarification`，不默默生成模型框图。
+
+## 模型布局默认倾向
+
+model 默认采用 **竖向主干＋侧边机制展开**（`vertical-backbone-side-detail`）：先独立设计图，再适配 PPT；横版幻灯片不自动把主干横排。侧边展开须有解释价值，单条竖向主干也可完整交付，不强制栏数或添加空泛面板。显式要求、机制对照或并行关系可以覆盖默认，但须在绘图 QA 的 `layout_decision` 记录所选结构、理由和实际成图复核状态。路由输出 `parts[].layout_preference` 是需消费的设计偏好，不是已实现布局或自动视觉合格证明。验收清单见 `references/model-architecture.md`。
+
+report 仍按时序、映射、矩阵、通信或定量关系选择适用布局，不机械竖化；mixed 逐子图应用。PPT 调用方只传递偏好和消费 QA，布局规则由本 Skill 维护。
 
 ## 原报告能力的实际入口
 

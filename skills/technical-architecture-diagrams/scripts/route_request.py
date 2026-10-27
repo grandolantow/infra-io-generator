@@ -67,6 +67,20 @@ def route(request, intent='auto', target='paper', palette='auto', custom=None):
                           'generator': '../technical-diagram-options/scripts/diagram_tool.py',
                           'task_schema': '../technical-diagram-options/schemas/task.schema.json',
                           'diagram_schema': '../technical-diagram-options/schemas/diagram.schema.json'}),
+                      'layout_preference': ({
+                          'id': 'vertical-backbone-side-detail',
+                          'priority': 'preferred_not_mandatory',
+                          'side_detail': 'when_explanatory',
+                          'design_before_container': True,
+                          'deviation_requires_reason': True,
+                          'visual_review': 'required',
+                          'guide': 'references/model-architecture.md'
+                      } if branch == 'model' else {
+                          'id': 'task-appropriate',
+                          'priority': 'semantic_fit',
+                          'design_before_container': True,
+                          'visual_review': 'required'
+                      }),
                       'palette': resolve(target, base, custom)})
     return {'schema_version': 1, 'intent': selected,
             'status': ('needs_semantic_review' if needs_review else

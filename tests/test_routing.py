@@ -14,6 +14,29 @@ from resolve_palette import resolve
 
 
 class RoutingTests(unittest.TestCase):
+    def test_model_layout_independent_of_presentation_target(self):
+        for target in ('ppt', 'paper'):
+            p = route('model architecture', intent='model', target=target)['parts'][0]['layout_preference']
+            self.assertEqual(p['id'], 'vertical-backbone-side-detail')
+            self.assertEqual(p['priority'], 'preferred_not_mandatory')
+            self.assertEqual(p['side_detail'], 'when_explanatory')
+            self.assertTrue(p['design_before_container'])
+            self.assertTrue(p['deviation_requires_reason'])
+            self.assertEqual(p['visual_review'], 'required')
+
+    def test_report_layout_not_forced_vertical(self):
+        p = route('memory mapping', intent='report', target='ppt')['parts'][0]['layout_preference']
+        self.assertEqual(p['id'], 'task-appropriate')
+        self.assertNotIn('side_detail', p)
+
+    def test_mixed_layout_applies_per_part(self):
+        parts = route('model and mechanism', intent='mixed', target='ppt')['parts']
+        self.assertEqual([p['layout_preference']['id'] for p in parts],
+                         ['vertical-backbone-side-detail', 'task-appropriate'])
+
+    def test_ambiguous_layout_not_invented(self):
+        self.assertEqual(route('make a slide')['parts'], [])
+
     def test_model_ppt_does_not_switch_palette(self):
         r = route('PPT里画模型完整主干和Attention/MoE层', target='ppt')
         self.assertEqual(r['intent'], 'model')
