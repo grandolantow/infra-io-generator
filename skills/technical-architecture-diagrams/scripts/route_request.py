@@ -22,7 +22,9 @@ DEFAULTS = {'model': {'paper': 'paper-clear', 'ppt': 'paper-clear'},
             'report': {'paper': 'paper-vivid', 'ppt': 'huawei-plain'}}
 
 
-def route(request, intent='auto', target='paper', palette='auto', custom=None):
+def route(request, intent='auto', target='paper', palette='auto', custom=None, renderer='svg-first'):
+    if renderer not in ('svg-first', 'drawio-legacy'):
+        raise ValueError('Unknown renderer; Canvas is not an implemented backend')
     if not isinstance(request, str) or not request.strip():
         raise ValueError('request must be nonempty')
     if intent not in ('auto', 'model', 'report', 'mixed'):
@@ -88,6 +90,17 @@ def route(request, intent='auto', target='paper', palette='auto', custom=None):
                        'suggested' if intent == 'auto' else 'explicit'),
             'decision_basis': 'keyword_hint_only' if intent == 'auto' else 'explicit_intent',
             'matched_hints': hits, 'target': target, 'parts': parts,
+            'rendering': {
+                'primary': renderer,
+                'guide': 'references/svg-first-workflow.md',
+                'entrypoint': 'scripts/svg_pipeline.py' if renderer == 'svg-first' else None,
+                'preview': 'html-inline-svg' if renderer == 'svg-first' else 'legacy',
+                'editable_export': 'drawio',
+                'semantic_source': 'scene.semantic',
+                'layout_owner': 'drawing_agent',
+                'legacy_runtime_fields_preserved': True,
+                'automatic_design': False
+            },
             'shared_fact_contract': 'references/spec-contract.md',
             'language_profile': json.loads((Path(__file__).resolve().parents[1] / 'references/language-profile.json').read_text())['id'],
             'language_checker': 'scripts/check_language.py',
@@ -100,12 +113,13 @@ def main():
     ap.add_argument('--intent', choices=['auto', 'model', 'report', 'mixed'], default='auto')
     ap.add_argument('--target', choices=['ppt', 'paper'], default='paper')
     ap.add_argument('--palette', default='auto')
+    ap.add_argument('--renderer', choices=['svg-first', 'drawio-legacy'], default='svg-first')
     ap.add_argument('--custom', type=Path)
     ap.add_argument('--output', type=Path)
     a = ap.parse_args()
     try:
         custom = json.loads(a.custom.read_text()) if a.custom else None
-        result = route(a.request, a.intent, a.target, a.palette, custom)
+        result = route(a.request, a.intent, a.target, a.palette, custom, a.renderer)
     except (ValueError, OSError) as exc:
         ap.error(str(exc))
     content = json.dumps(result, ensure_ascii=False, indent=2) + '\n'

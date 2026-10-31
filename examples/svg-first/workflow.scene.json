@@ -1,0 +1,52 @@
+{
+  "schema_version": "svg-first/1",
+  "diagram_id": "Shape_Workload_Compiler_Smoke",
+  "language_profile": "diagram-en-prose-zh",
+  "semantic": {
+    "facts": [
+      {
+        "id": "F_shape",
+        "statement": "Shape 技能根据源码、配置和可用 profiling 推导张量契约，并交付 workload 与输入构造；独立任务不自动生成内核。",
+        "provenance": "grandolantow/operator-shape-derivation@5c7745ca7ab0309f794df4e84591fd2e7bdaacbd:skills/operator-shape-derivation/SKILL.md"
+      }
+    ],
+    "nodes": [
+      {"id": "evidence", "type": "input", "label": "Source + configuration", "fact_ids": ["F_shape"]},
+      {"id": "shape", "type": "process", "label": "Tensor contracts", "fact_ids": ["F_shape"]},
+      {"id": "workload", "type": "artifact", "label": "Workload + inputs", "fact_ids": ["F_shape"]}
+    ],
+    "edges": [
+      {"id": "derive", "source": "evidence", "target": "shape", "relation": "derive_from_evidence", "fact_ids": ["F_shape"]},
+      {"id": "export", "source": "shape", "target": "workload", "relation": "construct_cases", "fact_ids": ["F_shape"]}
+    ]
+  },
+  "theme": {
+    "palette": "huawei-plain",
+    "base": {"font_family": "Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif", "font_size": 22},
+    "roles": {"focus": {"stroke": "#C00000", "fill": "#FFFFFF"}},
+    "edge": {"stroke": "#666666", "stroke_width": 1.6}
+  },
+  "layout": {
+    "views": [
+      {
+        "id": "V1",
+        "title": "Shape-to-Workload Preparation",
+        "title_text_role": "diagram_title",
+        "scope": "编译器接线样例，只表示 shape/workload 子流程；不是完整工作流，也不是高质量多方案评测。",
+        "scope_text_role": "prose",
+        "canvas": {"width": 1080, "height": 360, "background": "#FFFFFF"},
+        "glyphs": [
+          {"id": "heading", "shape": "text", "role": "label", "x": 50, "y": 45, "w": 980, "h": 52, "label": "Shape-to-Workload Preparation", "text_role": "diagram_title", "text_anchor": "start", "text_x": 50, "style": {"font_size": 32, "font_weight": 600}},
+          {"id": "input", "semantic_ref": "evidence", "shape": "rounded_rect", "role": "object", "w": 280, "h": 100},
+          {"id": "derive", "semantic_ref": "shape", "shape": "rounded_rect", "role": "object", "w": 280, "h": 100, "style_role": "focus"},
+          {"id": "output", "semantic_ref": "workload", "shape": "rounded_rect", "role": "object", "w": 280, "h": 100}
+        ],
+        "arrangements": [{"axis": "row", "members": ["input", "derive", "output"], "x": 50, "y": 165, "gap": 70}],
+        "paths": [
+          {"id": "to-shape", "semantic_ref": "derive", "source_instance": "input", "target_instance": "derive", "source_port": "right", "target_port": "left"},
+          {"id": "to-workload", "semantic_ref": "export", "source_instance": "derive", "target_instance": "output", "source_port": "right", "target_port": "left"}
+        ]
+      }
+    ]
+  }
+}

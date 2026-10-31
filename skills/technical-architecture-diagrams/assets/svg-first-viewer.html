@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+:root { color-scheme:light; --ink:#1d1d1a; --muted:#666; --line:#dce0e4; --accent:#c00000; }
+* { box-sizing:border-box; }
+body { margin:0; background:#f2f4f6; color:var(--ink); font:15px/1.65 "Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif; }
+header { padding:26px 32px 18px; background:white; border-bottom:1px solid var(--line); }
+h1 { font-size:24px; margin:0 0 5px; overflow-wrap:anywhere; }
+header p { margin:0; color:var(--muted); }
+.toolbar { display:flex; flex-wrap:wrap; gap:9px; align-items:center; padding:14px 32px; }
+button { cursor:pointer; font:inherit; padding:7px 13px; background:white; border:1px solid #b9c1c8; border-radius:4px; color:inherit; }
+button[aria-selected="true"] { border-color:var(--accent); color:var(--accent); }
+button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+#tabs { display:flex; flex-wrap:wrap; gap:8px; margin-right:auto; }
+main { display:grid; grid-template-columns:minmax(0,1fr) 310px; gap:18px; margin:0 24px 24px; }
+.stage, aside { min-width:0; background:white; border:1px solid var(--line); border-radius:5px; }
+.viewport { overflow:auto; padding:18px; }
+.viewport svg { display:block; width:100%; height:auto; max-width:none; }
+svg [data-semantic-ref] { transition:opacity .12s; }
+svg g[data-semantic-ref]:not([data-semantic-ref=""]) { cursor:pointer; }
+svg [data-semantic-ref=""], svg > text { pointer-events:none; }
+svg .dimmed { opacity:.16; }
+svg .selected > rect, svg .selected > ellipse, svg .selected > polygon { stroke:var(--accent); stroke-width:2.6; }
+aside { padding:20px; align-self:start; }
+aside h2 { font-size:18px; margin:0 0 12px; }
+aside p { overflow-wrap:anywhere; }
+aside .meta { font-size:13px; color:var(--muted); white-space:pre-wrap; }
+#scope { padding:14px 20px; border-top:1px solid var(--line); color:var(--muted); margin:0; }
+#facts p { padding-top:12px; border-top:1px solid var(--line); }
+footer { padding:0 26px 24px; color:var(--muted); font-size:13px; }
+@media(max-width:950px) { main { grid-template-columns:1fr; margin:0 12px 18px; } header,.toolbar { padding-left:18px; padding-right:18px; } }
+@media(prefers-reduced-motion:reduce) { svg [data-semantic-ref] { transition:none; } }
+@media print { .toolbar,aside,footer { display:none; } body { background:white; } main { display:block; margin:0; } .stage { border:0; } .view[hidden] { display:block !important; } .view { break-after:page; } svg .dimmed { opacity:1; } .viewport svg { width:100% !important; } }
+</style>
+</head>
+<body>
+<header><h1>{{TITLE}}</h1><p>点击模块查看来源与直接依赖；所有图形均以 SVG 保留，离线可查看。</p></header>
+<nav class="toolbar" aria-label="视图控制"><div id="tabs" role="tablist"></div><button id="zoom-out" type="button" aria-label="缩小">−</button><button id="zoom-in" type="button" aria-label="放大">＋</button><button id="reset" type="button">恢复全图</button><button id="save-svg" type="button">保存当前 SVG</button></nav>
+<main><div class="stage">{{VIEWS}}<p id="scope"></p></div><aside aria-live="polite"><h2 id="node-title">点击图中模块查看来源与依赖。</h2><p id="node-meta" class="meta"></p><div id="facts"></div></aside></main>
+<footer>此页面是展示与检查入口，不是完整的图形编辑器。连线高亮只表示图中关系，不代表真实执行时序或测得性能。</footer>
+<script type="application/json" id="scene-data">{{DATA}}</script>
+<script>
+'use strict';
+const data=JSON.parse(document.getElementById('scene-data').textContent);
+const nodes=new Map(data.semantic.nodes.map(n=>[n.id,n]));
+const facts=new Map(data.semantic.facts.map(f=>[f.id,f]));
+const edges=data.semantic.edges;
+const sections=Array.from(document.querySelectorAll('.view'));
+const title=document.getElementById('node-title'), meta=document.getElementById('node-meta');
+let current=data.views[0].id, zoom=1;
+function visible(){return sections.find(s=>s.dataset.view===current);}
+function clearSelection(){
+ document.querySelectorAll('svg .dimmed,svg .selected').forEach(x=>x.classList.remove('dimmed','selected'));
+ title.textContent='点击图中模块查看来源与依赖。'; meta.textContent=''; document.getElementById('facts').replaceChildren();
+}
+function selectNode(id){
+ const n=nodes.get(id); if(!n)return;
+ const related=edges.filter(e=>e.source===id||e.target===id);
+ const refs=new Set([id,...related.flatMap(e=>[e.id,e.source,e.target])]);
+ visible().querySelectorAll('[data-semantic-ref]').forEach(x=>{
+  const ref=x.dataset.semanticRef;if(!ref)return;
+  x.classList.toggle('dimmed',!refs.has(ref));x.classList.toggle('selected',ref===id);
+ });
+ title.textContent=n.label;
+ meta.textContent='ID: '+n.id+'\n'+related.map(e=>e.source+' → '+e.target+' ['+e.relation+']').join('\n');
+ const box=document.getElementById('facts');box.replaceChildren();
+ const ids=new Set([...(n.fact_ids||[]),...related.flatMap(e=>e.fact_ids||[])]);
+ for(const fid of ids){const f=facts.get(fid);if(!f)continue;const p=document.createElement('p'),s=document.createElement('span');p.textContent=f.statement+' ';s.className='meta';s.textContent='\n'+f.provenance;p.appendChild(s);box.appendChild(p);}
+}
+function changeView(id){
+ current=id;zoom=1;clearSelection();
+ sections.forEach(s=>{s.hidden=s.dataset.view!==id;s.querySelector('svg').style.width='100%';});
+ document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.view===id)));
+ document.getElementById('scope').textContent=data.views.find(v=>v.id===id).scope;
+}
+for(const v of data.views){
+ const b=document.createElement('button');b.type='button';b.dataset.view=v.id;b.textContent=v.title;b.setAttribute('role','tab');b.addEventListener('click',()=>changeView(v.id));document.getElementById('tabs').appendChild(b);
+}
+for(const section of sections){
+ section.querySelectorAll('g[data-semantic-ref]').forEach(g=>{
+  if(!nodes.has(g.dataset.semanticRef))return;
+  g.addEventListener('click',()=>selectNode(g.dataset.semanticRef));
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectNode(g.dataset.semanticRef);}});
+ });
+}
+document.getElementById('zoom-in').addEventListener('click',()=>{zoom=Math.min(3,zoom+.25);visible().querySelector('svg').style.width=(100*zoom)+'%';});
+document.getElementById('zoom-out').addEventListener('click',()=>{zoom=Math.max(.5,zoom-.25);visible().querySelector('svg').style.width=(100*zoom)+'%';});
+document.getElementById('reset').addEventListener('click',()=>changeView(current));
+document.getElementById('save-svg').addEventListener('click',()=>{
+ const svg=visible().querySelector('svg').cloneNode(true);svg.removeAttribute('style');svg.querySelectorAll('.dimmed,.selected').forEach(x=>x.classList.remove('dimmed','selected'));
+ const blob=new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=current+'.svg';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')clearSelection();});
+changeView(current);
+</script>
+</body></html>
