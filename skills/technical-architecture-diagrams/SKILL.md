@@ -1,11 +1,19 @@
 ---
 name: technical-architecture-diagrams
-description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报告图。根据语义目标路由到模型主干/模块结构，或机制、通信、内存、时序与定量解释；混合任务拆分后共享事实。支持 draw.io、Inkscape、按需 TikZ 和可调配色。
+description: 绘制有来源、可编辑的 AI Infra 模型架构图与技术报告图。根据语义目标路由到模型主干/模块结构，或机制、通信、内存、时序与定量解释；混合任务拆分后共享事实。默认 SVG 主渲染与离线 HTML 交互，保留 draw.io 编辑导出、Inkscape 精修、按需 TikZ 和可调配色。
 ---
 
 # 技术图示：统一入口
 
-执行版本：v0.10.5。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
+执行版本：v0.11.0（SVG-first 初版）。统一入口调用两个独立实现：technical-architecture-diagrams 用于模型架构，technical-diagram-options 用于机制与技术报告；现有模型后端和资产保留。
+
+## 默认制作链路：SVG-first
+
+先读 `references/svg-first-workflow.md`。新图默认使用 **Semantic IR → Agent 布局设计＋确定性布局编译 → SVG → HTML 展示**；draw.io 是同一场景的可编辑导出，不再作为 SVG 必经母版。旧图保留原生资产，显式 `--renderer drawio-legacy` 可沿用历史路径。
+
+`scene.semantic` 是事实、对象和关系的唯一维护源；`scene.layout` 是各方案的几何和连接；`scene.theme` 只控制视觉样式。不要把所有类型统一成自动分层框图；模型/机制的语义路由、竖向主干偏好、selector 和既有审美经验继续生效。新入口为 `scripts/svg_pipeline.py`，支持原报告 IR 的无语义改写迁移，以及同源 SVG/HTML/draw.io 构建。复杂组件超出现有基础图元时保留自定义原生 SVG 与同样的语义契约，不为适配导出器删去机制；不可导出的编辑能力须明确登记。
+
+Canvas 不作为静态图默认后端；大量动态对象场景另行评估，本版本没有实现 Canvas 渲染器。新脚本是编译/交付工具，不是独立绘图 Agent，也不替代实际浏览器复核或编号 PDF 归档。手工改过 SVG/draw.io 后先回写/核对源场景，不承诺任意格式无损双向同步。
 
 ## 独立绘图工作流（高层调用）
 
@@ -34,7 +42,7 @@ report 仍按时序、映射、矩阵、通信或定量关系选择适用布局�
 
 ## 原报告能力的实际入口
 
-report 子任务使用 `../technical-diagram-options/scripts/select_options.py` 从 task JSON 选择结构；按其 schemas 和 generation contract 制作 diagram IR，再由 `../technical-diagram-options/scripts/diagram_tool.py` check/render 导出。用户问题不是 diagram IR，不能把路由建议当作已经完成生成。运行接口示例见仓库 README；安装必须保留两个同级 Skill 目录。model 仍使用现有专业后端，不以报告示例生成器覆盖。
+report 子任务继续使用 `../technical-diagram-options/scripts/select_options.py` 从 task JSON 选择结构；按其 schemas 和 generation contract 建立语义与视图。新任务按 SVG-first 规范构建；原 `../technical-diagram-options/scripts/diagram_tool.py` check/render 作为兼容接口及新入口内部复用后端保留。用户问题不是 diagram IR，不能把路由建议当作已经完成生成。运行接口示例见仓库 README；安装必须保留两个同级 Skill 目录。model 保留专业语义与布局设计，不以报告示例布局覆盖；旧模型母版和专业后端保持可用。
 
 ## 配色独立配置
 
@@ -51,7 +59,7 @@ report 子任务使用 `../technical-diagram-options/scripts/select_options.py` 
 
 默认语言 profile 为 `diagram-en-prose-zh`：图中功能标签、短注释与箭头说明英文，可独立阅读的长段解释中文，术语/缩写/模型名/公式/变量保留英文符号。两分支必须读取 `references/text-language.md`，并使用 `scripts/check_language.py`；按语义角色而非矩形包含关系判定，不能把“可中文”当任选。密度来自真实图元而非大段文字；保持正常字号，复杂推导分步拆图。颜色承担语义但不是唯一编码。
 
-按 `references/golden-backends.md` 使用 draw.io 结构母版、Inkscape 精修 SVG，复杂公式/LaTeX 才按需 TikZ。矩阵、时序和图表仍交付可编辑原生对象/数据源，不把整图位图称为可编辑。使用已有运行时实际渲染；缺依赖注明未测，不以手写 SVG 冒称已跑 draw.io。
+新图优先采用 `references/svg-first-workflow.md`；`references/golden-backends.md` 中 draw.io 母版路线作为历史兼容路径保留。Inkscape 用于必要精修，复杂公式/LaTeX 才按需 TikZ。矩阵、时序和图表仍交付可编辑原生对象/数据源，不把整图位图称为可编辑。使用已有运行时实际渲染；缺依赖注明未测，不以手写 SVG 冒称已跑 draw.io。
 
 交付事实清单、可编辑源、展示图和检查结果；HTML 可离线查看。嵌入 PPT 时再读 `references/html-ppt-integration.md`，独立验收容器适配，不先把所有图压成 16:9。多方案应有真实组织差别，不把换色或改圆角当结构创新。
 

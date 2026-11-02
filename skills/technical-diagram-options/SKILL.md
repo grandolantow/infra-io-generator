@@ -1,11 +1,19 @@
 ---
 name: technical-diagram-options
-description: Choose and generate source-grounded technical mechanism diagrams with materially different structural options, separate visual treatments, and editable SVG/draw.io or native PPT deliverables. Use for architecture, tensor, mapping, scheduling, state, routing, or mechanism-comparison diagrams, not generic illustration or chart styling.
+description: Choose and generate source-grounded technical mechanism diagrams with materially different structural options, separate visual treatments, SVG-first rendering and HTML preview, and editable draw.io or native PPT deliverables when requested. Use for architecture, tensor, mapping, scheduling, state, routing, or mechanism-comparison diagrams, not generic illustration or chart styling.
 ---
 
 # Technical diagram options
 
 Help the user choose a diagram **for this explanation**, not conform every task to one style. This candidate rulepack links structural choices to public technical sources; it is not evidence that a preset improves comprehension or performance. Read `references/corpus_snapshot.json` for the public catalog scope and `references/validation.md` for tested scope.
+
+## Default rendering: SVG-first
+
+Even when invoked directly, read the sibling `../technical-architecture-diagrams/references/svg-first-workflow.md`. For new diagrams, keep facts/nodes/typed edges in `scene.semantic`, authored views in `scene.layout.views`, and palette/styles in `scene.theme`. The default path is **Semantic IR → Agent layout design → deterministic layout compilation → SVG → HTML**. Export native draw.io from the same resolved scene for manual editing; do not first rasterise SVG and attempt to recover objects.
+
+This changes the production path, not the report selector, structure rules, language profile, provenance requirements or visual-review obligations. `svg_pipeline.py` reuses the existing basic exporter; it is not an independent drawing Agent, automatic aesthetic designer or global obstacle router. Legacy report IR and `diagram_tool.py` remain valid compatibility interfaces. Complex components can use authored native SVG under the same semantic contract; disclose any draw.io export limitations rather than simplifying away the mechanism. Canvas is not implemented by this release.
+
+Generated HTML supports view selection, zoom, module selection and direct-neighbour highlighting with source details. It is a viewer, not a drag editor. Preserve user edits: reconcile changed output files back to the maintained scene or establish a separate editing branch before rebuilding. No lossless SVG/draw.io round-trip is claimed. Existing PDF/PPT and high-level delivery requirements still require their actual authoring/export/validation workflows.
 
 ## Shared drawing-language profile
 
@@ -39,13 +47,19 @@ For golden comparison, read [visual calibration](references/visual-calibration.m
 ## Practical interface
 
 ```bash
+# Run from this Skill directory; the sibling Skill must also be installed.
 python scripts/select_options.py task.json --out options.json
+# Agent authors scene.json after inspecting the options and source facts.
+python ../technical-architecture-diagrams/scripts/svg_pipeline.py check scene.json
+python ../technical-architecture-diagrams/scripts/svg_pipeline.py build scene.json --out-dir output
+
+# Compatibility: existing report IR is not silently rewritten.
 python scripts/diagram_tool.py check diagram.json
-python scripts/diagram_tool.py render diagram.json --out-dir output
+python scripts/diagram_tool.py render diagram.json --out-dir legacy-output
 python scripts/check_package.py                 # catalog/reference integrity
 ```
 
-`select_options.py` ranks explicit semantic features and reports missing facts; it is an inspectable heuristic, not a learned model or efficacy score. The agent chooses geometry after selecting a structure. `diagram_tool.py` exports editable SVG and uncompressed native `.drawio` from that geometry; it does **not** force automatic flowchart layout. For user-requested native PPT, follow the PPT section in generation.md; do not claim this exporter creates PPT.
+`select_options.py` ranks explicit semantic features and reports missing facts; it is an inspectable heuristic, not a learned model or efficacy score. The agent chooses geometry after selecting a structure. `svg_pipeline.py` compiles explicit layout constraints and exports SVG/HTML plus optional draw.io. `diagram_tool.py` remains the underlying basic SVG/native draw.io exporter and does **not** force automatic flowchart layout. For user-requested native PPT, follow the PPT section in generation.md; neither exporter creates native PPT.
 
 ## Do not turn local feedback into universal taste
 

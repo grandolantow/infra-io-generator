@@ -4,11 +4,33 @@
 
 代码仓库：<https://github.com/grandolantow/infra-io-generator>。
 
-从技术事实出发，选择结构模板，生成原生 draw.io，由实际绘图引擎导出，再用 Inkscape 精修。复杂公式或 LaTeX 集成按需使用 TikZ。
+从技术事实出发，由 Agent 选择结构和设计布局，默认经过 **Semantic IR → 布局编译 → SVG → HTML**。draw.io 从同一场景导出，供人工编辑，不再是新图生成 SVG 的必经母版。Inkscape 精修、复杂公式或 LaTeX 集成所需的 TikZ，以及历史 draw.io 路线均保留。
 
-当前整理版：**v0.10.5**（一个入口、两个独立来源的 Skill）。
+当前整理版：**v0.11.0（SVG-first 初版）**，一个入口、两个独立来源的 Skill。
 
-[Skill 完整性核对清单](docs/skill-inventory.md) · [外部 Skill 收藏](docs/external-skills.md) · [PPT 主流程设计存档](docs/ppt-workflow-design.md)。此仓库包含绘图 Skill 的完整代码；PPT 主流程设计、外部 draw.io/PlantUML 收藏以及其他工程 Skill 的恢复状态分别登记，不将它们冒充已实现模块。
+[SVG-first 工作流](skills/technical-architecture-diagrams/references/svg-first-workflow.md) · [改造与验证边界](docs/svg-first-migration.md) · [Skill 完整性核对清单](docs/skill-inventory.md) · [外部 Skill 收藏](docs/external-skills.md) · [PPT 主流程设计存档](docs/ppt-workflow-design.md)。此仓库包含绘图 Skill 的完整代码；PPT 主流程设计、外部 draw.io/PlantUML 收藏以及其他工程 Skill 的恢复状态分别登记，不将它们冒充已实现模块。
+
+## SVG-first 默认入口
+
+`scene.semantic` 维护事实、对象和关系；`scene.layout.views` 维护各方案的几何和连线；`scene.theme` 维护配色及样式。Agent 仍负责信息组织与视觉设计，编译器只执行已选定的排列和端口规则，不是自动美学设计器或通用避障器。
+
+```bash
+# 在仓库根目录运行；构建仅需 Python 标准库和两个完整同级 Skill。
+python skills/technical-architecture-diagrams/scripts/svg_pipeline.py \
+  build examples/svg-first/workflow.scene.json --out-dir build/svg-first-smoke
+
+# 原 report IR 的无语义改写迁移；已有模型 draw.io 不由此命令猜测转换。
+python skills/technical-architecture-diagrams/scripts/svg_pipeline.py \
+  split old.diagram.json --out scene.json
+python skills/technical-architecture-diagrams/scripts/svg_pipeline.py \
+  build scene.json --out-dir build/my-diagram
+
+python -m unittest discover -s tests -p test_svg_first.py -v
+```
+
+输出包括原始场景副本、解析后的布局、SVG、单文件 `preview.html`、可选原生 draw.io 和 QA/哈希记录。HTML 支持多视图切换、缩放、模块选择、相邻关系高亮与来源查看；不是拖拽编辑器。检测到用户改过输出文件时拒绝静默覆盖，不承诺 SVG/draw.io 无损双向同步。
+
+模型/报告语义路由、配色优先级、语言规范、结构 selector、默认多方案与编号 PDF 的高层交付规则不变。新编译器不自动完成独立 Agent 委托、视觉复核、PDF/PPT 导出或 Canvas 渲染。旧图及历史样例沿用原来源；显式 `--renderer drawio-legacy` 可选择旧路由。换后端不等于画质已经提高。
 
 ## 两类图示预览
 
@@ -56,7 +78,7 @@ python tools/check_diagram_delivery.py --brief handoff/brief.json \
 - **模型布局默认倾向**：竖向主干＋侧边机制展开，先设计图再适配 PPT；横版不自动横排。可按任务理由偏离并记录实际图 QA，report 类别按自身关系布局，不机械竖化。路由 `parts[].layout_preference` 仅表达偏好，不能替代视觉验收。
 - **事实优先**：来源、版本、运算、数据流和残差端点可追溯。
 - **图形比例由内容决定**：模型可采用竖向主干，右侧展开可选；机制对照按真实关系安排，不强制三栏或 16:9。
-- **draw.io 管结构，Inkscape 管精修**：交付可编辑对象和文字；TikZ 按需启用。三者不自动双向同步。
+- **语义与布局分层，SVG 主渲染，draw.io 编辑导出**：交付可编辑对象和文字；Inkscape 精修及 TikZ 按需启用。各格式不自动双向同步，旧 draw.io 母版不被静默覆盖。
 - **按语义目标路由**：模型主干/模块结构走 model；通信、内存、调度、量化、性能等机制解释走 report；混合任务拆分并共享事实。
 - **分支默认配色**：model 一律默认 `paper-clear`；report 的 PPT 默认 `huawei-plain`，论文/未指定默认 `paper-vivid`。显式 palette 和颜色覆盖优先；换色不改事实与布局。
 - **Agent 负责理解与设计**：样例构建器是特定场景模板，不是自动理解任意论文的通用编译器。
@@ -67,7 +89,7 @@ python tools/check_diagram_delivery.py --brief handoff/brief.json \
 
 然后使用：
 
-> 使用 $technical-architecture-diagrams，依据给定论文与版本绘制模型架构图。先核对事实，再选择图形结构；默认清彩论文配色，保留 draw.io 与 SVG，并实际渲染检查。
+> 使用 $technical-architecture-diagrams，依据给定论文与版本绘制模型架构图。先核对事实，再选择图形结构；默认清彩论文配色，采用 SVG-first 工作流，保留场景源、SVG/HTML 与 draw.io 编辑导出，并实际渲染检查。
 
 也可以显式要求「素雅灰蓝」「只画竖向主干」或「增加可选局部展开」。
 
@@ -85,18 +107,18 @@ python skills/technical-architecture-diagrams/scripts/route_request.py --request
 python -m unittest discover -s tests -p test_routing.py -v
 ```
 
-这是 Agent 的语义工作流加保守路由辅助，不是自然语言到任意图的全自动编译器。`--intent auto` 仅产生关键词建议；“画 Attention”、否定或引用等歧义应语义复核后显式给 intent。PPT/论文不决定图类型。原 `resolve_palette.py` 的 auto 保持模型分支兼容行为；报告须采用路由输出的显式 palette，或直接使用输出 tokens。
+这是 Agent 的语义工作流加保守路由辅助，不是自然语言到任意图的全自动编译器。`--intent auto` 仅产生关键词建议；“画 Attention”、否定或引用等歧义应语义复核后显式给 intent。PPT/论文不决定图类型。原 `resolve_palette.py` 的 auto 保持模型分支兼容行为；报告须采用路由输出的显式 palette，或直接使用输出 tokens。新调用方消费 `rendering` 字段；旧 `parts[].runtime` 字段保留兼容，不表示新图必须走旧母版。
 
 [分支与来源](skills/technical-architecture-diagrams/references/integration-provenance.md) · [技术报告规范](skills/technical-architecture-diagrams/references/technical-report.md)。安装时复制两个完整同级目录；仓库更新不等于已覆盖你个人安装的 Skill。
 
-## 两个独立实现与报告执行
+## 两个独立实现与报告兼容接口
 
-模型架构使用 `technical-architecture-diagrams` 的 draw.io/Inkscape/TikZ 路线；技术报告使用独立 `technical-diagram-options` 的结构选择、规则卡、公开来源索引、语义/几何 IR 与 SVG/draw.io 导出器。两者共享入口与可调配色，但不共享一个固定图模板。
+模型架构使用 `technical-architecture-diagrams` 的专业语义与布局规范；技术报告使用独立 `technical-diagram-options` 的结构选择、规则卡、公开来源索引和语义/几何 IR。新图共享 SVG-first 构建入口，但不共享一个固定图模板。历史模型 draw.io/Inkscape/TikZ 路线与报告 `diagram_tool.py` 保留，新编译器复用后者的基础导出能力。
 
 [报告包文件清单](reports/report-skill-files.json)。来源索引仅包含公开引用与必要规则关联，不包含 source artwork 或私人评论。
 
 ```sh
-# 原报告 Skill 的真实接口；task/diagram 为结构化 JSON，不是自然语言自动编译
+# 原报告 Skill 的兼容接口；task/diagram 为结构化 JSON，不是自然语言自动编译
 mkdir -p build/report
 python skills/technical-diagram-options/scripts/select_options.py skills/technical-diagram-options/examples/toy-mapping.task.json --out build/report/options.json
 python skills/technical-diagram-options/scripts/diagram_tool.py check skills/technical-diagram-options/examples/toy-mapping.diagram.json
@@ -105,7 +127,7 @@ python skills/technical-diagram-options/scripts/check_package.py
 python -m unittest discover -s skills/technical-diagram-options/tests -v
 ```
 
-例子是虚构 toy mapping，只验证执行契约；不是新的论文成图或模型能力评测。报告 palette tokens 是外部 overlay，Agent 按角色写入 diagram IR 的 styles 后生成；导出器不自动理解自然语言或替换配色。原始图库/collector manifests 不随代码发布；公开版只校验引用关系，`--corpus-root`/`--gallery-root` 明确拒绝执行，不能据此假称资产完整性通过。
+例子是虚构 toy mapping，只验证执行契约；不是新的论文成图或模型能力评测。旧报告导出器不自动理解自然语言或替换配色；新 SVG-first 场景通过显式 palette 与样式角色复用共享配色。原始图库/collector manifests 不随代码发布；公开版只校验引用关系，`--corpus-root`/`--gallery-root` 明确拒绝执行，不能据此假称资产完整性通过。
 
 ## 绘图语言规范
 
@@ -121,9 +143,10 @@ python skills/technical-architecture-diagrams/scripts/check_language.py --input 
 
 ## 本地准备
 
-基础命令需要 Python 3.10+。原生渲染还需要 Node.js 20+、Playwright 和 Chromium；精修使用 Inkscape CLI。TikZ 为可选后端，精修校准 TeX 使用 XeLaTeX、TikZ、fontspec 与 DejaVu 字体。
+SVG-first 编译与定向单测只需 Python 3.10+ 标准库及两个完整同级 Skill；实际视觉检查仍需浏览器。历史 draw.io Graph 运行时需要 Node.js 20+、Playwright 和 Chromium；精修使用 Inkscape CLI。TikZ 为可选后端，精修校准 TeX 使用 XeLaTeX、TikZ、fontspec 与 DejaVu 字体。
 
 ```sh
+# 仅在需要旧 Graph 运行时、渲染检查或相应依赖时执行：
 python -m venv .venv
 # 激活虚拟环境后：
 python -m pip install -r requirements.txt
@@ -133,7 +156,7 @@ npx playwright install chromium
 
 Inkscape 需通过系统安装，并确保 `inkscape --version` 可运行。Node/Python 依赖只按使用范围加载；基础检查不需要浏览器、Inkscape 或 TeX。
 
-## 快速验证
+## 历史后端快速验证
 
 在仓库根目录执行：
 
@@ -156,7 +179,8 @@ python tools/render_example.py --example attnres --out build/attnres
 
 | 路径 | 用途 |
 | --- | --- |
-| `skills/technical-architecture-diagrams/` | 可安装的 Skill、规则、配色、脚本及校准模板 |
+| `skills/technical-architecture-diagrams/` | 可安装的 Skill、规则、配色、SVG-first 构建与历史后端 |
+| `examples/svg-first/` | 新管线接线样例，不是视觉质量评测 |
 | `examples/minimax-m31/` | 竖向主干、独立 MSA 展开、双配色、事实与可编辑源 |
 | `tools/`、`tests/` | 仓库检查、样例渲染和画布尺寸回归 |
 | `third_party/drawio/` | 已核验的官方 Graph bundle、SHA pin 与上游许可证 |
@@ -171,7 +195,9 @@ python tools/render_example.py --example attnres --out build/attnres
 
 ## 验证范围
 
-40 条人工评价是风格依据；100 图索引是参考检索集，没有训练模型权重。三轮十题属于开发与回归，不能称独立泛化测评。当前可复现检查覆盖来源结构、golden 候选集合、配色不改变结构、任意页面尺寸与实际 Graph 导出；几何通过不等于用户认可或技术语义全部正确。
+40 条人工评价是风格依据；100 图索引是参考检索集，没有训练模型权重。三轮十题属于开发与回归，不能称独立泛化测评。历史可复现检查覆盖来源结构、golden 候选集合、配色不改变结构、任意页面尺寸与实际 Graph 导出；几何通过不等于用户认可或技术语义全部正确。
+
+SVG-first 初版的定向单测、浏览器检查与未测层级单列于 [改造记录](docs/svg-first-migration.md)，不将这些结果推广为全仓或全部模型兼容性证明。
 
 完整 draw.io EditorUi/Desktop、PPTX 对象编辑和宿主 HTML PPT 工作流集成仍需独立测试。详见 [评测与边界](docs/evaluation.md)。
 
