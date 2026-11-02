@@ -1,0 +1,63 @@
+{
+  "source_svg_sha256": "692f00bac918a4e65eeae726a0e4e102c083b021e121125e6b5959364311f31a",
+  "source_spec_sha256": "c2f01086f3cfd9b07f9f46696a2f935ef9e3c5eb93de8decaf5a62bab35709ee",
+  "upstream_repository": "https://github.com/Sleepy-Avacado/FigGenie-paper-diagram-skill",
+  "upstream_revision": "c136a6aeefc6f6fe11fc615a5199cca57be3322a",
+  "parameters": {
+    "output_format": "both",
+    "display_intent": "presentation",
+    "png_scale": 3.0,
+    "math": "omml"
+  },
+  "design_invocations": 0,
+  "status": "failed",
+  "commands": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/tmp/figgenie-inspect/skills/figgenie-paper-diagram/scripts/check.py",
+        "/workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/ascend-workflow/revision/fig.svg",
+        "--spec",
+        "/workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/ascend-workflow/revision/spec.json",
+        "--scale",
+        "3.0",
+        "--out-dir",
+        "/workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/ascend-workflow/revision/modes/both/checks",
+        "--no-preview"
+      ],
+      "returncode": 1,
+      "log": "checks/check.txt"
+    }
+  ],
+  "outputs": {},
+  "visual_review": "not_run",
+  "pptx_render_review": "not_run",
+  "warnings": [],
+  "limitations": [
+    "Export does not imply visual acceptance or semantic rerouting in PowerPoint.",
+    "Presentation display intent must already be designed into the canonical SVG."
+  ],
+  "scene": {
+    "viewBox": "0 0 600 330",
+    "object_ids": [
+      "arrow",
+      "e:cube-path",
+      "e:vector-path",
+      "e:join-cube",
+      "e:join-vector",
+      "e:check",
+      "e:accept",
+      "e:revise",
+      "n:workload",
+      "n:cube",
+      "n:vector",
+      "n:compose",
+      "n:validate",
+      "n:deliver",
+      "a:title",
+      "a:scope"
+    ],
+    "formula_count": 0
+  },
+  "error": "check.py failed (1); see /workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/ascend-workflow/revision/modes/both/checks/check.txt"
+}

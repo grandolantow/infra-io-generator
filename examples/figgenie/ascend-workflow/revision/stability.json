@@ -1,0 +1,10 @@
+{
+  "all_group_ids_stable": true,
+  "changed_groups": [
+    "n:vector"
+  ],
+  "unrelated_groups_identical": true,
+  "connectors_unchanged_because_geometry_unchanged": true,
+  "before_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7",
+  "after_svg_sha256": "692f00bac918a4e65eeae726a0e4e102c083b021e121125e6b5959364311f31a"
+}

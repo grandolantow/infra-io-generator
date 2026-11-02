@@ -1,0 +1,3 @@
+spec: /workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/ascend-workflow/revision/spec.json
+  WARN   meta.max_height_pt                 330 pt is above the double-column p95 of 313 pt
+  --- 0 error(s), 1 warning(s): PASS with warnings

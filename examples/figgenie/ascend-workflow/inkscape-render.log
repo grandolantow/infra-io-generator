@@ -1,0 +1,42 @@
+
+** (process:6): WARNING **: 12:39:35.979: Unable to create profile directory (Read-only file system) (30)
+
+** (inkscape:6): WARNING **: 12:39:35.990: Failed to wrap object of type 'PangoFT2FontMap'. Hint: this error is commonly caused by failing to call a library init() function.
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+** Message: 12:39:36.480: Cannot create profile directory /home/agent/.config/inkscape.
+** Message: 12:39:36.480: Inkscape will run with default settings, and new settings will not be saved. 
+
+** (inkscape:6): WARNING **: 12:39:36.598: Could not create directory '/home/agent/.config/inkscape'
+
+** (inkscape:6): WARNING **: 12:39:36.598: Could not create extension error log file '/home/agent/.config/inkscape/extension-errors.log'
+
+** (inkscape:6): WARNING **: 12:39:36.647: Failed to wrap object of type 'GtkRecentManager'. Hint: this error is commonly caused by failing to call a library init() function.

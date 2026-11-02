@@ -1,7 +1,7 @@
 interface:
   display_name: 技术图示 · 架构与报告
-  short_description: 按语义路由模型架构或技术报告图，保留可编辑源与分支配色
-  default_prompt: 使用 $technical-architecture-diagrams，根据要解释的关系选择模型架构或技术报告分支；混合任务拆分并共享事实。保留分支默认配色与显式覆盖，生成可编辑源并实际渲染检查。
+  short_description: FigGenie 原生绘图，从同一 SVG 输出图片或可编辑 PPTX
+  default_prompt: 使用 $technical-architecture-diagrams，遵循 FigGenie 原生 brief/spec/plan/SVG 流程，融合个人偏好；按 image、pptx 或 both 从同一 canonical SVG 导出，默认 image。实际渲染检查，不重复设计。
   icon_small: assets/icon.svg
   icon_large: assets/icon.svg
 policy:

@@ -23,3 +23,14 @@ No project-wide open-source license has yet been selected by the repository owne
 ## Independent reproduction source snapshots
 
 `examples/independent-minimax/source-input/sources/` retains the supplied pinned MiniMax config/model card and content-hashed SGLang model-code snapshot for fact checks. MiniMax's supplied community license is preserved as `LICENSE`; it is not replaced by this project's license. The SGLang file retains its original copyright and Apache-2.0 header, with the Apache license as `LICENSE.sglang`. The snapshot SHA256 and original URLs are in `provenance.json`. No model weights are included.
+
+## FigGenie integration (external checkout only)
+
+The new thin wrapper calls separately installed FigGenie scripts at revision
+`c136a6aeefc6f6fe11fc615a5199cca57be3322a` from
+https://github.com/Sleepy-Avacado/FigGenie-paper-diagram-skill.
+No upstream implementation, paper image corpus, or standalone font assets are
+vendored by this integration. Refer to that checkout's LICENSE, CREDITS and SOURCES.
+Generated SVG/PPTX examples are authored for this integration; rendering may embed
+fonts into final SVG deliverables as the upstream tool provides. Their redistribution
+is subject to the upstream font licenses; do not extract them into a font collection.

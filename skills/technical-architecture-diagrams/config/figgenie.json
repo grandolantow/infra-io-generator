@@ -1,0 +1,24 @@
+{
+  "upstream_repository": "https://github.com/Sleepy-Avacado/FigGenie-paper-diagram-skill",
+  "upstream_revision": "c136a6aeefc6f6fe11fc615a5199cca57be3322a",
+  "skill_path": "skills/figgenie-paper-diagram",
+  "output_format": "image",
+  "display_intent": "paper",
+  "preferences": {
+    "language": "English diagram labels; Chinese surrounding explanations",
+    "structure": "Vertical model backbone with local mechanism detail when useful; other mechanisms use their natural structure",
+    "geometry": "Real dataflow, explicit branch conditions and feedback; stable IDs; restrained rounded corners",
+    "background": "white or light",
+    "themes": {
+      "paper": {"background": "#ffffff", "ink": "#243746", "accent": "#397ba6", "fill": "#eaf3f8"},
+      "huawei-plain": {"background": "#ffffff", "ink": "#293744", "accent": "#526d82", "fill": "#eef2f5"}
+    },
+    "display_intents": {
+      "paper": "Choose print size in FigGenie brief, measure text and inspect actual rendered print-size view",
+      "presentation": "Choose slide viewing size in brief; increase text and spacing before SVG design; do not enlarge print defaults mechanically"
+    },
+    "curated_reference_ids": ["31", "40", "33", "34"],
+    "reference_records": ["references/ratings-40.json", "references/reference-lessons.json", "references/reference-index.json"],
+    "reference_boundary": "Read existing source/authorization records; never vendor upstream corpus or fonts"
+  }
+}

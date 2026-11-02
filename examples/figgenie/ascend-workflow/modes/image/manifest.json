@@ -1,0 +1,63 @@
+{
+  "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7",
+  "source_spec_sha256": "de0965e3b962d690a98250c37c8003a65e42d1fedfb3192df6e8621610dcbfa4",
+  "upstream_repository": "https://github.com/Sleepy-Avacado/FigGenie-paper-diagram-skill",
+  "upstream_revision": "c136a6aeefc6f6fe11fc615a5199cca57be3322a",
+  "parameters": {
+    "output_format": "image",
+    "display_intent": "presentation",
+    "png_scale": 3.0,
+    "math": "omml"
+  },
+  "design_invocations": 0,
+  "status": "failed",
+  "commands": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/tmp/figgenie-inspect/skills/figgenie-paper-diagram/scripts/check.py",
+        "/workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/ascend-workflow/fig.svg",
+        "--spec",
+        "/workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/ascend-workflow/spec.json",
+        "--scale",
+        "3.0",
+        "--out-dir",
+        "/workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/ascend-workflow/modes/image/checks",
+        "--no-preview"
+      ],
+      "returncode": 1,
+      "log": "checks/check.txt"
+    }
+  ],
+  "outputs": {},
+  "visual_review": "not_run",
+  "pptx_render_review": "not_run",
+  "warnings": [],
+  "limitations": [
+    "Export does not imply visual acceptance or semantic rerouting in PowerPoint.",
+    "Presentation display intent must already be designed into the canonical SVG."
+  ],
+  "scene": {
+    "viewBox": "0 0 600 330",
+    "object_ids": [
+      "arrow",
+      "e:cube-path",
+      "e:vector-path",
+      "e:join-cube",
+      "e:join-vector",
+      "e:check",
+      "e:accept",
+      "e:revise",
+      "n:workload",
+      "n:cube",
+      "n:vector",
+      "n:compose",
+      "n:validate",
+      "n:deliver",
+      "a:title",
+      "a:scope"
+    ],
+    "formula_count": 0
+  },
+  "error": "check.py failed (1); see /workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/ascend-workflow/modes/image/checks/check.txt"
+}

@@ -1,0 +1,69 @@
+{
+  "source_svg_sha256": "be1ca122feebcf0dcab8e89d087978529326d217c0480dd6d672a667cf576348",
+  "source_spec_sha256": "e2b3c25214c1afce0b83bc4fe8d56f16b6eca602cc2b328379dfbc20c46d9d55",
+  "upstream_repository": "https://github.com/Sleepy-Avacado/FigGenie-paper-diagram-skill",
+  "upstream_revision": "c136a6aeefc6f6fe11fc615a5199cca57be3322a",
+  "parameters": {
+    "output_format": "both",
+    "display_intent": "presentation",
+    "png_scale": 3.0,
+    "math": "omml"
+  },
+  "design_invocations": 0,
+  "status": "failed",
+  "commands": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/tmp/figgenie-inspect/skills/figgenie-paper-diagram/scripts/check.py",
+        "/workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/kv-offload/fig.svg",
+        "--spec",
+        "/workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/kv-offload/spec.json",
+        "--scale",
+        "3.0",
+        "--out-dir",
+        "/workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/kv-offload/modes/both/checks",
+        "--no-preview"
+      ],
+      "returncode": 1,
+      "log": "checks/check.txt"
+    }
+  ],
+  "outputs": {},
+  "visual_review": "not_run",
+  "pptx_render_review": "not_run",
+  "warnings": [],
+  "limitations": [
+    "Export does not imply visual acceptance or semantic rerouting in PowerPoint.",
+    "Presentation display intent must already be designed into the canonical SVG."
+  ],
+  "scene": {
+    "viewBox": "0 0 600 330",
+    "object_ids": [
+      "arrow",
+      "c:detail",
+      "e:query-select",
+      "e:select-resolve",
+      "e:resolve-lookup",
+      "e:lookup-hit",
+      "e:lookup-fetch",
+      "e:fetch-ready",
+      "e:hit-ready",
+      "e:ready-gather",
+      "e:gather-attend",
+      "n:query",
+      "n:select",
+      "n:resolve",
+      "n:attend",
+      "n:lookup",
+      "n:hit",
+      "n:fetch",
+      "n:ready",
+      "n:gather",
+      "a:title",
+      "a:scope"
+    ],
+    "formula_count": 0
+  },
+  "error": "check.py failed (1); see /workspace/scratch/3a83b44c5f77/infra_figgenie_wrapper/examples/figgenie/kv-offload/modes/both/checks/check.txt"
+}

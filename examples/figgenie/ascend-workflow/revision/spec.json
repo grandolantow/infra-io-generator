@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "id": "ascend-workflow",
+    "version": 2,
+    "title": "Ascend operator generation workflow",
+    "figure_kind": "request-path",
+    "column": "double",
+    "template": "control-loop",
+    "direction": "mixed",
+    "palette": "blue-mono",
+    "font": "helvetica",
+    "width_pt": 600,
+    "max_height_pt": 330,
+    "step_markers": "none",
+    "x-display-intent": "presentation",
+    "notes": "Conceptual validation fixture; no measured performance claims or source-code implementation assertions. Coordinates live only in fig.svg.",
+    "caption_draft": "Ascend operator generation workflow. Conceptual validation fixture; no performance or implementation claim."
+  },
+  "nodes": [
+    {
+      "id": "workload",
+      "label": "Workload &\nconstraints",
+      "kind": "module",
+      "role": "existing"
+    },
+    {
+      "id": "cube",
+      "label": "Reuse Cube",
+      "kind": "module",
+      "role": "existing"
+    },
+    {
+      "id": "vector",
+      "label": "Generate Vector\nfrom workload",
+      "kind": "module",
+      "role": "existing"
+    },
+    {
+      "id": "compose",
+      "label": "Compose C+V",
+      "kind": "module",
+      "role": "existing"
+    },
+    {
+      "id": "validate",
+      "label": "Correct & fast?",
+      "kind": "module",
+      "role": "existing"
+    },
+    {
+      "id": "deliver",
+      "label": "Deliver operator",
+      "kind": "module",
+      "role": "existing"
+    }
+  ],
+  "edges": [
+    {
+      "id": "cube-path",
+      "from": "workload",
+      "to": "cube",
+      "label": "MatMul",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "vector-path",
+      "from": "workload",
+      "to": "vector",
+      "label": "Epilogue",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "join-cube",
+      "from": "cube",
+      "to": "compose",
+      "label": "",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "join-vector",
+      "from": "vector",
+      "to": "compose",
+      "label": "",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "check",
+      "from": "compose",
+      "to": "validate",
+      "label": "",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "accept",
+      "from": "validate",
+      "to": "deliver",
+      "label": "Pass",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "revise",
+      "from": "validate",
+      "to": "vector",
+      "label": "Fail: refine Vector / tiling",
+      "kind": "feedback",
+      "route": "orthogonal",
+      "weight": "normal"
+    }
+  ],
+  "containers": [],
+  "annotations": [
+    {
+      "id": "title",
+      "text": "Ascend operator generation",
+      "kind": "title"
+    },
+    {
+      "id": "scope",
+      "text": "Reuse mature compute; validate the complete C+V path.",
+      "kind": "label"
+    }
+  ]
+}

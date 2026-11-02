@@ -1,0 +1,183 @@
+{
+  "meta": {
+    "id": "kv-offload",
+    "version": 1,
+    "title": "KV offload decode mechanism",
+    "figure_kind": "request-path",
+    "column": "double",
+    "template": "overview-with-inset",
+    "direction": "mixed",
+    "palette": "blue-mono",
+    "font": "helvetica",
+    "width_pt": 600,
+    "max_height_pt": 330,
+    "step_markers": "none",
+    "x-display-intent": "presentation",
+    "notes": "Conceptual validation fixture; no measured performance claims or source-code implementation assertions. Coordinates live only in fig.svg.",
+    "caption_draft": "KV offload decode mechanism. Conceptual validation fixture; no performance or implementation claim."
+  },
+  "nodes": [
+    {
+      "id": "query",
+      "label": "Query",
+      "kind": "module",
+      "role": "existing"
+    },
+    {
+      "id": "select",
+      "label": "Select KV IDs",
+      "kind": "module",
+      "role": "existing"
+    },
+    {
+      "id": "resolve",
+      "label": "Resolve KV",
+      "kind": "module",
+      "role": "existing"
+    },
+    {
+      "id": "attend",
+      "label": "Attention output",
+      "kind": "module",
+      "role": "existing"
+    },
+    {
+      "id": "lookup",
+      "label": "Lookup residency",
+      "kind": "module",
+      "role": "existing",
+      "parent": "detail"
+    },
+    {
+      "id": "hit",
+      "label": "Resident KV",
+      "kind": "module",
+      "role": "existing",
+      "parent": "detail"
+    },
+    {
+      "id": "fetch",
+      "label": "Fetch missing KV",
+      "kind": "module",
+      "role": "existing",
+      "parent": "detail"
+    },
+    {
+      "id": "ready",
+      "label": "Wait until ready",
+      "kind": "module",
+      "role": "existing",
+      "parent": "detail"
+    },
+    {
+      "id": "gather",
+      "label": "Gather selected KV",
+      "kind": "module",
+      "role": "existing",
+      "parent": "detail"
+    }
+  ],
+  "edges": [
+    {
+      "id": "query-select",
+      "from": "query",
+      "to": "select",
+      "label": "",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "select-resolve",
+      "from": "select",
+      "to": "resolve",
+      "label": "",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "resolve-lookup",
+      "from": "resolve",
+      "to": "lookup",
+      "label": "Expand",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "lookup-hit",
+      "from": "lookup",
+      "to": "hit",
+      "label": "Hit",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "lookup-fetch",
+      "from": "lookup",
+      "to": "fetch",
+      "label": "Miss",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "fetch-ready",
+      "from": "fetch",
+      "to": "ready",
+      "label": "Onload",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "hit-ready",
+      "from": "hit",
+      "to": "ready",
+      "label": "",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "ready-gather",
+      "from": "ready",
+      "to": "gather",
+      "label": "",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    },
+    {
+      "id": "gather-attend",
+      "from": "gather",
+      "to": "attend",
+      "label": "Selected KV",
+      "kind": "data",
+      "route": "orthogonal",
+      "weight": "normal"
+    }
+  ],
+  "containers": [
+    {
+      "id": "detail",
+      "label": "Resolve KV: local mechanism",
+      "role": "existing",
+      "kind": "solid"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "title",
+      "text": "KV offload: one decode step",
+      "kind": "title"
+    },
+    {
+      "id": "scope",
+      "text": "Conceptual path: CPU miss handling precedes attention consumption.",
+      "kind": "label"
+    }
+  ]
+}

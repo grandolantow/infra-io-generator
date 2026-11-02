@@ -1,0 +1,95 @@
+{
+  "upstream_revision": "c136a6aeefc6f6fe11fc615a5199cca57be3322a",
+  "completion": "partial: browser check blocked; no production exporter success claimed",
+  "fixtures": {
+    "ascend-workflow": {
+      "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7",
+      "outputs_sha256": {
+        "fig.svg": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7",
+        "svg-preview.png": "f002b17c5869c8635f37bfd94d18c7159b03e1d294394a03c72ed0264507b30f",
+        "fig.pptx": "8ff0944af3cca034eec0eb92cd236aedd0ec86c2fd1280b51bbf72ab48fa3781",
+        "fig.final.svg": "36ac394dcd3a6b08d4122d5c03b11e2f96282936d8af9e23098ac71dc8377ad6",
+        "pptx-preview.png": "90f1e997c0a55d52fb357649887b928c092a8e59f49a2c96f1628f0853a7f042"
+      },
+      "pptx_native_inventory": {
+        "p:sp": 24,
+        "p:cxnSp": 2,
+        "p:grpSp": 10,
+        "p:pic": 0,
+        "a:custGeom": 5,
+        "a:t": 13
+      },
+      "spec_validate": "pass_with_warning: presentation height 330pt exceeds paper p95 313pt; deliberate presentation intent",
+      "pptx_check": "pass",
+      "svg_visual_review": "passed_for_content_and_geometry: Inkscape PNG viewed; not browser check",
+      "pptx_visual_review": "passed_for_content_and_geometry: LibreOffice PDF raster preview viewed; extra shadow fidelity discrepancy",
+      "source_design_runs": 1,
+      "browser_check": "blocked: missing Playwright browser; installed Chromium adapter fails socket permissions, escalation bwrap failed before execution",
+      "font_mapping": "TeX Gyre Heros SVG \u2192 Arial/Microsoft YaHei PPTX defaults; rendering may substitute fonts; no formulas used",
+      "three_mode_source_hash_identical": true,
+      "three_mode_execution": {
+        "image": "failed",
+        "pptx": "failed",
+        "both": "failed"
+      },
+      "exporter_design_invocations": 0
+    },
+    "kv-offload": {
+      "source_svg_sha256": "be1ca122feebcf0dcab8e89d087978529326d217c0480dd6d672a667cf576348",
+      "outputs_sha256": {
+        "fig.svg": "be1ca122feebcf0dcab8e89d087978529326d217c0480dd6d672a667cf576348",
+        "svg-preview.png": "ac9bb1a808604006310b84551bbee22c0ce9c6a40af67ad22a954ab96b67e261",
+        "fig.pptx": "9af6726de0ae93a0ac9749bc08f990503c1bc7257308b70221f5678b339238aa",
+        "fig.final.svg": "1ba6e6d8a1a4a987417167b260e57ce6504978cace6d1f2f4f935c3547d65069",
+        "pptx-preview.png": "efe9d74a2bef45ef990b8a8bde813dde9ffa6a3a68e3ce6a482eba1b6b170246"
+      },
+      "pptx_native_inventory": {
+        "p:sp": 29,
+        "p:cxnSp": 7,
+        "p:grpSp": 15,
+        "p:pic": 0,
+        "a:custGeom": 2,
+        "a:t": 17
+      },
+      "spec_validate": "pass_with_warning: presentation height 330pt exceeds paper p95 313pt; deliberate presentation intent",
+      "pptx_check": "pass",
+      "svg_visual_review": "passed_for_content_and_geometry: Inkscape PNG viewed; not browser check",
+      "pptx_visual_review": "passed_for_content_and_geometry: LibreOffice PDF raster preview viewed; extra shadow fidelity discrepancy",
+      "source_design_runs": 1,
+      "browser_check": "blocked: missing Playwright browser; installed Chromium adapter fails socket permissions, escalation bwrap failed before execution",
+      "font_mapping": "TeX Gyre Heros SVG \u2192 Arial/Microsoft YaHei PPTX defaults; rendering may substitute fonts; no formulas used",
+      "three_mode_source_hash_identical": true,
+      "three_mode_execution": {
+        "image": "failed",
+        "pptx": "failed",
+        "both": "failed"
+      },
+      "exporter_design_invocations": 0
+    },
+    "ascend-workflow/revision": {
+      "source_svg_sha256": "692f00bac918a4e65eeae726a0e4e102c083b021e121125e6b5959364311f31a",
+      "outputs_sha256": {
+        "fig.svg": "692f00bac918a4e65eeae726a0e4e102c083b021e121125e6b5959364311f31a",
+        "svg-preview.png": "a10ab359e167c9a40785b3e379ad1fc6f32041d5ae63a97a56d8909bca29573c",
+        "fig.pptx": "1230259352284098b9a4cfad7ec54192cb5b19518deb0a965cc62d839947f651",
+        "pptx-preview.png": "bd2e95dac72296aec7de56a761d83abc4e37e6fdcde05bcc84967138422846b6"
+      },
+      "pptx_native_inventory": {
+        "p:sp": 25,
+        "p:cxnSp": 2,
+        "p:grpSp": 10,
+        "p:pic": 0,
+        "a:custGeom": 5,
+        "a:t": 14
+      },
+      "spec_validate": "pass_with_warning: presentation height 330pt exceeds paper p95 313pt; deliberate presentation intent",
+      "pptx_check": "pass",
+      "svg_visual_review": "passed_for_content_and_geometry: Inkscape PNG viewed; not browser check",
+      "pptx_visual_review": "passed_for_content_and_geometry: LibreOffice PDF raster preview viewed; extra shadow fidelity discrepancy",
+      "source_design_runs": 1,
+      "browser_check": "blocked: missing Playwright browser; installed Chromium adapter fails socket permissions, escalation bwrap failed before execution",
+      "font_mapping": "TeX Gyre Heros SVG \u2192 Arial/Microsoft YaHei PPTX defaults; rendering may substitute fonts; no formulas used",
+      "both_mode_execution": "failed: browser gate blocked"
+    }
+  }
+}
