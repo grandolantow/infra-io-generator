@@ -1,0 +1,277 @@
+{
+  "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7",
+  "source_spec_sha256": "de0965e3b962d690a98250c37c8003a65e42d1fedfb3192df6e8621610dcbfa4",
+  "upstream_repository": "https://github.com/Sleepy-Avacado/FigGenie-paper-diagram-skill",
+  "upstream_revision": "c136a6aeefc6f6fe11fc615a5199cca57be3322a",
+  "parameters": {
+    "output_format": "both",
+    "display_intent": "presentation",
+    "png_scale": 3.0,
+    "math": "omml",
+    "effective_math": "omml"
+  },
+  "design_invocations": 0,
+  "status": "checks_passed_visual_review_pending",
+  "commands": [
+    {
+      "command": [
+        "/Users/xingchenpeng/projects/dev/Pre/.figgenie-venv/bin/python",
+        "/Users/xingchenpeng/projects/dev/Pre/FigGenie-paper-diagram-skill/skills/figgenie-paper-diagram/scripts/spec_validate.py",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/spec.json"
+      ],
+      "returncode": 0,
+      "log": "checks/spec_validate.txt"
+    },
+    {
+      "command": [
+        "/Users/xingchenpeng/projects/dev/Pre/.figgenie-venv/bin/python",
+        "/Users/xingchenpeng/projects/dev/Pre/FigGenie-paper-diagram-skill/skills/figgenie-paper-diagram/scripts/check.py",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/fig.svg",
+        "--spec",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/spec.json",
+        "--scale",
+        "3.0",
+        "--out-dir",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/both/checks",
+        "--no-preview"
+      ],
+      "returncode": 0,
+      "log": "checks/check.txt"
+    },
+    {
+      "command": [
+        "/Users/xingchenpeng/projects/dev/Pre/.figgenie-venv/bin/python",
+        "/Users/xingchenpeng/projects/dev/Pre/FigGenie-paper-diagram-skill/skills/figgenie-paper-diagram/scripts/embed_fonts.py",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/fig.svg",
+        "-o",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/both/fig.final.svg"
+      ],
+      "returncode": 0,
+      "log": "checks/embed_fonts.txt"
+    },
+    {
+      "command": [
+        "/Users/xingchenpeng/projects/dev/Pre/.figgenie-venv/bin/python",
+        "/Users/xingchenpeng/projects/dev/Pre/FigGenie-paper-diagram-skill/skills/figgenie-paper-diagram/scripts/svg2pptx.py",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/fig.svg",
+        "--spec",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/spec.json",
+        "-o",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/both/.pptx-stage-q9ymu7ul/raw.pptx",
+        "--math",
+        "omml"
+      ],
+      "returncode": 0,
+      "log": "checks/svg2pptx.txt"
+    },
+    {
+      "command": [
+        "/Users/xingchenpeng/projects/dev/Pre/.figgenie-venv/bin/python",
+        "/Users/xingchenpeng/projects/dev/Pre/FigGenie-paper-diagram-skill/skills/figgenie-paper-diagram/scripts/pptx_check.py",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/both/.pptx-stage-q9ymu7ul/fig.pptx",
+        "--svg",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/fig.svg"
+      ],
+      "returncode": 0,
+      "log": "checks/pptx_check.txt"
+    }
+  ],
+  "outputs": {
+    "fig.final.svg": {
+      "sha256": "2500bde72605b1e6cd59d77d28d56bf870e9ddc76b19468096534a30fd17f7da",
+      "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7"
+    },
+    "fig.png": {
+      "sha256": "2bad106f7a55236eef0509420439905c3d0dc89dfee46dd978d6274613440cde",
+      "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7"
+    },
+    "fig.pptx": {
+      "sha256": "663b6525a3826ef5383e4a246d0749196ac58f3b185b8cc49979409c069f5d27",
+      "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7"
+    }
+  },
+  "tool_environment": {
+    "SOURCE_DATE_EPOCH": "1792679351"
+  },
+  "visual_review": "not_run",
+  "pptx_render_review": "not_run",
+  "warnings": [
+    "WARN   meta.max_height_pt                 330 pt is above the double-column p95 of 313 pt",
+    "--- 0 error(s), 1 warning(s): PASS with warnings",
+    "--- 0 error(s), 1 warning(s): PASS with warnings",
+    "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/fig.svg: 600×330 pt, 41 elements — 0 error(s), 1 warning(s)",
+    "[warn ] text.sizes         4 distinct font sizes [9.0, 10.0, 11.0, 16.0]; keep to 3 levels (title / label / small)",
+    "RESULT: PASS — 0 error(s), 1 warning(s). Now LOOK at /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/both/checks/fig.png (and /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/both/checks/fig.lint.png) before deciding it is done."
+  ],
+  "limitations": [
+    "Export does not imply visual acceptance or semantic rerouting in PowerPoint.",
+    "Presentation display intent must already be designed into the canonical SVG.",
+    "Top-level semantic group IDs survive in PPT object names; primitive XML IDs are regenerated by the native exporter.",
+    "Read checks/svg2pptx.txt for font mappings and native-equation fallback warnings."
+  ],
+  "scene": {
+    "viewBox": "0 0 600 330",
+    "object_ids": [
+      "arrow",
+      "e:cube-path",
+      "e:vector-path",
+      "e:join-cube",
+      "e:join-vector",
+      "e:check",
+      "e:accept",
+      "e:revise",
+      "n:workload",
+      "n:cube",
+      "n:vector",
+      "n:compose",
+      "n:validate",
+      "n:deliver",
+      "a:title",
+      "a:scope"
+    ],
+    "semantic_group_ids": [
+      "e:cube-path",
+      "e:vector-path",
+      "e:join-cube",
+      "e:join-vector",
+      "e:check",
+      "e:accept",
+      "e:revise",
+      "n:workload",
+      "n:cube",
+      "n:vector",
+      "n:compose",
+      "n:validate",
+      "n:deliver",
+      "a:title",
+      "a:scope"
+    ],
+    "formula_count": 0
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 1,
+    "findings": [
+      {
+        "severity": "warn",
+        "code": "text.sizes",
+        "message": "4 distinct font sizes [9.0, 10.0, 11.0, 16.0]; keep to 3 levels (title / label / small)",
+        "elements": [],
+        "bbox": null
+      }
+    ]
+  },
+  "pptx_compatibility": {
+    "status": "applied",
+    "changed_references": 13,
+    "changes": [
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "2",
+        "object_name": "e:cube-path 线",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "4",
+        "object_name": "e:vector-path 线",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "6",
+        "object_name": "e:join-cube 线",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "7",
+        "object_name": "e:join-vector 线",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "8",
+        "object_name": "e:check 线",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 1,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "9",
+        "object_name": "e:accept 线",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 1,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "11",
+        "object_name": "e:revise 线",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "13",
+        "object_name": "n:workload 框",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "16",
+        "object_name": "n:cube 框",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "18",
+        "object_name": "n:vector 框",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "20",
+        "object_name": "n:compose 框",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "22",
+        "object_name": "n:validate 框",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "object_id": "24",
+        "object_name": "n:deliver 框",
+        "theme": "ppt/theme/theme1.xml",
+        "before_idx": 2,
+        "after_idx": 0
+      }
+    ],
+    "before_sha256": "8016e535f045e50a2191f3f9f7e045a0495d6098f9079b9a3edaef4ced2bdfd6",
+    "after_sha256": "663b6525a3826ef5383e4a246d0749196ac58f3b185b8cc49979409c069f5d27",
+    "invariant": "all_package_parts_unchanged_except_selected_effectRef_indices"
+  }
+}

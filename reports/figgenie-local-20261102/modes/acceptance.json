@@ -1,0 +1,311 @@
+{
+  "status": "failed",
+  "runs": [
+    {
+      "case": "ascend-workflow",
+      "mode": "image",
+      "command": [
+        "/Users/xingchenpeng/projects/dev/Pre/.figgenie-venv/bin/python",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/skills/technical-architecture-diagrams/scripts/figgenie_export.py",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/fig.svg",
+        "--spec",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/spec.json",
+        "--upstream",
+        "/Users/xingchenpeng/projects/dev/Pre/FigGenie-paper-diagram-skill",
+        "--out",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/modes/ascend-workflow/image",
+        "--output-format",
+        "image",
+        "--display-intent",
+        "presentation",
+        "--png-scale",
+        "3"
+      ],
+      "returncode": 0,
+      "manifest": "ascend-workflow/image/manifest.json",
+      "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7",
+      "outputs": {
+        "fig.final.svg": {
+          "sha256": "e2812cc59f299ffe6502bac3942a1ddeaed92b50e486daf20b5dfa819a480f9f",
+          "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7"
+        },
+        "fig.png": {
+          "sha256": "2bad106f7a55236eef0509420439905c3d0dc89dfee46dd978d6274613440cde",
+          "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7"
+        }
+      },
+      "status": "passed_structural_checks_visual_pending",
+      "png_pixels": [
+        1800,
+        990
+      ]
+    },
+    {
+      "case": "ascend-workflow",
+      "mode": "pptx",
+      "command": [
+        "/Users/xingchenpeng/projects/dev/Pre/.figgenie-venv/bin/python",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/skills/technical-architecture-diagrams/scripts/figgenie_export.py",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/fig.svg",
+        "--spec",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/spec.json",
+        "--upstream",
+        "/Users/xingchenpeng/projects/dev/Pre/FigGenie-paper-diagram-skill",
+        "--out",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/modes/ascend-workflow/pptx",
+        "--output-format",
+        "pptx",
+        "--display-intent",
+        "presentation",
+        "--png-scale",
+        "3"
+      ],
+      "returncode": 0,
+      "manifest": "ascend-workflow/pptx/manifest.json",
+      "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7",
+      "outputs": {
+        "fig.pptx": {
+          "sha256": "81e61ee624b8e785b1449ba10f71827c7a468c42728012285c622d5ef8a56759",
+          "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7"
+        }
+      },
+      "status": "passed_structural_checks_visual_pending",
+      "pptx_inventory": [
+        {
+          "part": "ppt/slides/slide1.xml",
+          "xml_sha256": "6bd4686f60c91fe5d91d023b8229512893078852d2125cb5ef667a0359bb9f42",
+          "texts": [
+            "MatMul",
+            "Epilogue",
+            "Pass",
+            "Fail: refine Vector / tiling",
+            "Workload &",
+            "constraints",
+            "Reuse Cube",
+            "Generate Vector",
+            "Compose C+V",
+            "Correct & fast?",
+            "Deliver operator",
+            "Ascend operator generation",
+            "Reuse mature compute; validate the complete C+V path."
+          ],
+          "shape_count": 24,
+          "connector_count": 2,
+          "freeform_count": 5,
+          "group_count": 10,
+          "picture_count": 0,
+          "arrow_count": 7,
+          "connection_binding_count": 0,
+          "group_names": [
+            "e:cube-path workload\u2192cube",
+            "e:vector-path workload\u2192vector",
+            "e:accept validate\u2192deliver",
+            "e:revise validate\u2192vector",
+            "n:workload Workload &\nconstraints",
+            "n:cube Reuse Cube",
+            "n:vector Generate Vector",
+            "n:compose Compose C+V",
+            "n:validate Correct & fast?",
+            "n:deliver Deliver operator"
+          ],
+          "ids": [
+            "1",
+            "28",
+            "2",
+            "3",
+            "29",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "30",
+            "9",
+            "10",
+            "31",
+            "11",
+            "12",
+            "32",
+            "13",
+            "14",
+            "15",
+            "33",
+            "16",
+            "17",
+            "34",
+            "18",
+            "19",
+            "35",
+            "20",
+            "21",
+            "36",
+            "22",
+            "23",
+            "37",
+            "24",
+            "25",
+            "26",
+            "27"
+          ],
+          "unique_ids": true,
+          "effect_ref_indices": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "ascend-workflow",
+      "mode": "both",
+      "command": [
+        "/Users/xingchenpeng/projects/dev/Pre/.figgenie-venv/bin/python",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/skills/technical-architecture-diagrams/scripts/figgenie_export.py",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/fig.svg",
+        "--spec",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/spec.json",
+        "--upstream",
+        "/Users/xingchenpeng/projects/dev/Pre/FigGenie-paper-diagram-skill",
+        "--out",
+        "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/modes/ascend-workflow/both",
+        "--output-format",
+        "both",
+        "--display-intent",
+        "presentation",
+        "--png-scale",
+        "3"
+      ],
+      "returncode": 0,
+      "manifest": "ascend-workflow/both/manifest.json",
+      "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7",
+      "outputs": {
+        "fig.final.svg": {
+          "sha256": "73ab9635b12c54f9e918e035e2364f07a264b5a13e276b9593b9f47525aa4bf1",
+          "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7"
+        },
+        "fig.png": {
+          "sha256": "2bad106f7a55236eef0509420439905c3d0dc89dfee46dd978d6274613440cde",
+          "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7"
+        },
+        "fig.pptx": {
+          "sha256": "d614aabae648f5f72586fe147f7cc86d5251ba4afa7323d27e211e547fd8b6b1",
+          "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7"
+        }
+      },
+      "status": "passed_structural_checks_visual_pending",
+      "png_pixels": [
+        1800,
+        990
+      ],
+      "pptx_inventory": [
+        {
+          "part": "ppt/slides/slide1.xml",
+          "xml_sha256": "6bd4686f60c91fe5d91d023b8229512893078852d2125cb5ef667a0359bb9f42",
+          "texts": [
+            "MatMul",
+            "Epilogue",
+            "Pass",
+            "Fail: refine Vector / tiling",
+            "Workload &",
+            "constraints",
+            "Reuse Cube",
+            "Generate Vector",
+            "Compose C+V",
+            "Correct & fast?",
+            "Deliver operator",
+            "Ascend operator generation",
+            "Reuse mature compute; validate the complete C+V path."
+          ],
+          "shape_count": 24,
+          "connector_count": 2,
+          "freeform_count": 5,
+          "group_count": 10,
+          "picture_count": 0,
+          "arrow_count": 7,
+          "connection_binding_count": 0,
+          "group_names": [
+            "e:cube-path workload\u2192cube",
+            "e:vector-path workload\u2192vector",
+            "e:accept validate\u2192deliver",
+            "e:revise validate\u2192vector",
+            "n:workload Workload &\nconstraints",
+            "n:cube Reuse Cube",
+            "n:vector Generate Vector",
+            "n:compose Compose C+V",
+            "n:validate Correct & fast?",
+            "n:deliver Deliver operator"
+          ],
+          "ids": [
+            "1",
+            "28",
+            "2",
+            "3",
+            "29",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "30",
+            "9",
+            "10",
+            "31",
+            "11",
+            "12",
+            "32",
+            "13",
+            "14",
+            "15",
+            "33",
+            "16",
+            "17",
+            "34",
+            "18",
+            "19",
+            "35",
+            "20",
+            "21",
+            "36",
+            "22",
+            "23",
+            "37",
+            "24",
+            "25",
+            "26",
+            "27"
+          ],
+          "unique_ids": true,
+          "effect_ref_indices": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        }
+      ]
+    }
+  ],
+  "visual_review": "not_run",
+  "office_review": "not_run",
+  "error": "First acceptance harness stopped after Ascend: embedded font subset timestamps differed across image/both. Source SVG and PNG hashes were identical. Superseded by accepted-modes after SOURCE_DATE_EPOCH fix."
+}

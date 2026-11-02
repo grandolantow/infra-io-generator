@@ -28,7 +28,7 @@ python skills/technical-architecture-diagrams/scripts/figgenie_export.py fig.svg
 参数也接受 `--output_format`；`png/svg/图片 → image`，`ppt/可编辑 PPT → pptx`，`两种都要 → both`。
 paper/presentation 决定设计时的字号与观看尺寸，**不是在导出时独立重新排版**。封装是标准库 Python，不在 image 路径加载 PPTX 依赖，也不会自动安装软件。
 
-详见 [迁移与兼容](docs/figgenie-migration.md)、[偏好配置](skills/technical-architecture-diagrams/config/figgenie.json)、[实际验收记录](examples/figgenie/VALIDATION.md)。
+详见 [迁移与兼容](docs/figgenie-migration.md)、[偏好配置](skills/technical-architecture-diagrams/config/figgenie.json)、[本地修复验收](reports/figgenie-local-20261102/VALIDATION.md)（[迁移时历史记录](examples/figgenie/VALIDATION.md)）。
 
 ## 边界
 

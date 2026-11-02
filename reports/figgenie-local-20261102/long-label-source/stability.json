@@ -1,0 +1,33 @@
+{
+  "source_before_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7",
+  "source_after_sha256": "8f4e1e36a253ab0bdf3342d014ebed3eccba0c240ef86cce3f66dd7c56de9099",
+  "changed_groups": [
+    "n:vector"
+  ],
+  "stable_svg_ids": [
+    "e:cube-path",
+    "e:vector-path",
+    "e:join-cube",
+    "e:join-vector",
+    "e:check",
+    "e:accept",
+    "e:revise",
+    "n:workload",
+    "n:cube",
+    "n:vector",
+    "n:compose",
+    "n:validate",
+    "n:deliver",
+    "a:title",
+    "a:scope"
+  ],
+  "unrelated_groups_unchanged": true,
+  "all_edges_unchanged": true,
+  "edit": "Longer two-line label inside existing Vector geometry; all edge geometry and endpoints unchanged. No PPT edit or automatic semantic rerouting.",
+  "pptx_changed_semantic_objects": [
+    "n:vector"
+  ],
+  "pptx_unrelated_objects_unchanged_except_regenerated_numeric_ids": true,
+  "pptx_semantic_names_preserved": true,
+  "pptx_automatic_semantic_rerouting": "not_run / not claimed"
+}

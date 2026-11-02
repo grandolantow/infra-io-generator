@@ -1,0 +1,2 @@
+embedded helvetica (69 KB, subsetted) -> /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/long-label-export/fig.final.svg
+glyph coverage: all 39 distinct characters covered by the embedded faces

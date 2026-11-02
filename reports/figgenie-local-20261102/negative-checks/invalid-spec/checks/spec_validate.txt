@@ -1,0 +1,7 @@
+spec: /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/negative-checks/invalid-spec.json
+  ERROR  $                                  'meta' is a required property
+  ERROR  $                                  'nodes' is a required property
+  ERROR  nodes                              a spec with no nodes cannot be drawn
+  WARN   nodes                              only 0 labelled boxes; good figures carry >= 11 (q1) and bad ones median 6 -- add the components you elided, or say why it is this simple
+  info   meta.caption_draft                 empty -- the caption is part of the deliverable
+  --- 3 error(s), 1 warning(s): FAIL

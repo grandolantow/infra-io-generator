@@ -1,0 +1,30 @@
+{
+  "platform": "macOS-15.5-arm64-arm-64bit",
+  "python": "3.11.0 (v3.11.0:deaf509e8f, Oct 24 2022, 14:43:23) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "python_executable": "/Users/xingchenpeng/projects/dev/Pre/.figgenie-venv/bin/python",
+  "packages": {
+    "playwright": "1.61.0",
+    "python-pptx": "1.0.2",
+    "fonttools": "4.68.0",
+    "brotli": "1.2.1",
+    "lxml": "6.1.3",
+    "Pillow": "13.0.0",
+    "jsonschema": "4.26.0"
+  },
+  "upstream_revision": "c136a6aeefc6f6fe11fc615a5199cca57be3322a",
+  "upstream_tracked_clean": true,
+  "main": "cfa7b5db017b4e1d89546b79f7f886714dc42997",
+  "branch": "fix/figgenie-pptx-shadow-and-validation",
+  "inkscape": {
+    "status": "not_run",
+    "reason": "executable/app not installed; native browser is the image exporter"
+  },
+  "libreoffice": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "powerpoint_installed_version": "16.113.4",
+  "installation_notes": [
+    "Dependencies from PyPI in workspace .figgenie-venv and .figgenie-image-venv; no upstream changes.",
+    "Existing Playwright Chromium 1228 matches Python Playwright 1.61.0.",
+    "Homebrew Poppler installation interrupted at user request; already installed dependencies retained, no uninstall or system security/network setting edits.",
+    "Old PDF delivery regressions excluded at user request."
+  ]
+}

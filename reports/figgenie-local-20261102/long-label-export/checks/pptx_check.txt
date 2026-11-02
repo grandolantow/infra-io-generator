@@ -1,0 +1,4 @@
+/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/long-label-export/.pptx-stage-nk1sj4vv/fig.pptx: slide 600×330 pt; 27 shapes = 6 boxes/icons + 2 connectors + 5 freeforms + 14 text boxes + 0 equations; 10 groups; typefaces Helvetica Neue, Microsoft YaHei
+  top-level paint order: 15 elements, first 'e:cube-path workload→cube'
+  svg: 14 text, 0 formulas, 13 primitives → deck: 14 text, 0 equations, 13 shapes
+  ✓ nothing covered, inventory complete

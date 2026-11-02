@@ -1,0 +1,19 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [
+    "Public citation integrity only. Private archive metadata removed; raw assets, collector manifests and visual review are not checked."
+  ],
+  "gallery_coverage": {
+    "status": "not_requested"
+  },
+  "counts": {
+    "cases": 50,
+    "sources": 157,
+    "rules": 24,
+    "cited_cases": 50,
+    "classified_selected_assets": 0,
+    "negative_assets": 2
+  },
+  "limits": "Reference integrity and checksums do not establish factual correctness, independent figure families, license rights or improved diagram quality."
+}

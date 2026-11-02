@@ -1,0 +1,1 @@
+{"status": "structural_contract_only", "errors": [], "warnings": [], "scientific_accuracy": "requires_source_review"}

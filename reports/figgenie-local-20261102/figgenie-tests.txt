@@ -1,0 +1,27 @@
+test_aliases (test_figgenie_export.ExportTests.test_aliases) ... ok
+test_changed_upstream_refused (test_figgenie_export.ExportTests.test_changed_upstream_refused) ... ok
+test_hidden_or_clipped_elements_rejected (test_figgenie_export.ExportTests.test_hidden_or_clipped_elements_rejected) ... ok
+test_image_has_no_ppt_dependency (test_figgenie_export.ExportTests.test_image_has_no_ppt_dependency) ... ok
+test_modes_same_source_no_design (test_figgenie_export.ExportTests.test_modes_same_source_no_design) ... ok
+test_nested_groups_rejected (test_figgenie_export.ExportTests.test_nested_groups_rejected) ... ok
+test_positioned_tspan_rejected (test_figgenie_export.ExportTests.test_positioned_tspan_rejected) ... ok
+test_pptx_staging_failures_preserve_manual_output (test_figgenie_export.ExportTests.test_pptx_staging_failures_preserve_manual_output) ... ok
+test_refuse_overwrite (test_figgenie_export.ExportTests.test_refuse_overwrite) ... ok
+test_source_change_during_export_fails (test_figgenie_export.ExportTests.test_source_change_during_export_fails) ... ok
+test_source_directory_refused (test_figgenie_export.ExportTests.test_source_directory_refused) ... ok
+test_symlink_output_refused_even_with_permission (test_figgenie_export.ExportTests.test_symlink_output_refused_even_with_permission) ... ok
+test_unsupported_has_failure_manifest (test_figgenie_export.ExportTests.test_unsupported_has_failure_manifest) ... ok
+test_ambiguous_or_invalid_packages_fail_without_creating_output (test_figgenie_pptx_compat.GeneratedPptxCompatibilityTests.test_ambiguous_or_invalid_packages_fail_without_creating_output) ... ok
+test_corrupt_zip_is_rejected_without_creating_output (test_figgenie_pptx_compat.GeneratedPptxCompatibilityTests.test_corrupt_zip_is_rejected_without_creating_output) ... ok
+test_each_shadow_kind_is_normalized (test_figgenie_pptx_compat.GeneratedPptxCompatibilityTests.test_each_shadow_kind_is_normalized) ... ok
+test_existing_output_is_never_overwritten (test_figgenie_pptx_compat.GeneratedPptxCompatibilityTests.test_existing_output_is_never_overwritten) ... ok
+test_explicit_object_effects_and_non_shape_references_are_untouched (test_figgenie_pptx_compat.GeneratedPptxCompatibilityTests.test_explicit_object_effects_and_non_shape_references_are_untouched) ... ok
+test_no_shadow_is_not_needed_and_all_parts_are_unchanged (test_figgenie_pptx_compat.GeneratedPptxCompatibilityTests.test_no_shadow_is_not_needed_and_all_parts_are_unchanged) ... ok
+test_only_shadow_references_change_and_every_other_byte_is_preserved (test_figgenie_pptx_compat.GeneratedPptxCompatibilityTests.test_only_shadow_references_change_and_every_other_byte_is_preserved) ... ok
+test_source_effects_are_rejected_without_creating_output (test_figgenie_pptx_compat.GeneratedPptxCompatibilityTests.test_source_effects_are_rejected_without_creating_output) ... ok
+test_theme_is_resolved_per_slide_instead_of_by_global_style_index (test_figgenie_pptx_compat.GeneratedPptxCompatibilityTests.test_theme_is_resolved_per_slide_instead_of_by_global_style_index) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 2.689s
+
+OK

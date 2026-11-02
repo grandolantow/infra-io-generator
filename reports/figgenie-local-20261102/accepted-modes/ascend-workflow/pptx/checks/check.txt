@@ -1,0 +1,5 @@
+  --- 0 error(s), 1 warning(s): PASS with warnings
+/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/ascend-workflow/fig.svg: 600×330 pt, 41 elements — 0 error(s), 1 warning(s)
+  [warn ] text.sizes         4 distinct font sizes [9.0, 10.0, 11.0, 16.0]; keep to 3 levels (title / label / small)
+rendered /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/pptx/checks/fig.png and /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/pptx/checks/fig.lint.png
+RESULT: PASS — 0 error(s), 1 warning(s). Now LOOK at /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/pptx/checks/fig.png (and /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/pptx/checks/fig.lint.png) before deciding it is done.

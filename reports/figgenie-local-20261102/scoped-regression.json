@@ -1,0 +1,63 @@
+{
+  "run": 105,
+  "passed": 101,
+  "failed": [],
+  "not_run": [
+    [
+      "test_canvas_runtime.CanvasRuntimeTests.test_landscape_golden_page",
+      "Run tools/check.py --runtime with Chromium"
+    ],
+    [
+      "test_canvas_runtime.CanvasRuntimeTests.test_portrait_selected_from_second_page",
+      "Run tools/check.py --runtime with Chromium"
+    ],
+    [
+      "test_canvas_runtime.CanvasRuntimeTests.test_wide_detail_page",
+      "Run tools/check.py --runtime with Chromium"
+    ],
+    [
+      "test_model_tikz.TikzModelTests.test_actual_smoke_when_dependencies_available",
+      "Actual TeX/Poppler dependencies unavailable: kpsewhich, pdftocairo, standalone.cls, tikz.sty, xelatex, xelatex.fmt"
+    ]
+  ],
+  "excluded_by_user": [
+    "test_diagram_delivery.DeliveryTests.test_actual_selector_output_and_report_source_ids",
+    "test_diagram_delivery.DeliveryTests.test_application_references_real_editable_object",
+    "test_diagram_delivery.DeliveryTests.test_archive_actual_pdf_parse_not_extension",
+    "test_diagram_delivery.DeliveryTests.test_archive_pages_no_overlap_or_gaps",
+    "test_diagram_delivery.DeliveryTests.test_archive_requires_numbered_pages",
+    "test_diagram_delivery.DeliveryTests.test_artifact_hash_tampering",
+    "test_diagram_delivery.DeliveryTests.test_blocked_before_render_is_truthful",
+    "test_diagram_delivery.DeliveryTests.test_cli_json_and_exit_status",
+    "test_diagram_delivery.DeliveryTests.test_completed_archive_required",
+    "test_diagram_delivery.DeliveryTests.test_completed_cannot_hide_unavailable_reference",
+    "test_diagram_delivery.DeliveryTests.test_completed_needs_bound_render_qa",
+    "test_diagram_delivery.DeliveryTests.test_completed_requires_render_and_visual_review",
+    "test_diagram_delivery.DeliveryTests.test_completed_requires_requested_output_extensions",
+    "test_diagram_delivery.DeliveryTests.test_distinct_artifact_ids_cannot_hide_identical_rendered_bytes",
+    "test_diagram_delivery.DeliveryTests.test_duplicate_artifact_identity",
+    "test_diagram_delivery.DeliveryTests.test_each_option_requires_application",
+    "test_diagram_delivery.DeliveryTests.test_empty_blocked_delivery_does_not_fabricate_outputs",
+    "test_diagram_delivery.DeliveryTests.test_empty_review_is_not_evidence",
+    "test_diagram_delivery.DeliveryTests.test_exact_brief_bytes_bound",
+    "test_diagram_delivery.DeliveryTests.test_explicit_single_variant_allowed",
+    "test_diagram_delivery.DeliveryTests.test_file_and_directory_symlinks_rejected",
+    "test_diagram_delivery.DeliveryTests.test_path_traversal_absolute_and_nonportable",
+    "test_diagram_delivery.DeliveryTests.test_pdf_variant_label_uses_token_boundaries",
+    "test_diagram_delivery.DeliveryTests.test_reference_file_does_not_count_as_required_output",
+    "test_diagram_delivery.DeliveryTests.test_reference_must_have_real_bound_artifact",
+    "test_diagram_delivery.DeliveryTests.test_render_link_requires_rendered_kind",
+    "test_diagram_delivery.DeliveryTests.test_report_ir_object_ids_supported",
+    "test_diagram_delivery.DeliveryTests.test_review_cannot_reference_unrendered_object",
+    "test_diagram_delivery.DeliveryTests.test_root_symlink_rejected",
+    "test_diagram_delivery.DeliveryTests.test_schema_validation",
+    "test_diagram_delivery.DeliveryTests.test_selector_json_not_just_an_assertion",
+    "test_diagram_delivery.DeliveryTests.test_selector_option_ids_are_real_rule_ids",
+    "test_diagram_delivery.DeliveryTests.test_selector_task_binding",
+    "test_diagram_delivery.DeliveryTests.test_task_and_intent_match",
+    "test_diagram_delivery.DeliveryTests.test_valid_contract_is_not_semantic_or_visual_proof",
+    "test_diagram_delivery.DeliveryTests.test_variant_qa_kind_and_selected_id",
+    "test_diagram_delivery.DeliveryTests.test_variants_default_count_and_duplicate_ids",
+    "test_diagram_delivery.DeliveryTests.test_variants_sources_must_not_be_reused"
+  ]
+}

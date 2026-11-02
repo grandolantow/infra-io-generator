@@ -1,0 +1,1 @@
+wrote /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/ascend-workflow/pptx/.pptx-stage-91vi_mti/raw.pptx — slide 600×330 pt; 6 shapes, 2 connectors, 5 freeforms, 13 text boxes, 0 equations; 10 groups; fonts Helvetica Neue / Microsoft YaHei; OMML via mathml2omml.xsl

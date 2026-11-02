@@ -1,0 +1,2 @@
+embedded helvetica (68 KB, subsetted) -> /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/modes/ascend-workflow/image/fig.final.svg
+glyph coverage: all 38 distinct characters covered by the embedded faces

@@ -1,0 +1,8 @@
+test_landscape_golden_page (test_canvas_runtime.CanvasRuntimeTests.test_landscape_golden_page) ... ok
+test_portrait_selected_from_second_page (test_canvas_runtime.CanvasRuntimeTests.test_portrait_selected_from_second_page) ... ok
+test_wide_detail_page (test_canvas_runtime.CanvasRuntimeTests.test_wide_detail_page) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 12.078s
+
+OK

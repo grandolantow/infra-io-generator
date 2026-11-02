@@ -1,0 +1,1 @@
+{"status": "checks_passed_visual_review_pending", "source_svg_sha256": "fcc19a77d3b6daaca6c8922f70ae8948156d549b893ed3f3600a0b597da4efe7", "outputs": ["fig.final.svg", "fig.png"]}

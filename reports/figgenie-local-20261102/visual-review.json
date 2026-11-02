@@ -1,0 +1,132 @@
+{
+  "reviews": [
+    {
+      "file": "accepted-modes/ascend-workflow/image/fig.png",
+      "sha256": "2bad106f7a55236eef0509420439905c3d0dc89dfee46dd978d6274613440cde",
+      "renderer": "Chromium 149.0.7827.55 via native check.py",
+      "status": "passed",
+      "checks": [
+        "text readable, no unintended clipping or wrapping",
+        "arrows and branch directions visible",
+        "no extra shadows",
+        "main layout preserved"
+      ],
+      "inspection": "Direct image review; image/both bytes identical for each case"
+    },
+    {
+      "file": "accepted-modes/ascend-workflow/both/fig.png",
+      "sha256": "2bad106f7a55236eef0509420439905c3d0dc89dfee46dd978d6274613440cde",
+      "renderer": "Chromium 149.0.7827.55 via native check.py",
+      "status": "passed",
+      "checks": [
+        "text readable, no unintended clipping or wrapping",
+        "arrows and branch directions visible",
+        "no extra shadows",
+        "main layout preserved"
+      ],
+      "inspection": "Direct image review; image/both bytes identical for each case"
+    },
+    {
+      "file": "accepted-modes/kv-offload/image/fig.png",
+      "sha256": "f04519f1c541650385bf5874e90bfa815ef6e6efbf847a46e495b401173707e5",
+      "renderer": "Chromium 149.0.7827.55 via native check.py",
+      "status": "passed",
+      "checks": [
+        "text readable, no unintended clipping or wrapping",
+        "arrows and branch directions visible",
+        "no extra shadows",
+        "main layout preserved"
+      ],
+      "inspection": "Direct image review; image/both bytes identical for each case"
+    },
+    {
+      "file": "accepted-modes/kv-offload/both/fig.png",
+      "sha256": "f04519f1c541650385bf5874e90bfa815ef6e6efbf847a46e495b401173707e5",
+      "renderer": "Chromium 149.0.7827.55 via native check.py",
+      "status": "passed",
+      "checks": [
+        "text readable, no unintended clipping or wrapping",
+        "arrows and branch directions visible",
+        "no extra shadows",
+        "main layout preserved"
+      ],
+      "inspection": "Direct image review; image/both bytes identical for each case"
+    },
+    {
+      "file": "long-label-export/fig.png",
+      "sha256": "bed93acbabfadc2a8cf50a7b82ae9bd0b79bc8be404424eab74227e5dc7b2e6b",
+      "renderer": "Chromium 149.0.7827.55 via native check.py",
+      "status": "passed",
+      "checks": [
+        "text readable, no unintended clipping or wrapping",
+        "arrows and branch directions visible",
+        "no extra shadows",
+        "main layout preserved"
+      ],
+      "inspection": "Direct image review; image/both bytes identical for each case"
+    },
+    {
+      "file": "libreoffice-qa/ascend-workflow-pptx-system-fonts/fig.png",
+      "sha256": "73ab8898f7ed7fab8a7852fdb8477e2c36f945f540ce3af76ade8aa10ec7e4ba",
+      "renderer": "LibreOfficeDev 26.8.0.0.alpha0",
+      "status": "passed",
+      "checks": [
+        "no extra theme shadow",
+        "text, arrows and main layout retained"
+      ],
+      "inspection": "Direct review of both rendering; pptx-mode PNG byte-identical and independently rendered"
+    },
+    {
+      "file": "libreoffice-qa/ascend-workflow-both-system-fonts/fig.png",
+      "sha256": "73ab8898f7ed7fab8a7852fdb8477e2c36f945f540ce3af76ade8aa10ec7e4ba",
+      "renderer": "LibreOfficeDev 26.8.0.0.alpha0",
+      "status": "passed",
+      "checks": [
+        "no extra theme shadow",
+        "text, arrows and main layout retained"
+      ],
+      "inspection": "Direct review of both rendering; pptx-mode PNG byte-identical and independently rendered"
+    },
+    {
+      "file": "libreoffice-qa/kv-offload-pptx-system-fonts/fig.png",
+      "sha256": "31f5a0b434f5a9f9fef53fd01881f27ac84af7bc8da3f387560e8ab423694521",
+      "renderer": "LibreOfficeDev 26.8.0.0.alpha0",
+      "status": "passed",
+      "checks": [
+        "no extra theme shadow",
+        "text, arrows and main layout retained"
+      ],
+      "inspection": "Direct review of both rendering; pptx-mode PNG byte-identical and independently rendered"
+    },
+    {
+      "file": "libreoffice-qa/kv-offload-both-system-fonts/fig.png",
+      "sha256": "31f5a0b434f5a9f9fef53fd01881f27ac84af7bc8da3f387560e8ab423694521",
+      "renderer": "LibreOfficeDev 26.8.0.0.alpha0",
+      "status": "passed",
+      "checks": [
+        "no extra theme shadow",
+        "text, arrows and main layout retained"
+      ],
+      "inspection": "Direct review of both rendering; pptx-mode PNG byte-identical and independently rendered"
+    },
+    {
+      "file": "libreoffice-qa/long-label-system-fonts/fig.png",
+      "sha256": "04003e12fdadb4dbb2297d12071cde3a0996c63e16cad3753e5e7be5bbbefb38",
+      "renderer": "LibreOfficeDev 26.8.0.0.alpha0",
+      "status": "passed",
+      "checks": [
+        "both Vector label lines visible inside the unchanged box",
+        "arrows and other modules unchanged",
+        "no extra shadows"
+      ],
+      "inspection": "Direct image review"
+    }
+  ],
+  "pixel_identical_across_renderers": "not_claimed; browser TeX Gyre Heros mapped to Helvetica Neue in PPTX, antialiasing and arrow geometry may differ",
+  "first_libreoffice_attempt": "Default bundled fontconfig omitted macOS fonts and showed serif fallback; rejected. System font directories specified only in QA subprocess; rerendered without stderr.",
+  "before_fix_controls": [
+    "libreoffice-qa/ascend-workflow-before-shadow-fix/fig.png",
+    "libreoffice-qa/kv-offload-before-shadow-fix/fig.png"
+  ],
+  "powerpoint": "not_run; see powerpoint-qa/qa.json"
+}

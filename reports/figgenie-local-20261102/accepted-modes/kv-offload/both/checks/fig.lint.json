@@ -1,0 +1,51 @@
+{
+ "svg": "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/kv-offload/fig.svg",
+ "spec": "/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/kv-offload/spec.json",
+ "width": 600.0,
+ "height": 330.0,
+ "errors": 0,
+ "warnings": 4,
+ "findings": [
+  {
+   "severity": "warn",
+   "code": "align.edge",
+   "message": "top edges of n:ready and n:resolve differ by 1.0 pt (snap them)",
+   "elements": [
+    "n:ready",
+    "n:resolve"
+   ],
+   "bbox": null
+  },
+  {
+   "severity": "warn",
+   "code": "align.edge",
+   "message": "bottom edges of n:resolve and n:fetch differ by 1.0 pt (snap them)",
+   "elements": [
+    "n:resolve",
+    "n:fetch"
+   ],
+   "bbox": null
+  },
+  {
+   "severity": "warn",
+   "code": "text.sizes",
+   "message": "4 distinct font sizes [9.0, 10.0, 11.0, 16.0]; keep to 3 levels (title / label / small)",
+   "elements": [],
+   "bbox": null
+  },
+  {
+   "severity": "warn",
+   "code": "title.centre",
+   "message": "title \"Resolve KV: local me\" of c:detail sits -4.2 pt off the centre of its headroom (44–79); shift it by +4.2 pt",
+   "elements": [
+    "c:detail"
+   ],
+   "bbox": [
+    222,
+    53.5,
+    362.875,
+    61.1
+   ]
+  }
+ ]
+}

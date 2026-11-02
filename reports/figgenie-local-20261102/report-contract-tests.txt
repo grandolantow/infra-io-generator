@@ -1,0 +1,29 @@
+test_assumed_facts_are_conditional (test_contracts.Contracts.test_assumed_facts_are_conditional) ... ok
+test_bad_semantic_edge (test_contracts.Contracts.test_bad_semantic_edge) ... ok
+test_catalog_references (test_contracts.Contracts.test_catalog_references) ... ok
+test_constraints_respected (test_contracts.Contracts.test_constraints_respected) ... ok
+test_covers_all_cases (test_contracts.Contracts.test_covers_all_cases) ... ok
+test_edge_requires_evidence (test_contracts.Contracts.test_edge_requires_evidence) ... ok
+test_export_is_native_and_stable (test_contracts.Contracts.test_export_is_native_and_stable) ... ok
+test_gallery_roots_union_without_merge (test_contracts.Contracts.test_gallery_roots_union_without_merge) ... ok
+test_gallery_subset_is_partial_not_corrupt (test_contracts.Contracts.test_gallery_subset_is_partial_not_corrupt) ... ok
+test_gallery_tampering_still_fails (test_contracts.Contracts.test_gallery_tampering_still_fails) ... ok
+test_label_id_collision_rejected (test_contracts.Contracts.test_label_id_collision_rejected) ... ok
+test_missing_fact_provenance (test_contracts.Contracts.test_missing_fact_provenance) ... ok
+test_missing_facts_not_invented (test_contracts.Contracts.test_missing_facts_not_invented) ... ok
+test_no_matches_not_fake_options (test_contracts.Contracts.test_no_matches_not_fake_options) ... ok
+test_options_not_palette_variants (test_contracts.Contracts.test_options_not_palette_variants) ... ok
+test_render_warns_not_silently_clips (test_contracts.Contracts.test_render_warns_not_silently_clips) ... ok
+test_requested_numeric_example_needs_values (test_contracts.Contracts.test_requested_numeric_example_needs_values) ... ok
+test_style_edit_preserves_semantics (test_contracts.Contracts.test_style_edit_preserves_semantics) ... ok
+test_supported_numeric_example_still_available (test_contracts.Contracts.test_supported_numeric_example_still_available) ... ok
+test_symbolic_is_not_numeric_example (test_contracts.Contracts.test_symbolic_is_not_numeric_example) ... ok
+test_unsafe_output_name (test_contracts.Contracts.test_unsafe_output_name) ... ok
+test_valid_diagram (test_contracts.Contracts.test_valid_diagram) ... ok
+test_wrong_view_endpoint (test_contracts.Contracts.test_wrong_view_endpoint) ... ok
+test_xml_escaping (test_contracts.Contracts.test_xml_escaping) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.013s
+
+OK

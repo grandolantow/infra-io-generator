@@ -1,0 +1,4 @@
+/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/kv-offload/both/.pptx-stage-vrgjc69a/fig.pptx: slide 600×330 pt; 36 shapes = 10 boxes/icons + 7 connectors + 2 freeforms + 17 text boxes + 0 equations; 15 groups; typefaces Helvetica Neue, Microsoft YaHei
+  top-level paint order: 21 elements, first 'c:detail Resolve KV: local mechanism'
+  svg: 17 text, 0 formulas, 19 primitives → deck: 17 text, 0 equations, 19 shapes
+  ✓ nothing covered, inventory complete

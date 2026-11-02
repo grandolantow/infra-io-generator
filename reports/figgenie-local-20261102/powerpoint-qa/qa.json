@@ -1,0 +1,27 @@
+{
+  "status": "not_run",
+  "installed_version": "16.113.4",
+  "attempts": [
+    {
+      "method": "CUA getApp(Microsoft PowerPoint)",
+      "result": "No app state returned; agent call waited ~417.5 seconds then interrupted. No file opened."
+    },
+    {
+      "method": "CUA getApp(com.microsoft.Powerpoint)",
+      "result": "Returned existing user document AX state after severe latency (~1971.8 seconds despite requested 15s timeout). Existing document was not edited."
+    },
+    {
+      "method": "Command-O, Go To Folder, setValue full Ascend both fig.pptx path, Return",
+      "result": "Verified correct path and selected fig.pptx in native Open dialog. Open button remained disabled; Return/double-click did not display target presentation."
+    },
+    {
+      "method": "Further UI actions including Escape",
+      "result": "Computer Use server error -10005: noWindowsAvailable. Could not reliably complete or close dialog."
+    }
+  ],
+  "opened_target_presentations": [],
+  "visual_review": "not_run",
+  "files_saved_or_modified": false,
+  "reason": "Native UI control could not reliably open target presentation; installed app and LibreOffice pass are not evidence of PowerPoint visual success.",
+  "requires_followup": "User can open the linked final PPTX files manually; no permission or system settings were changed."
+}
