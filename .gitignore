@@ -8,3 +8,7 @@ build/
 .env
 .env.*
 *.log
+
+# Generated local acceptance evidence; keep only the reviewable summary.
+/reports/figgenie-local-20261102/*
+!/reports/figgenie-local-20261102/VALIDATION.md

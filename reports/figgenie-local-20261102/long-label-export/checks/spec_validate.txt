@@ -1,3 +1,0 @@
-spec: /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/long-label-source/spec.json
-  WARN   meta.max_height_pt                 330 pt is above the double-column p95 of 313 pt
-  --- 0 error(s), 1 warning(s): PASS with warnings

@@ -1,1 +1,0 @@
-{"status": "checks_passed_visual_review_pending", "source_svg_sha256": "be1ca122feebcf0dcab8e89d087978529326d217c0480dd6d672a667cf576348", "outputs": ["fig.pptx"]}

@@ -62,5 +62,5 @@ FontTools 的嵌入子集默认含当前时间。封装为原生工具设置上�
 记录于 manifest，使同源 image/both 字体嵌入 SVG 可重复；不改源 SVG、不重画、不引入第二套坐标。
 PPTX ZIP 时间戳可能导致两次文件 SHA 不同；验收另外比较解包后的幻灯片 XML，不声称 ZIP 字节可重现。
 
-本地六组验收、浏览器/Office 视觉检查、完整哈希与剩余警告见
-[2026-11-02 本地验收记录](../reports/figgenie-local-20261102/VALIDATION.md)。
+六组验收、浏览器/Office 视觉结果、输出哈希与剩余警告见
+[2026-11-02 验收摘要](../reports/figgenie-local-20261102/VALIDATION.md)。

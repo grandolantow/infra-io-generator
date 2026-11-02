@@ -1,1 +1,0 @@
-wrote /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/long-label-export/.pptx-stage-nk1sj4vv/raw.pptx — slide 600×330 pt; 6 shapes, 2 connectors, 5 freeforms, 14 text boxes, 0 equations; 10 groups; fonts Helvetica Neue / Microsoft YaHei; OMML via mathml2omml.xsl

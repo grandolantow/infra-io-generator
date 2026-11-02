@@ -1,8 +1,0 @@
-  --- 0 error(s), 1 warning(s): PASS with warnings
-/Users/xingchenpeng/projects/dev/Pre/infra-io-generator/examples/figgenie/kv-offload/fig.svg: 600×330 pt, 57 elements — 0 error(s), 4 warning(s)
-  [warn ] align.edge         top edges of n:ready and n:resolve differ by 1.0 pt (snap them)
-  [warn ] align.edge         bottom edges of n:resolve and n:fetch differ by 1.0 pt (snap them)
-  [warn ] text.sizes         4 distinct font sizes [9.0, 10.0, 11.0, 16.0]; keep to 3 levels (title / label / small)
-  [warn ] title.centre       title "Resolve KV: local me" of c:detail sits -4.2 pt off the centre of its headroom (44–79); shift it by +4.2 pt
-rendered /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/kv-offload/image/checks/fig.png and /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/kv-offload/image/checks/fig.lint.png
-RESULT: PASS — 0 error(s), 4 warning(s). Now LOOK at /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/kv-offload/image/checks/fig.png (and /Users/xingchenpeng/projects/dev/Pre/infra-io-generator/reports/figgenie-local-20261102/accepted-modes/kv-offload/image/checks/fig.lint.png) before deciding it is done.
