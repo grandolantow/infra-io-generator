@@ -22,7 +22,7 @@ image/pptx/both 对同一 SVG 只做原生工具编译。manifest 绑定每个�
 
 ## 上游与依赖
 
-锁定 revision 在 config/figgenie.json，需干净 checkout。依次调用原生 check.py、embed_fonts.py、
+锁定 revision 在 config/figgenie.json，需干净 checkout。依次调用原生 spec_validate.py、check.py、embed_fonts.py、
 svg2pptx.py 和 pptx_check.py；check 的 PNG 作为高分辨率 PNG，SVG 字体嵌入版为 fig.final.svg。
 上游字体资产只从已安装 checkout 读取，不复制入仓库。
 
@@ -43,3 +43,24 @@ image 不导入 python-pptx，也不运行 PPT exporter；pptx/both 才运行该
 两个原生例子及三模式、修改重导记录见 examples/figgenie。单元测试使用假的上游脚本仅验证
 调度与拒绝覆盖，不冒充真实视觉验收。实际输出需要看浏览器 PNG 与 PPT 渲染图，核对长标签、
 箭头、字号与层次；结构测试和视觉通过分开，not_run 明确标记。
+
+
+## 新导出 PPTX 的主题阴影兼容处理
+
+本仓只对本次 `svg2pptx.py` 写入临时目录的全新文件执行兼容处理，不读取/修复已有最终 PPTX。
+根据 slide → layout → master → theme 的真实关系，找到对象 `p:style/a:effectRef` 引用的样式。
+只有该样式的 `effectLst` 仅包含阴影，且对象没有明确的非空 `effectLst/effectDag` 时，才将引用索引置为 0。
+无阴影引用、idx=0、对象显式效果均保持。混合效果、歧义关系或 themeOverride 拒绝处理；不改主题文件。
+源 SVG 的 filter、CSS stylesheet、text-shadow/box-shadow 等不支持特性会明确拒绝，不会删掉设计者要求的效果。
+
+只替换目标索引的原始 XML 字节，并验证其余 XML 完全不变；其他 ZIP part 保留原始字节。
+manifest 的 `pptx_compatibility` 记录修改对象、主题、前后文件 SHA-256 与不变量。
+完成兼容处理、`pptx_check.py` 和源哈希复核后才发布最终 PPTX。即使显式 `--overwrite`，
+上述步骤失败也不替换已有 PPTX；无覆盖授权时仍拒绝非空输出目录。
+
+FontTools 的嵌入子集默认含当前时间。封装为原生工具设置上游固定提交时间对应的 `SOURCE_DATE_EPOCH`，
+记录于 manifest，使同源 image/both 字体嵌入 SVG 可重复；不改源 SVG、不重画、不引入第二套坐标。
+PPTX ZIP 时间戳可能导致两次文件 SHA 不同；验收另外比较解包后的幻灯片 XML，不声称 ZIP 字节可重现。
+
+六组验收、浏览器/Office 视觉结果、输出哈希与剩余警告见
+[2026-11-02 验收摘要](../reports/figgenie-local-20261102/VALIDATION.md)。

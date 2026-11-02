@@ -1,3 +1,6 @@
+> 本文件保留迁移时的 dot 环境历史结果。当前 macOS 修复与实际六组验收见
+> [修复验收摘要](../../reports/figgenie-local-20261102/VALIDATION.md)；不要将下方旧的 blocked 记录当作当前运行结果。
+
 # FigGenie native-vector fixtures: actual validation
 
 These two fixtures each have one technical brief, one design plan and one canonical SVG. They are **not** three independent Skill comparison runs. All source geometry is in `fig.svg`; `spec.json` carries semantics, not another coordinate model. The Ascend revision is an explicit later label edit, not a second export design.

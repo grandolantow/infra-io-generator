@@ -29,16 +29,19 @@ class ExportTests(unittest.TestCase):
             subprocess.run(['git', '-C', str(self.upstream), *cmd], check=True)
         scripts = self.upstream / 'scripts'
         scripts.mkdir()
-        code = '''import sys, pathlib, json
+        code = '''import sys, pathlib, json, zipfile
 args=sys.argv[1:]; name=pathlib.Path(__file__).name
 if name=='check.py':
  out=pathlib.Path(args[args.index('--out-dir')+1]); stem=pathlib.Path(args[0]).stem
  (out/(stem+'.png')).write_bytes(b'png')
  (out/(stem+'.lint.json')).write_text(json.dumps({'errors':0,'warnings':0,'findings':[]}))
-elif name in ('embed_fonts.py','svg2pptx.py'):
+elif name=='svg2pptx.py':
+ with zipfile.ZipFile(args[args.index('-o')+1], 'w') as z:
+  z.writestr('ppt/slides/slide1.xml', '<p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"/>')
+elif name=='embed_fonts.py':
  pathlib.Path(args[args.index('-o')+1]).write_bytes(b'output')
 '''
-        for name in ('check.py', 'embed_fonts.py', 'svg2pptx.py', 'pptx_check.py'):
+        for name in ('spec_validate.py', 'check.py', 'embed_fonts.py', 'svg2pptx.py', 'pptx_check.py'):
             (scripts / name).write_text(code)
         subprocess.run(['git', '-C', str(self.upstream), 'add', '.'], check=True)
         subprocess.run(['git', '-C', str(self.upstream), 'commit', '-qm', 'fixture'], check=True)
@@ -68,12 +71,14 @@ elif name in ('embed_fonts.py','svg2pptx.py'):
     def test_image_has_no_ppt_dependency(self):
         # Remove the optional exporter entirely; image must still succeed.
         (self.upstream/'scripts/svg2pptx.py').unlink()
+        (self.upstream/'scripts/pptx_check.py').unlink()
         subprocess.run(['git','-C',str(self.upstream),'add','.'],check=True)
         subprocess.run(['git','-C',str(self.upstream),'commit','-qm','image-only'],check=True)
         config=json.loads(self.config.read_text())
         config['upstream_revision']=subprocess.check_output(['git','-C',str(self.upstream),'rev-parse','HEAD'],text=True).strip()
         self.config.write_text(json.dumps(config))
-        m=exporter.run_export(self.args())
+        with patch.object(exporter, 'normalize_generated_pptx', side_effect=AssertionError('image must not touch PPTX')):
+            m=exporter.run_export(self.args())
         self.assertFalse(any('pptx' in x['command'][1] for x in m['commands']))
 
     def test_refuse_overwrite(self):
@@ -81,6 +86,37 @@ elif name in ('embed_fonts.py','svg2pptx.py'):
         with self.assertRaisesRegex(ValueError,'hand edits'):
             exporter.run_export(self.args())
         exporter.run_export(self.args(overwrite=True))
+
+    def test_pptx_staging_failures_preserve_manual_output(self):
+        out = self.base / 'pptx'
+        out.mkdir()
+        manual = out / 'fig.pptx'
+        manual.write_bytes(b'user edited presentation')
+        with self.assertRaisesRegex(ValueError, 'hand edits'):
+            exporter.run_export(self.args('pptx'))
+        real = subprocess.run
+        for step in ('svg2pptx.py', 'compatibility', 'pptx_check.py', 'source_changed'):
+            with self.subTest(step=step):
+                svg_bytes = self.svg.read_bytes()
+                def run(cmd, **kw):
+                    if step == cmd[1].split('/')[-1]:
+                        return subprocess.CompletedProcess(cmd, 1, '', 'deliberate tool failure')
+                    result = real(cmd, **kw)
+                    if step == 'source_changed' and str(cmd[1]).endswith('pptx_check.py'):
+                        self.svg.write_bytes(svg_bytes + b'\n')
+                    return result
+                normalizer = exporter.normalize_generated_pptx
+                def normalize(*args):
+                    if step == 'compatibility':
+                        raise ValueError('deliberate compatibility failure')
+                    return normalizer(*args)
+                with patch.object(exporter.subprocess, 'run', side_effect=run), patch.object(exporter, 'normalize_generated_pptx', side_effect=normalize):
+                    with self.assertRaises((ValueError, RuntimeError)):
+                        exporter.run_export(self.args('pptx', overwrite=True))
+                self.assertEqual(manual.read_bytes(), b'user edited presentation')
+                self.assertEqual(list(out.glob('.pptx-stage-*')), [])
+                self.assertEqual(json.loads((out/'manifest.json').read_text())['status'], 'failed')
+                self.svg.write_bytes(svg_bytes)
 
     def test_symlink_output_refused_even_with_permission(self):
         out=self.base/'image'

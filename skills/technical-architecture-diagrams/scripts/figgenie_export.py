@@ -4,10 +4,13 @@ import argparse
 import hashlib
 import json
 import os
+import posixpath
 import re
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
+import zipfile
 import xml.etree.ElementTree as ET
 
 CONFIG = Path(__file__).resolve().parents[1] / 'config/figgenie.json'
@@ -49,10 +52,12 @@ def inspect_svg(path):
             formulas.append(el)
             if not all(el.get(k) is not None for k in ('data-w', 'data-asc', 'data-desc', 'data-baseline')):
                 raise ValueError('formula has no native tex_fill metrics; complete FigGenie formula rendering first')
-        if any(el.get(k) is not None for k in ('clip-path', 'mask', 'display', 'visibility', 'filter')):
+        if any(el.get(k) is not None for k in ('clip-path', 'mask', 'display', 'visibility', 'filter', 'text-shadow', 'box-shadow')):
             unsupported.append('clipping/masking/visibility attributes')
         inline = el.get('style', '').lower()
-        if re.search(r'(?:^|;)\s*(?:clip-path|mask|display|visibility|filter)\s*:', inline):
+        if '\\' in inline or '/*' in inline:
+            unsupported.append('escaped/commented inline CSS (cannot prove effect-free)')
+        if re.search(r'(?:^|;)\s*(?:clip-path|mask|display|visibility|filter|text-shadow|box-shadow)\s*:', inline):
             unsupported.append('clipping/masking/visibility inline style')
         if el.get('id'):
             ids.append(el.get('id'))
@@ -67,6 +72,116 @@ def inspect_svg(path):
     return {'viewBox': root.get('viewBox'), 'object_ids': ids, 'semantic_group_ids': top_groups, 'formula_count': len(formulas)}
 
 
+def normalize_generated_pptx(svg, generated, output):
+    """Remove only accidental shadow-only theme references from a fresh export.
+
+    This is not an in-place PPT editor. The caller supplies a newly generated
+    staging file; the destination must not exist. Unsupported SVG effects fail
+    closed, and explicit object effects are preserved. No drawing library needed.
+    """
+    output = Path(output)
+    if output.exists() or output.is_symlink():
+        raise ValueError('compatibility output must be a new file')
+    inspect_svg(svg)  # Never infer absence of effects from an unsupported SVG.
+    a = '{http://schemas.openxmlformats.org/drawingml/2006/main}'
+    p = '{http://schemas.openxmlformats.org/presentationml/2006/main}'
+    rel_ns = '{http://schemas.openxmlformats.org/package/2006/relationships}'
+    changes, patched = [], {}
+    with zipfile.ZipFile(generated) as package:
+        names = package.namelist()
+        if len(names) != len(set(names)):
+            raise ValueError('duplicate PPTX package parts')
+
+        def related(part, kind):
+            rel_path = posixpath.join(posixpath.dirname(part), '_rels', posixpath.basename(part) + '.rels')
+            try:
+                rels = ET.fromstring(package.read(rel_path))
+            except KeyError as exc:
+                raise ValueError(f'missing relationships for {part}') from exc
+            if any(r.get('Type', '').endswith('/themeOverride') for r in rels):
+                raise ValueError('themeOverride is not supported by the shadow compatibility pass')
+            matches = [r for r in rels.findall(rel_ns + 'Relationship') if r.get('Type', '').endswith('/' + kind)]
+            if len(matches) != 1 or matches[0].get('TargetMode') == 'External':
+                raise ValueError(f'expected one internal {kind} relationship for {part}')
+            target = matches[0].get('Target', '')
+            resolved = posixpath.normpath(posixpath.join(posixpath.dirname(part), target)) if not target.startswith('/') else target[1:]
+            if resolved not in names:
+                raise ValueError(f'missing related PPTX part: {resolved}')
+            return resolved
+
+        slides = sorted(n for n in names if re.fullmatch(r'ppt/slides/slide\d+\.xml', n))
+        if not slides:
+            raise ValueError('generated PPTX has no slide XML')
+        for part in slides:
+            raw = package.read(part)
+            root = ET.fromstring(raw)
+            refs = list(root.iter(a + 'effectRef'))
+            if not refs:
+                continue
+            layout = related(part, 'slideLayout')
+            master = related(layout, 'slideMaster')
+            theme = related(master, 'theme')
+            styles = ET.fromstring(package.read(theme)).find('.//' + a + 'effectStyleLst')
+            if styles is None:
+                raise ValueError(f'missing theme effectStyleLst: {theme}')
+            edits = {}
+            for shape in root.iter():
+                if shape.tag not in (p + 'sp', p + 'cxnSp'):
+                    continue
+                ref = shape.find(p + 'style/' + a + 'effectRef')
+                if ref is None:
+                    continue
+                try:
+                    idx = int(ref.get('idx', ''))
+                except ValueError as exc:
+                    raise ValueError('invalid effectRef index') from exc
+                if idx == 0:
+                    continue
+                if idx < 0 or idx > len(styles):
+                    raise ValueError('effectRef index outside theme effectStyleLst')
+                props = shape.find(p + 'spPr')
+                if props is not None and any(len(e) for e in props if e.tag in (a + 'effectLst', a + 'effectDag')):
+                    continue  # Preserve explicitly authored effects, even in fresh exports.
+                style = styles[idx - 1]
+                effects = style.find(a + 'effectLst')
+                shadows = {a + n for n in ('outerShdw', 'innerShdw', 'prstShdw')}
+                if effects is None or not any(e.tag in shadows for e in effects):
+                    continue
+                if any(e.tag not in shadows for e in effects) or any(e.tag != a + 'effectLst' for e in style):
+                    raise ValueError('shadow theme style has additional effects; refusing lossy removal')
+                number = refs.index(ref)
+                edits[number] = idx
+                identity = shape.find('.//' + p + 'cNvPr')
+                changes.append({'part': part, 'object_id': identity.get('id') if identity is not None else None,
+                                'object_name': identity.get('name') if identity is not None else None,
+                                'theme': theme, 'before_idx': idx, 'after_idx': 0})
+                ref.set('idx', '0')
+            if not edits:
+                continue
+            # Preserve original XML bytes, namespaces and all unrelated attributes.
+            tags = list(re.finditer(rb'<(?:[A-Za-z_][\w.-]*:)?effectRef\b[^>]*>', raw))
+            if len(tags) != len(refs):
+                raise ValueError('ambiguous effectRef XML; refusing compatibility rewrite')
+            modified = raw
+            for number in sorted(edits, reverse=True):
+                match = tags[number]
+                tag, count = re.subn(rb'(\sidx\s*=\s*[\x22\x27])\d+([\x22\x27])', rb'\g<1>0\2', match.group())
+                if count != 1:
+                    raise ValueError('ambiguous effectRef index attribute')
+                modified = modified[:match.start()] + tag + modified[match.end():]
+            if ET.tostring(ET.fromstring(modified)) != ET.tostring(root):
+                raise ValueError('compatibility invariant failed: unrelated XML changed')
+            patched[part] = modified
+        # Exclusive creation guards against accidental in-place/user-file edits.
+        with output.open('xb') as stream, zipfile.ZipFile(stream, 'w') as result:
+            result.comment = package.comment
+            for info in package.infolist():
+                result.writestr(info, patched.get(info.filename, package.read(info.filename)))
+    return {'status': 'applied' if changes else 'not_needed', 'changed_references': len(changes),
+            'changes': changes, 'before_sha256': sha(generated), 'after_sha256': sha(output),
+            'invariant': 'all_package_parts_unchanged_except_selected_effectRef_indices'}
+
+
 def run_export(args):
     config = json.loads(CONFIG.read_text())
     mode = normalize_format(args.output_format)
@@ -79,6 +194,10 @@ def run_export(args):
         raise ValueError(f'upstream revision mismatch: expected {expected}, got {revision}')
     if subprocess.run(['git', '-C', str(upstream), 'diff', '--quiet', 'HEAD']).returncode:
         raise ValueError('upstream checkout has tracked modifications; use a clean pinned checkout')
+    # FontTools otherwise stamps each embedded subset with the wall-clock time.
+    # Its supported reproducible-build environment changes no SVG geometry.
+    epoch = subprocess.check_output(['git', '-C', str(upstream), 'show', '-s', '--format=%ct', 'HEAD'], text=True).strip()
+    tool_env = {**os.environ, 'SOURCE_DATE_EPOCH': epoch}
     scripts = upstream / config['skill_path'] / 'scripts'
     svg, spec, out = args.svg.resolve(), args.spec.resolve(), args.out.resolve()
     if not svg.is_file() or not spec.is_file():
@@ -100,6 +219,7 @@ def run_export(args):
                 'parameters': {'output_format': mode, 'display_intent': args.display_intent,
                                'png_scale': args.png_scale, 'math': args.math},
                 'design_invocations': 0, 'status': 'running', 'commands': [], 'outputs': {},
+                'tool_environment': {'SOURCE_DATE_EPOCH': epoch},
                 'visual_review': 'not_run', 'pptx_render_review': 'not_run', 'warnings': [],
                 'limitations': ['Export does not imply visual acceptance or semantic rerouting in PowerPoint.',
                                 'Presentation display intent must already be designed into the canonical SVG.',
@@ -110,16 +230,18 @@ def run_export(args):
     def invoke(name, *arguments):
         unchanged()
         cmd = [sys.executable, str(scripts / name), *map(str, arguments)]
-        p = subprocess.run(cmd, capture_output=True, text=True)
+        p = subprocess.run(cmd, capture_output=True, text=True, env=tool_env)
         log = checks / (name.removesuffix('.py') + '.txt')
         log.write_text(p.stdout + p.stderr, encoding='utf-8')
-        manifest['warnings'].extend(line.strip() for line in (p.stdout + p.stderr).splitlines() if '[warn]' in line or 'WARNING' in line)
+        manifest['warnings'].extend(line.strip() for line in (p.stdout + p.stderr).splitlines()
+                                    if re.search(r'\[warn\s*\]|\bWARN(?:ING)?\b|warning:', line, re.I))
         manifest['commands'].append({'command': cmd, 'returncode': p.returncode, 'log': str(log.relative_to(out))})
         unchanged()
         if p.returncode:
             raise RuntimeError(f'{name} failed ({p.returncode}); see {log}')
     try:
         manifest['scene'] = inspect_svg(svg)
+        invoke('spec_validate.py', spec)
         invoke('check.py', svg, '--spec', spec, '--scale', args.png_scale, '--out-dir', checks, '--no-preview')
         lint_file = checks / f'{svg.stem}.lint.json'
         if lint_file.exists():
@@ -136,9 +258,17 @@ def run_export(args):
                 effective_math = 'text'
                 manifest['limitations'].append('MathJax absent: formula export explicitly downgraded to text; no automatic npm install.')
             manifest['parameters']['effective_math'] = effective_math
-            opts = ['--force'] if args.overwrite else []
-            invoke('svg2pptx.py', svg, '--spec', spec, '-o', out / 'fig.pptx', '--math', effective_math, *opts)
-            invoke('pptx_check.py', out / 'fig.pptx', '--svg', svg)
+            # Never repair existing output. Export/check a fresh package before
+            # publishing; even explicitly allowed overwrite preserves old PPT
+            # bytes if generation, normalization or validation fails.
+            with tempfile.TemporaryDirectory(prefix='.pptx-stage-', dir=out) as staging:
+                raw = Path(staging) / 'raw.pptx'
+                compatible = Path(staging) / 'fig.pptx'
+                invoke('svg2pptx.py', svg, '--spec', spec, '-o', raw, '--math', effective_math)
+                manifest['pptx_compatibility'] = normalize_generated_pptx(svg, raw, compatible)
+                invoke('pptx_check.py', compatible, '--svg', svg)
+                unchanged()
+                os.replace(compatible, out / 'fig.pptx')
             manifest['outputs']['fig.pptx'] = {'sha256': sha(out / 'fig.pptx'), 'source_svg_sha256': source_hash}
             manifest['limitations'].append('Read checks/svg2pptx.txt for font mappings and native-equation fallback warnings.')
         unchanged()
@@ -168,7 +298,7 @@ def main():
         ap.error('--png-scale must be positive')
     try:
         result = run_export(args)
-    except (ValueError, RuntimeError, OSError, subprocess.SubprocessError, ET.ParseError) as exc:
+    except (ValueError, RuntimeError, OSError, subprocess.SubprocessError, ET.ParseError, zipfile.BadZipFile) as exc:
         ap.exit(1, f'{exc}\n')
     print(json.dumps({'status': result['status'], 'source_svg_sha256': result['source_svg_sha256'], 'outputs': list(result['outputs'])}))
 
